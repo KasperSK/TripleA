@@ -1,26 +1,45 @@
 %!TEX root = ../../main.tex
 
-I dette afsnit beskrives aktører og deres rolle i systemet. I figur ---- ses aktørdiagram, som beskriver alle aktører og deres forhold til systemet
-
-
-
+I dette afsnit beskrives aktører og deres rolle i systemet. I figur~\ref{fig:actordiagram} ses aktørdiagram, som beskriver alle aktører og deres forhold til systemet.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{Kravspecifikation/Actor/Actor.pdf}
+	\caption{Aktør-kontekst diagram}
+	\label{fig:actordiagram}
+\end{figure}
 
 \newpage
-
-\subsection{Bruger}
+\subsection{Bartender}
 \begin{usecase}
-\addtitle{Aktørnavn}{Bruger} 
-\addfield{type:}{Primær}
-\addfield{Beskrivelse:}{}
+\addtitle{Aktørnavn}{Bartender} 
+\addfield{Type:}{Primær}
+\addfield{Beskrivelse:}{\textit{Bartender} er den primære bruger af systemet. Aktøren skal stå for servicering af kunden og opsætning af en evt. transaktion gennem systemet.}
 \end{usecase}
 
-\subsection{Tekniker}
+\subsection{Admin}
 \begin{usecase}
-\addtitle{Aktørnavn}{Tekniker} 
-\addfield{type:}{Primær}
-\addfield{Beskrivelse:}{}
+\addtitle{Aktørnavn}{Admin} 
+\addfield{Type:}{Primær}
+\addfield{Beskrivelse:}{\textit{Admin} skal stå for logistikken (priser, varelager osv.) gennem systemet.}
 \end{usecase}
 
+\subsection{Nets}
+\begin{usecase}
+\addtitle{Aktørnavn}{Nets} 
+\addfield{Type:}{Sekundær}
+\addfield{Beskrivelse:}{\textit{Nets} er leverandøren af Dankort-systemet. Betalingsløsningen er en af systemets primære betalingsløsninger.}
+\end{usecase}
 
+\subsection{MobilePay}
+\begin{usecase}
+\addtitle{Aktørnavn}{MobilePay} 
+\addfield{Type:}{Sekundær}
+\addfield{Beskrivelse:}{\textit{MobilePay} er en betalingsløsning, som leveres af Danske Bank.}
+\end{usecase}
 
-
+\subsection{Swipp}
+\begin{usecase}
+\addtitle{Aktørnavn}{Swipp} 
+\addfield{Type:}{Sekundær}
+\addfield{Beskrivelse:}{\textit{Swipp} er en betalingsløsning, som leveres af Nordea, Nykredit, Sydbank, Jyske Bank, Arbejdernes Landsbank, Spar Nord Bank og Lokale Pengeinstitutter.}
+\end{usecase}
