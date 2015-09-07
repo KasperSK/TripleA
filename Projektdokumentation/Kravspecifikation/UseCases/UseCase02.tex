@@ -1,0 +1,46 @@
+%!TEX root = ../../main.tex
+
+\subsection*{Use case 1}
+I denne use case -----
+\begin{usecase}
+
+\addtitle{Use Case 2}{ Udskriv Kundebon } 
+
+\addfield{Mål:}{ Systemet får udskrevet en bon med kundens køb på }
+
+\addfield{Initieret af:}{ Bartender }
+
+\addfield{Aktører:}{ Bartender (Primær) }
+
+\addfield{Samtidige forekomster:}{1}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\addfield{Prækondition:}{Use Case 1 er gennemført}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postkondition:}{Kunden (baretender?) modtager bon med køb på }
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Hovedscenarie:}{
+	\item Bartender har valgt at der skal udskrives bon (på GUI?)
+	\item En dialogbox popper op og bartender bekræfter ønske af bon	
+	\item printer udskriver bon  [Ext 1: Der er ikke mere papir]
+	\item Bartender udleverer bon til kunde [Ext 2: Kunde er gået]	
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Udvidelser:}{
+	\item[Ex.1] Der er ikke mere papir
+		\begin{enumerate}
+		\item[1.] Printer stopper. Dialogbox popper op med besked "Fyld papir på printer"
+		\item[2.] Bartender fylder papir på printer.
+		\item[3.] Der trykkes på 'OK' og fortsættes fra punkt 3
+		\end{enumerate}
+	\item[Ex.2] Kunde er gået
+		\begin{enumerate}
+			\item[1.] Bartender smider bon ud
+		\end{enumerate}
+}
+
+
+\end{usecase}
