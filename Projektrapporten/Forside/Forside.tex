@@ -1,35 +1,35 @@
 %!TEX root = ../main.tex
 \begin{titlingpage}
 
-\noindent
-\titlefont Title \\[0.7\baselineskip] title\par
-\epigraph{
-\textbf{Projektrapporten}\newline
-\textit{Aarhus Universitet}\newline
-Gruppe X - 4. Semester - E15\newline
-}%
-{\textit{vejleder: XXXX XXXXX}\\
-\textit{dato: XX-XX-XXXX}}
-\null\vfill
-\vspace*{1cm}
-\noindent
+\begin{frontheader}
+	\headtitle{Title}
+	\subtitle{title}
+	\type{Projektrapporten}
+	\location{Aarhus Universitet}
+	\group{Gruppe X - 4. Semester - E15}
+	\supervisor{vejleder: XXXXX XXXXX}
+	\date{dato\: XXXX-XX-XX}
+\end{frontheader}
 
 \begin{minipage}{0.64\linewidth}
     \begin{flushleft}
 		\normalsize
-		\begin{tabular}{l l l}
-			  Lærke Isabella Nørregård Hansen 		&- 201205713 	&- IKT \\
-			  Kasper Sejer Kristensen				&- 201370050	&- IKT \\
-			  Kalle Rønlev Møller					&- 20105969		&- IKT \\
-			  David Heilesen Danielewicz			&- 201400148	&- IKT \\
-			  Peter Ring Pedersen					&- 201311500	&- IKT \\
-			  Kristian Mosegaard					&- 201370321	&- IKT
-		\end{tabular}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.50]{Forside/Rigebillede.png}
+			\label{photo:RigeBillede}
+		\end{figure}
     \end{flushleft}
 \end{minipage}
-%
-\begin{minipage}{0.02\linewidth}
-    \rule{1pt}{90pt}
-\end{minipage}
+
+\begin{studenttable}{0.9}
+	\student{Lærke Isabella Nørregård Hansen}{201205713}{IKT}
+	\student{Kasper Sejer Kristensen}{201370050}{IKT}
+	\student{Kalle Rønlev Møller}{20105969}{IKT}
+	\student{David Heilesen Danielewicz}{201400148}{IKT}
+	\student{Peter Ring Pedersen}{201311500}{IKT}
+	\student{Kristian Mosegaard}{201370321}{IKT}
+\end{studenttable}
+
 \titlepagedecoration
 \end{titlingpage}
