@@ -2,26 +2,26 @@
 
 \subsection*{Use case 1}
 I denne use case -----
-\begin{usecase}
+\begin{usecase}{2}
 
-\addtitle{Use Case 2}{ Udskriv Kundebon } 
+\title{ Udskriv Kundebon } 
 
-\addfield{Mål:}{ Systemet får udskrevet en bon med kundens køb på }
+\field{Mål:}{ Systemet får udskrevet en bon med kundens køb på }
 
-\addfield{Initieret af:}{ Bartender }
+\field{Initieret af:}{ Bartender }
 
-\addfield{Aktører:}{ Bartender (Primær) }
+\field{Aktører:}{ Bartender (Primær) }
 
-\addfield{Samtidige forekomster:}{1}
+\field{Samtidige forekomster:}{1}
 
 %Preconditions: What must be true on start and worth telling the reader?
-\addfield{Prækondition:}{Use Case 1 er gennemført}
+\field{Prækondition:}{Use Case 1 er gennemført}
 
 %Postconditions: What must be true on successful completion and worth telling the reader
-\addfield{Postkondition:}{Kunden (baretender?) modtager bon med køb på }
+\field{Postkondition:}{Kunden (baretender?) modtager bon med køb på }
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
-\addscenario{Hovedscenarie:}{
+\scenario{Hovedscenarie:}{
 	\item Bartender har valgt at der skal udskrives bon (på GUI?)
 	\item En dialogbox popper op og bartender bekræfter ønske af bon	
 	\item printer udskriver bon  [Ext 1: Der er ikke mere papir]
@@ -29,7 +29,7 @@ I denne use case -----
 }
 
 %Extensions: Alternate scenarios of success or failure.
-\addscenario{Udvidelser:}{
+\scenario{Udvidelser:}{
 	\item[Ex.1] Der er ikke mere papir
 		\begin{enumerate}
 		\item[1.] Printer stopper. Dialogbox popper op med besked "Fyld papir på printer"

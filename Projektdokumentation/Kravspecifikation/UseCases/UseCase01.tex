@@ -2,26 +2,26 @@
 
 \subsection*{Use case 1}
 I denne use case ser vi hvor et kontant salg bliver foretaget
-\begin{usecase}
+\begin{usecase}{1}
 
-\addtitle{Use Case 1}{ Kontant Salg } 
+\title{ Kontant Salg } 
 
-\addfield{Mål:}{ At sælge drikkevarer mod kontant betaling }
+\field{Mål:}{ At sælge drikkevarer mod kontant betaling }
 
-\addfield{Initieret af:}{ Bartender }
+\field{Initieret af:}{ Bartender }
 
-\addfield{Aktører:}{ Bartender }
+\field{Aktører:}{ Bartender }
 
-\addfield{Samtidige forekomster:}{1}
+\field{Samtidige forekomster:}{1}
 
 %Preconditions: What must be true on start and worth telling the reader?
-\addfield{Prækondition:}{System skal være tændt og klar}
+\field{Prækondition:}{System skal være tændt og klar}
 
 %Postconditions: What must be true on successful completion and worth telling the reader
-\addfield{Postkondition:}{ Et kontant salg er foretaget }
+\field{Postkondition:}{ Et kontant salg er foretaget }
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
-\addscenario{Hovedscenarie:}{
+\scenario{Hovedscenarie:}{
 	\item Bartender vælger drink(s)/pris(er) på systemets touchskærm
 	\item Bartender trykker "Total"	
 	\item Den samlede pris udregnes
@@ -33,7 +33,7 @@ I denne use case ser vi hvor et kontant salg bliver foretaget
 
 
 %Extensions: Alternate scenarios of success or failure.
-\addscenario{Extension 1.1: Kontanter ikke modtaget:}{
+\scenario{Extension 1.1: Kontanter ikke modtaget:}{
 		\item Bartender trykker annuller køb
 		\item Bartender lukker skuffen
 		\item Systemet er klar til næste kunde

@@ -1,0 +1,22 @@
+
+\usepackage{etoolbox}
+
+\newcommand{\sysml}[4]{
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=#1\textwidth]{Systemarkitektur/#3/Diagrammer/#2.png}
+	\caption{\sysmldesc{#2} af #4}
+	\label{fig:#3_#2}
+\end{figure}
+}
+
+\newcommand{\sysmldesc}[1]{
+	\ifstrequal{#1}{BDD}{Block Definition Diagram}{}%
+	\ifstrequal{#1}{IBD}{Internal Block Diagram}{}%
+	\ifstrequal{#1}{STATE}{State Diagram}{}%
+	\ifstrequal{#1}{SEQ}{Sequence Diagram}{}%
+	\ifstrequal{#1}{DOMAIN}{Domain Diagram}{}%
+	\ifstrequal{#1}{ALLOC}{Allocation Diagram}{}%
+	\ifstrequal{#1}{PKG}{Package Diagram}{}%
+	\ifstrequal{#1}{CLASS}{Class Diagram}{}%
+}

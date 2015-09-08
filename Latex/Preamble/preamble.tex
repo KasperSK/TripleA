@@ -9,43 +9,83 @@
 \renewcommand{\danishhyphenmins}{22}	% fikser babel fejl/bedre orddeling
 \usepackage[T1]{fontenc}
 \usepackage{lmodern} 
+
+
 %%Høre til under tabel (Pakker, men skal stå før pgfplot pga. default værdier)%%
 \usepackage[table]{xcolor}	
-\usepackage{ragged2e}	
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} 				% Haandtering af eksterne billeder (JPG, PNG, EPS, PDF)
+\usepackage{multirow}               % Fletning af raekker og kolonner (\multicolumn og \multirow)
+\usepackage{wrapfig}				%for figure der skal have tekst om sig
+\usepackage{float}					% Muliggoer eksakt placering af floats, f.eks. \begin{figure}[H]
+\usepackage{enumerate}				% Muliggoer at man kan bruge fx a) i enumerate
+\usepackage{pdflscape}				% Muligør landskab på enkelte sider
+\usepackage{tabularx}				% Tabeller med X width
+\usepackage{mathtools}				% Formler og matematik
+\usepackage{pdfpages}				% til at inkludere PDF filer
+\usepackage[footnote,draft,danish,silent,nomargin]{fixme}	% For at holde styr på mangler i teksten
+\usepackage{ifthen}					% If then
+\usepackage{hyperref}
+\usepackage{textcomp,gensymb}				% symboler til latex
 
+
+% ?? Using
+%\usepackage[bottom]{footmisc} %fodnoter i bunden af arket
+
+% Complains
+% \usepackage{caption}
+
+%--------------------------------------------------------------------
+% Billeder bliver lagt i Media
+%--------------------------------------------------------------------
+\graphicspath{{../Media/}}
+
+%--------------------------------------------------------------------
+% Marginer
+%--------------------------------------------------------------------
+\usepackage{ragged2e,anyfontsize}		% Justering af elementer
+\raggedbottom	%Ingen side strech for twopage
+\setlrmarginsandblock{3cm}{3cm}{*}		%Højre - venstre
+\setulmarginsandblock{3cm}{2.5cm}{*}	%Øverst - nederst
+\checkandfixthelayout[nearest]    		%Specifikt valg af højde algoritme
+% No more use 2015 \usepackage{fixltx2e}					% Retter forskellige fejl i LaTeX-kernen
+
+%--------------------------------------------------------------------
+%  Inholdsfortegnelse
+%--------------------------------------------------------------------
 \setcounter{tocdepth}{2} % inkludere sub + subsubsection i inholdsfortegnelde
 \setsecnumdepth{subsection}
 
+
+%--------------------------------------------------------------------
+% Kapitel formatering
+%--------------------------------------------------------------------
 \usepackage{titlesec} 
 \titleformat{\chapter}		  % Fjerne Kapitel og tal fra chapters
 			{\Large\bfseries} % format
 			{}                % label
 			{0pt}             % sep
 			{\huge}           % before-code
-% til mellemrum
 
+%--------------------------------------------------------------------
+% Sektion formatering
+%--------------------------------------------------------------------
 \titlespacing\section{0pt}
 {24pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt} %halvt mellemrum efter section
+
 \titlespacing\subsection{0pt}
 {18pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt} %kun lidt mellemrum efter subsection
+
 \titlespacing\subsubsection{0pt}
 {18pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt} %kun lidt mellemrum efter subsubsection 
 
 \setlength\parindent{0pt} %Ingen indryk efter ny afsnit
 
-\usepackage[bottom]{footmisc} %fodnoter i bunden af arket
 
-%Marginer indstilles
-\raggedbottom	%Ingen side strech for twopage
-\setlrmarginsandblock{3cm}{3cm}{*}		%Højre - venstre
-\setulmarginsandblock{3cm}{2.5cm}{*}	%Øverst - nederst
-\checkandfixthelayout[nearest]    		%Specifikt valg af højde algoritme
-\usepackage{ragged2e,anyfontsize}		% Justering af elementer
-\usepackage{fixltx2e}					% Retter forskellige fejl i LaTeX-kernen
 
+%--------------------------------------------------------------------
 % Sidehoved og -fod
+%--------------------------------------------------------------------
 \let\footruleskip\undefined  %fixer memoir default footruleskip
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -53,202 +93,42 @@
 \fancyhead[C]{\textit{Automatisk Vandingssystem}}
 \fancyfoot[RO,LE]{\thepage\ af \thelastpage}  	% sættet sidetal tal h/v efter om der er ulige
 												% eller lige sidetal
+
 \fancypagestyle{plain}{% bruges ved Undtagelser						
   \fancyhf{}%
   \fancyfoot[RO,LE]{\thepage\ af \thelastpage}	
   \renewcommand{\headrulewidth}{0pt}			%Ingen linje ved chapter, kun sidetal
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%Pakker og design til forside%%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath}
-\usepackage{tikz}
-\usepackage{epigraph}
-% Tilføjet af Karsten. Bruges til at lave altive http link
-\usepackage{hyperref}
-
-\renewcommand\epigraphflush{flushright}
-\renewcommand\epigraphsize{\normalsize}
-\setlength\epigraphwidth{1\textwidth}
-
-\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
-
-\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
-
-
-
-
-% The following code is borrowed from: http://tex.stackexchange.com/a/86310/10898
-
-\newcommand\titlepagedecoration{%
-\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
-
-\coordinate (aux1) at ([yshift=-15pt]current page.north east);
-\coordinate (aux2) at ([yshift=-410pt]current page.north east);
-\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
-\coordinate (aux4) at ([yshift=-150pt]current page.north east);
-
-\begin{scope}[titlepagecolor!40,line width=12pt,rounded corners=12pt]
-\draw
-  (aux1) -- coordinate (a)
-  ++(225:5) --
-  ++(-45:5.1) coordinate (b);
-\draw[shorten <= -10pt]
-  (aux3) --
-  (a) --
-  (aux1);
-\draw[opacity=0.6,titlepagecolor,shorten <= -10pt]
-  (b) --
-  ++(225:2.2) --
-  ++(-45:2.2);
-\end{scope}
-\draw[titlepagecolor,line width=8pt,rounded corners=8pt,shorten <= -10pt]
-  (aux4) --
-  ++(225:0.8) --
-  ++(-45:0.8);
-\begin{scope}[titlepagecolor!70,line width=6pt,rounded corners=8pt]
-\draw[shorten <= -10pt]
-  (aux2) --
-  ++(225:3) coordinate[pos=0.45] (c) --
-  ++(-45:3.1);
-\draw
-  (aux2) --
-  (c) --
-  ++(135:2.5) --
-  ++(45:2.5) --
-  ++(-45:2.5) coordinate[pos=0.3] (d);   
-\draw 
-  (d) -- +(45:1);
-\end{scope}
-\end{tikzpicture} }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Pakker%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{graphicx} 				% Haandtering af eksterne billeder (JPG, PNG, EPS, PDF)
-\usepackage{multirow}               % Fletning af raekker og kolonner (\multicolumn og \multirow)
-
-\usepackage{wrapfig}				%for figure der skal have tekst om sig
-\usepackage{float}					% Muliggoer eksakt placering af floats, f.eks. \begin{figure}[H]
-
-\usepackage{enumerate}				% Muliggoer at man kan bruge fx a) i enumerate
-
-\usepackage{pdflscape}				% Muligør landskab på enkelte sider
-\usepackage{tabularx}				% Tabeller med X width
-
-\usepackage{../Latex/Usecases/usecases}				% Usecase
-
-\usepackage{mathtools}				% Formler og matematik
-
-\usepackage{caption}
-%\usepackage{subcaption}			% This package kills me :/
-
-\usepackage{pdfpages}				% til at inkludere PDF filer
-
-\usepackage{gensymb}				% symboler til latex
-
-% For at holde styr på mangler i teksten
-\usepackage[footnote,draft,danish,silent,nomargin]{fixme}	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% If then
-\usepackage{ifthen}
-
-% ¤¤ Litteraturlisten ¤¤ %
+%--------------------------------------------------------------------
+% Literaturliste liste
+%--------------------------------------------------------------------
 \usepackage[danish]{varioref}				% Muliggoer bl.a. krydshenvisninger med sidetal (\vref)
 \usepackage{natbib}							% Udvidelse med naturvidenskabelige citationsmodeller
 \bibpunct[,]{[}{]}{;}{a}{,}{,} 				% Definerer de 6 parametre ved Harvard henvisning 
 											% (bl.a. parantestype og seperatortegn)
 \bibliographystyle{../Latex/Litteratur/harvard}		% Udseende af litteraturlisten.
-\usepackage{hyperref}
 
+%--------------------------------------------------------------------
 % Ordliste
+%--------------------------------------------------------------------
 \usepackage[nonumberlist,toc]{glossaries}
 \makeglossaries
 \input{../Latex/Glossary/glossary}
 
 
+%--------------------------------------------------------------------
+% Custom funktioner
+%--------------------------------------------------------------------
 
-\newcommand{\systemBDD}[3][FLAF]{
-\ifthenelse{ \equal{#1}{FLAF} }{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#2\textwidth]{Systemarkitektur/#3/#3_BDD.png}
-	\caption{Block Definition Diagram af #3}
-	\label{fig:#3_BDD}
-\end{figure}
-}{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#2\textwidth]{Systemarkitektur/#1/#1_BDD.png}
-	\caption{Block Definition Diagram af #3}
-	\label{fig:#1_BDD}
-\end{figure}
-}
+% Forsiden
+\usepackage{../Latex/Functions/frontpage}
 
-}
+% Usecases
+\usepackage{../Latex/Functions/usecases}
 
-\newcommand{\systemIBD}[3]{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#1\textwidth]{Systemarkitektur/#2/#2_IBD.png}
-	\caption{Internal Block Diagram af #3}
-	\label{fig:#2_IBD}
-\end{figure}
-}
-
-\newcommand{\systemDomainModel}[3]{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#1\textwidth]{Systemarkitektur/#2/#2_Domain_Model.png}
-	\caption{Domænemodel af #3}
-	\label{fig:#2_Domain_Model}
-\end{figure}
-}
-
-\newcommand{\systemAllokeringsDiagram}[3]{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#1\textwidth]{Systemarkitektur/#2/#2_Allokeringsdiagram.png}
-	\caption{Allokeringsdiagram af #3}
-	\label{fig:#2_Allokeringsdiagram}
-\end{figure}
-}
-
-\newcommand{\PakkeDiagram}[3]{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#1\textwidth]{SoftwareArkitektur/#2/Diagrammer/#3_PakkeDiagram.png}
-	\caption{PakkeDiagram af #3}
-	\label{fig:#2_PakkeDiagram}
-\end{figure}
-}
-
-\newcommand{\KlasseDiagram}[3]{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#1\textwidth]{SoftwareArkitektur/#2/Diagrammer/#3_KlasseDiagram.png}
-	\caption{KlasseDiagram af #3}
-	\label{fig:#3_KlasseDiagram}
-\end{figure}
-}
-
-\newcommand{\SekvensDiagram}[3]{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#1\textwidth]{SoftwareArkitektur/#2/Diagrammer/#3_SekvensDiagram.png}
-	\caption{SekvensDiagram af #3}
-	\label{fig:#3_SekvensDiagram}
-\end{figure}
-}
-
-\newcommand{\StateDiagram}[3]{
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=#1\textwidth]{SoftwareArkitektur/#2/Diagrammer/#3_StateDiagram.png}
-	\caption{StateDiagram af #3}
-	\label{fig:#3_StateDiagram}
-\end{figure}
-}
+% Sysml
+\usepackage{../Latex/Functions/sysml}
 
 
 \newcommand{\RevisionsTabel}[2]
@@ -368,21 +248,6 @@
 \usepackage{listings}
 \definecolor{commentGreen}{RGB}{34,139,24}
 \definecolor{stringPurple}{RGB}{208,76,239}
-
-\lstset{language=Matlab,					% Sprog
-	basicstyle=\ttfamily\scriptsize,		% Opsaetning af teksten
-	keywords={for,if,while,else,elseif,		% Noegleord at fremhaeve
-			  end,break,return,case,
-			  switch,function},
-	keywordstyle=\color{blue},				% Opsaetning af noegleord
-	commentstyle=\color{commentGreen},		% Opsaetning af kommentarer
-	stringstyle=\color{stringPurple},		% Opsaetning af strenge
-	showstringspaces=false,					% Mellemrum i strenge enten vist eller blanke
-	numbers=left, numberstyle=\tiny,		% Linjenumre
-	extendedchars=true, 					% Tillader specielle karakterer
-	columns=flexible,						% Kolonnejustering
-	breaklines, breakatwhitespace=true,		% Bryd lange linjer
-}
 % skriv:
 % %\lstinputlisting[language=c]{main.c}  	language: om det er c, vhdl ect.
 %											filen: filen koden er i.
