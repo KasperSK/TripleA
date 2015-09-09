@@ -130,6 +130,9 @@
 % Sysml
 \usepackage{../Latex/Functions/sysml}
 
+% Accepttests
+\usepackage{../Latex/Functions/accepttests}
+
 
 \newcommand{\RevisionsTabel}[2]
 {
@@ -191,38 +194,7 @@
 \end{table}
 }
 
-\newcommand{\accepttest}[3][FLAF]
-{
-\begin{table}[H]
-\centering
-{\rowcolors{2}{white!80!black!30}{white!70!black!60} %farver på hver anden række -starter på 3
-\setlength{\arrayrulewidth}{0.2mm}					 %tykkelse på linier 
-\setlength{\tabcolsep}{10pt}						 %indryk i celle 
-\renewcommand{\arraystretch}{1.5}					 %højden på tabelrum
-\center
-\small
-\begin{tabular}{|>{\raggedright}p{4.5cm}|>{\raggedright}p{4.5cm}|>{\raggedright\arraybackslash}p{4.5cm}|}		 %længden på alle rum
-\hline
 
-\multicolumn{3}{|>{\columncolor{white!20!black!90}}m{14.94cm}|}{\textcolor{white}{\large{\textbf{Accepttest #2}}}} \\\hline
-\rowcolor{white!70!black!60}
-\textcolor{black}{\large{\textbf{Test}}}&
-\textcolor{black}{\large{\textbf{Forventet resultat}}}&	
-\textcolor{black}{\large{\textbf{Resultat}}}\\
-\hline
-#3
-\hline
-\end{tabular}
-}
-\ifthenelse{ \equal{#1}{FLAF} }{
-\caption{Acceptest for #2}
-\label{table:#2_AcceptTest}
-}{
-\caption{Acceptest for #2}
-\label{table:#1_AcceptTest}
-}
-\end{table}
-}
 
 % To change a font in the middle of a section
 \newcommand*{\kodefont}{\fontfamily{pcr}\selectfont}
