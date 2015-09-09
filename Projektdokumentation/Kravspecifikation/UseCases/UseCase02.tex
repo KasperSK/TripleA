@@ -1,12 +1,12 @@
 %!TEX root = ../../main.tex
 
-\subsection*{Use case 1}
-I denne use case -----
+\subsection*{Use case 2}
+I denne use case beskrives forløbet at udskrive en bon, hvis kunden ønsker dette.
 \begin{usecase}{2}
 
 \title{ Udskriv Kundebon } 
 
-\field{Mål:}{ Systemet får udskrevet en bon med kundens køb på }
+\field{Mål:}{ Systemet får udskrevet en bon af nuværende transaktion }
 
 \field{Initieret af:}{ Bartender }
 
@@ -15,30 +15,27 @@ I denne use case -----
 \field{Samtidige forekomster:}{1}
 
 %Preconditions: What must be true on start and worth telling the reader?
-\field{Prækondition:}{Use Case 1 er gennemført}
+\field{Prækondition:}{Use Case 1: Kontant salg er gennemført}
 
 %Postconditions: What must be true on successful completion and worth telling the reader
-\field{Postkondition:}{Kunden (baretender?) modtager bon med køb på }
+\field{Postkondition:}{Systemmet udskriver bon at transaktionen }
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
-	\item Bartender har valgt at der skal udskrives bon (på GUI?)
-	\item En dialogbox popper op og bartender bekræfter ønske af bon	
-	\item printer udskriver bon  [Ext 1: Der er ikke mere papir]
-	\item Bartender udleverer bon til kunde [Ext 2: Kunde er gået]	
+	\item Bartender trykker "Bon"
+	\item En dialogboks popper op og Bartender vælger hvilket salg der ønskes at udskrive bon for 
+	\item Bartender trykker "Udskriv bon"
+	\item printer udskriver bon [Extension 2.1: Der er ikke mere papir]
+	\item Bartender udleverer bon
 }
 
 %Extensions: Alternate scenarios of success or failure.
 \scenario{Udvidelser:}{
-	\item[Ex.1] Der er ikke mere papir
+	\item Extension 2.1 Der er ikke mere papir
 		\begin{enumerate}
-		\item[1.] Printer stopper. Dialogbox popper op med besked "Fyld papir på printer"
+		\item[1.] Printer stopper. Dialogboks popper op med besked "Fyld papir på printer"
 		\item[2.] Bartender fylder papir på printer.
-		\item[3.] Der trykkes på 'OK' og fortsættes fra punkt 3
-		\end{enumerate}
-	\item[Ex.2] Kunde er gået
-		\begin{enumerate}
-			\item[1.] Bartender smider bon ud
+		\item[3.] Der trykkes på 'OK' og forsættes fra punkt 3
 		\end{enumerate}
 }
 
