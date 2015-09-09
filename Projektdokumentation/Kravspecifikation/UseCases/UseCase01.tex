@@ -1,16 +1,16 @@
 %!TEX root = ../../main.tex
 
 \subsection*{Use case 1}
-I denne use case ser vi hvor et kontant salg bliver foretaget
+I denne use case ser vi hvordan et kontant salg bliver foretaget
 \begin{usecase}{1}
 
 \title{ Kontant Salg } 
 
-\field{Mål:}{ At sælge drikkevarer mod kontant betaling }
+\field{Mål:}{ At sælge varer mod kontant betaling }
 
 \field{Initieret af:}{ Bartender }
 
-\field{Aktører:}{ Bartender }
+\field{Aktører:}{ Bartender (Primær) }
 
 \field{Samtidige forekomster:}{1}
 
@@ -22,10 +22,10 @@ I denne use case ser vi hvor et kontant salg bliver foretaget
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
-	\item Bartender vælger drink(s)/pris(er) på systemets touchskærm
-	\item Bartender trykker "Total"	
-	\item Den samlede pris udregnes
-	\item Bartender trykker "Kontant" og skuffen åbnes
+	\item Bartender vælger varer på systemets touchskærm
+	\item Den samlede pris opdateres løbende
+	\item Bartender trykker "Betal"	
+	\item Bartender trykker "Kontant" (og skuffen åbnes)
 	\item Bartender modtager betaling fra kunden
 	[Extension 1.1: Kontanter ikke modtaget]
 	\item Købet er afsluttet
@@ -33,12 +33,14 @@ I denne use case ser vi hvor et kontant salg bliver foretaget
 
 
 %Extensions: Alternate scenarios of success or failure.
-\scenario{Extension 1.1: Kontanter ikke modtaget:}{
-		\item Bartender trykker annuller køb
-		\item Bartender lukker skuffen
-		\item Systemet er klar til næste kunde
+\scenario{Udvidelser:}{
+	\item Extension 1.1: Kontanter ikke modtaget
+		\begin{enumerate}
+		\item[1.] Bartender trykker annuller køb
+		\item[2.] Bartender lukker skuffen
+		\item[3.] Systemet er klar til næste kunde
+		\end{enumerate}
 }
 
 
 \end{usecase}
-
