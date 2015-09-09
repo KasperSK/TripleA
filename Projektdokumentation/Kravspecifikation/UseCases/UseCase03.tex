@@ -1,0 +1,42 @@
+%!TEX root = ../../main.tex
+
+\subsection*{Use case 3}
+I denne use case, ses der hvordan der udskrives afstemning af kassen
+\begin{usecase}{3}
+
+\title{ Kasseafstemning } 
+
+\field{Mål:}{ At Bartenderen har en bon med netto salg og dato udskrevet }
+
+\field{Initieret af:}{ Bartender }
+
+\field{Aktører:}{ Bartender }
+
+\field{Samtidige forekomster:}{1}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\field{Prækondition:}{System skal være tændt og klar}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\field{Postkondition:}{ At netto salget på bonnen stemmer overens med salg indtastet }
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\scenario{Hovedscenarie:}{
+	\item Bartender vælger "Indstillinger"
+	\item System viser "Indstillinger" menu
+	\item Bartender trykker "Afstem"
+	\item System viser "Afstem" popup
+	[Extension 3.1: Bartender trykker "Annuller"]
+	\item Bartender trykker "Godkend"
+	\item Printeren printer bonnen
+	\item System viser "Hovedmenu"
+}
+
+
+%Extensions: Alternate scenarios of success or failure.
+\scenario{Extension 3.1: Bartender trykker Annuller:}{
+		\item Systemet går tilbage til Indstillinger menu.
+}
+
+
+\end{usecase}
