@@ -1,0 +1,31 @@
+\newenvironment{accepttest}[1]
+{
+	\def\ucid{#1}
+	\def\atname{Accepttest for Use Case \ucid\ - \nameref{usecase_\ucid}}
+	
+	\newcommand{\testline}[3]{
+		##1 & ##2 & ##3 \\
+	}
+	
+	\begin{table}[H]
+	\rowcolors{2}{white!80!black!30}{white!70!black!60}  %farver på hver anden række -starter på 3
+	\setlength{\arrayrulewidth}{0.2mm}					 %tykkelse på linier 
+	\setlength{\tabcolsep}{10pt}						 %indryk i celle 
+	\renewcommand{\arraystretch}{1.5}					 %højden på tabelrum
+	\center
+	\small
+	\begin{tabular}{|>{\raggedright}p{4.5cm}|>{\raggedright}p{4.5cm}|>{\raggedright\arraybackslash}p{4.5cm}|}		 %længden på alle rum
+		\hline
+		\multicolumn{3}{|>{\columncolor{white!20!black!90}}m{14.94cm}|}{\textcolor{white}{\large{\textbf{\atname}}}} \\\hline
+		\rowcolor{white!70!black!60}
+		\textcolor{black}{\large{\textbf{Test}}}&
+		\textcolor{black}{\large{\textbf{Forventet resultat}}}&	
+		\textcolor{black}{\large{\textbf{Resultat}}}\\
+		\hline
+}%
+{
+		\hline
+		\end{tabular}
+		\caption{\atname}
+	\end{table}
+}%
