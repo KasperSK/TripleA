@@ -22,20 +22,27 @@ I denne use case, ses der hvordan der udskrives afstemning af kassen
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
-	\item Bartender vælger "Indstillinger"
-	\item System viser "Indstillinger" menu
-	\item Bartender trykker "Afstem"
-	\item System viser "Afstem" popup
-	[Extension 3.1: Bartender trykker "Annuller"]
-	\item Bartender trykker "Godkend"
-	\item Printeren printer bonnen
-	\item System viser "Hovedmenu"
+	\item Bartender vælger Indstillinger knappen
+	\item System viser Indstillinger menu
+	\item Bartender trykker på Afstem knappen
+	\item System viser Afstem popup
+	[Extension 3.1: Bartender trykker på tilbage knappen]
+	\item Bartender trykker på Godkend knappen
+	\item Systemets printer udskriver bonnen
+	[Extension 3.2: Der er ikke mere papir]
+	\item System viser Hovedmenuen
 }
 
-
 %Extensions: Alternate scenarios of success or failure.
-\scenario{Extension 3.1: Bartender trykker Annuller:}{
-		\item Systemet går tilbage til Indstillinger menu.
+\scenario{}{
+	\item Extension 3.1: Bartender trykker på tilbage knappen
+		\item[1.] Systemet går tilbage til Indstillinger menu.
+	\item Extension 3.2: Der er ikke mere papir
+		\begin{enumerate}
+		\item[1.] Systemets printer stopper. Dialogboks popper op med besked en besked om at skifte bon rulle.
+		\item[2.] Bartender skifter bon i printer.
+		\item[3.] Bartenderen trykker på OK knappen og forsættes fra punkt 4
+		\end{enumerate}
 }
 
 
