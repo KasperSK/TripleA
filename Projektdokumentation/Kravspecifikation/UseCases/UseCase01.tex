@@ -23,22 +23,25 @@ I denne use case ser vi hvordan et kontant salg bliver foretaget
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
 	\item Bartender vælger varer på systemets touchskærm
-	\item Den samlede pris opdateres løbende
-	\item Bartender trykker "Betal"	
-	\item Bartender trykker "Kontant" (og skuffen åbnes)
-	\item Bartender modtager betaling fra kunden
-	[Extension 1.1: Kontanter ikke modtaget]
-	\item Købet er afsluttet
+	\item Systemet opdateres løbende den samlede pris
+	[Extension 1.1: Bartender trykker på knappen der anullerer købet]
+	\item Bartender trykker Betalingsknappen
+	\item System viser Betalingssiden
+	[Extension 1.2: Bartender trykker på Tilbageknappen]
+	\item Bartender trykker Kontantknappen
+	\item Systemet viser totalprisen
 }
 
 
 %Extensions: Alternate scenarios of success or failure.
 \scenario{Udvidelser:}{
-	\item Extension 1.1: Kontanter ikke modtaget
+	\item Extension 1.1: Bartender trykker på knappen der anullerer købet
 		\begin{enumerate}
-		\item[1.] Bartender trykker annuller køb
-		\item[2.] Bartender lukker skuffen
-		\item[3.] Systemet er klar til næste kunde
+		\item[1.] Systemet sletter den samlede pris
+		\end{enumerate}
+	\item Extension 1.2: Bartender trykker på Tilbageknappen
+		\begin{enumerate}
+		\item[1.] System fjernet Betalingssiden
 		\end{enumerate}
 }
 
