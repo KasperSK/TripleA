@@ -1,6 +1,6 @@
 %!TEX root = ../Main.tex
 
-I dette afsnit beskrives aktører og deres rolle i systemet. I figur~\ref{fig:actordiagram} ses aktørdiagram, som beskriver alle aktører og deres forhold til systemet.
+I dette afsnit beskrives aktører og deres rolle i systemet. I figur~\ref{fig:actordiagram} ses aktørdiagrammet, som beskriver alle aktører og deres forhold til systemet.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Kravspecifikation/Actor/Actor.png}
@@ -11,17 +11,17 @@ I dette afsnit beskrives aktører og deres rolle i systemet. I figur~\ref{fig:ac
 \newpage
 \begin{actor}{Bartender}
 \field{Type:}{Primær}
-\field{Beskrivelse:}{\textit{Bartender} er den primære bruger af systemet. Aktøren skal stå for servicering af kunden og opsætning af en evt. transaktion gennem systemet.}
+\field{Beskrivelse:}{\textit{Bartender} er den primære bruger af systemet, og står for salg af varer.}
 \end{actor}
 
 \begin{actor}{Admin}
 \field{Type:}{Primær}
-\field{Beskrivelse:}{\textit{Admin} skal stå for logistikken (priser, varelager osv.) gennem systemet.}
+\field{Beskrivelse:}{\textit{Administrator} skal stå for logistikken (priser, varelager osv.) gennem systemet.}
 \end{actor}
 
 \begin{actor}{Nets}
 \field{Type:}{Sekundær}
-\field{Beskrivelse:}{\textit{Nets} er leverandøren af Dankort-systemet. Betalingsløsningen er en af systemets primære betalingsløsninger.}
+\field{Beskrivelse:}{\textit{Nets} er leverandøren af betalingsterminalen. Betalingsløsningen er en af systemets primære betalingsløsninger.}
 \end{actor}
 
 \begin{actor}{MobilePay}

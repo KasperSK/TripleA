@@ -1,12 +1,12 @@
 %!TEX root = ../../main.tex
 
-\subsection*{Use case 3}
-I denne use case, ses der hvordan der udskrives afstemning af kassen
+\subsection*{Use Case 3}
+I denne Use Case, ses hvordan der udskrives afstemning af kassen
 \begin{usecase}{3}
 
 \title{ Kasseafstemning } 
 
-\field{Mål:}{ At Bartenderen har en bon med netto salg og dato udskrevet }
+\field{Mål:}{ At Bartenderen har en bon med nettosalg og dato udskrevet }
 
 \field{Initieret af:}{ Bartender }
 
@@ -18,7 +18,7 @@ I denne use case, ses der hvordan der udskrives afstemning af kassen
 \field{Prækondition:}{System skal være tændt og klar}
 
 %Postconditions: What must be true on successful completion and worth telling the reader
-\field{Postkondition:}{ At netto salget på bonnen stemmer overens med salg indtastet }
+\field{Postkondition:}{ At nettosalget på bonen stemmer overens med salg indtastet }
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
@@ -28,7 +28,7 @@ I denne use case, ses der hvordan der udskrives afstemning af kassen
 	\item System viser Afstem popup
 	[Extension 3.1: Bartender trykker på tilbage knappen]
 	\item Bartender trykker på Godkend knappen
-	\item Systemets printer udskriver bonnen
+	\item Systemets printer udskriver bonen
 	[Extension 3.2: Der er ikke mere papir]
 	\item System viser Hovedmenuen
 }
@@ -41,7 +41,7 @@ I denne use case, ses der hvordan der udskrives afstemning af kassen
 		\end{enumerate}
 	\item Extension 3.2: Der er ikke mere papir
 		\begin{enumerate}
-		\item[1.] Systemets printer stopper. Dialogboks popper op med besked en besked om at skifte bon rulle.
+		\item[1.] Systemets printer stopper. Dialogboks popper op med en besked om at skifte bonrulle.
 		\item[2.] Bartender skifter bon i printer.
 		\item[3.] Bartenderen trykker på OK knappen og forsættes fra punkt 4
 		\end{enumerate}
