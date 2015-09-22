@@ -22,26 +22,26 @@ I denne Use Case ser vi hvordan et kontant salg bliver foretaget
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
-	\item Bartender vælger varer på systemets varerknapper
-	\item Systemet opdateres løbende den samlede pris
-	[Extension 1.1: Bartender trykker på knappen der anullerer købet]
+	\item Bartender vælger varer på systemets varer knapper
+	\item Systemet opdaterer løbende den samlede pris \newline
+	[Extension 1.1: Bartender trykker på knappen der annullerer købet]
 	\item Bartender trykker Betalingsknappen
-	\item System viser Betalingssiden
-	[Extension 1.2: Bartender trykker på Tilbageknappen]
-	\item Bartender trykker Kontantknappen
-	\item Systemet viser totalprisen
+	\item System viser Betalingssiden med total prisen \newline
+	[Extension 1.2: Bartender trykker på Tilbage knappen]
+	\item Bartender trykker Kontant knappen
+	\item Systemet viser hovedmenuen hvor total prisen fra salget stadig vises
 }
 
 
 %Extensions: Alternate scenarios of success or failure.
 \scenario{Udvidelser:}{
-	\item Extension 1.1: Bartender trykker på knappen der anullerer købet
+	\item Extension 1.1: Bartender trykker på knappen der annullerer købet
 		\begin{enumerate}
 		\item[1.] Systemet sletter den samlede pris
 		\end{enumerate}
-	\item Extension 1.2: Bartender trykker på Tilbageknappen
+	\item Extension 1.2: Bartender trykker på Tilbage knappen
 		\begin{enumerate}
-		\item[1.] System fjernet Betalingssiden
+		\item[1.] Systemet går tilbage til hovedmenuen
 		\end{enumerate}
 }
 

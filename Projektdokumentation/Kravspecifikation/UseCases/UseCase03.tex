@@ -1,12 +1,12 @@
 %!TEX root = ../../main.tex
 
 \subsection*{Use Case 3}
-I denne Use Case, ses hvordan der udskrives afstemning af kassen
+Denne Use Case beskriver hvordan der udskrives afstemning af kassen forløber ved udprintning af bon med alt der er solgt i løbet af aftenen.
 \begin{usecase}{3}
 
 \title{ Kasseafstemning } 
 
-\field{Mål:}{ At Bartenderen har en bon med nettosalg og dato udskrevet }
+\field{Mål:}{ At Bartenderen har en bon med samlede salg og dato udskrevet }
 
 \field{Initieret af:}{ Bartender }
 
@@ -18,17 +18,17 @@ I denne Use Case, ses hvordan der udskrives afstemning af kassen
 \field{Prækondition:}{System skal være tændt og klar}
 
 %Postconditions: What must be true on successful completion and worth telling the reader
-\field{Postkondition:}{ At nettosalget på bonen stemmer overens med salg indtastet }
+\field{Postkondition:}{ At bonen med det samlede salg er udskrevet }
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
 	\item Bartender vælger Indstillinger knappen
 	\item System viser Indstillinger menu
 	\item Bartender trykker på Afstem knappen
-	\item System viser Afstem popup
+	\item System viser Afstem popup \newline
 	[Extension 3.1: Bartender trykker på tilbage knappen]
-	\item Bartender trykker på Godkend knappen
-	\item Systemets printer udskriver bonen
+	\item Bartender trykker på Godkend knappen 
+	\item Systemets printer udskriver bonen \newline
 	[Extension 3.2: Der er ikke mere papir]
 	\item System viser Hovedmenuen
 }
@@ -37,13 +37,13 @@ I denne Use Case, ses hvordan der udskrives afstemning af kassen
 \scenario{}{
 	\item Extension 3.1: Bartender trykker på tilbage knappen
 		\begin{enumerate}
-			\item[1.] Systemet går tilbage til Indstillinger menu.
+			\item[1.] Systemet går tilbage til punkt 2
 		\end{enumerate}
 	\item Extension 3.2: Der er ikke mere papir
 		\begin{enumerate}
 		\item[1.] Systemets printer stopper. Dialogboks popper op med en besked om at skifte bonrulle.
 		\item[2.] Bartender skifter bon i printer.
-		\item[3.] Bartenderen trykker på OK knappen og forsættes fra punkt 4
+		\item[3.] Bartenderen trykker på OK knappen og use casen forsættes fra punkt 4
 		\end{enumerate}
 }
 

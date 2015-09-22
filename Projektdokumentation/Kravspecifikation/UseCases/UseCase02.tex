@@ -6,7 +6,7 @@ I denne Use Case beskrives forløbet at udskrive en bon, hvis dette ønskes.
 
 \title{ Udskriv Kundebon } 
 
-\field{Mål:}{ Systemet får udskrevet en bon af nuværende transaktion }
+\field{Mål:}{ Systemet får udskrevet en bon af en tidligere transaktion }
 
 \field{Initieret af:}{ Bartender }
 
@@ -18,23 +18,24 @@ I denne Use Case beskrives forløbet at udskrive en bon, hvis dette ønskes.
 \field{Prækondition:}{Use Case 1: Kontant salg er gennemført}
 
 %Postconditions: What must be true on successful completion and worth telling the reader
-\field{Postkondition:}{Systemmet udskriver bon af transaktionen }
+\field{Postkondition:}{Systemet udskriver bon af transaktionen }
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
 	\item Bartender trykker på knappen der åbner tidligere salg menuen
 	\item Systemet viser en menu med tidligere salg
-	\item Bartender trykker på bonknappen udfor det salg der ønskes at udskrive bon for 
-	\item Systemets printer udskriver bon [Extension 2.1: Der er ikke mere papir]
+	\item Bartender trykker på bon knappen ud fra det salg der ønskes at udskrive bon for 
+	\item Systemets printer udskriver bon \newline
+	[Extension 2.1: Der er ikke mere papir]
 }
 
 %Extensions: Alternate scenarios of success or failure.
 \scenario{Udvidelser:}{
 	\item Extension 2.1 Der er ikke mere papir
 		\begin{enumerate}
-		\item[1.] Systemets printer stopper. Dialogboks popper op med en besked om at skifte bonrulle.
+		\item[1.] Systemets printer stopper. Dialogboks popper op med en besked om at skifte bon rulle.
 		\item[2.] Bartender skifter bon i printer.
-		\item[3.] Bartender trykker på OK knappen og forsættes fra punkt 3
+		\item[3.] Bartender trykker på OK knappen og use casen forsættes fra punkt 3
 		\end{enumerate}
 }
 
