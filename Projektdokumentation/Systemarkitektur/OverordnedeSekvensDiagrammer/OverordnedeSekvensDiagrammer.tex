@@ -1,0 +1,33 @@
+%!TEX root = ../../main.tex
+
+\section{OverordnedeSekvensDiagrammer}
+I dette afsnit vises de overordnede sekvensdiagrammer som er lavet med det formål at kunne vise interaktionen mellem aktør og systemet. Samtidig viser der også systemets funktionalitet i henhold til kravspecifikationen, og derfor at gøre det lettere at forstå systemet i forhold til den ydre verden. 
+
+
+\subsection{Overordnet sekvensdiagram for Use Case 1 ''Kontant salg''}
+Diagrammet viser interaktion mellem Bartender og system for Use Case 1, ''Kontant Salg'' 
+
+\sysml{0.6}{SEQ}{UseCase1}{Use Case 1}
+
+Som der kan ses på på sekvensdiagrammet figur \ref{fig:UseCase1_SEQ}, har bartenderen mulighed for at opdaterer betalings listen inde i et loop, indtil alle bestillingerne er tastet ind. For at komme ud af loopet skal Bartenderen enten annullerer købet eller gå til Betaling. 
+
+
+\subsection{Overordnet sekvensdiagram for Use Case 2 ''Udskriv kundebon''}
+Diagrammet viser interaktion mellem Bartender og system for Use Case 2, ''Kontant Salg'' 
+
+\sysml{0.6}{SEQ}{UseCase2}{Use Case 2}
+
+Når Bartender printer en Bon kan skal systemmet udskrive en bon, men i tilfælde af at der ikke er mere papir vil systemmet melde en besked om at der ikke er mere papir.
+\newline\newline
+For at se hvordan man skifter Bon papiret skal man se under Use Case 2 - Extension 2.1.
+
+
+
+\subsection{Overordnet sekvensdiagram for Use Case 3 ''Kasseafstemning''}
+Diagrammet viser interaktion mellem Bartender og system for Use Case 2, ''Kasseafstemning'' 
+
+\sysml{0.6}{SEQ}{UseCase3}{Use Case 3}
+
+Når Bartender skal afstemme kassen afslutter han Use Casen med udskiver en udskrive en bon over afstemningen, men i tilfælde af at der ikke er mere papir vil systemmet melde en besked om at der ikke er mere papir.
+\newline\newline
+For at se hvordan man skifter Bon papiret skal man se under Use Case 3 - Extension 3.2.
