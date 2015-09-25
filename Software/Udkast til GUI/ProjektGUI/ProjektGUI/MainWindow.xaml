@@ -1,0 +1,185 @@
+﻿<Window x:Class="ProjektGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektGUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!--Det første Grid til at indholde alle andre grids-->
+<Grid Name="Classic">
+        <!--Classic grid-->
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+
+        
+
+            <Grid Name="FirstColumn" Grid.Column="0">
+               
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition MinHeight="50"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Name="SaleDisplay" Grid.Row="0">
+               <Grid.RowDefinitions>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions> 
+                
+                <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="0">
+                <WrapPanel Name="UpperDisplay" Margin="10">
+                    
+                    <Label Name="Count" Content="Antal" FontSize="9.333" Margin="0,0,10,0"></Label>
+                    <Label Name="Product" Content="Vare" FontSize="9.333" Margin="10,0,10,0"></Label>
+                    <Label Name="Pris" Content="Pris" FontSize="9.333" Margin="10,0,0,0"></Label>
+                    
+                </WrapPanel>
+                </Border>
+                
+                <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="1">
+                <WrapPanel Name="MiddleDisplay" Margin="10" Grid.Row="1">
+                    
+                </WrapPanel>
+                </Border>
+                <Border Background="AliceBlue" BorderBrush="Black" BorderThickness="1.5" Grid.Row="2">
+                <WrapPanel> 
+                    <Label Name="Total" Content="Total"></Label>
+                    <Label Name="TotalCount" Content=""></Label>
+                </WrapPanel>
+                </Border>
+            </Grid>
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+                
+                <Grid Name="PayButtons" Grid.Row="1">
+                    <WrapPanel Margin="10">
+                    <Button Name="Pay" MinHeight="25" Content="Betal" MinWidth="50" Margin="5,31,10,31" Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet"></Button>
+                    <Button Name="Cancel" MinHeight="25" Content="Afbryd" MinWidth="50" Margin="5,31,10,31" Background="Red" BorderThickness="1" BorderBrush="DarkRed"></Button>
+                </WrapPanel>
+                </Grid>
+
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+      <Grid Name="CalcWrapper" Grid.Row="2">
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition MinWidth="115"/>
+                   <ColumnDefinition Width="*"/>
+               </Grid.ColumnDefinitions>   
+            
+            
+        <Grid Name="FirstCalc" Grid.Column="0">
+
+            <WrapPanel Name="CalculatorPanel">
+                <Button Name="Seven" Content="7" MinWidth="35" MinHeight="25" Margin="10,0,0,0"></Button>
+                <Button Name="Eight" Content="8" MinWidth="35" MinHeight="25"></Button>
+                <Button Name="Nine" Content="9" MinWidth="35" MinHeight="25"></Button>
+
+                <Button Name="Four" Content="4" MinWidth="35" MinHeight="25" Margin="10,0,0,0"></Button>
+                <Button Name="Five" Content="5" MinWidth="35" MinHeight="25"></Button>
+                <Button Name="Six" Content="6" MinWidth="35" MinHeight="25"></Button>
+
+                <Button Name="One" Content="1" MinWidth="35" MinHeight="25" Margin="10,0,0,0"></Button>
+                <Button Name="Two" Content="2"  MinWidth="35" MinHeight="25"></Button>
+                <Button Name="Three" Content="3" MinWidth="35" MinHeight="25"></Button>
+
+                <Button Name="Zero" Content="0" MinWidth="35" MinHeight="25" Margin="10,0,0,10"></Button>
+                <Button Name="DoubleZero" Content="00" MinWidth="35" MinHeight="25" Margin="0,0,0,10" ></Button>
+                <Button Name="PointButton" Content="." MinWidth="35" MinHeight="25" Margin="0,0,0,10"></Button>
+                
+            </WrapPanel>
+
+    </Grid>
+        <!--First Grid end-->
+
+                <Grid Name="SecondCalc" Grid.Column="1">
+
+                    <WrapPanel>
+                <Button Name="CButton" Content="C" MinWidth="35" MinHeight="50"></Button>
+                <Button Name="XButton" Content="X" MinWidth="35" MinHeight="50"></Button>
+                </WrapPanel>
+        </Grid> <!--Grid der omslutter de store knapper i calculator end-->
+
+
+        </Grid> <!--Grid der omslutter første og anden del af calculator end-->
+                
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+        </Grid>
+
+        <Grid Grid.Column="1" Name="Third"> <!--Tab control til forskellige varer-->
+            <TabControl x:Name="TabControl" TabStripPlacement="Right">
+                <TabItem x:Name="GroupTab" Header="Grupper"  Background="SandyBrown">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        
+                        <WrapPanel Grid.Row="0" Margin="10">
+                            <Button Name="Fad" Content="FAD" MinWidth="50" MinHeight="40" Margin="7,0,0,0" Background="Yellow"></Button>
+                            <Button Name="ByteFad" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="Yellow">
+                                <TextBlock TextWrapping="Wrap" > BYTEFAD</TextBlock>
+                            </Button>
+                            <Button Name="x1" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="Red"></Button>
+                            <Button Name="x2" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="Red"></Button>
+                            <Button Name="x3" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,7,0" Background="Red"></Button>
+                        </WrapPanel>
+                        <WrapPanel Grid.Row="1" Margin="10">
+                            <Button Name="X4" Content="XXX" MinWidth="50" MinHeight="40" Margin="7,0,0,0" Background="YellowGreen"></Button>
+                            <Button Name="X5" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="YellowGreen"></Button>
+                            <Button Name="X6" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="Red"></Button>
+                            <Button Name="X7" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="Red"></Button>
+                            <Button Name="x8" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,7,0" Background="Orange"></Button>
+                        </WrapPanel>
+
+                        <WrapPanel Grid.Row="2" Margin="10">
+                            <Button Name="XX4" Content="XXX" MinWidth="50" MinHeight="40" Margin="7,0,0,0" Background="YellowGreen"></Button>
+                            <Button Name="XX5" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="YellowGreen"></Button>
+                            <Button Name="XX6" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0"></Button>
+                            <Button Name="XX7" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0"></Button>
+                            <Button Name="xX8" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,7,0" Background="Orange"></Button>
+                        </WrapPanel>
+
+                        <WrapPanel Grid.Row="3" Margin="10">
+                            <Button Name="XXX4" Content="XXX" MinWidth="50" MinHeight="40" Margin="7,0,0,0" Background="YellowGreen"></Button>
+                            <Button Name="XXX5" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="YellowGreen"></Button>
+                            <Button Name="XXX6" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0"></Button>
+                            <Button Name="XXX7" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0"></Button>
+                            <Button Name="xXX8" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,7,0"></Button>
+                        </WrapPanel>
+                        
+                        <WrapPanel Grid.Row="4" Margin="10">
+                            <Button Name="XXXX4" Content="XXX" MinWidth="50" MinHeight="40" Margin="7,0,0,0" Background="DeepSkyBlue"></Button>
+                            <Button Name="XXXX5" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0" Background="DeepSkyBlue"></Button>
+                            <Button Name="XXXX6" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0"></Button>
+                            <Button Name="XXXX7" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,0,0"></Button>
+                            <Button Name="xXXX8" Content="XXX" MinWidth="50" MinHeight="40" Margin="0,0,7,0"></Button>
+                        </WrapPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="Øl" Header="Øl" Background="YellowGreen">
+                    
+                </TabItem>
+                <TabItem Header="Drinks" Background="LightGray"></TabItem>
+                <TabItem Header="Shots" Background="Red"></TabItem>
+                <TabItem Header="Soda" Background="DeepSkyBlue"></TabItem>
+                <TabItem Header="Snacks" Background="SaddleBrown"></TabItem>
+                <TabItem Header="Indstillinger" Background="Gray"></TabItem>
+            </TabControl>
+     </Grid> <!--Grid til Tab control og varer end-->
+
+
+    <!--Classic Grid end--></Grid>
+</Window>
+    
+    
