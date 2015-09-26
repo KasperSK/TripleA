@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="216e1634-9bf1-4dd2-9534-ce49b2fe8937"
+  name="ShoppingLists" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <importedPackagesInternal>
+    <packageImport
+      Id="8b56aa8c-fffe-4a03-a68e-98bc6cbd186c"
+      visibility="Public">
+      <packageMoniker
+        Id="6788c2b9-8459-42e2-988b-58875c50a7ea"
+        LastKnownName="Products"
+        LastKnownLocation="Products.uml" />
+    </packageImport>
+  </importedPackagesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="ed77cdc1-5207-4ffa-ab69-3f2c69bf95bb"
+        name="IShoppingListController"
+        isAbstract="false"
+        isLeaf="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="5d9b9675-5070-49f2-9d83-ad03ec023efb"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f5933666-5b69-42dc-aea3-6d686bc85eb2">
+                <propertyInstance
+                  Id="4927a86e-2a30-4df0-9e69-8edfc2dbbdf7"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bdc6a799-6b57-42b6-93ba-a886ae5ca51e">
+                <propertyInstance
+                  Id="a81d1fbd-1c79-4693-8d86-804b430e897a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a0e9def6-74b2-47df-ab75-f3370a8e9b76">
+                <propertyInstance
+                  Id="95b964a4-92df-456d-9f9a-900d66591a69"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4caa918a-facc-49ad-826f-34537c9775e9">
+                <propertyInstance
+                  Id="abe76d70-ae87-44e3-aae7-3499d2dbf211"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3"
+        name="ShoppingList"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c90914f2-9636-4404-8211-27589826b074"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d609df7f-dedb-4ae0-92d2-1b107aa1ff65">
+                <propertyInstance
+                  Id="b8d6c650-f683-447e-b994-bb23798a1a69"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5ad6ed76-d52f-43e9-bd29-daf3e8143ae1">
+                <propertyInstance
+                  Id="6f3de9f6-2b75-4a75-878f-1f4a6f5b7e0a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b144165e-8c6e-4cad-9a27-77ba769c51c4">
+                <propertyInstance
+                  Id="2467b2e5-6914-4e32-a702-c1154a403fb8"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="248bf285-95c2-4f31-bfd0-c5d070939b10">
+                <propertyInstance
+                  Id="c0928f80-267b-464a-b9b8-5d89def0eccf"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="827044f5-5120-4d66-924a-fa63f8305731">
+                <propertyInstance
+                  Id="25e12f3c-eeb2-4d2b-ab88-f0643341e400"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="81dae105-4dd5-49aa-a248-681b81548edb"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="ShoppingListItems"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="31cef863-2ca4-4195-9d8f-e90748c2adc9"
+              LastKnownName="ShoppingListItem"
+              LastKnownLocation="ShoppingLists.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2913edb5-57eb-476d-9223-d1c989e18f91"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1bcad96f-02e8-42ad-b214-1d865f50e3ba"
+                  name="ShoppingListItems"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="48fcc48d-fa58-4958-9e8f-4aaff5057601"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="8d5baf72-93e5-4d18-b5ac-9ebf690c4020"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="31cef863-2ca4-4195-9d8f-e90748c2adc9"
+        name="ShoppingListItem"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b5e1fa28-0113-4c23-8ed2-be2c3d4c3721"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="575b0247-469e-47d9-8229-846ef176a4b2">
+                <propertyInstance
+                  Id="ebd1963c-1d23-45a9-8262-0652dc6f2c56"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="886434bb-28d5-4647-ac7a-f70f22508e4f">
+                <propertyInstance
+                  Id="caaf147e-e699-4b9d-9405-28bbe3d49c35"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9339a349-4b04-4808-8085-d59e86a734ed">
+                <propertyInstance
+                  Id="fe809743-48fa-4dd9-bf43-b82e6d4b80e1"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7920d488-7d15-4150-a7e6-56ff7c4d28b9">
+                <propertyInstance
+                  Id="69e8acf3-f5e9-48f7-8456-e455e38ee726"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3527ff20-27ef-4d90-aab2-7feaff0580de">
+                <propertyInstance
+                  Id="a83c3924-42c2-4d44-975a-b685c3d9b539"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="539b32ab-c3c8-438f-a0cc-8854b734c41d"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="Product"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
+              LastKnownName="Product"
+              LastKnownLocation="Products.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1700b53d-e06c-4b32-b291-b769867f5edb"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ead9ca69-eba2-4a5d-8e15-2da27db39cb1"
+                  name="Product"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

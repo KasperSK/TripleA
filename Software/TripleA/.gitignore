@@ -10,6 +10,10 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# GeneratedCode
+GeneratedCode/
+CodeGeneration.Log.xml
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

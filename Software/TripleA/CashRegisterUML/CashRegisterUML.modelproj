@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c9886f0c-ed03-4606-8c55-ef9415aefbdf}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>CashRegisterUML</Name>
+    <RootNamespace>CashRegisterUML</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="CashDrawer.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CashDrawer.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CashDrawer.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Database Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Database Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Database Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Log Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Log Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Log Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\CashRegister.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Log.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Orders.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\CashDrawers.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Discount.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Sales.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\ShoppingLists.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\ProductGroups.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Receipts.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Products.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Databases.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Printer.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Payment.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Orders Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Orders Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Orders Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Payment Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Payment Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Payment Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Printer Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Printer Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Printer Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Products Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Products Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Products Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ProductGroups.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ProductGroups.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>ProductGroups.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Receipts Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Receipts Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Receipts Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Sales.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sales.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sales.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ShoppingLists Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ShoppingLists Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>ShoppingLists Domain.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="System Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="System Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>System Domain.classdiagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\CashRegisterUML.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

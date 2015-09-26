@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Log Domain">
+  <logicalClassDesignerModelMoniker Id="65276395-86e5-46f8-b8be-105f6c31b56b" />
+  <nestedChildShapes>
+    <packageShape Id="a84fd7d8-23b6-433d-bbbd-c42c4e242ffe" absoluteBounds="1.375, 0.5, 3.375, 2.375" customColor="255, 249, 230" hideQualifiedName="false">
+      <packageMoniker Id="f37d1420-a313-4ff6-9557-b9cda45ab1a9" LastKnownName="Log" />
+    </packageShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>
