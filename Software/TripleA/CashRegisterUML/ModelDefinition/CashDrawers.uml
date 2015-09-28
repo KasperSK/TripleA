@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="5dfa08eb-02c9-485d-bbb9-951a658b4c46"
+  name="CashDrawers" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="1106cc90-78bc-4212-a582-04d25ac00965"
+        name="ICashDrawer"
+        isAbstract="false"
+        isLeaf="false">
+        <description>Interface for controlling a CashDrawer.</description>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="2a337280-91b8-4028-acf8-469e560f623a"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6c84b892-5c17-46dd-bf4b-ab16c23cfb5b">
+                <propertyInstance
+                  Id="e7ce48da-bd10-42b2-a5b4-fbfd70a2f333"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6421d882-d5f0-4dc6-bfbf-8b6737ad3c1b">
+                <propertyInstance
+                  Id="38ce5b99-2b7c-4352-a449-3487bcced0d9"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="454d994d-6650-47f4-925c-06d5648b8814">
+                <propertyInstance
+                  Id="4e055268-7a9c-4196-8a5c-43fafd867258"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2bacbdaa-aa89-41fa-ba7f-f0d814d18c8e">
+                <propertyInstance
+                  Id="e38dfdd9-341a-42ec-a9ed-afd93028f8d4"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperations>
+          <operation
+            Id="38c32291-b93c-4fba-b781-eb1a34752fa0"
+            name="Open"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Opens the drawer of the CashDrawer</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a7e2fcd8-b466-49f1-a46e-470401cf0dd2"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2e8c9fbb-9f9e-439b-b8b3-61699db1c84a">
+                    <propertyInstance
+                      Id="cb97d23d-4932-42a3-be63-5784ec48bdad"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d078f0b-a4a9-4784-a16b-fb2bc447363b">
+                    <propertyInstance
+                      Id="cd9e2b14-aa16-439c-9482-58d088f030ea"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da61767c-c5d4-4c6d-ad2c-139cd0f6843e">
+                    <propertyInstance
+                      Id="9d2d5fd3-ddd4-4070-95c3-70a51323b496"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="163db187-e9c2-45db-978a-445641a07690">
+                    <propertyInstance
+                      Id="f2f9516c-77c6-4e96-be3f-5de3e268fa74"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8923e377-aedf-4323-9bb4-93a3412cbe76">
+                    <propertyInstance
+                      Id="bdda2645-4364-4919-9b43-43197be5b198"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a6c2772b-bcfd-47b4-bf97-830a7ca997b4">
+                    <propertyInstance
+                      Id="dd345b6f-cf8e-44bf-b6ae-e4a0f28aa394"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a8dd12c7-6e69-453c-8ac3-19dd954780fe"
+        name="CashDrawer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f47395a6-b08b-4872-85fd-a9867c135e4d"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6f93f43e-4384-49bf-accb-7aa3b6bb09a5">
+                <propertyInstance
+                  Id="76412b9b-305e-4261-8a74-090d448397f5"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="be3bfc6d-6fe3-4fa8-8319-b6363e0482ef">
+                <propertyInstance
+                  Id="169948fd-c310-4547-af18-a1b6612b14e6"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="414c601c-c7e1-43ca-a7bb-ebf99a2aa8f5">
+                <propertyInstance
+                  Id="583ac4f8-8529-4472-8982-7befe2e825d0"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f12d4577-bd6d-442f-b545-fa3ec6c24561">
+                <propertyInstance
+                  Id="48fe8110-0ce2-4b98-bceb-89af132773ce"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="baf2256b-eace-41bd-ae7f-d80d752d03f4">
+                <propertyInstance
+                  Id="234f8ef4-2a6f-467d-bcc8-870103fe397e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="5e19d5c2-d6f3-4515-acae-98ca8d2a3b51">
+            <interfaceMoniker
+              Id="1106cc90-78bc-4212-a582-04d25ac00965"
+              LastKnownName="ICashDrawer"
+              LastKnownLocation="CashDrawer.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="c7796790-d9c9-4a59-80ca-74b67d3af967"
+            name="Open"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e9bc7c9b-c522-4990-9d46-bae78b25dab2"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f4bfb749-2f98-4cfa-ab58-a061cc2d0485">
+                    <propertyInstance
+                      Id="146a2f30-9614-4a71-8dca-9e63edf457d9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f555626-bf79-4f9d-b40a-efffe6aa3c40">
+                    <propertyInstance
+                      Id="7841c40e-d13f-4a80-bb88-765bebff3e09"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e90f4ac7-c037-4b4b-9ef7-cb92358810d5">
+                    <propertyInstance
+                      Id="97554182-e568-4dac-9bb8-aa2cf041bba0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="559589cf-0ab0-4855-8ca6-d8a2130ceb3f">
+                    <propertyInstance
+                      Id="d6b9d5a6-799b-4e01-870b-60a6d5c37863"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9be39f8c-6162-4cc1-87af-246e7fcb021e">
+                    <propertyInstance
+                      Id="ac071401-43f9-42ed-a422-40f3d127d4f6"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="24915b09-4420-4ab7-95cf-78c7774f9da1">
+                    <propertyInstance
+                      Id="7f19cd24-fbe1-423f-a4af-053992d504a0"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

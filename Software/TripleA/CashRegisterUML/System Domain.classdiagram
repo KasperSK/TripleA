@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="af12a05b-157c-45a1-9c96-0a923ce473cf" name="System Domain" linkedPackageId="13922c09-8415-49fc-8c8d-35aa06a95804" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="30e3911d-cf2a-4485-bbd5-435ee66008c3" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="18994a87-9f4b-406d-864a-fc505c20c218" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="259355b4-c6ba-45dd-bc95-f2d73ec0c59d">
+          <propertyInstance Id="2866cba9-3fde-42bd-9bb4-f8a131012bd9" name="BaseName">
+            <elementDefinition Id="238375fc-96a8-4258-90c6-e697d3f2645e" />
+          </propertyInstance>
+          <elementDefinition Id="a030c418-a083-4bf1-8a7d-02a6304ce97f" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="09e6fe1b-4b67-44ad-9cff-3d2f4b6bed90">
+          <propertyInstance Id="1f5c1949-1fc1-40d0-ab8f-763643c5ee69" name="ClrAttributes">
+            <elementDefinition Id="9b6f6167-f386-47a0-8236-084959911ce1" />
+          </propertyInstance>
+          <elementDefinition Id="52124220-8974-4032-9683-986f057152d0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a1208f44-c2d8-4d2b-8813-67729ec49fb8">
+          <propertyInstance Id="600aaba3-b270-4736-bed1-375c9f9ed4af" name="Usings">
+            <elementDefinition Id="0b9ac264-9c4b-4745-a4f5-a3e7352d8990" />
+          </propertyInstance>
+          <elementDefinition Id="400bc592-4f75-4c35-ba4b-177e266f1c84" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="4e022c6a-9f3d-45ae-b23c-2859759b038b" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="f7f9e3c0-2d03-4026-aebe-501e0274df58" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="509dc637-6614-4674-a192-c5bc05ed6b55">
+          <propertyInstance Id="6e09cc30-db79-474f-a239-d7f952ad116a" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="60dfbcce-84bc-4f89-a451-08b6d5ed7d3b" />
+          </propertyInstance>
+          <elementDefinition Id="cb17a7e2-eec6-4af2-993f-fab15e443f06" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1aee64bd-3030-4885-98c9-ada7bd2a4321">
+          <propertyInstance Id="2ac64c4f-18f2-49c8-a622-ce409bc92541" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="682ad803-5f4e-4c69-856c-718737fc914b" />
+          </propertyInstance>
+          <elementDefinition Id="4d15b350-602f-4342-9e65-8eb9466e524d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4a72842f-adc6-47a0-9941-0cf3d6260a50">
+          <propertyInstance Id="39fc28e0-5420-4411-88c9-1e0d3b738fba" name="ProjectPath" value="ClassTemplate=..\CashRegister\CashRegister.csproj|EnumTemplate=..\CashRegister\CashRegister.csproj|InterfaceTemplate=..\CashRegister\CashRegister.csproj|StructTemplate=..\CashRegister\CashRegister.csproj">
+            <elementDefinition Id="5626b409-3a1e-40fb-99d7-9c0eb4a4e4cf" />
+          </propertyInstance>
+          <elementDefinition Id="ff13f6a3-e260-4cd3-953e-3540ad1d8a87" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="504cf13d-b1a1-4928-a478-7fc2fcecd2cc">
+          <propertyInstance Id="e7b9385c-9889-4247-97a1-9c772ad5d5c5" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="01b51a16-7692-490d-b39c-70f979929aba" />
+          </propertyInstance>
+          <elementDefinition Id="f57bf58d-4861-4547-9bfc-bc64b692176a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="31d0edc4-b426-410e-8393-f68012447dee">
+          <propertyInstance Id="c284ff50-590a-472d-8927-6c22932cd3e5" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="8fb1316c-2cf7-4529-8ab9-495c4e019116" />
+          </propertyInstance>
+          <elementDefinition Id="d467da9d-4820-4912-b48a-3220d30e5a1b" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="be19410b-e6a5-4cfd-b9a2-490709e3799b">
+          <propertyInstance Id="fa4b2a33-70ee-498a-9a1d-3c11580cee7e" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="b120e50e-d080-42ca-9cd9-971c168d44f2" />
+          </propertyInstance>
+          <elementDefinition Id="f2ad319f-5403-4295-b70d-8eae74f61cb4" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="9eb680ac-557b-4b0a-a506-96525ca1b288">
+          <propertyInstance Id="0802c32c-c9e2-4298-9b70-c4393f09a6be" name="Parameters">
+            <elementDefinition Id="33f13968-a32d-4f60-a4c4-ecb6320aa401" />
+          </propertyInstance>
+          <elementDefinition Id="c9a8659b-6207-4155-8d49-2d345889538f" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="99e8ddee-ce6a-439b-a2f6-a7fa15d4ba40" name="CashRegister">
+        <elementDefinition Id="dcc4b20b-811d-4611-bee7-cdec0ba1a0de" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <package Id="2a8c98e2-532a-4259-ab0d-d063384beaca" name="Log">
+              <elementDefinition Id="7c8191fe-462b-4818-8043-5bff3b860ff5" />
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="0a2e5ec0-d606-41c5-b3e8-12c3bed84b15" name="Payment">
+              <elementDefinition Id="8aba3d13-8f43-41d7-a1a4-8d8294c7b42c" />
+              <importedPackagesInternal>
+                <packageImport Id="4a68047e-7d7d-46e2-b5e3-2022712b7944" visibility="Public">
+                  <packageMoniker Id="e4d065ec-10dc-4a2a-8019-e7c8ee264cdf" LastKnownName="Printer" />
+                  <elementDefinition Id="d67f684a-e360-41e1-af12-8e75a98bf155" />
+                </packageImport>
+                <packageImport Id="1f869110-44df-4cbc-92f3-c4d6c809a4ba" visibility="Public">
+                  <packageMoniker Id="dab5e67d-6a25-47ef-a210-3c13c3f7e68c" LastKnownName="CashDrawers" />
+                  <elementDefinition Id="2c254181-e9c6-4726-9c46-6f3f7e139b24" />
+                </packageImport>
+              </importedPackagesInternal>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="e4d065ec-10dc-4a2a-8019-e7c8ee264cdf" name="Printer">
+              <elementDefinition Id="3cf4e871-650d-4c43-a73d-5ffd7b5ba7aa" />
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="681c1163-212d-497e-9efd-c9799b4f3fa1" name="Products">
+              <elementDefinition Id="6788c2b9-8459-42e2-988b-58875c50a7ea" />
+              <importedPackagesInternal>
+                <packageImport Id="058bbcd1-cf0e-4193-aa0e-773b315b8fdd" visibility="Public">
+                  <packageMoniker Id="4128bb4d-326e-4560-8d67-2c0064d12772" LastKnownName="Database" />
+                  <elementDefinition Id="e45751e2-e147-4266-b344-87ab8a008866" />
+                </packageImport>
+              </importedPackagesInternal>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="4128bb4d-326e-4560-8d67-2c0064d12772" name="Database">
+              <elementDefinition Id="c98cf058-eb43-454a-a6e6-3d16e39c8c6b" />
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="b0bd1a69-a8ff-41d9-a4fa-1cb42685a36a" name="Groups">
+              <elementDefinition Id="09e49378-bbe6-44a1-b09f-8c40a3b4f594" />
+              <importedPackagesInternal>
+                <packageImport Id="dd566176-9850-409e-9f2a-c2e14c083f1d" visibility="Public">
+                  <packageMoniker Id="4128bb4d-326e-4560-8d67-2c0064d12772" LastKnownName="Database" />
+                  <elementDefinition Id="973d6b4c-2007-4fce-a5aa-ee39db77d273" />
+                </packageImport>
+              </importedPackagesInternal>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="a0a6b993-e0fa-4f9a-8ed1-e312e676f620" name="Receipts">
+              <elementDefinition Id="105d92b0-062e-4b28-a664-54f9d23bb7f3" />
+              <importedPackagesInternal>
+                <packageImport Id="422a2004-a1a8-499c-b017-294133601e12" visibility="Public">
+                  <packageMoniker Id="97a8d40c-d870-4cdb-a927-e8f331850b45" LastKnownName="Orders" />
+                  <elementDefinition Id="55d68f0d-c298-4a60-b2a1-5db02f39ef29" />
+                </packageImport>
+                <packageImport Id="3b9bd150-bc5e-4284-9330-7abfbf4c07bf" visibility="Public">
+                  <packageMoniker Id="e4d065ec-10dc-4a2a-8019-e7c8ee264cdf" LastKnownName="Printer" />
+                  <elementDefinition Id="a9df9842-f05c-4b38-9039-ab343b1bc485" />
+                </packageImport>
+              </importedPackagesInternal>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="ac47fbe4-ecc3-4a04-a94a-0ed416e33801" name="ShoppingLists">
+              <elementDefinition Id="216e1634-9bf1-4dd2-9534-ce49b2fe8937" />
+              <importedPackagesInternal>
+                <packageImport Id="53d56a22-35f7-45e7-ab6f-7f3685bdc3e8" visibility="Public">
+                  <packageMoniker Id="681c1163-212d-497e-9efd-c9799b4f3fa1" LastKnownName="Products" />
+                  <elementDefinition Id="8b56aa8c-fffe-4a03-a68e-98bc6cbd186c" />
+                </packageImport>
+              </importedPackagesInternal>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="97a8d40c-d870-4cdb-a927-e8f331850b45" name="Orders">
+              <elementDefinition Id="b531f2d1-ee2b-440c-ab24-02b6553b4f93" />
+              <importedPackagesInternal>
+                <packageImport Id="fdfd33c6-2876-4288-b4da-19c033f8abcf" visibility="Public">
+                  <packageMoniker Id="ac47fbe4-ecc3-4a04-a94a-0ed416e33801" LastKnownName="ShoppingLists" />
+                  <elementDefinition Id="15247bf5-6a14-46ff-bb5b-e535bbbd6926" />
+                </packageImport>
+                <packageImport Id="6dfc46a8-64e3-4a29-a97c-9811087c4c50" visibility="Public">
+                  <packageMoniker Id="681c1163-212d-497e-9efd-c9799b4f3fa1" LastKnownName="Products" />
+                  <elementDefinition Id="2c08ccbb-4b74-4243-a65b-ee2445ce4c0c" />
+                </packageImport>
+                <packageImport Id="f408bcdc-8818-4be1-97fe-0e9bbc12d168" visibility="Public">
+                  <packageMoniker Id="4128bb4d-326e-4560-8d67-2c0064d12772" LastKnownName="Database" />
+                  <elementDefinition Id="7871f6bf-72d4-43b2-b90d-022fba3dd964" />
+                </packageImport>
+              </importedPackagesInternal>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="dab5e67d-6a25-47ef-a210-3c13c3f7e68c" name="CashDrawers">
+              <elementDefinition Id="5dfa08eb-02c9-485d-bbb9-951a658b4c46" />
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="a8d4c968-7f52-42ae-8ee8-bc18d061efd9" name="Sales">
+              <elementDefinition Id="b77effe1-e625-44bf-acbc-3b3406529c71" />
+              <importedPackagesInternal>
+                <packageImport Id="df531e67-351a-44c5-9ae2-079ba0d75ac4" visibility="Public">
+                  <packageMoniker Id="0a2e5ec0-d606-41c5-b3e8-12c3bed84b15" LastKnownName="Payment" />
+                  <elementDefinition Id="9e9252ab-6649-4e79-9b46-9fcf7c15ec0b" />
+                </packageImport>
+                <packageImport Id="267473e4-9b52-4543-a896-68f0e587efbf" visibility="Public">
+                  <packageMoniker Id="ac47fbe4-ecc3-4a04-a94a-0ed416e33801" LastKnownName="ShoppingLists" />
+                  <elementDefinition Id="1bd3553a-1004-44b4-a17b-feea41dadb67" />
+                </packageImport>
+                <packageImport Id="f85f9e8c-8d1a-4504-816e-284ab34f654c" visibility="Public">
+                  <packageMoniker Id="97a8d40c-d870-4cdb-a927-e8f331850b45" LastKnownName="Orders" />
+                  <elementDefinition Id="ee0634b2-73c3-424b-b840-78955c7a49d8" />
+                </packageImport>
+                <packageImport Id="436f7391-c63b-4528-ac2c-c298815e888f" visibility="Public">
+                  <packageMoniker Id="a0a6b993-e0fa-4f9a-8ed1-e312e676f620" LastKnownName="Receipts" />
+                  <elementDefinition Id="652a65dc-e0c0-4113-911f-e40c37e8a281" />
+                </packageImport>
+              </importedPackagesInternal>
+            </package>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="13922c09-8415-49fc-8c8d-35aa06a95804" name="CashRegisterUML">
+    <elementDefinition Id="90668f4d-1718-4772-9ea2-936507fd7255" />
+    <profileInstances>
+      <packageHasProfileInstances Id="09cd6b47-289c-4c4c-933a-ef3c01ce2a85">
+        <profileInstance Id="7a222b9b-1e72-4573-ac1c-c60365263b58" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="5aecbc9d-9b63-4fee-a62b-2e51afec81db">
+        <profileInstance Id="a18efa00-1375-44d5-a1e6-a6bb3668bb38" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="04184c1b-ec1c-490b-8682-a48e775f7b41">
+        <profileInstance Id="bd830c2b-acc7-47ff-84ab-c60abf78c7a5" name="CSharpProfile">
+          <elementDefinition Id="a5aac416-6324-48b9-ba39-d5199735fc1a" />
+        </profileInstance>
+        <elementDefinition Id="18ba4cd0-a533-465d-8e80-a02fbbcb2aef" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="3548af7b-dab5-4456-8d8f-1657dd3c6f46">
+        <profileInstance Id="7059c57f-e6e2-48b5-8cdd-b374c1b93cc2" name="TextTemplateBindings">
+          <elementDefinition Id="ae043a2c-0420-4ea6-8aab-8e94ac452ec7" />
+        </profileInstance>
+        <elementDefinition Id="59205f9a-ac57-4057-89fe-9213118f1868" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

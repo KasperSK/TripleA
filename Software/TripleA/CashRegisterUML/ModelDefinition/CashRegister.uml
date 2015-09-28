@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="dcc4b20b-811d-4611-bee7-cdec0ba1a0de"
+  name="CashRegister" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="7c8191fe-462b-4818-8043-5bff3b860ff5"
+        LastKnownName="Log"
+        LastKnownLocation="Log.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="8aba3d13-8f43-41d7-a1a4-8d8294c7b42c"
+        LastKnownName="Payment"
+        LastKnownLocation="Payment.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="3cf4e871-650d-4c43-a73d-5ffd7b5ba7aa"
+        LastKnownName="Printer"
+        LastKnownLocation="Printer.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="6788c2b9-8459-42e2-988b-58875c50a7ea"
+        LastKnownName="Products"
+        LastKnownLocation="Products.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="c98cf058-eb43-454a-a6e6-3d16e39c8c6b"
+        LastKnownName="Database"
+        LastKnownLocation="Databases.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="105d92b0-062e-4b28-a664-54f9d23bb7f3"
+        LastKnownName="Receipts"
+        LastKnownLocation="Receipts.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="216e1634-9bf1-4dd2-9534-ce49b2fe8937"
+        LastKnownName="ShoppingLists"
+        LastKnownLocation="ShoppingLists.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="b531f2d1-ee2b-440c-ab24-02b6553b4f93"
+        LastKnownName="Orders"
+        LastKnownLocation="Orders.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="5dfa08eb-02c9-485d-bbb9-951a658b4c46"
+        LastKnownName="CashDrawers"
+        LastKnownLocation="CashDrawers.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="b77effe1-e625-44bf-acbc-3b3406529c71"
+        LastKnownName="Sales"
+        LastKnownLocation="Sales.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="7cf639d3-f766-4e3f-8d2b-e178a78f2a6e"
+        LastKnownName="Discount"
+        LastKnownLocation="Discount.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
