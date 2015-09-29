@@ -17,7 +17,7 @@ namespace CashRegister.Orders
 	public interface IOrderController 
 	{
 		/// <summary>
-		/// Createas an order fra the shopping list
+		/// Creates an order fra the shopping list
 		/// </summary>
 		void CreateOrder(ShoppingList shoppinglist);
 

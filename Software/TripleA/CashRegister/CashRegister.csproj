@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashRegister\Orders\IOrderController.cs" />
+    <Compile Include="CashRegister\Orders\IOrderDao.cs" />
+    <Compile Include="CashRegister\Orders\Order.cs" />
+    <Compile Include="CashRegister\Orders\OrderController.cs" />
+    <Compile Include="CashRegister\Orders\OrderDao.cs" />
+    <Compile Include="CashRegister\Orders\OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

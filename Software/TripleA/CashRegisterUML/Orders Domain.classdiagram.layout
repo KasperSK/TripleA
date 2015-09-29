@@ -110,7 +110,7 @@
       </nodes>
     </associationConnector>
     <packageShape Id="0d35dcca-bcdf-4325-b648-ca15ee6dee54" absoluteBounds="11.75, 2.625, 3.375, 2" customColor="255, 249, 230" hideQualifiedName="false">
-      <packageMoniker Id="7772a1da-33d8-4b2b-83ba-6667f63d335f" LastKnownName="ShoppingList" />
+      <packageMoniker Id="7772a1da-33d8-4b2b-83ba-6667f63d335f" LastKnownName="ShoppingLists" />
     </packageShape>
     <packageImportConnector edgePoints="[(10.375 : 3.625); (11.75 : 3.625)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <packageImportMoniker Id="11111f40-50ca-4fb9-a7de-530b2ee18d11" />

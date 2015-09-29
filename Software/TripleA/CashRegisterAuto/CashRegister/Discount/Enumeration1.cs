@@ -4,27 +4,14 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace CashRegister.Orders
+namespace CashRegister.Discount
 {
-	using CashRegister.Database;
-	using CashRegister.Products;
-	using CashRegister.ShoppingLists;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class OrderItem
+	public enum Enumeration1 : int
 	{
-		/// <summary>
-		/// Products in the order
-		/// </summary>
-		public virtual object Product
-		{
-			get;
-			set;
-		}
-
 	}
 }
-
