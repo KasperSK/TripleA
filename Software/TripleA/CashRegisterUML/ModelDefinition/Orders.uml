@@ -9,8 +9,8 @@
       visibility="Public">
       <packageMoniker
         Id="216e1634-9bf1-4dd2-9534-ce49b2fe8937"
-        LastKnownName="ShoppingList"
-        LastKnownLocation="ShoppingList.uml" />
+        LastKnownName="ShoppingLists"
+        LastKnownLocation="ShoppingLists.uml" />
     </packageImport>
     <packageImport
       Id="2c08ccbb-4b74-4243-a65b-ee2445ce4c0c"
@@ -18,7 +18,7 @@
       <packageMoniker
         Id="6788c2b9-8459-42e2-988b-58875c50a7ea"
         LastKnownName="Products"
-        LastKnownLocation="Product.uml" />
+        LastKnownLocation="Products.uml" />
     </packageImport>
     <packageImport
       Id="7871f6bf-72d4-43b2-b90d-022fba3dd964"
@@ -26,7 +26,7 @@
       <packageMoniker
         Id="c98cf058-eb43-454a-a6e6-3d16e39c8c6b"
         LastKnownName="Database"
-        LastKnownLocation="Database.uml" />
+        LastKnownLocation="Databases.uml" />
     </packageImport>
   </importedPackagesInternal>
   <packagedElements>
@@ -81,6 +81,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Createas an order fra the shopping list</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="7b455cbf-d365-4096-8ec2-52f05a86048e"
@@ -141,7 +142,7 @@
                     <classMoniker
                       Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3"
                       LastKnownName="ShoppingList"
-                      LastKnownLocation="ShoppingList.uml" />
+                      LastKnownLocation="ShoppingLists.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -155,6 +156,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Gets order by ID</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="4d2e3692-eda3-4336-a6a6-9cffbbc37cd1"
@@ -227,7 +229,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -241,6 +243,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Get the last n orders</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="b0a8c521-b6c4-404d-8a4a-8df3e4f9fd26"
@@ -372,7 +375,7 @@
             <classMoniker
               Id="cb69bd2b-7a88-455f-87da-df39f73527ba"
               LastKnownName="OrderItem"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -426,6 +429,7 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
+            <description>The orderID</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="fceb7680-5ff1-4803-8aec-92482b075ef0"
@@ -495,6 +499,7 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
+            <description>The total value of items in the order</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="1c199fb5-c29d-45a0-9281-d9a7d88b60be"
@@ -564,6 +569,7 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
+            <description>Description of the order</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="0106e9c7-9119-4a87-aafb-dea1e826e420"
@@ -687,6 +693,7 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
+            <description>Products in the order</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="73d64360-9e3f-4038-8dd8-5655c5c0bdfd"
@@ -799,6 +806,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Being able to delete an order from the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="e258d8e4-180b-4373-afdc-3355b1bd28a5"
@@ -859,7 +867,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -873,6 +881,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Update an order in the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="9272b553-59dc-40f0-8a01-77c565f1e333"
@@ -934,7 +943,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -948,6 +957,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Being able to insert an order to the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="095b8a9d-e29a-496f-9a55-2ddd514b1428"
@@ -1009,7 +1019,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1023,6 +1033,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Selecting an order by ID in the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="be03e902-3ac5-451c-836e-64a717af2ccb"
@@ -1082,7 +1093,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1160,7 +1171,7 @@
             <interfaceMoniker
               Id="80bc912b-5b8c-4ee3-a7d8-8d82086fa758"
               LastKnownName="IOrderDao"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <targetEnds>
@@ -1174,7 +1185,7 @@
             <interfaceMoniker
               Id="44a4218e-f377-4c85-995f-98f685d063a3"
               LastKnownName="IDatabase"
-              LastKnownLocation="Database.uml" />
+              LastKnownLocation="Databases.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1212,6 +1223,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Being able to delete an order from the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="b6594de3-675f-4e2c-a329-82721cef1f3e"
@@ -1272,7 +1284,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1286,6 +1298,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Update an order in the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="b3b5df53-8387-40c2-92d8-a4dbe79b0b67"
@@ -1347,7 +1360,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1361,6 +1374,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Being able to insert an order to the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="c6ba9ac6-aa74-4014-bc0b-b4a695526b0f"
@@ -1422,7 +1436,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1436,6 +1450,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Selecting an order by ID in the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="2f95b58a-baea-4bae-b148-8867cf3a9f90"
@@ -1508,7 +1523,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1578,7 +1593,7 @@
             <interfaceMoniker
               Id="b31a4aa7-929d-4350-9cc8-daad71ce6244"
               LastKnownName="IOrderController"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <targetEnds>
@@ -1592,7 +1607,7 @@
             <interfaceMoniker
               Id="80bc912b-5b8c-4ee3-a7d8-8d82086fa758"
               LastKnownName="IOrderDao"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1630,6 +1645,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Createas an order fra the shopping list</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="858e51d5-fd38-42ce-ba92-5b36fa620a12"
@@ -1690,7 +1706,7 @@
                     <classMoniker
                       Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3"
                       LastKnownName="ShoppingList"
-                      LastKnownLocation="ShoppingList.uml" />
+                      LastKnownLocation="ShoppingLists.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1704,6 +1720,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Gets order by ID</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="92af7083-02a5-4226-b6de-714782cb2950"
@@ -1776,7 +1793,7 @@
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
                       LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1790,6 +1807,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Get the last n orders</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="d18aa117-860c-4590-a044-43f3a535070d"
