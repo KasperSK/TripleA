@@ -4,33 +4,29 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace CashRegister.Orders
+namespace CashRegister.Discount
 {
-	using CashRegister.Database;
-	using CashRegister.Products;
-	using CashRegister.ShoppingLists;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public interface IOrderController 
+	/// <summary>
+	/// Hvad laver interfacet 
+	/// </summary>
+	public interface Interface1 
 	{
 		/// <summary>
-		/// Createas an order fra the shopping list
+		/// Unikt id der bruges at iden
 		/// </summary>
-		void CreateOrder(ShoppingList shoppinglist);
+		int ID { get; }
+
+		string Name { get;set; }
 
 		/// <summary>
-		/// Gets order by ID
+		/// Typer af måder vi giver discount
 		/// </summary>
-		Order GetOrderByID(int id);
-
-		/// <summary>
-		/// Get the last n orders
-		/// </summary>
-		/// <param name="n">How many orders we wish to ha returned</param>
-		void GetNLastOrders(int n);
+		IEnumerable<Enumeration1> Types { get;set; }
 
 	}
 }
