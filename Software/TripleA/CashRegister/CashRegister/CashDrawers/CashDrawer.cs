@@ -18,7 +18,7 @@ namespace CashRegister.CashDrawers
 		/// </summary>
 		public virtual void Open()
 		{
-			throw new System.NotImplementedException();
+			
 		}
 
 	}

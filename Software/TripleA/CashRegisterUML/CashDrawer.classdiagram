@@ -211,6 +211,7 @@
               </suppliersInternal>
               <ownedOperationsInternal>
                 <operation Id="ee8b82e6-e517-447d-aba1-80b151a6c9d9" name="Open" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Opens the drawer of the CashDrawer</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="6f017645-cee6-4c3d-a6e0-974760100198" name="method" profile="CSharpProfile">
                       <elementDefinition Id="e9bc7c9b-c522-4990-9d46-bae78b25dab2" />

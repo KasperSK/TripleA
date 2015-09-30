@@ -132,21 +132,6 @@
                 </propertyInstances>
               </stereotypeInstance>
             </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="f30d280c-21d6-43d7-b073-7e585fcfe35a"
-                  name="shoppinglist"
-                  direction="In">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3"
-                      LastKnownName="ShoppingList"
-                      LastKnownLocation="ShoppingLists.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
           </operation>
           <operation
             Id="36994940-a9a7-4e1b-a730-1f4f63f7252f"
@@ -1696,21 +1681,6 @@
                 </propertyInstances>
               </stereotypeInstance>
             </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="ce3bc2b0-a680-4498-9a0a-476ff029fc97"
-                  name="shoppinglist"
-                  direction="In">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3"
-                      LastKnownName="ShoppingList"
-                      LastKnownLocation="ShoppingLists.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
           </operation>
           <operation
             Id="ba6279f3-3e09-4d82-8d8e-95b1fa88d035"

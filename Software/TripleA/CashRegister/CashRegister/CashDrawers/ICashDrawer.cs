@@ -11,15 +11,15 @@ namespace CashRegister.CashDrawers
 	using System.Linq;
 	using System.Text;
 
-	public class CashDrawer : ICashDrawer
+	/// <summary>
+	/// Interface for controlling a CashDrawer.
+	/// </summary>
+	public interface ICashDrawer 
 	{
 		/// <summary>
 		/// Opens the drawer of the CashDrawer
 		/// </summary>
-		public virtual void Open()
-		{
-			throw new System.NotImplementedException();
-		}
+		void Open();
 
 	}
 }

@@ -168,16 +168,6 @@
                     </stereotypeInstance>
                   </appliedStereotypesInternal>
                   <elementDefinition Id="b7003dba-8d43-4501-b83c-165752241883" />
-                  <ownedParameters>
-                    <operationHasOwnedParameters>
-                      <parameter Id="34d48f21-bb04-4afd-b250-b231f69acb34" name="shoppinglist" direction="In">
-                        <elementDefinition Id="f30d280c-21d6-43d7-b073-7e585fcfe35a" />
-                        <type_NamedElement>
-                          <referencedTypeMoniker Id="55837c25-445b-4a02-93cd-b25de99c2cc8" LastKnownName="ShoppingList" />
-                        </type_NamedElement>
-                      </parameter>
-                    </operationHasOwnedParameters>
-                  </ownedParameters>
                 </operation>
                 <operation Id="5ed67984-7a9d-404f-9bcb-dae0cdbbf0e2" name="GetOrderByID" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
                   <description>Gets order by ID</description>
@@ -1322,16 +1312,6 @@
                     </stereotypeInstance>
                   </appliedStereotypesInternal>
                   <elementDefinition Id="bbaf5fad-b40b-44d8-8314-f6857d09f6b5" />
-                  <ownedParameters>
-                    <operationHasOwnedParameters>
-                      <parameter Id="76f6acd7-2d47-4917-8af7-3183c2c11a50" name="shoppinglist" direction="In">
-                        <elementDefinition Id="ce3bc2b0-a680-4498-9a0a-476ff029fc97" />
-                        <type_NamedElement>
-                          <referencedTypeMoniker Id="55837c25-445b-4a02-93cd-b25de99c2cc8" LastKnownName="ShoppingList" />
-                        </type_NamedElement>
-                      </parameter>
-                    </operationHasOwnedParameters>
-                  </ownedParameters>
                 </operation>
                 <operation Id="a36d54a0-c41a-47fc-94a7-07bc8e70d089" name="GetOrderByID" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
                   <description>Gets order by ID</description>
@@ -1686,11 +1666,6 @@
     <packageHasNamedElement>
       <referencedType Id="1ac6a790-5b93-482d-b9df-a1d7b2f125b2" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
         <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="55837c25-445b-4a02-93cd-b25de99c2cc8" name="ShoppingList" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::ShoppingList::ShoppingList">
-        <elementDefinition Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasPackages>

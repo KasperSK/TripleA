@@ -167,7 +167,7 @@
             <interfaceMoniker
               Id="1106cc90-78bc-4212-a582-04d25ac00965"
               LastKnownName="ICashDrawer"
-              LastKnownLocation="CashDrawer.uml" />
+              LastKnownLocation="CashDrawers.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <ownedOperationsInternal>
@@ -179,6 +179,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Opens the drawer of the CashDrawer</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="e9bc7c9b-c522-4990-9d46-bae78b25dab2"
