@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashRegister.Test.Unit", "C
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CashRegister.Db", "CashRegister.Db\CashRegister.Db.sqlproj", "{0ABFC12E-D26B-4E2A-BF10-3BA31DAC9582}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashRegister.Program", "CashRegister.Program\CashRegister.Program.csproj", "{A63359A7-5E5B-42B2-B3D7-12B426BD4910}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{0ABFC12E-D26B-4E2A-BF10-3BA31DAC9582}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ABFC12E-D26B-4E2A-BF10-3BA31DAC9582}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0ABFC12E-D26B-4E2A-BF10-3BA31DAC9582}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A63359A7-5E5B-42B2-B3D7-12B426BD4910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A63359A7-5E5B-42B2-B3D7-12B426BD4910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A63359A7-5E5B-42B2-B3D7-12B426BD4910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A63359A7-5E5B-42B2-B3D7-12B426BD4910}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
