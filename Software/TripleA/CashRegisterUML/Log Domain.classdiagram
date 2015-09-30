@@ -76,6 +76,24 @@
     <logicalClassDesignerModelHasPackages>
       <package Id="f37d1420-a313-4ff6-9557-b9cda45ab1a9" name="Log">
         <elementDefinition Id="7c8191fe-462b-4818-8043-5bff3b860ff5" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <Interface Id="ebda880e-eaf5-4621-bc70-18b7cf1f28f8" name="ILog" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="079de300-c8c3-4320-aa87-3c9f47dc1c6c" />
+            </Interface>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="89e9a5d9-c348-4cd0-9b73-c76904cb90d9" name="Logger" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="f5f5b98e-70c1-49be-b225-c9cfba5fb565" />
+              <suppliersInternal>
+                <interfaceRealization Id="4b427304-af75-4183-8308-0142bdab094d">
+                  <interfaceMoniker Id="ebda880e-eaf5-4621-bc70-18b7cf1f28f8" LastKnownName="ILog" />
+                  <elementDefinition Id="838f7f97-90ca-4489-9166-eee200cf2b65" />
+                </interfaceRealization>
+              </suppliersInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
       </package>
     </logicalClassDesignerModelHasPackages>
   </packagedElements>
