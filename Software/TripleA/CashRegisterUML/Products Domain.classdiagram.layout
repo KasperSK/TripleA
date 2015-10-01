@@ -69,7 +69,7 @@
         <interfaceShapeMoniker Id="1068cfae-3a70-4048-a4e8-efbdd9649a0b" />
       </nodes>
     </realizationConnector>
-    <packageImportConnector edgePoints="[(9.0625 : 5.14300346374512); (9.0625 : 0.893003463745117)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <packageImportConnector edgePoints="[(9.0625 : 7.625); (9.0625 : 8.25)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <packageImportMoniker Id="1f68eb67-7ee8-47a0-a129-416493756067" />
       <relativeChildShapes />
       <nodes>

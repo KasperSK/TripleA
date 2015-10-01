@@ -4,6 +4,9 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using System.Net.Sockets;
+
 namespace CashRegister.Orders
 {
 	using CashRegister.Database;
@@ -23,19 +26,25 @@ namespace CashRegister.Orders
 		}
 
 		/// <summary>
-		/// Createas an order fra the shopping list
+		/// Createas an order with the id from the last order+1
 		/// </summary>
-		public virtual void CreateOrder(ShoppingList shoppinglist)
+		public virtual void CreateOrder()
 		{
-			throw new System.NotImplementedException();
-		}
+            int lastorder=GetNLastOrders(1);
+            List<Product> OrderList = new List<Product>();
+            OrderList.Add(Description);
+            OrderList.Add(ID);
+            
+            OrderList.Add(Value);
+
+        }
 
 		/// <summary>
 		/// Gets order by ID
 		/// </summary>
 		public virtual Order GetOrderByID(int id)
 		{
-			throw new System.NotImplementedException();
+			SELECT * 
 		}
 
 		/// <summary>
@@ -44,8 +53,10 @@ namespace CashRegister.Orders
 		/// <param name="n">How many orders we wish to ha returned</param>
 		public virtual void GetNLastOrders(int n)
 		{
-			throw new System.NotImplementedException();
-		}
+            List<Order> OrderReceived = new List<Order>();
+            OrderDao.SelectByID()
+            OrderReceived.Add();
+        }
 
 	}
 }

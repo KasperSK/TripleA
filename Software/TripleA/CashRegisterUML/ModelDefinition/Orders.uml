@@ -1018,7 +1018,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
-            <description>Selecting an order by ID in the database</description>
+            <description>Selecting an Product by ID in from the database</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="be03e902-3ac5-451c-836e-64a717af2ccb"
@@ -1630,7 +1630,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
-            <description>Createas an order fra the shopping list</description>
+            <description>Createas an order with the id from the last order+1</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="858e51d5-fd38-42ce-ba92-5b36fa620a12"

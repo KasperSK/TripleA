@@ -830,7 +830,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="d96ed6f3-a692-42c6-8022-2e1bbda84630" name="SelectByID" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
-                  <description>Selecting an order by ID in the database</description>
+                  <description>Selecting an Product by ID in from the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="770a04cc-f69b-4a20-a381-79d8a86e6d8f" name="method" profile="CSharpProfile">
                       <elementDefinition Id="be03e902-3ac5-451c-836e-64a717af2ccb" />
@@ -1267,7 +1267,7 @@
               </targetEnds>
               <ownedOperationsInternal>
                 <operation Id="0f8c32da-cb2f-4d85-a748-d70e42ebf65e" name="CreateOrder" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-                  <description>Createas an order fra the shopping list</description>
+                  <description>Createas an order with the id from the last order+1</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="1d167b80-eb96-4a46-8422-53ba27764bb8" name="method" profile="CSharpProfile">
                       <elementDefinition Id="858e51d5-fd38-42ce-ba92-5b36fa620a12" />

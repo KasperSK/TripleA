@@ -32,7 +32,7 @@ namespace CashRegister.Orders
 		void Insert(Order order);
 
 		/// <summary>
-		/// Selecting an order by ID in the database
+		/// Selecting an Product by ID in from the database
 		/// </summary>
 		Order SelectByID(int id);
 

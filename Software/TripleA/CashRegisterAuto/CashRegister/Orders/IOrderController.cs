@@ -19,7 +19,7 @@ namespace CashRegister.Orders
 		/// <summary>
 		/// Createas an order fra the shopping list
 		/// </summary>
-		void CreateOrder(ShoppingList shoppinglist);
+		void CreateOrder();
 
 		/// <summary>
 		/// Gets order by ID

@@ -23,9 +23,9 @@ namespace CashRegister.Orders
 		}
 
 		/// <summary>
-		/// Createas an order fra the shopping list
+		/// Createas an order with the id from the last order+1
 		/// </summary>
-		public virtual void CreateOrder(ShoppingList shoppinglist)
+		public virtual void CreateOrder()
 		{
 			throw new System.NotImplementedException();
 		}

@@ -51,7 +51,7 @@ namespace CashRegister.Orders
 		/// </summary>
 		public virtual Order SelectByID(int id)
 		{
-			throw new System.NotImplementedException();
+			
 		}
 
 	}
