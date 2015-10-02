@@ -49,4 +49,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_ProductSubGroupId_PruductSubGroup]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="7eb97fb6-8dcc-42e5-be06-c4f48d055df6" ChangeDateTime="09/30/2015 08:40:42">
+    <Property Name="ElementName" Value="[dbo].[ProductGroup].[ProductSubGroup]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductGroup]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductSubGroupId" />
+  </Operation>
 </Operations>

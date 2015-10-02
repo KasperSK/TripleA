@@ -63,8 +63,18 @@
     <Build Include="ProductGroup.sql" />
     <Build Include="ProductSubGroup.sql" />
     <Build Include="Discount.sql" />
+    <Build Include="Price.sql" />
+    <Build Include="ProductGroup_Product.sql" />
+    <Build Include="OrderList.sql" />
+    <Build Include="Status.sql" />
+    <Build Include="OrderList_Product.sql" />
+    <Build Include="Transaktion.sql" />
+    <Build Include="PaymentType.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CashRegister.Db.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
 </Project>
