@@ -113,6 +113,7 @@
               <elementDefinition Id="44a4218e-f377-4c85-995f-98f685d063a3" />
               <ownedOperations>
                 <operation Id="b690ae56-7354-48bc-a601-4c5d2be676d9" name="Connect" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Forbinder til databasen</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="fc33fc1b-64b3-474c-80a3-bca076d181b0" name="method" profile="CSharpProfile">
                       <elementDefinition Id="8cb2215f-722e-4010-938c-2db14605229d" />
@@ -159,6 +160,7 @@
                   <elementDefinition Id="27dc64d3-bae6-4151-920f-5de6e890b32f" />
                 </operation>
                 <operation Id="87c7f0ac-5af4-4596-ba7c-e276b49ae81e" name="Disconnect" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Afbryder forbindelsen til databasen</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="bd89d223-cac1-431d-be69-9aa66a100281" name="method" profile="CSharpProfile">
                       <elementDefinition Id="e4e32aa2-2336-4413-98f6-55fef48e5cc1" />
@@ -205,6 +207,7 @@
                   <elementDefinition Id="7f615fea-d4b8-480e-b80c-0f1d147b2726" />
                 </operation>
                 <operation Id="2b6ac91c-331c-4d8c-993b-cfc1986c92f1" name="Query" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Tager en streng med et SQL statement og returnere et object af den type som den er oprettet med</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="9eff6af8-ac88-46ec-a219-73b40db0c971" name="method" profile="CSharpProfile">
                       <elementDefinition Id="64a0dd56-c316-42f2-b09b-8dd0907bb170" />

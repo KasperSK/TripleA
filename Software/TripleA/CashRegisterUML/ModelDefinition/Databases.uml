@@ -55,6 +55,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Forbinder til databasen</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="8cb2215f-722e-4010-938c-2db14605229d"
@@ -114,6 +115,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Afbryder forbindelsen til databasen</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="e4e32aa2-2336-4413-98f6-55fef48e5cc1"
@@ -173,6 +175,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Tager en streng med et SQL statement og returnere et object af den type som den er oprettet med</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="64a0dd56-c316-42f2-b09b-8dd0907bb170"
