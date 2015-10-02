@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashRegister\Database\IDatabase.cs" />
     <Compile Include="CashRegister\Log\ILogger.cs" />
     <Compile Include="CashRegister\Log\LogFactory.cs" />
     <Compile Include="CashRegister\Log\Logger.cs" />
