@@ -7,8 +7,7 @@
 namespace CashRegister.Orders
 {
 	using CashRegister.Database;
-	using CashRegister.Products;
-	using CashRegister.ShoppingLists;
+	//using CashRegister.Products;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;

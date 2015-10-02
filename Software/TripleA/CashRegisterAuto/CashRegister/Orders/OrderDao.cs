@@ -54,6 +54,21 @@ namespace CashRegister.Orders
 			throw new System.NotImplementedException();
 		}
 
+		public virtual int GetNLastID(int order)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public virtual int GetLastestID()
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public virtual int GetNewID()
+		{
+			throw new System.NotImplementedException();
+		}
+
 	}
 }
 

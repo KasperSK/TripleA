@@ -36,6 +36,12 @@ namespace CashRegister.Orders
 		/// </summary>
 		Order SelectByID(int id);
 
+        List<int> GetNLastID(int id);
+
+		int GetLastestID();
+
+		int GetNewID();
+
 	}
 }
 

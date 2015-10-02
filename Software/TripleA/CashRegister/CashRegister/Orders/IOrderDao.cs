@@ -7,8 +7,8 @@
 namespace CashRegister.Orders
 {
 	using CashRegister.Database;
-	using CashRegister.Products;
-	using CashRegister.ShoppingLists;
+	//using CashRegister.Products;
+	
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
@@ -36,6 +36,18 @@ namespace CashRegister.Orders
 		/// </summary>
 		Order SelectByID(int id);
 
-	}
+        // Get the last N IDs
+        List<int> GetNLastID(int it);
+
+
+        //Get the lastest ID
+        int GetLastestID();
+
+
+        //Gets a new ID for creating a new order
+        int GetNewID();
+
+
+    }
 }
 

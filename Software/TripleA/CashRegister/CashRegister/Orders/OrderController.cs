@@ -6,12 +6,12 @@
 //------------------------------------------------------------------------------
 
 using System.Net.Sockets;
+using System.Security.Cryptography;
 
 namespace CashRegister.Orders
 {
 	using CashRegister.Database;
-	using CashRegister.Products;
-	using CashRegister.ShoppingLists;
+	//using CashRegister.Products;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
@@ -30,21 +30,22 @@ namespace CashRegister.Orders
 		/// </summary>
 		public virtual void CreateOrder()
 		{
-            int lastorder=GetNLastOrders(1);
-            List<Product> OrderList = new List<Product>();
-            OrderList.Add(Description);
-            OrderList.Add(ID);
+		    var something = new Order();
+            var Liste = new List<Product>();
+		    something.ID = spa;
+		    something.Description = Ddsa;
+		    something.Value = dsad;
             
-            OrderList.Add(Value);
+		    something.OrderItems = List<Product>;
 
-        }
+		}
 
 		/// <summary>
 		/// Gets order by ID
 		/// </summary>
 		public virtual Order GetOrderByID(int id)
 		{
-			SELECT * 
+		   return OrderDao.SelectByID(id);
 		}
 
 		/// <summary>
@@ -53,10 +54,9 @@ namespace CashRegister.Orders
 		/// <param name="n">How many orders we wish to ha returned</param>
 		public virtual void GetNLastOrders(int n)
 		{
-            List<Order> OrderReceived = new List<Order>();
-            OrderDao.SelectByID()
-            OrderReceived.Add();
-        }
+		    OrderDao.GetNLastID(n);
+
+		}
 
 	}
 }

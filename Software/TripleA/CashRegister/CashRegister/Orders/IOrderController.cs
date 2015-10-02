@@ -7,8 +7,7 @@
 namespace CashRegister.Orders
 {
 	using CashRegister.Database;
-	using CashRegister.Products;
-	using CashRegister.ShoppingLists;
+	//using CashRegister.Products;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
@@ -31,7 +30,7 @@ namespace CashRegister.Orders
 		/// </summary>
 		/// <param name="n">How many orders we wish to ha returned</param>
 		void GetNLastOrders(int n);
-
+        Get
 	}
 }
 
