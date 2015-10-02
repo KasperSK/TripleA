@@ -123,6 +123,7 @@
               <elementDefinition Id="b31a4aa7-929d-4350-9cc8-daad71ce6244" />
               <ownedOperations>
                 <operation Id="2d1e6858-67b6-44ce-88d5-e6fa879b0482" name="CreateOrder" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Createas an order fra the shopping list</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="1edd5019-6441-4e1e-a3fb-4a9d6269e5aa" name="method" profile="CSharpProfile">
                       <elementDefinition Id="7b455cbf-d365-4096-8ec2-52f05a86048e" />
@@ -167,18 +168,9 @@
                     </stereotypeInstance>
                   </appliedStereotypesInternal>
                   <elementDefinition Id="b7003dba-8d43-4501-b83c-165752241883" />
-                  <ownedParameters>
-                    <operationHasOwnedParameters>
-                      <parameter Id="34d48f21-bb04-4afd-b250-b231f69acb34" name="shoppinglist" direction="In">
-                        <elementDefinition Id="f30d280c-21d6-43d7-b073-7e585fcfe35a" />
-                        <type_NamedElement>
-                          <referencedTypeMoniker Id="55837c25-445b-4a02-93cd-b25de99c2cc8" LastKnownName="ShoppingList" />
-                        </type_NamedElement>
-                      </parameter>
-                    </operationHasOwnedParameters>
-                  </ownedParameters>
                 </operation>
                 <operation Id="5ed67984-7a9d-404f-9bcb-dae0cdbbf0e2" name="GetOrderByID" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Gets order by ID</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="cd5f55e3-b3fd-483c-a242-bfad191b631a" name="method" profile="CSharpProfile">
                       <elementDefinition Id="4d2e3692-eda3-4336-a6a6-9cffbbc37cd1" />
@@ -243,6 +235,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="77ba546c-e647-4678-91ad-7d1101de1652" name="GetNLastOrders" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Get the last n orders</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="784651ea-6e73-4547-adaa-5fb4a276f8c3" name="method" profile="CSharpProfile">
                       <elementDefinition Id="b0a8c521-b6c4-404d-8a4a-8df3e4f9fd26" />
@@ -372,6 +365,7 @@
               </targetEnds>
               <ownedAttributesInternal>
                 <property Id="652b544e-00ff-4a39-a953-af6690a6b1e0" name="ID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <description>The orderID</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="198ca6f3-3cb5-4721-b9f1-f025a0385d42" name="property" profile="CSharpProfile">
                       <elementDefinition Id="fceb7680-5ff1-4803-8aec-92482b075ef0" />
@@ -424,6 +418,7 @@
                   <elementDefinition Id="7fdc51b0-f602-49ba-8f06-a0f753339f86" />
                 </property>
                 <property Id="29171333-ea08-4baa-b6d7-b4e8f798c84c" name="Value" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <description>The total value of items in the order</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="37ce1bd4-2231-43f3-a73c-e9e2c3ff665d" name="property" profile="CSharpProfile">
                       <elementDefinition Id="1c199fb5-c29d-45a0-9281-d9a7d88b60be" />
@@ -476,6 +471,7 @@
                   <elementDefinition Id="58e28f72-9558-4092-b1f2-2d724b455bf2" />
                 </property>
                 <property Id="ca24bee7-95d1-42b8-9100-c29ee81e0680" name="Description" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <description>Description of the order</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="2ddd88ee-4b39-4b2d-b05f-21ae708ac8e8" name="property" profile="CSharpProfile">
                       <elementDefinition Id="0106e9c7-9119-4a87-aafb-dea1e826e420" />
@@ -572,6 +568,7 @@
               <elementDefinition Id="cb69bd2b-7a88-455f-87da-df39f73527ba" />
               <ownedAttributesInternal>
                 <property Id="9bba4680-01eb-42ff-81ea-e82a9e2d3881" name="Product" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <description>Products in the order</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="ef4640d1-7a29-449f-8cd9-a5acf887bc68" name="property" profile="CSharpProfile">
                       <elementDefinition Id="73d64360-9e3f-4038-8dd8-5655c5c0bdfd" />
@@ -662,6 +659,7 @@
               <elementDefinition Id="80bc912b-5b8c-4ee3-a7d8-8d82086fa758" />
               <ownedOperations>
                 <operation Id="dd0f2155-f497-4277-9f70-a15310f125b6" name="Delete" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Being able to delete an order from the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="1f3de0d9-7ac2-43ab-9209-10620b377254" name="method" profile="CSharpProfile">
                       <elementDefinition Id="e258d8e4-180b-4373-afdc-3355b1bd28a5" />
@@ -718,6 +716,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="35131458-58c4-4af0-aabf-965347ff40a0" name="Update" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Update an order in the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="ed435972-55e4-426e-a3ac-62cb1391c2b8" name="method" profile="CSharpProfile">
                       <elementDefinition Id="9272b553-59dc-40f0-8a01-77c565f1e333" />
@@ -774,6 +773,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="64950c59-d4a3-4a22-bade-15cab7e9d89a" name="Insert" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Being able to insert an order to the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="aa196b70-2a11-4dc0-943e-d443f7208bbc" name="method" profile="CSharpProfile">
                       <elementDefinition Id="095b8a9d-e29a-496f-9a55-2ddd514b1428" />
@@ -830,6 +830,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="d96ed6f3-a692-42c6-8022-2e1bbda84630" name="SelectByID" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Selecting an Product by ID in from the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="770a04cc-f69b-4a20-a381-79d8a86e6d8f" name="method" profile="CSharpProfile">
                       <elementDefinition Id="be03e902-3ac5-451c-836e-64a717af2ccb" />
@@ -962,6 +963,7 @@
               </targetEnds>
               <ownedOperationsInternal>
                 <operation Id="c26ab8db-5518-4e3c-908e-9e4d7bdcd781" name="Delete" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Being able to delete an order from the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="8abce0af-b098-4ec7-a4e1-b40fba6f84bf" name="method" profile="CSharpProfile">
                       <elementDefinition Id="b6594de3-675f-4e2c-a329-82721cef1f3e" />
@@ -1018,6 +1020,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="8dbc14a2-a832-4a69-9e6d-75a2759528e1" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Update an order in the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="10376cdc-2729-4dab-9899-4d0a7d3e2835" name="method" profile="CSharpProfile">
                       <elementDefinition Id="b3b5df53-8387-40c2-92d8-a4dbe79b0b67" />
@@ -1074,6 +1077,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="0324f446-28ab-47f5-ace3-92642700d26d" name="Insert" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Being able to insert an order to the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="b5dc8d5d-3277-4f3b-8f1f-0ae28eacd8e9" name="method" profile="CSharpProfile">
                       <elementDefinition Id="c6ba9ac6-aa74-4014-bc0b-b4a695526b0f" />
@@ -1130,6 +1134,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="01dcf6e2-d899-426a-91cd-0c3fd39e113e" name="SelectByID" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Selecting an order by ID in the database</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="f24bbf8c-6f3b-4d02-a508-f065777007fb" name="method" profile="CSharpProfile">
                       <elementDefinition Id="2f95b58a-baea-4bae-b148-8867cf3a9f90" />
@@ -1262,6 +1267,7 @@
               </targetEnds>
               <ownedOperationsInternal>
                 <operation Id="0f8c32da-cb2f-4d85-a748-d70e42ebf65e" name="CreateOrder" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Createas an order with the id from the last order+1</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="1d167b80-eb96-4a46-8422-53ba27764bb8" name="method" profile="CSharpProfile">
                       <elementDefinition Id="858e51d5-fd38-42ce-ba92-5b36fa620a12" />
@@ -1306,18 +1312,9 @@
                     </stereotypeInstance>
                   </appliedStereotypesInternal>
                   <elementDefinition Id="bbaf5fad-b40b-44d8-8314-f6857d09f6b5" />
-                  <ownedParameters>
-                    <operationHasOwnedParameters>
-                      <parameter Id="76f6acd7-2d47-4917-8af7-3183c2c11a50" name="shoppinglist" direction="In">
-                        <elementDefinition Id="ce3bc2b0-a680-4498-9a0a-476ff029fc97" />
-                        <type_NamedElement>
-                          <referencedTypeMoniker Id="55837c25-445b-4a02-93cd-b25de99c2cc8" LastKnownName="ShoppingList" />
-                        </type_NamedElement>
-                      </parameter>
-                    </operationHasOwnedParameters>
-                  </ownedParameters>
                 </operation>
                 <operation Id="a36d54a0-c41a-47fc-94a7-07bc8e70d089" name="GetOrderByID" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Gets order by ID</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="c621342b-0ee1-4997-ae76-30d1dafc9e1b" name="method" profile="CSharpProfile">
                       <elementDefinition Id="92af7083-02a5-4226-b6de-714782cb2950" />
@@ -1382,6 +1379,7 @@
                   </ownedParameters>
                 </operation>
                 <operation Id="8b1f0fab-eae7-4da2-81d3-96dde34f771a" name="GetNLastOrders" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <description>Get the last n orders</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="abb7e044-088a-4c68-88e7-9693642dca04" name="method" profile="CSharpProfile">
                       <elementDefinition Id="d18aa117-860c-4590-a044-43f3a535070d" />
@@ -1668,11 +1666,6 @@
     <packageHasNamedElement>
       <referencedType Id="1ac6a790-5b93-482d-b9df-a1d7b2f125b2" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
         <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="55837c25-445b-4a02-93cd-b25de99c2cc8" name="ShoppingList" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::ShoppingList::ShoppingList">
-        <elementDefinition Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasPackages>

@@ -14,39 +14,44 @@ namespace CashRegister.Orders
 	using System.Linq;
 	using System.Text;
 
-	public class Order
+	public class OrderDao : IOrderDao
 	{
-		/// <summary>
-		/// The orderID
-		/// </summary>
-		public virtual object ID
+		public virtual IDatabase Database
 		{
 			get;
 			set;
 		}
 
 		/// <summary>
-		/// The total value of items in the order
+		/// Being able to delete an order from the database
 		/// </summary>
-		public virtual object Value
+		public virtual void Delete(Order order)
 		{
-			get;
-			set;
+			throw new System.NotImplementedException();
 		}
 
 		/// <summary>
-		/// Description of the order
+		/// Update an order in the database
 		/// </summary>
-		public virtual object Description
+		public virtual void Update(Order order)
 		{
-			get;
-			set;
+			throw new System.NotImplementedException();
 		}
 
-		public virtual IEnumerable<OrderItem> OrderItems
+		/// <summary>
+		/// Being able to insert an order to the database
+		/// </summary>
+		public virtual void Insert(Order order)
 		{
-			get;
-			set;
+			throw new System.NotImplementedException();
+		}
+
+		/// <summary>
+		/// Selecting an order by ID in the database
+		/// </summary>
+		public virtual Order SelectByID(int id)
+		{
+			
 		}
 
 	}

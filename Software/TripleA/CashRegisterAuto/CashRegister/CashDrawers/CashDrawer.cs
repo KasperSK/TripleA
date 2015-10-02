@@ -13,6 +13,9 @@ namespace CashRegister.CashDrawers
 
 	public class CashDrawer : ICashDrawer
 	{
+		/// <summary>
+		/// Opens the drawer of the CashDrawer
+		/// </summary>
 		public virtual void Open()
 		{
 			throw new System.NotImplementedException();

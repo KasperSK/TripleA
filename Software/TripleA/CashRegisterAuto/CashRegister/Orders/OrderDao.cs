@@ -22,21 +22,33 @@ namespace CashRegister.Orders
 			set;
 		}
 
+		/// <summary>
+		/// Being able to delete an order from the database
+		/// </summary>
 		public virtual void Delete(Order order)
 		{
 			throw new System.NotImplementedException();
 		}
 
+		/// <summary>
+		/// Update an order in the database
+		/// </summary>
 		public virtual void Update(Order order)
 		{
 			throw new System.NotImplementedException();
 		}
 
+		/// <summary>
+		/// Being able to insert an order to the database
+		/// </summary>
 		public virtual void Insert(Order order)
 		{
 			throw new System.NotImplementedException();
 		}
 
+		/// <summary>
+		/// Selecting an order by ID in the database
+		/// </summary>
 		public virtual Order SelectByID(int id)
 		{
 			throw new System.NotImplementedException();

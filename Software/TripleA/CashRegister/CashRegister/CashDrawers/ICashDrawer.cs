@@ -4,26 +4,22 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace CashRegister.Orders
+namespace CashRegister.CashDrawers
 {
-	using CashRegister.Database;
-	using CashRegister.Products;
-	using CashRegister.ShoppingLists;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class OrderItem
+	/// <summary>
+	/// Interface for controlling a CashDrawer.
+	/// </summary>
+	public interface ICashDrawer 
 	{
 		/// <summary>
-		/// Products in the order
+		/// Opens the drawer of the CashDrawer
 		/// </summary>
-		public virtual object Product
-		{
-			get;
-			set;
-		}
+		void Open();
 
 	}
 }
