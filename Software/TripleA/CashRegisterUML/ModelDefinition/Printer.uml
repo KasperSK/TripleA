@@ -7,9 +7,10 @@
     <packageHasNamedElement>
       <Interface
         Id="5a56a10b-a4ea-4b20-9ea3-66b52ddfb566"
-        name="IBonPrinter"
+        name="IPrinter"
         isAbstract="false"
         isLeaf="false">
+        <description>Interface to a printing device</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="73a5ea18-5ca7-4804-84e6-f4d2ddf7ce2a"
@@ -49,12 +50,13 @@
         <ownedOperations>
           <operation
             Id="0a2431e8-8d9f-4851-b2dd-174ac5850a3e"
-            name="PrintString"
+            name="AddTo"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Adds a string to the print document</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="31cb6967-9617-4441-81da-30ede666ca1b"
@@ -111,6 +113,7 @@
                   Id="993e9067-bf7a-4514-b34e-fe8c8bb9baf1"
                   name="str"
                   direction="In">
+                  <description>str is added to the print document</description>
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -121,16 +124,77 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="2b8636d8-96a7-4b58-a505-86e16b2ca01b"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Initiates a print</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="30d27250-af8d-4840-bb1a-c1a6466dd8a4"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b28abe6-4f9f-41b5-9b49-bf747665ca5b">
+                    <propertyInstance
+                      Id="39f20106-6279-452d-93e4-e27227807491"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="48f6c42d-25f6-4756-9224-c36fcf228221">
+                    <propertyInstance
+                      Id="9e7fe3a2-1454-4044-9d69-79479744f105"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2987a161-2c09-4834-9215-8212a0b016fd">
+                    <propertyInstance
+                      Id="bf67c470-4f20-4a12-a2ff-697e5693e2c0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="97c967e9-8332-4e03-9a0c-76b892faf6cf">
+                    <propertyInstance
+                      Id="c49a8c4d-5b61-4a4f-950d-2f6b9242c260"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d9d0036-c4c8-4e08-8990-4e42b30632ed">
+                    <propertyInstance
+                      Id="d8c04fcb-2278-482d-879e-e15bce1ed062"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="741bf534-61f5-4f7a-b3fb-7088524662d8">
+                    <propertyInstance
+                      Id="cd7e2da7-634e-4c99-9245-2c4d4d452fb2"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
         </ownedOperations>
       </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
         Id="89201ef0-33f6-48cc-9c03-6fdd24044175"
-        name="BonPrinter"
+        name="RecieptPrinter"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <description>Implementation of a receipt printer</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="f7c38400-6180-4eaa-87ae-fc4f85daa43f"
@@ -179,19 +243,20 @@
             Id="8ea5faa8-fda7-412a-b0d2-be05055d2d04">
             <interfaceMoniker
               Id="5a56a10b-a4ea-4b20-9ea3-66b52ddfb566"
-              LastKnownName="IBonPrinter"
+              LastKnownName="IPrinter"
               LastKnownLocation="Printer.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <ownedOperationsInternal>
           <operation
             Id="c7deb88b-6496-43ed-bf21-cbaa67a069f3"
-            name="PrintString"
+            name="AddTo"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Adds a string to a print document</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="e376a9e0-382d-4cc6-8b1c-6ceeb3a32240"
@@ -248,6 +313,7 @@
                   Id="df0ecb57-5736-4602-9026-1eb995f3b6c6"
                   name="str"
                   direction="In">
+                  <description>str is added to the print document</description>
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -257,6 +323,66 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation
+            Id="ef956aac-2afa-42d8-8a06-8913c1f8b4da"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Initiates a print from the reciept printer</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bf3bdd4b-52c0-4b76-b84d-84d7cb0dadf5"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ce4092c-d6b5-452c-afd2-fffc1c686439">
+                    <propertyInstance
+                      Id="1b16f915-efb0-4671-8cfb-95796b4dba42"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="14018852-51a9-4430-b57f-040fc0b95cba">
+                    <propertyInstance
+                      Id="394ca2ee-0b00-44ab-a87f-5a94c9a22bb9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12922e2e-cb06-4b51-9171-e8a290a29dd2">
+                    <propertyInstance
+                      Id="2ad8f0c9-027c-4409-822b-7275e25c8f2d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4ab5c3b4-c8d8-4f59-bb57-15c36ae57eee">
+                    <propertyInstance
+                      Id="08b50c80-185e-42d0-98a4-547cd4a69b79"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f1047249-6cc2-47b4-bd15-23562bbf71af">
+                    <propertyInstance
+                      Id="87c8bbdd-befd-472b-9247-7e600ee93e66"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="77583591-08fb-4d24-8059-d8693df137c3">
+                    <propertyInstance
+                      Id="abb70103-271d-4857-8707-c087371a0c86"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
           </operation>
         </ownedOperationsInternal>
       </class>
