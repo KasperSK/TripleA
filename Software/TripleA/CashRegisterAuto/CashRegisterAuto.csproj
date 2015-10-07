@@ -65,8 +65,8 @@
     <Compile Include="CashRegister\Payment\PaymentControllerImpl.cs" />
     <Compile Include="CashRegister\Payment\Transaction.cs" />
     <Compile Include="CashRegister\Payment\TransactionStatus.cs" />
-    <Compile Include="CashRegister\Printer\BonPrinter.cs" />
-    <Compile Include="CashRegister\Printer\IBonPrinter.cs" />
+    <Compile Include="CashRegister\Printer\IPrinter.cs" />
+    <Compile Include="CashRegister\Printer\RecieptPrinter.cs" />
     <Compile Include="CashRegister\Products\GroupDaoImpl.cs" />
     <Compile Include="CashRegister\Products\Groups\GroupController.cs" />
     <Compile Include="CashRegister\Products\Groups\GroupDaoImpl.cs" />

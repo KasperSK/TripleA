@@ -11,9 +11,24 @@ namespace CashRegister.Printer
 	using System.Linq;
 	using System.Text;
 
-	public class BonPrinter : IBonPrinter
+	/// <summary>
+	/// Implementation of a receipt printer
+	/// </summary>
+	public class RecieptPrinter : IPrinter
 	{
-		public virtual void PrintString(string str)
+		/// <summary>
+		/// Adds a string to a print document
+		/// </summary>
+		/// <param name="str">str is added to the print document</param>
+		public virtual void AddTo(string str)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		/// <summary>
+		/// Initiates a print from the reciept printer
+		/// </summary>
+		public virtual void Print()
 		{
 			throw new System.NotImplementedException();
 		}
