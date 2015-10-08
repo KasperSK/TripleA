@@ -625,8 +625,7 @@
                   <elementDefinition Id="be16b99a-e24a-44cf-bdfe-08e47a9ca20f" />
                   <ownedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="07db2094-d384-4a51-9a28-d5a203cb1c8a" name="name" direction="In">
-                        <description>The name of the new Product, does not have to be unique</description>
+                      <parameter Id="07db2094-d384-4a51-9a28-d5a203cb1c8a" name="name" direction="In" isUnique="false">
                         <elementDefinition Id="e6a858fd-b23b-4076-b05b-43d3a62f6506" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="b5b3c094-a1b5-457a-9eea-966df2dbfc42" LastKnownName="String" />
@@ -638,6 +637,14 @@
                         <elementDefinition Id="6a305d25-146e-4384-8fe0-da1ce213b0ca" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="fcc6f19e-a5f0-4b97-abb1-98c981456359" LastKnownName="Product" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="16c1a841-ae52-489d-b8c1-f085197814e5" name="price" direction="In" isUnique="false">
+                        <elementDefinition Id="1e116248-803e-4572-a7d1-4efaa5503c89" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="d4955bf8-6919-46ff-8611-942211005d95" LastKnownName="Int" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1638,6 +1645,11 @@
     <packageHasNamedElement>
       <referencedType Id="52d3a397-0ff8-4492-8f14-450b5c768b6f" name="&lt;T&gt;" isAbstract="false" isLeaf="false" cachedFullName="&lt;T&gt;">
         <elementDefinition Id="90302955-0ddc-454b-a03c-39c446d259e3" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d4955bf8-6919-46ff-8611-942211005d95" name="Int" isAbstract="false" isLeaf="false" cachedFullName="Int">
+        <elementDefinition Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

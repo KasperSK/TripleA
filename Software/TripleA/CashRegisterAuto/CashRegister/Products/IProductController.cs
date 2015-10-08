@@ -17,11 +17,12 @@ namespace CashRegister.Products
 	/// </summary>
 	public interface IProductController 
 	{
-		/// <summary>
-		/// The only way to create a new Product, It will create the Product with the name given and a new unique ID
-		/// </summary>
-		/// <param name="name">The name of the new Product, does not have to be unique</param>
-		Product CreateProduct(string name);
+	    /// <summary>
+	    /// The only way to create a new Product, It will create the Product with the name given and a new unique ID
+	    /// </summary>
+	    /// <param name="name">The name of the new Product, does not have to be unique</param>
+	    /// <param name="price"></param>
+	    Product CreateProduct(string name, int price);
 
 		/// <summary>
 		/// Returns a List of Products that matches the given ProductGroup ex. ActiveProducts

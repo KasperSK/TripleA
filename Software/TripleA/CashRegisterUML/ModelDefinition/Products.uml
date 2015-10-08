@@ -1442,8 +1442,8 @@
                 <parameter
                   Id="e6a858fd-b23b-4076-b05b-43d3a62f6506"
                   name="name"
-                  direction="In">
-                  <description>The name of the new Product, does not have to be unique</description>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -1460,6 +1460,20 @@
                     <classMoniker
                       Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
                       LastKnownName="Product"
+                      LastKnownLocation="Products.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1e116248-803e-4572-a7d1-4efaa5503c89"
+                  name="price"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
+                      LastKnownName="Int"
                       LastKnownLocation="Products.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -1780,8 +1794,8 @@
                 <parameter
                   Id="159df2d2-4932-4f16-bf1e-26d6b6595c02"
                   name="name"
-                  direction="In">
-                  <description>The name of the new Product, does not have to be unique</description>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -1798,6 +1812,20 @@
                     <classMoniker
                       Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
                       LastKnownName="Product"
+                      LastKnownLocation="Products.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1c345acb-441d-4dde-9aaf-b0e878e7a6c5"
+                  name="price"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
+                      LastKnownName="Int"
                       LastKnownLocation="Products.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -3159,6 +3187,11 @@
         Id="09e49378-bbe6-44a1-b09f-8c40a3b4f594"
         LastKnownName="Groups"
         LastKnownLocation="ProductGroups.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
+        name="Int" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

@@ -43,7 +43,7 @@ namespace CashRegister.Products
 			throw new System.NotImplementedException();
 		}
 
-		public virtual Product SelectByGroupID(int id)
+		public virtual Product[] SelectByGroupID(int id)
 		{
 			throw new System.NotImplementedException();
 		}

@@ -33,6 +33,8 @@ namespace ProjektGUI
             BeerProducts.Add(beer2);
             Product beer3 = new Product("Grimbergen", 25);
             BeerProducts.Add(beer3);
+            Product beer4 = new Product("Kasper ol!", 100);
+            BeerProducts.Add(beer4);
 
 
 

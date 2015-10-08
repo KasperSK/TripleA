@@ -22,17 +22,31 @@ namespace CashRegister.Products
 		/// </summary>
 		private readonly IProductDao ProductDAO;
 
-		/// <param name="name">The name of the new Product, does not have to be unique</param>
-		public virtual Product CreateProduct(string name)
+	    private ProductControllerImpl(IProductDao DAO)
+	    {
+	        ProductDAO = DAO;
+	    }
+
+	    /// <param name="name">The name of the new Product, does not have to be unique</param>
+	    /// <param name="price"></param>
+	    public virtual Product CreateProduct(string name, int price)
 		{
-			throw new System.NotImplementedException();
+		
+            //Hvornår oprettes id?? Der bliver sagt at databasen holder styr på det? 
+            var newProduct = new Product(name, price);
+
+            ProductDAO.Insert(newProduct);
+
+	        return newProduct;
 		}
 
-		/// <param name="productgroup">The ProductGroup to find alle Products of</param>
+	   
+
+	    /// <param name="productgroup">The ProductGroup to find alle Products of</param>
 		public virtual IEnumerable<Product> GetProductsByGroup(int productgroup)
-		{
-			throw new System.NotImplementedException();
-		}
+	    {
+	        return ProductDAO.SelectByGroupID(productgroup);
+	    }
 
 	}
 }
