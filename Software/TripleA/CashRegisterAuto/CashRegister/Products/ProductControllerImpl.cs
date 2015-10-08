@@ -28,16 +28,19 @@ namespace CashRegister.Products
 	    }
 
 	    /// <param name="name">The name of the new Product, does not have to be unique</param>
-	    /// <param name="price"></param>
+	    /// <param name="price">The price of the new product, does not have to be unique</param>
 	    public virtual Product CreateProduct(string name, int price)
 		{
 		
             //Hvornår oprettes id?? Der bliver sagt at databasen holder styr på det? 
             var newProduct = new Product(name, price);
 
-            ProductDAO.Insert(newProduct);
 
-	        return newProduct;
+            //newProduct.ID = ProductDAO.Insert(newProduct);
+
+
+
+            return newProduct;
 		}
 
 	   
@@ -45,6 +48,7 @@ namespace CashRegister.Products
 	    /// <param name="productgroup">The ProductGroup to find alle Products of</param>
 		public virtual IEnumerable<Product> GetProductsByGroup(int productgroup)
 	    {
+            //
 	        return ProductDAO.SelectByGroupID(productgroup);
 	    }
 

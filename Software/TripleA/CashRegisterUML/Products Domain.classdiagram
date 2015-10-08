@@ -441,6 +441,14 @@
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="2f0af6c3-5041-45ee-b15f-b0e0bbe8b063" direction="Return">
+                        <elementDefinition Id="027eb7db-953d-4204-b02a-7d70a140ca5a" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="3294cf7a-d074-4965-8f3b-c64bb67d7987" LastKnownName="Int" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
                   </ownedParameters>
                 </operation>
                 <operation Id="c8a34271-424f-4af7-b663-d57223086a30" name="SelectByID" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
@@ -818,9 +826,18 @@
                   <ownedParameters>
                     <operationHasOwnedParameters>
                       <parameter Id="fe6310e8-3cf8-4776-99c9-3bac1622726e" name="product" direction="In">
+                        <description>Product to be inserted into the database</description>
                         <elementDefinition Id="4029cc25-05ac-4304-8cd9-ac32a53bbc88" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="43dbfeb4-040a-4fc2-aa50-62705eee8aa5" LastKnownName="Product" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="1dd479d3-bd47-4e7c-9661-3acfae227809" direction="Return">
+                        <elementDefinition Id="5174f5f3-f8ac-4cba-9806-2b63a4566a5e" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="71e173ca-20d0-4649-aeca-cfb9e385b08d" LastKnownName="Int" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1794,6 +1811,11 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <referencedType Id="71e173ca-20d0-4649-aeca-cfb9e385b08d" name="Int" isAbstract="false" isLeaf="false" cachedFullName="Int">
+        <elementDefinition Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3294cf7a-d074-4965-8f3b-c64bb67d7987" name="Int" isAbstract="false" isLeaf="false" cachedFullName="Int">
         <elementDefinition Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb" />
       </referencedType>
     </packageHasNamedElement>

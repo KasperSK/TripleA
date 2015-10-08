@@ -485,6 +485,18 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="027eb7db-953d-4204-b02a-7d70a140ca5a"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
+                      LastKnownName="Int"
+                      LastKnownLocation="Products.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation
@@ -998,10 +1010,23 @@
                   Id="4029cc25-05ac-4304-8cd9-ac32a53bbc88"
                   name="product"
                   direction="In">
+                  <description>Product to be inserted into the database</description>
                   <type_NamedElement>
                     <classMoniker
                       Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
                       LastKnownName="Product"
+                      LastKnownLocation="Products.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5174f5f3-f8ac-4cba-9806-2b63a4566a5e"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
+                      LastKnownName="Int"
                       LastKnownLocation="Products.uml" />
                   </type_NamedElement>
                 </parameter>

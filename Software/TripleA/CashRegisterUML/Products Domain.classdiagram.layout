@@ -69,7 +69,7 @@
         <interfaceShapeMoniker Id="1068cfae-3a70-4048-a4e8-efbdd9649a0b" />
       </nodes>
     </realizationConnector>
-    <packageImportConnector edgePoints="[(9.0625 : 5.17500001192093); (9.0625 : 0.925000011920929)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <packageImportConnector edgePoints="[(9.0625 : 7.625); (9.0625 : 8.25)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <packageImportMoniker Id="1f68eb67-7ee8-47a0-a129-416493756067" />
       <relativeChildShapes />
       <nodes>
@@ -89,7 +89,7 @@
         </interfaceShape>
       </nestedChildShapes>
     </packageShape>
-    <packageImportConnector edgePoints="[(2.125 : 8.25); (2.125 : 9.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <packageImportConnector edgePoints="[(2.125 : 8.25); (2.125 : 9.5)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <packageImportMoniker Id="a592979c-3d97-4376-9428-734721909685" />
       <relativeChildShapes />
       <nodes>
@@ -97,7 +97,7 @@
         <packageShapeMoniker Id="ff500bbf-c20c-4738-bd92-35e21bc1d556" />
       </nodes>
     </packageImportConnector>
-    <packageImportConnector edgePoints="[(8.0625 : 7.625); (8.0625 : 10.6875); (3.125 : 10.6875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <packageImportConnector edgePoints="[(8.0625 : 7.625); (8.0625 : 10.6875); (3.125 : 10.6875)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <packageImportMoniker Id="216affec-5860-49b2-b473-d697ca11a4be" />
       <relativeChildShapes />
       <nodes>
@@ -105,7 +105,7 @@
         <packageShapeMoniker Id="ff500bbf-c20c-4738-bd92-35e21bc1d556" />
       </nodes>
     </packageImportConnector>
-    <associationConnector edgePoints="[(2.625 : 7.5784605995814); (2.625 : 10.125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="1" targetMultiplicity="1">
+    <associationConnector edgePoints="[(2.625 : 7.5784605995814); (2.625 : 10.125)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="1" targetMultiplicity="1">
       <associationMoniker Id="a34f9882-7bfa-47d0-a2a8-9520246b8a1f" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
