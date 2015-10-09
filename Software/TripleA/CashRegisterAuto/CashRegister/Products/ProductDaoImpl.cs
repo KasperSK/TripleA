@@ -23,9 +23,12 @@ namespace CashRegister.Products
 			set;
 		}
 
-		public virtual void Insert(Product product)
+		public virtual int Insert(Product product)
 		{
-			throw new System.NotImplementedException();
+			//Her skal skrives SQL
+
+            //Her skal returneres det ID som det unikke oprettede produkt får
+		    return 42;
 		}
 
 		public virtual Product SelectByID(int id)
@@ -43,11 +46,15 @@ namespace CashRegister.Products
 			throw new System.NotImplementedException();
 		}
 
-		public virtual Product SelectByGroupID(int id)
+		public virtual Product[] SelectByGroupID(int id)
 		{
 			throw new System.NotImplementedException();
 		}
 
-	}
+        IEnumerable<Product> IProductDao.SelectByGroupID(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
 

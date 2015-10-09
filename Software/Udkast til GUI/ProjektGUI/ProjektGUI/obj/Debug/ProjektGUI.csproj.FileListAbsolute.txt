@@ -12,3 +12,17 @@ C:\Users\Peter\SkyDrive\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.Properties.Re
 C:\Users\Peter\SkyDrive\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.csproj.GenerateResource.Cache
 C:\Users\Peter\SkyDrive\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.exe
 C:\Users\Peter\SkyDrive\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.pdb
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\bin\Debug\ProjektGUI.exe.config
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.exe
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.pdb
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\bin\Debug\ProjektGUI.exe
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\bin\Debug\ProjektGUI.pdb
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.csprojResolveAssemblyReference.cache
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\MainWindow.g.cs
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\App.g.cs
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI_MarkupCompile.cache
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI_MarkupCompile.lref
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\MainWindow.baml
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.g.resources
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.Properties.Resources.resources
+C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.csproj.GenerateResource.Cache

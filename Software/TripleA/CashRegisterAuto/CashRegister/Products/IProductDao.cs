@@ -21,7 +21,7 @@ namespace CashRegister.Products
 		/// Insert a new Product in the database
 		/// </summary>
 		/// <param name="product">Product to be inserted into the database</param>
-		void Insert(Product product);
+		int Insert(Product product);
 
 		/// <param name="id">ID of the Product to return</param>
 		Product SelectByID(int id);

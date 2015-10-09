@@ -17,7 +17,15 @@ namespace CashRegister.Products
 	/// </summary>
 	public class Product
 	{
-		/// <summary>
+
+	    public Product(string name, int price)
+	    {
+	        Price = price;
+	        Name = name;
+	       
+	    }
+
+	    /// <summary>
 		/// Price og product in danish ører
 		/// </summary>
 		public int Price
