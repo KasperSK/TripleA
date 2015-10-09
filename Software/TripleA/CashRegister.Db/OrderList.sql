@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[OrderList]
+(
+	[OrderId]        BIGINT NOT NULL,
+	[OrderDate]      DATETIME NOT NULL,
+	[OrderTotal]     REAL NOT NULL,
+	[StatusId]       BIGINT NOT NULL,
+	CONSTRAINT pk_OrderList PRIMARY KEY CLUSTERED (OrderId),
+	CONSTRAINT fk_OrderList FOREIGN KEY (StatusId) REFERENCES STATUS (StatusId)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE
+)
+ 
+GO
