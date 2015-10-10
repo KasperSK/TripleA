@@ -4,6 +4,10 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using CashRegister.CashRegister.Database;
+using CashRegister.DAL;
+
 namespace CashRegister.Database
 {
 	using System;
@@ -20,5 +24,23 @@ namespace CashRegister.Database
 		T Query<T>(string SQLStatement);
 
 	}
+
+    public class hat
+    {
+        public hat()
+        {
+            KasseApparat KasseContext = new KasseApparat();
+            GenericRepository<Product> ProductRepository = new GenericRepository<Product>(KasseContext);
+            Product test = new Product();
+            test.ProductName = "Test";
+            test.Discount = new Discount();
+            test.DiscountId = 1;
+            test.Prices = new List<Price>();
+            test.OrderLists = new List<OrderList>();
+            test.ProductGroups = new List<ProductGroup>();
+            ProductRepository.Insert(test);
+            KasseContext.SaveChanges();
+        }
+    }
 }
 

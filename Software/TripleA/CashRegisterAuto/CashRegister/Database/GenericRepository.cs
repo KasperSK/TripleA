@@ -11,22 +11,19 @@ namespace CashRegister.Database
 	using System.Linq;
 	using System.Text;
 
-	public interface IDatabase 
-	{
-		/// <summary>
-		/// Forbinder til databasen
-		/// </summary>
-		void Connect();
+	public class GenericRepository<TEntity> where TEntity : class 
+    {
+		internal virtual KasseApparat context
+		{
+			get;
+			set;
+		}
 
-		/// <summary>
-		/// Afbryder forbindelsen til databasen
-		/// </summary>
-		void Disconnect();
-
-		/// <summary>
-		/// Tager en streng med et SQL statement og returnere et object af den type som den er oprettet med
-		/// </summary>
-		<T> Query(object string);
+		internal DbSet<TEntity>
+		{
+			get;
+			set;
+		}
 
 	}
 }

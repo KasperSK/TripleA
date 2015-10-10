@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Product]
 (
-	[ProductId]		BIGINT NOT NULL, 
+	[ProductId]		BIGINT IDENTITY NOT NULL, 
     [ProductName]	NVARCHAR(MAX) NOT NULL, 
 	[DiscountId]	BIGINT,
 	CONSTRAINT [pk_Product] PRIMARY KEY (ProductId),
