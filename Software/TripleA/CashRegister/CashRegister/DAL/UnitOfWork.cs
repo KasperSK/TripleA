@@ -7,7 +7,7 @@ using CashRegister.CashRegister.Database;
 
 namespace CashRegister.DAL
 {
-    class ProductUnitOfWork : IDisposable
+    public class ProductUnitOfWork : IDisposable
     {
         private readonly KasseApparat Context;
         private GenericRepository<Product> _productRepository;

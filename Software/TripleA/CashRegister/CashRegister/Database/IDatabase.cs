@@ -25,22 +25,5 @@ namespace CashRegister.Database
 
 	}
 
-    public class hat
-    {
-        public hat()
-        {
-            KasseApparat KasseContext = new KasseApparat();
-            GenericRepository<Product> ProductRepository = new GenericRepository<Product>(KasseContext);
-            Product test = new Product();
-            test.ProductName = "Test";
-            test.Discount = new Discount();
-            test.DiscountId = 1;
-            test.Prices = new List<Price>();
-            test.OrderLists = new List<OrderList>();
-            test.ProductGroups = new List<ProductGroup>();
-            ProductRepository.Insert(test);
-            KasseContext.SaveChanges();
-        }
-    }
 }
 

@@ -11,7 +11,7 @@ using CashRegister.Log;
 
 namespace CashRegister.DAL
 {
-    class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> where TEntity : class
     {
         internal KasseApparat Context;
         internal DbSet<TEntity> DbSet;
