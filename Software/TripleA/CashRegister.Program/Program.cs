@@ -28,6 +28,14 @@ namespace CashRegister.Program
             _logger.Info("Info");
             _logger.Debug("Debug");
             ProductUnitOfWork ProductUoW = new ProductUnitOfWork(new KasseApparat());
+            var Product = ProductUoW.ProductRepository.GetById(2);
+            var Plist = ProductUoW.ProductRepository.Get();
+            Console.WriteLine(Environment.NewLine + $"{Product.ProductName}");
+            foreach (var item in Plist)
+            {
+                Console.WriteLine(item.ProductName);
+            }
+            
             var PG = new ProductGroup();
             var P = new Product();
             var PR = new Price();
