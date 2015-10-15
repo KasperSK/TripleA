@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CashRegister.Database;
 
 namespace CashRegister.Receipts
 {
@@ -13,6 +14,6 @@ namespace CashRegister.Receipts
 	public interface IReceiptController 
 	{
 		void Print(Receipt receipt);
-        Receipt CreateReceipt(Order order);
+        Receipt CreateReceipt(OrderList order);
 	}
 }

@@ -30,15 +30,8 @@ namespace CashRegister.Orders
 		/// </summary>
 		public virtual void CreateOrder()
 		{
-		    var something = new Order();
-            var Liste = new List<Product>();
-		    something.ID = spa;
-		    something.Description = Ddsa;
-		    something.Value = dsad;
-            
-		    something.OrderItems = List<Product>;
-
-		}
+            throw new NotImplementedException();
+        }
 
 		/// <summary>
 		/// Gets order by ID
@@ -57,7 +50,6 @@ namespace CashRegister.Orders
 		    OrderDao.GetNLastID(n);
 
 		}
-
 	}
 }
 

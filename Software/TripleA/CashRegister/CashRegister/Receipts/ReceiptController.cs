@@ -1,6 +1,7 @@
 ﻿using CashRegister.Orders;
 using CashRegister.Printer;
 using System;
+using CashRegister.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,22 +34,22 @@ namespace CashRegister.Receipts
         /// <summary>
         /// Creates a Receipt with information from an Order object
         /// </summary>
-        public virtual Receipt CreateReceipt(Order order)
+        public virtual Receipt CreateReceipt(OrderList order)
 		{
             var receipt = new Receipt();
 
-            CreateHeader(receipt, order.ID);
+            CreateHeader(receipt, order.OrderId);
             
-            foreach (var o in order.OrderItems)
+            foreach (var o in order.Products)
             {
-                var p = o.Product;
+                var p = o;
 
-                receipt.Content.Add($"{p.Name}\n");
+                receipt.Content.Add($"{p.ProductName}\n");
                 receipt.Content.Add("              ");
-                receipt.Content.Add($"{p.Price}\n\n");
+                receipt.Content.Add($"{p.Prices}\n\n");
             }
 
-            receipt.Content.Add($"Total: {order.Value}\n\n");
+            receipt.Content.Add($"Total: {order.OrderTotal}\n\n");
 
             CreateFooter(receipt);
 

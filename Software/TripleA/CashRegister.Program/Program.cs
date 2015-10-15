@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Web;
 using CashRegister.Database;
 using CashRegister.Log;
-using CashRegister.Database;
 using CashRegister.DAL;
 
 namespace CashRegister.Program

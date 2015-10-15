@@ -57,7 +57,7 @@ namespace CashRegister.DAL
         }
 
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string[] includeProperties = null)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -66,7 +66,8 @@ namespace CashRegister.DAL
                 query = query.Where(filter);
             }
 
-            foreach (var includeProperty in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+            //.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var includeProperty in includeProperties ?? (new string[0])) 
             {
                 query = query.Include(includeProperty);
             }
