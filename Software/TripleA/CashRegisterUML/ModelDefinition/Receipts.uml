@@ -28,6 +28,7 @@
         name="IReceiptController"
         isAbstract="false"
         isLeaf="false">
+        <description>Interface to a ReceiptController which generates a Receipt</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="996a9629-f31e-4473-9600-70bd96d53ca4"
@@ -73,6 +74,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Initiates a Print of a Receipt</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="4f0a6013-90df-4952-9f71-8d9cb94a4319"
@@ -147,6 +149,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Creates a Receipt from an Order object</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="4d22d099-0dba-42bd-9f89-081d8d4446ff"
@@ -235,6 +238,7 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <description>Implementation of a ReceiptController which generates a Reciept</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="b0d076a8-88e3-4b30-ab3f-8d792ec26f58"
@@ -292,12 +296,12 @@
             Id="9884fdbf-7847-4e83-956f-1473a6f1ccfa"
             isDerived="false"
             sourceEndRoleName=""
-            targetEndRoleName="BonPrinter"
+            targetEndRoleName="Printer"
             isLeaf="false"
             isAbstract="false">
             <interfaceMoniker
               Id="5a56a10b-a4ea-4b20-9ea3-66b52ddfb566"
-              LastKnownName="IBonPrinter"
+              LastKnownName="IPrinter"
               LastKnownLocation="Printer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -315,7 +319,8 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="af39a383-addc-4304-9a74-105d796022d2"
-                  name="BonPrinter"
+                  name="Printer"
+                  visibility="Private"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -336,6 +341,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Initiates a Print of a Receipt</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="6bf63515-6698-4115-aa18-43df696992b0"
@@ -410,6 +416,7 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
+            <description>Creates a Receipt with information from an Order object</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="056fd4bb-d61a-4bef-b556-36dd60bcbeda"
@@ -488,6 +495,247 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="4cc0ca79-0ef2-4f3f-9b2c-e66d56e39c19"
+            name="ReceiptController"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b5ea1d96-9e90-462d-b44f-f7bc2eb38324"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ccc55047-3c9b-41bd-96b1-ff5a75aa645e">
+                    <propertyInstance
+                      Id="d0feb2cb-d15f-4331-9ba4-03eacd41f9fc"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2bccbd33-2d86-489e-813e-897943ac2c77">
+                    <propertyInstance
+                      Id="b0df6ef7-8ea6-417f-9dfa-61e0fb665f7d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="95637e45-09a5-4965-b2d6-87eb5141538a">
+                    <propertyInstance
+                      Id="e5ee2678-82f4-4a76-a7a3-fa44f5955761"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8a4d1d1-06f7-4c14-8f0d-69b23d2dccf2">
+                    <propertyInstance
+                      Id="a0360194-7ca0-4a25-9a07-bd7d91f8b517"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7a82b081-2ec2-4659-86ac-fb4a7c77d32f">
+                    <propertyInstance
+                      Id="19ca5446-3149-4928-bfe1-e53772d44b53"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebc5f52e-69f9-4a39-bbeb-ab6146826e2a">
+                    <propertyInstance
+                      Id="31e5c9ce-57be-4bb3-b1b1-40927cbf9ecd"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0582ce96-994c-4418-8e8e-56ca8d274320"
+                  name="printer"
+                  direction="In">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="5a56a10b-a4ea-4b20-9ea3-66b52ddfb566"
+                      LastKnownName="IPrinter"
+                      LastKnownLocation="Printer.uml" />
+                  </type_NamedElement>
+                  <defaultValue>
+                    <literalString
+                      Id="1c0396b0-1975-4b95-b842-7a83c4196bba" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a1e79fa2-1010-4215-8806-e8e11e4ab73b"
+            name="CreateHeader"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Adds the standard header to the Receipt</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8fc87397-3626-4bbb-b658-90606fff40d6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d80ab563-b784-483b-8f83-86cbb559c0da">
+                    <propertyInstance
+                      Id="5f063eeb-1006-457e-88fa-2b4fd1c9dd29"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f22fa147-1d32-425b-8e12-f4e3ad45cff2">
+                    <propertyInstance
+                      Id="dc9f32cc-e323-4940-81de-4a49d48bee6c"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="06959d3e-b511-4bd3-bae3-cb2fd0b4c62d">
+                    <propertyInstance
+                      Id="07d4f02e-1649-4b47-ab15-8795e35cb709"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d4673ada-7ca4-4a90-9499-c57286a5cbf0">
+                    <propertyInstance
+                      Id="5cd2f632-b76d-4066-9998-e48535f6d362"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3660337d-c58a-400f-8675-6533b4191238">
+                    <propertyInstance
+                      Id="2b498a1c-38d2-4595-b125-bfc055272a75"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ba0a32c-90f7-4df3-80e7-83696f0bbbe8">
+                    <propertyInstance
+                      Id="945b227b-a791-4f30-9123-9ae843bb05b9"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b86316e9-9d78-4caa-8122-baafbe73c5a1"
+                  name="receipt"
+                  direction="In">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="0fbb558e-a520-4f79-8048-af2e578bdbba"
+                      LastKnownName="Receipt"
+                      LastKnownLocation="Receipts.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="012e7f9a-4fed-4ec8-a6ca-d5eea1eb11bf"
+                  name="orderId"
+                  direction="In">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="84bde141-8371-4ad2-95f0-4ef3a6e9e234"
+                      LastKnownName="object"
+                      LastKnownLocation="Receipts.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="86074b6e-8e42-4914-9e24-686bb8018d14"
+            name="CreateFooter"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Adds the standard footer to the Receipt</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="20a26cbb-e9d7-45fb-bcce-84385f4a3caf"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="652cdc5c-4ed9-408f-ae51-5a600491d3d5">
+                    <propertyInstance
+                      Id="5ccabe41-7e26-42f0-9166-10d668fe3a8b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ac652d90-db4e-42db-85bd-1de5957cd395">
+                    <propertyInstance
+                      Id="740d7b23-ec24-4646-b3cd-4f7a3ab0340f"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="82bd31e2-c0de-4bab-840a-2b9025ecbacb">
+                    <propertyInstance
+                      Id="1fe7fe76-5bfc-400c-a66b-46c4c725fdf6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a730c7b4-7782-41dd-8119-ae4ff9db6d79">
+                    <propertyInstance
+                      Id="79e86b7c-340c-4854-9b0f-b618e133a5c3"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb347232-3210-4ce0-a1d7-6ecaaffa9e15">
+                    <propertyInstance
+                      Id="7efb1c81-4038-4a6c-b1b1-0e3ca7cebd52"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bbc05b35-884f-4992-9f58-389cbc3c5e1c">
+                    <propertyInstance
+                      Id="245a5385-adf5-48d5-9e30-c839d4c97b9e"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="54ae2cdf-d21b-49db-8c7c-2d5815649e18"
+                  name="receipt"
+                  direction="In">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="0fbb558e-a520-4f79-8048-af2e578bdbba"
+                      LastKnownName="Receipt"
+                      LastKnownLocation="Receipts.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -498,6 +746,7 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <description>A receipt container class</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="e20d07ab-7b52-462f-846f-44babffff2bb"
@@ -541,7 +790,161 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="833e2345-f5b0-4d46-a3ab-adfa7dfa0968"
+            name="Content"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <description>A list of strings with the content of the Receipt</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="250b7dc4-3d11-4e3b-93bd-a839906b333d"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cee5c12a-09a6-4736-9cf7-1b38bff63c44">
+                    <propertyInstance
+                      Id="2c93aaf6-32af-4703-b79c-bffdc04bd624"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85e968ba-0836-419f-83b0-f5c5c1e7d214">
+                    <propertyInstance
+                      Id="5dd49753-d846-47d6-90e7-76753812e40c"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4d88ff66-a684-4626-9d9e-632c46fad083">
+                    <propertyInstance
+                      Id="7633f256-c555-4359-b2e1-14cb32ac9a8f"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="34469a20-8ac7-48c6-90e6-a54b3b672b5a">
+                    <propertyInstance
+                      Id="a4574e5c-05b7-4288-b097-c0ceaf82a3dd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="20dd53fc-b5f4-48f5-8ba5-2ac83342121e">
+                    <propertyInstance
+                      Id="cb7fd301-a6c6-4402-8e4e-2e886f330c3b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fc04359-0b5b-42d2-8a8c-a3343364944d">
+                    <propertyInstance
+                      Id="ba652195-c44a-442d-8f56-e1f61661b8f9"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53600269-403f-4c9b-bc37-684a4233c5e0">
+                    <propertyInstance
+                      Id="ea1b09a2-040f-4755-bc59-2176020c6834"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="074755a5-8469-404b-a32e-122690be92ee"
+                LastKnownName="List&lt;string&gt;"
+                LastKnownLocation="Receipts.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="231cde13-71f9-4f94-ac84-3784bc8f5911"
+            name="Receipt"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4a72343a-75df-45e4-95dd-1eacef2ecefe"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef264ded-e8d4-489c-a61a-8cb1d2516990">
+                    <propertyInstance
+                      Id="4a357e36-d234-4887-ae5f-50106c19abca"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7847e7fc-f09a-4a8a-ab68-5aa28e7761c4">
+                    <propertyInstance
+                      Id="9166fbc7-e539-4542-886d-a736452075df"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4f947566-8bba-42ee-ad1b-106040c785a4">
+                    <propertyInstance
+                      Id="1dba302a-e007-48f2-9484-bf060fb0eb28"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c9f0b56f-76c5-4790-9443-2aebcb19483a">
+                    <propertyInstance
+                      Id="6bd778f0-7e04-4ba9-ad9d-bac48ef42644"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="790d426e-79c7-4a5a-939d-a58f75776ca7">
+                    <propertyInstance
+                      Id="7ca443ab-5251-4088-b346-a082c85bdfa8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="46a04953-16e4-4f05-8db2-ea81727d7a45">
+                    <propertyInstance
+                      Id="6cb90ec6-e6e6-491a-92b1-7fc66a944e81"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="074755a5-8469-404b-a32e-122690be92ee"
+        name="List&lt;string&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="2d27230d-70de-44c3-93ac-745b93c5c8e5"
+        name="List&lt;string&lt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="84bde141-8371-4ad2-95f0-4ef3a6e9e234"
+        name="object" />
     </packageHasNamedElement>
   </packagedElements>
 </package>
