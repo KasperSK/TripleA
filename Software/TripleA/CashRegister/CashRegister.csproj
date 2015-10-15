@@ -62,6 +62,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashRegister\CashDrawers\CashDrawer.cs" />
+    <Compile Include="CashRegister\CashDrawers\ICashDrawer.cs" />
     <Compile Include="CashRegister\DAL\GenericRepository.cs" />
     <Compile Include="CashRegister\DAL\UnitOfWork.cs" />
     <Compile Include="CashRegister\Database\CashRegisterContext.cs" />
@@ -78,8 +80,17 @@
     <Compile Include="CashRegister\Log\ILogger.cs" />
     <Compile Include="CashRegister\Log\LogFactory.cs" />
     <Compile Include="CashRegister\Log\Logger.cs" />
+    <Compile Include="CashRegister\Orders\IOrderController.cs" />
+    <Compile Include="CashRegister\Orders\IOrderDao.cs" />
+    <Compile Include="CashRegister\Orders\Order.cs" />
+    <Compile Include="CashRegister\Orders\OrderController.cs" />
+    <Compile Include="CashRegister\Orders\OrderDao.cs" />
+    <Compile Include="CashRegister\Orders\OrderItem.cs" />
     <Compile Include="CashRegister\Printer\IPrinter.cs" />
     <Compile Include="CashRegister\Printer\RecieptPrinter.cs" />
+    <Compile Include="CashRegister\Receipts\IReceiptController.cs" />
+    <Compile Include="CashRegister\Receipts\Receipt.cs" />
+    <Compile Include="CashRegister\Receipts\ReceiptController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
