@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[OrderList]
 (
-	[OrderId]        BIGINT NOT NULL,
+	[OrderId]        BIGINT IDENTITY NOT NULL,
 	[OrderDate]      DATETIME NOT NULL,
 	[OrderTotal]     REAL NOT NULL,
 	[StatusId]       BIGINT NOT NULL,

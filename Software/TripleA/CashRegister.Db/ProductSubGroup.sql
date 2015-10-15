@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ProductSubGroup]
 (
-	[ProductSubGroupId] BIGINT NOT NULL, 
+	[ProductSubGroupId] BIGINT IDENTITY NOT NULL, 
     [SubGroupName]		NVARCHAR(MAX) NOT NULL,
 	[ProductGroupId]	BIGINT NULL,
 	CONSTRAINT [pk_ProductSubGroup] PRIMARY KEY (ProductSubGroupId),

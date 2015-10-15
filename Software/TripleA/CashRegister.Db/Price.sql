@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Price]
 (
-	[PriceId]	BIGINT	NOT NULL,
+	[PriceId]	BIGINT IDENTITY	NOT NULL,
 	[Price]		FLOAT	NOT NULL,
 	[StartDate]	DATE	NOT NULL,
 	[EndDate]	DATE	NOT NULL,

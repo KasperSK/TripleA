@@ -13,11 +13,20 @@ namespace CashRegister.Database
 
 	public interface IDatabase 
 	{
+		/// <summary>
+		/// Forbinder til databasen
+		/// </summary>
 		void Connect();
 
+		/// <summary>
+		/// Afbryder forbindelsen til databasen
+		/// </summary>
 		void Disconnect();
 
-		T Query<T>(string SQLStatement);
+		/// <summary>
+		/// Tager en streng med et SQL statement og returnere et object af den type som den er oprettet med
+		/// </summary>
+		<T> Query(object string);
 
 	}
 }
