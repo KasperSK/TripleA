@@ -7,12 +7,12 @@ namespace CashRegister.Printer
     /// <summary>
     /// Implementation of a receipt printer
     /// </summary>
-    public class RecieptPrinter : IPrinter
+    public class ReceiptPrinter : IPrinter
     {
         private FlowDocument _flowDocument;
         private Paragraph _paragraph;
 
-        public RecieptPrinter()
+        public ReceiptPrinter()
         {
             _flowDocument = new FlowDocument();
             _paragraph = new Paragraph();
@@ -32,7 +32,7 @@ namespace CashRegister.Printer
         }
 
         /// <summary>
-        /// Initiates a print from the reciept printer from the default windows printer
+        /// Initiates a print to the reciept printer from the default Windows printer dialog
         /// </summary>
         public virtual void Print()
         {
