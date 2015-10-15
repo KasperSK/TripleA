@@ -1,0 +1,23 @@
+compile:
+  image: kalledk/doxygen:1.0
+
+  volumes:
+    - ../TripleA/CashRegister:/data/src:Z
+    - ./Doxyfile:/data/Doxyfile:Z
+    - ./output:/data/output:Z
+    - /usr/bin/vi:/usr/bin/vi:Z
+
+web:
+  image: python:3.4
+
+  volumes:
+    - ./output:/data
+
+  working_dir: /data
+
+  entrypoint: python3
+
+  command: -m http.server 8000
+
+  ports:
+    - "8000:8000"
