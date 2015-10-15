@@ -15,22 +15,13 @@ namespace CashRegister.Orders
 
     public class OrderDao : IOrderDao
     {
-        public virtual IDatabase Database
-        {
-            get;
-            set;
-        }
 
         /// <summary>
         /// Being able to delete an order from the database
         /// </summary>
         public virtual void Delete(Order order)
         {
-
-            String SQLMessage = "DELETE FROM Order WHERE OrderListId = '{0}'";
-            var ID = order.ID;
-            string Message = string.Format(SQLMessage, ID);
-            Database.Query<Order>(Message);
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -38,11 +29,7 @@ namespace CashRegister.Orders
         /// </summary>
         public virtual void Update(Order order)
         {
-            var ID = order.ID;
-            var description = order.Description;
-            var value = order.Value;
-            var OrderItems = order.OrderItems;
-            Insert(order);
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -51,15 +38,7 @@ namespace CashRegister.Orders
         public virtual void Insert(Order order)
         {
 
-            string SQLMessage = "INSERT INTO Order(Description, ID, Value, OrderItem) VALUES('{0}','{1}','{2}',{3}')";
-
-
-            var Description = order.Description;
-            var ID = order.ID;
-            var Value = order.Value;
-            var OrderItems = order.OrderItems;
-            string TheMessage = string.Format(SQLMessage, Description, ID, Value, OrderItems);
-            Database.Query<Order>(TheMessage);
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -67,51 +46,26 @@ namespace CashRegister.Orders
         /// </summary>
         public virtual Order SelectByID(int id)
         {
-            string SQLStatement = "SELECT Desription AND Value FROM OrderListId WHERE ID={0}";
-            int id_ = id;
-            string messageToDatabase = string.Format(SQLStatement, id_);
-            Order TheOrder = Database.Query<Order>(messageToDatabase);
-            return TheOrder;
+            throw new NotImplementedException();
 
         }
 
         // Get the last N IDs
         public virtual List<int> GetNLastID(int id)
         {
-            List<int> Listt = new List<int>();
-            int NumberOfOrders = id;
-            string Message = "SELECT TOP '{0}' OrderItem.ID FROM OrderListId";// ORDER BY OrderId DESC";
-            string SQLMessage = string.Format(Message, NumberOfOrders);
-
-
-
-            for (var i = 0; id < i; i++)
-                Listt.Add(Database.Query<int>(SQLMessage));
-
-            return Listt;
+            throw new NotImplementedException();
         }
         //Get the lastest ID
         public virtual int GetLastestID()
         {
-
-            string Message = "SELECT TOP 1 OrderItem.ID FROM OrderListId";// ORDER BY OrderId DESC";
-
-            var LastestID_ = Database.Query<int>(Message);
-
-            return LastestID_;
-
-          //  SELECT TOP 1 * FROM table_Name ORDER BY unique_column DESC
+            throw new NotImplementedException();
         }
 
         //Gets a new ID for creating a new order
 
         public virtual int GetNewID()
         {
-            string Message = "SELECT TOP 1 OrderItem.ID FROM OrderListId";// ORDER BY OrderId DESC";
-
-            var LastestID_ = Database.Query<int>(Message);
-
-            return 1+LastestID_;
+            throw new NotImplementedException();
         }
 
     }

@@ -30,7 +30,6 @@ namespace CashRegister.Orders
 		/// </summary>
 		/// <param name="n">How many orders we wish to ha returned</param>
 		void GetNLastOrders(int n);
-        Get
 	}
 }
 
