@@ -25,7 +25,7 @@ namespace ProjektGUI
         public MainWindow()
         {
             InitializeComponent();
-
+            GroupControl.Background =new SolidColorBrush(Colors.SandyBrown);
             // opretter dummy øl
             Product beer1 = new Product("Ceres top", 15);
             BeerProducts.Add(beer1);
@@ -75,5 +75,76 @@ namespace ProjektGUI
 
 
         }
+
+        private void TabItemChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (GroupTab.IsSelected)
+            {
+                GroupControl.Background = GroupTab.Background;}
+            if (Øl.IsSelected)
+            {
+                GroupControl.Background = Øl.Background;
+            }
+            if (Drinks.IsSelected)
+            {
+                GroupControl.Background = Drinks.Background;
+            }
+            if (Shots.IsSelected)
+            {
+                GroupControl.Background = Shots.Background;
+            }
+            if (Soda.IsSelected)
+            {
+                GroupControl.Background = Soda.Background;
+            }
+            if (Snacks.IsSelected)
+            {
+                GroupControl.Background = Snacks.Background;
+            }
+            if (Settings.IsSelected)
+            {
+                GroupControl.Background = Settings.Background;
+            }
+            
+
+        }
+
+
+        /*
+        private void Grupper_clicked(object sender, MouseButtonEventArgs e)
+        {
+            TabItem dummy = sender as TabItem;
+
+            GroupControl.Background = dummy.Background;
+
+        }
+
+       
+
+        private void Drinks_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            GroupControl.Background = new SolidColorBrush(Colors.LightGray);
+        }
+
+        private void Shots_clicked(object sender, MouseButtonEventArgs e)
+        {
+            GroupControl.Background = new SolidColorBrush(Colors.Red);
+        }
+
+        private void Soda_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            GroupControl.Background = new SolidColorBrush(Colors.DeepSkyBlue);
+        }
+
+        private void Snacks_clicked(object sender, MouseButtonEventArgs e)
+        {
+            GroupControl.Background = new SolidColorBrush(Colors.SaddleBrown);
+        }
+
+        private void Øl_clicked(object sender, MouseButtonEventArgs e)
+        {
+            GroupControl.Background = new SolidColorBrush(Colors.YellowGreen);
+        }
+        */
     }
 }
