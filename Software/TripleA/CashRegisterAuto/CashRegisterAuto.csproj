@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="CashRegister\CashDrawers\CashDrawer.cs" />
     <Compile Include="CashRegister\CashDrawers\ICashDrawer.cs" />
-    <Compile Include="CashRegister\Database\GenericRepository.cs" />
     <Compile Include="CashRegister\Database\IDatabase.cs" />
     <Compile Include="CashRegister\Discount\Class1.cs" />
     <Compile Include="CashRegister\Discount\Enumeration1.cs" />

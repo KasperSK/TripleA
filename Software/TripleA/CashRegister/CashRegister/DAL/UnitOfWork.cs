@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashRegister.CashRegister.Database;
+using CashRegister.Database;
 
 namespace CashRegister.DAL
 {
     public class ProductUnitOfWork : IDisposable
     {
-        private readonly KasseApparat Context;
+        private readonly CashRegisterContext Context;
         private GenericRepository<Product> _productRepository;
         private GenericRepository<Price> _priceRepository;
         private GenericRepository<ProductGroup> _productGroupRepository;
 
-        public ProductUnitOfWork(KasseApparat context)
+        public ProductUnitOfWork(CashRegisterContext context)
         {
             Context = context;
         }

@@ -63,12 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CashRegister\DAL\GenericRepository.cs" />
-    <Compile Include="CashRegister\DAL\IUnitOfWork.cs" />
     <Compile Include="CashRegister\DAL\UnitOfWork.cs" />
+    <Compile Include="CashRegister\Database\CashRegisterContext.cs" />
     <Compile Include="CashRegister\Database\C__RefactorLog.cs" />
     <Compile Include="CashRegister\Database\Discount.cs" />
-    <Compile Include="CashRegister\Database\IDatabase.cs" />
-    <Compile Include="CashRegister\Database\KasseApparat.cs" />
     <Compile Include="CashRegister\Database\OrderList.cs" />
     <Compile Include="CashRegister\Database\PaymentType.cs" />
     <Compile Include="CashRegister\Database\Price.cs" />

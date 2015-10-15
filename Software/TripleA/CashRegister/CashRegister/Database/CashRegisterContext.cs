@@ -1,14 +1,14 @@
-namespace CashRegister.CashRegister.Database
+namespace CashRegister.Database
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class KasseApparat : DbContext
+    public partial class CashRegisterContext : DbContext
     {
-        public KasseApparat()
-            : base("name=KasseApparat")
+        public CashRegisterContext()
+            : base("name=CashRegisterContext")
         {
         }
 

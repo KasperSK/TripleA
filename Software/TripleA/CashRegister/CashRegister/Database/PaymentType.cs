@@ -1,4 +1,4 @@
-namespace CashRegister.CashRegister.Database
+namespace CashRegister.Database
 {
     using System;
     using System.Collections.Generic;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using CashRegister.CashRegister.Database;
+using CashRegister.Database;
 using CashRegister.Log;
 using CashRegister.Database;
 using CashRegister.DAL;
@@ -27,7 +27,7 @@ namespace CashRegister.Program
             _logger.Warn("Warn");
             _logger.Info("Info");
             _logger.Debug("Debug");
-            ProductUnitOfWork ProductUoW = new ProductUnitOfWork(new KasseApparat());
+            ProductUnitOfWork ProductUoW = new ProductUnitOfWork(new CashRegisterContext());
             var Product = ProductUoW.ProductRepository.GetById(2);
             var Plist = ProductUoW.ProductRepository.Get();
             Console.WriteLine(Environment.NewLine + $"{Product.ProductName}");

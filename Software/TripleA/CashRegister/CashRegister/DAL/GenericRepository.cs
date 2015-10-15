@@ -6,18 +6,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using CashRegister.CashRegister.Database;
+using CashRegister.Database;
 using CashRegister.Log;
 
 namespace CashRegister.DAL
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-        internal KasseApparat Context;
+        internal CashRegisterContext Context;
         internal DbSet<TEntity> DbSet;
         private readonly ILogger _logger = LogFactory.GetLogger(typeof (GenericRepository<TEntity>));
 
-        public GenericRepository(KasseApparat context)
+        public GenericRepository(CashRegisterContext context)
         {
             Context = context;
             DbSet = context.Set<TEntity>();
