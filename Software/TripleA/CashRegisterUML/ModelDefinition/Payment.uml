@@ -117,6 +117,26 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedAttributes>
+          <property
+            Id="80c22b99-d1af-42c4-894d-4233e187e599"
+            name="PaymentDescriptor"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="204ef89c-afb5-4e01-bc91-007f5c616674"
+                LastKnownName="List&lt;IPaymentProvidorDescriptor&gt;"
+                LastKnownLocation="Payment.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributes>
         <ownedOperations>
           <operation
             Id="ed7676aa-6b43-45a8-ae16-87664c69fb26"
@@ -179,7 +199,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="905e1851-1674-402b-beb5-4b25477705a1"
+                  Id="a8491378-505b-4f08-93ff-96bb913aeba8"
                   name="transaction"
                   direction="In"
                   isUnique="false">
@@ -267,38 +287,35 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="5d5ad650-ec97-430d-bd90-e3c8ad3f44b5"
+                  Id="94272f4e-cba2-41d3-982b-9e8879c52697"
                   name="amount"
-                  direction="In"
-                  isUnique="false">
+                  direction="In">
                   <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="7e27ffb5-d5a0-4425-b837-e1fe95b3e5a7"
-                      LastKnownName="long"
-                      LastKnownLocation="Sales.uml" />
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f4371c25-eabd-45cb-8f89-15538be46d80"
-                  name="description"
-                  direction="In"
-                  isUnique="false">
+                  Id="9aa9953d-5380-4047-bcb6-b22310d207c3"
+                  name="desc"
+                  direction="In">
                   <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="15829478-51f5-4391-9c75-0dccb6085cbd"
-                      LastKnownName="string"
-                      LastKnownLocation="Payment.uml" />
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="167f9ab5-326d-4f18-83c6-fc68593a6e2d"
-                  name="paymentprovider"
-                  direction="In"
-                  isUnique="false">
+                  Id="cc1ece61-c248-490c-85fc-fd2825d43e1b"
+                  name="PaymentDesciptor"
+                  direction="In">
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
@@ -383,6 +400,29 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="f51505dd-6048-4dc9-aeb1-227a677e2731"
+            name="Tally"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b34793ac-ee07-434d-8bd1-c7fc54b5cad0"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperations>
       </Interface>
     </packageHasNamedElement>
@@ -392,6 +432,7 @@
         name="IPaymentProvidorDescriptor"
         isAbstract="false"
         isLeaf="false">
+        <description>Contians Description of the Paymentprovidor and is the interface used outside this namespace</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="2e692259-f05c-46d6-ba7f-c3dda854c4fb"
@@ -435,11 +476,11 @@
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
-            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
+            <description>The PaymentProviders unique ID</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="93fca0d9-fccd-43b3-b1a0-9a9b7616b952"
@@ -457,7 +498,7 @@
                     <propertyInstance
                       Id="cbb039ce-62b1-43d3-85a3-a68fe9fdfc29"
                       name="Get"
-                      value="none" />
+                      value="public" />
                   </stereotypeInstanceHasPropertyInstances>
                   <stereotypeInstanceHasPropertyInstances
                     Id="73724772-78c3-449d-8297-c3a046022d73">
@@ -492,7 +533,7 @@
                     <propertyInstance
                       Id="d50c4758-03bd-468a-a761-730e33bbc28c"
                       name="Set"
-                      value="none" />
+                      value="private" />
                   </stereotypeInstanceHasPropertyInstances>
                 </propertyInstances>
               </stereotypeInstance>
@@ -515,6 +556,7 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
+            <description>The PaymentProviders Name</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="bcc4f52e-77e3-47bd-911d-de4e9403c432"
@@ -567,7 +609,7 @@
                     <propertyInstance
                       Id="a8dc4d66-ac93-4653-b43f-57cca765cc15"
                       name="Set"
-                      value="none" />
+                      value="private" />
                   </stereotypeInstanceHasPropertyInstances>
                 </propertyInstances>
               </stereotypeInstance>
@@ -581,7 +623,7 @@
           </property>
           <property
             Id="7b622a96-1351-4b78-9709-eb24f7dfc938"
-            name="Descriptin"
+            name="Description"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -590,6 +632,7 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
+            <description>A text discription of the PaymentProvider</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="300e117a-781a-4472-ac30-50bc0c3182ab"
@@ -642,11 +685,17 @@
                     <propertyInstance
                       Id="97e39d2e-af4c-432e-a343-b9099e8ddb9f"
                       name="Set"
-                      value="none" />
+                      value="private" />
                   </stereotypeInstanceHasPropertyInstances>
                 </propertyInstances>
               </stereotypeInstance>
             </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="CashRegisterUML.uml" />
+            </type_NamedElement>
           </property>
         </ownedAttributes>
       </Interface>
@@ -657,6 +706,7 @@
         name="IPaymentProvider"
         isAbstract="false"
         isLeaf="false">
+        <description>Interface for the different paymenttypes</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="d4d47705-2340-4f88-8a7e-70d9870710a2"
@@ -712,6 +762,7 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
+            <description>Gets a discription of the paymenttype</description>
             <appliedStereotypesInternal>
               <stereotypeInstance
                 Id="57dac323-20f7-4d52-a61a-b943a0c7dfbc"
@@ -766,7 +817,458 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="1d409199-33b2-4fe8-88bf-171e2f5c938c"
-                  direction="Return" />
+                  direction="Return">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
+                      LastKnownName="IPaymentProvidorDescriptor"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a6bb2157-3b80-4c8c-b999-02a0486b41a8"
+            name="TransferAmount"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Transfor the price amount</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="144eae67-f94f-403c-8a98-c04f4f477f6e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f1f08392-91c7-47ea-8f75-fa8a98d2f10f">
+                    <propertyInstance
+                      Id="e4d5f068-8b7d-41f7-bae9-3db03d2adb7b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9cea0046-78f6-4ebe-b1a3-7cff264d4369">
+                    <propertyInstance
+                      Id="c14ea1d2-49be-4297-8bad-537d56dc2b1a"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="252916ac-f60a-4b09-bc43-4752040c593b">
+                    <propertyInstance
+                      Id="e2a10fc8-b11b-49a3-a94d-03960853e876"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9819c38e-90b5-4cd4-a78e-8a46a823dcf9">
+                    <propertyInstance
+                      Id="3f7d5bd7-acf8-4b6c-817b-1978c82298d8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4ce275b-8d87-4376-bd69-02379118157f">
+                    <propertyInstance
+                      Id="ad5462bf-dc5b-4a41-8752-51fed5a33f9b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9fbb3807-494d-4ae1-84a6-71086a733681">
+                    <propertyInstance
+                      Id="eb6ff1f3-d48d-4a78-87b7-330a5ebd80ea"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="642d452c-0100-484a-b292-d502444ed4b8"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="308a003d-5b7c-4575-b281-2cf785def146"
+                  name="amount"
+                  direction="In">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="a7279604-2275-447a-8a3a-35a8dd00ee6a"
+                      LastKnownName="int"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ae19c70a-2514-4463-b05e-b3b7dfab4b78"
+                  name="desc"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="79c6187f-2a0d-418f-9930-0a44c5dfa957"
+            name="TransaktionStatus"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Writes the transaktionstatus</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b5bca371-b5a8-4f05-926f-a3dab0f2588a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28a7d421-5a6d-4139-8e08-396dc3b1e4ec">
+                    <propertyInstance
+                      Id="543c21d7-3560-4c0d-8c7e-6264f7979198"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="671b2ed0-35e8-4a58-98a9-175092da7601">
+                    <propertyInstance
+                      Id="7cd045da-59c8-4873-9e4d-b9bd26f6f574"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="46174087-2f26-4ac7-b1c5-96de22eb2fe0">
+                    <propertyInstance
+                      Id="4387f8cb-9636-4634-9fcb-3b2c313e80bb"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51bb25a7-356c-4fd9-8679-fdeb8441d83b">
+                    <propertyInstance
+                      Id="270e5b91-23b8-479b-b718-192c6766000a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c663334c-729d-4d88-acb0-177e277b9aed">
+                    <propertyInstance
+                      Id="97719a51-ce91-4c5c-9119-1f4f9e327958"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae0e079a-0dca-4ca9-83b9-b06b34af12a4">
+                    <propertyInstance
+                      Id="aa9696b5-d88a-4efe-9fb2-ebb6a8505211"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d2fe7024-3feb-48f7-9fa5-b8ecd1aa8808"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="99cea950-48ef-4fcf-a4b6-bcfedfb3c507"
+            name="Restart"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Restart the payment system</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b2bb2b42-92e8-4701-b5b0-ee54c9a95f5e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53467271-050f-4e3a-a570-2468aafb019d">
+                    <propertyInstance
+                      Id="58a3454b-8189-4910-be23-a9e7712abec8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8849078-973c-4b1a-a449-c3ba4f54bbf5">
+                    <propertyInstance
+                      Id="eb6228d5-86d4-4a4c-8549-4cda7f5aed66"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eb6073bd-944d-46c0-b480-3b7018298403">
+                    <propertyInstance
+                      Id="f085db57-52bc-478a-b567-f3c3d41cd05e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d005333f-33c0-4e60-b992-eac57c60df84">
+                    <propertyInstance
+                      Id="bbb1a5b3-b9d6-44ba-a2dd-41d2e40b0fa0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="14e96f4a-4f3d-4395-9cb9-5d74756398ed">
+                    <propertyInstance
+                      Id="56443c13-f040-4ee3-aa77-872731d63b26"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a5518aba-cfd1-4f3e-8174-290861e5b147">
+                    <propertyInstance
+                      Id="774e94d3-45ad-4eb8-b3f9-d145570825b8"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="03873c7a-0da0-4fc9-9a2b-b500b6a544d2"
+            name="Shutdown"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Shuts down the payment system</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cc7a0bc3-643b-41ca-991b-d9eb9851d6ad"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53b4f643-d576-49dc-a933-96443f6ba97b">
+                    <propertyInstance
+                      Id="6aa4cc05-cf6e-4de4-b360-3fcd249c66ef"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="303e35f5-2d46-4eb6-a182-99f907de6424">
+                    <propertyInstance
+                      Id="67230d5b-da85-4a92-bf8c-d05910c3fad9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="06df9721-0409-4f20-ada2-3c6ec760322d">
+                    <propertyInstance
+                      Id="848d5332-4559-4a87-a1f8-16129caf058b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e37311c-54c0-4bd3-8458-11e02664d3d3">
+                    <propertyInstance
+                      Id="87525bf1-79fb-4d73-b12e-3c4e7213a8a8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1ee2153-822b-45b7-9ecb-36f3f98b1a04">
+                    <propertyInstance
+                      Id="2578938f-b2bc-4a22-ae89-f40284443bb1"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5e17db8b-d875-4b79-ad7a-a8d6be347173">
+                    <propertyInstance
+                      Id="106ec0ec-8540-4895-a724-eec848814177"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="bfc48ae7-0232-4f5b-984c-38bd7d2bf463"
+            name="Tally"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Balance the payment</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ca3c8054-a44f-4a8f-befe-0117e34d3afa"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c19c374-de4d-4f2f-af04-fb1596ad802d">
+                    <propertyInstance
+                      Id="0e244cf9-418b-4887-9e9e-4d266351b8d1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91efc694-3d26-4b55-a5c9-2a1558790bd4">
+                    <propertyInstance
+                      Id="3a043144-98ae-4ae4-898f-f87d1a35b362"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36cfaeda-93ba-4ff3-8a12-a2ad2bf727da">
+                    <propertyInstance
+                      Id="fc43482b-56e7-4b55-bce5-ed9a33afca5a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1a61803b-821f-4031-be84-b231e49d1630">
+                    <propertyInstance
+                      Id="eb839eb7-621b-42d3-9a04-fe1bf3915cfc"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41d9034a-7427-45fb-a8f9-149369742852">
+                    <propertyInstance
+                      Id="83c40bd6-e4d4-4a04-ae88-deeda6430aa3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="79567311-6a92-4525-834b-1c25b11fc8d5">
+                    <propertyInstance
+                      Id="f0f7be4c-abaf-490d-a81b-3d4fe0226972"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4a8cc99c-256b-47ff-a5a2-e81d6c5a6686"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="80e3c291-c1a4-4c03-99af-8b00019feea9"
+            name="Init"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Initialiser for the payment types</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fbf3633b-fd77-4226-bb7d-92eaa60a6c9c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cfa647d5-04c5-4eba-af03-57c6a8147ebb">
+                    <propertyInstance
+                      Id="1a0abfeb-38da-4422-a825-b6c504ddfa49"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4f4b7e5a-9528-48d6-a95d-4f25396bb6bf">
+                    <propertyInstance
+                      Id="c5e117c1-4c85-4917-8c98-4ed4b511b1bc"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="98e5c101-3f09-470b-9b2f-1762cf3a33f9">
+                    <propertyInstance
+                      Id="5837a0d7-ad39-47a0-b9ab-6ffd5b4a626e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="deebae45-0211-49e8-8ee3-6cd5c3a4ba0e">
+                    <propertyInstance
+                      Id="2fbaf276-a827-42a4-b18c-8d3e8d19d764"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9a57b9b7-dc33-4c05-875d-52874667bda9">
+                    <propertyInstance
+                      Id="709e0886-f07a-4365-903f-13dc14a62d4d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e296c55-a805-494c-b226-7b229c5b21ed">
+                    <propertyInstance
+                      Id="0727275b-9218-49b3-84de-67b23b726694"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c4d3c544-6f8a-4f73-a816-4ada048b02eb"
+                  name="change"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -780,6 +1282,7 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <description>Nets functionalities</description>
         <appliedStereotypesInternal>
           <stereotypeInstance
             Id="54a2458b-31c8-455b-9eb8-26740b033692"
@@ -823,83 +1326,16 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
-        <suppliersInternal>
-          <interfaceRealization
-            Id="cdd993fd-776a-4679-9db8-adbae6750a69">
-            <interfaceMoniker
-              Id="b57103ad-dcbc-4e33-929e-9672d2a8f914"
-              LastKnownName="IPaymentProvider"
+        <generalsInternal>
+          <generalization
+            Id="6382a48f-aac9-48e6-88b4-ff81432a7eda"
+            isSubstitutable="false">
+            <classMoniker
+              Id="c770b539-25d4-4d5b-abc4-17cc3618f4e7"
+              LastKnownName="PaymentProvider"
               LastKnownLocation="Payment.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="948f3a11-68ee-4ff3-a506-dbad351262dd"
-            name="GetDescriptor"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="4568ef00-c649-4141-a29a-554c128c142f"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="cb94bb6a-307b-4529-acee-f46f8bc04ad3">
-                    <propertyInstance
-                      Id="758111a6-9a5d-491d-8de2-8d19ba251931"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="176464ee-285c-48a1-a2d8-85fa61310afb">
-                    <propertyInstance
-                      Id="931dd5e1-079a-454a-a4fb-ba2b9b08bf9f"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="22b36801-be69-4766-a2fa-a7a41f7c7718">
-                    <propertyInstance
-                      Id="cd775008-1010-445b-864d-9fbe25683192"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="52ea8be3-bcc3-4c7d-9f69-13893f7183c9">
-                    <propertyInstance
-                      Id="9b502bae-c724-4f9e-a18b-d0f47c46a5e1"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="238eeff5-eca0-4220-91d0-f9c4d60b5ea4">
-                    <propertyInstance
-                      Id="63294924-9025-4121-920d-8320b33f4473"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0629a087-9c18-423c-bbfa-2002fb13c06b">
-                    <propertyInstance
-                      Id="cd99ef3c-4f98-485d-af2f-8056db0563a8"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="14c07a75-a604-4682-8a68-3fbb3fab3863"
-                  direction="Return" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-        </ownedOperationsInternal>
+          </generalization>
+        </generalsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1626,6 +2062,64 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="bf14c73b-4d4b-478e-beeb-fef5d0264c2f"
+            name="PaymentProviters"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2507a587-3ddb-4368-9c9d-93ddb20003bb"
+                LastKnownName="List&lt;IPaymentProvider&gt;"
+                LastKnownLocation="Payment.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0f173f8b-f706-4411-9b13-6effaa635195"
+            name="PaymentDescriptor"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="204ef89c-afb5-4e01-bc91-007f5c616674"
+                LastKnownName="List&lt;IPaymentProvidorDescriptor&gt;"
+                LastKnownLocation="Payment.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d47de56e-6845-403a-9d86-4ec5dfadc3ea"
+            name="cashDrawer"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="1106cc90-78bc-4212-a582-04d25ac00965"
+                LastKnownName="ICashDrawer"
+                LastKnownLocation="CashDrawers.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="94f77b9d-c9ae-4e59-af3a-8c2d28e96071"
@@ -1776,38 +2270,35 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="0d92b000-7a03-4360-a27c-eb237dfc2713"
-                  name="id"
-                  direction="In"
-                  isUnique="false">
+                  Id="efb29618-6f5e-45eb-93c1-b2701e07e71e"
+                  name="amount"
+                  direction="In">
                   <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="7e27ffb5-d5a0-4425-b837-e1fe95b3e5a7"
-                      LastKnownName="long"
-                      LastKnownLocation="Sales.uml" />
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="94f2581a-3247-419a-9687-92a6fdbdf108"
-                  name="description"
-                  direction="In"
-                  isUnique="false">
+                  Id="22a752f2-df4f-4ac7-b6cb-a6b66d6184c6"
+                  name="desc"
+                  direction="In">
                   <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="15829478-51f5-4391-9c75-0dccb6085cbd"
-                      LastKnownName="string"
-                      LastKnownLocation="Payment.uml" />
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="790b88d9-4ae5-4f29-ac9e-c3cb3538ba71"
-                  name="paymentprovider"
-                  direction="In"
-                  isUnique="false">
+                  Id="78918c35-e502-48f7-b700-e354a6d54ec3"
+                  name="PaymentDesciptor"
+                  direction="In">
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
@@ -1887,6 +2378,29 @@
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
                       LastKnownName="ITransaction"
                       LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="09fec365-4cba-4fb6-94a3-5ba6f26aa1d1"
+            name="Tally"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ab630233-9f49-4b08-9fb3-51b0b3974b91"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -2379,9 +2893,795 @@
       </enumeration>
     </packageHasNamedElement>
     <packageHasNamedElement>
+      <class
+        Id="7b0c7260-b6c1-4efe-9b38-044a96cd5a51"
+        name="CashPayment"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <description>The Cash drawers functionalities</description>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="06904d0c-1430-4850-98fb-26b7e50c9dc8"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1a38d768-741c-4e86-84a4-faecf350019e">
+                <propertyInstance
+                  Id="32334ef1-c829-4aec-9a6a-265e97b345b7"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f5e77e66-2d2b-4486-8649-0bdd17913ba2">
+                <propertyInstance
+                  Id="d6543f55-5332-4fc6-a047-4d827facb630"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="862d4976-5ce1-47b4-94c8-6eb3ca5208b4">
+                <propertyInstance
+                  Id="fee9def8-fdd6-42cb-85e0-ec1f0c2c9326"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="032913f7-340b-4a44-a4d7-1807ca767e14">
+                <propertyInstance
+                  Id="5570a010-5328-4cef-bc9e-df65a077dd6f"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="679910a9-da07-4d5a-a7ea-56dcf0d2596d">
+                <propertyInstance
+                  Id="d3428f22-7b09-455a-a9df-6a00472e3d91"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="7e664731-c60e-4151-a5ce-2f3948b5bee0"
+            isSubstitutable="false">
+            <classMoniker
+              Id="c770b539-25d4-4d5b-abc4-17cc3618f4e7"
+              LastKnownName="PaymentProvider"
+              LastKnownLocation="Payment.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="283f8cdd-2830-4d07-8964-709dbc57b81d"
+        name="MobilePay"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <description>MobilePay functionalities</description>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="d583ae26-3f77-4656-a03a-f147b9f2eb1e"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ee5752a2-7c29-472e-8213-8a9391a1aafd">
+                <propertyInstance
+                  Id="705d76ee-ea9a-4365-b1ca-9152aa8b4620"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f224dc21-a5ff-4271-a373-c40395ce94eb">
+                <propertyInstance
+                  Id="5b75f026-afdf-44bf-bf08-5045b529e1d4"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="469a1496-070b-4089-9a76-36816e014988">
+                <propertyInstance
+                  Id="67e3989b-871f-4fb5-b654-b2b926ac40db"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a4ff80e2-03a6-4ea8-86b4-dcc097a209cf">
+                <propertyInstance
+                  Id="7fb9dfd9-685a-47be-b078-c26722657760"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f70cc50e-bb95-497d-a0f5-3de6a87204ea">
+                <propertyInstance
+                  Id="5acd50ce-7429-4506-995b-a5d9274e30e2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="73e41b3a-4242-470d-89f1-b6d256ccaf11"
+            isSubstitutable="false">
+            <classMoniker
+              Id="c770b539-25d4-4d5b-abc4-17cc3618f4e7"
+              LastKnownName="PaymentProvider"
+              LastKnownLocation="Payment.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c770b539-25d4-4d5b-abc4-17cc3618f4e7"
+        name="PaymentProvider"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <description>Class for the paymenttypes common feature</description>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="ddae837c-ab91-4f5a-a345-a5a97c3cd95c"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="18eea925-87fe-4b2d-a107-24b2d802a2a7">
+                <propertyInstance
+                  Id="dadf5b63-7fd9-4d11-9255-2a1478c89e7f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c1016881-14d6-4a98-8c4a-c8eb50995492">
+                <propertyInstance
+                  Id="fd1ae2a6-031e-476f-9bb9-3917baf1dbc3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c46b8d30-3c96-4bbd-a7de-f6716b3ad7f1">
+                <propertyInstance
+                  Id="4b3409cd-9356-4c1c-b31a-65dc0bee4f57"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6706f487-1472-414e-b824-957297c9cc43">
+                <propertyInstance
+                  Id="6b799c10-f4c1-4900-8ac3-eb4c45eb0071"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6a96d911-ab5e-4385-a81f-63016c020495">
+                <propertyInstance
+                  Id="5a7141bc-85c5-4f9a-a3b6-785501b85487"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="fce1cf37-f7c4-4a43-89df-549530a1675b">
+            <interfaceMoniker
+              Id="b57103ad-dcbc-4e33-929e-9672d2a8f914"
+              LastKnownName="IPaymentProvider"
+              LastKnownLocation="Payment.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="ea8befd4-93da-4d47-a1e4-7135a0d80875"
+            name="StartChange"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <description>The start change in the cashregister</description>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="CashRegisterUML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ed4e7d44-5aed-4162-9917-9bb51e85460c"
+            name="Amount"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="CashRegisterUML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="668567f1-5d6b-4e65-9fed-84b1a6c00669"
+            name="GetDescriptor"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Gets a discription of the paymenttype</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="26dd7524-e86d-4abe-bcac-963b9b46e502"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d504232c-bb36-41a7-9d69-a0294aa1f5de">
+                    <propertyInstance
+                      Id="985e92af-f788-43eb-b80d-f53adb8ffef4"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2dc38bd-d464-4240-bb55-b5fe1a27a105">
+                    <propertyInstance
+                      Id="42586cb7-6e5d-49e6-a65d-f83a98e0fa61"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3dfc5701-8142-4009-93be-4435097de077">
+                    <propertyInstance
+                      Id="56b39f97-a674-494c-acba-3605f1ac820f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56e4e0eb-bf49-418f-bb94-ad268e62d485">
+                    <propertyInstance
+                      Id="8e536abf-8012-4e0b-8d51-eb239c81b823"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e4fe096f-322b-41b7-b809-1a8d33b66e24">
+                    <propertyInstance
+                      Id="2a5594c8-0bc5-484b-9482-c9550c1a7e04"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ba7a179-29f4-42ff-a554-c9279d1d2605">
+                    <propertyInstance
+                      Id="1e9a6ec9-21e7-4a85-b82c-4d584c1fc4aa"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1a3a72a8-6b88-413f-9d2e-07653ba6a130"
+                  direction="Return">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
+                      LastKnownName="IPaymentProvidorDescriptor"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c84b4a32-015d-4f89-8745-1306705202a7"
+            name="TransferAmount"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Transfor the amount and describtion, and returns true og false whether the transaktion was a succes or not
+</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0bcd769e-adf2-4dac-b336-49e5c7e046bc"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="46dbdf30-3867-4137-823d-347f5f1d3d6c">
+                    <propertyInstance
+                      Id="e9c02441-61d8-432a-b68b-7e4861b98fa9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba1a578b-04d2-4483-a4f6-a3a2cb2420e5">
+                    <propertyInstance
+                      Id="09aa2478-185a-4ae7-9110-10992a6f57b3"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ace6ee73-d9fb-4ba0-af70-bd6c268e643c">
+                    <propertyInstance
+                      Id="d7ad0be0-6b2a-4aab-bfad-d0d0a525205d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5cda6424-b869-43c1-bb54-2dd6d05d82da">
+                    <propertyInstance
+                      Id="8e0deef2-d73e-491a-8ce2-a9751ef6258f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3de23209-79e2-4738-9177-3812ab7d4c9d">
+                    <propertyInstance
+                      Id="08be254a-9fc6-4588-bee2-c5c410de9f54"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2bdfd96-edff-44da-829c-57230887c4ec">
+                    <propertyInstance
+                      Id="1897f82e-3d8c-40f4-8ec1-adce6f92fa83"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="974c5c97-6376-4cb5-96fa-9f8e85d898d6"
+                  name="amount"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8bdcc490-496c-4fc0-9fba-827b3ee492ba"
+                  name="desc"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="09952a3f-075b-4177-bbb0-20329dc6fa87"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d8af16c8-5d43-46d9-bd04-4b3e9ddbdb53"
+            name="TransaktionStatus"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Writes the transaktionstatus</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8d5fdb2d-1232-4a0a-abc3-8c3313addc5b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="329517d0-506e-4ae4-9ce2-86440625be5a">
+                    <propertyInstance
+                      Id="0647fbee-6f99-4f8d-9252-dd91f3922a2e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3e18283-9c28-4d30-8b15-8cf843df8ee4">
+                    <propertyInstance
+                      Id="cfb51923-aa0f-4d8a-b023-878b4b8d433e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9427fd73-c5f3-4ae3-9c32-f033441bb64d">
+                    <propertyInstance
+                      Id="8f46a5b2-3aac-4623-9903-8c4908588a00"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0b3319e7-e82b-4985-a2c4-d1754167e6bc">
+                    <propertyInstance
+                      Id="b134f508-cf3a-4e64-a98b-0f8e8658aa76"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a11007f5-099d-4e7a-a34a-6c21455118db">
+                    <propertyInstance
+                      Id="c9984ff9-7b4f-4d66-b8d2-e4af685dd359"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="18745fac-e685-4758-addc-77f95e04adcf">
+                    <propertyInstance
+                      Id="8508b62d-0dc1-4bdf-b36e-ce5906511dbd"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="14029ef5-0f28-4b62-a103-09426345099d"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d4accd16-7c98-46e1-b37b-c0151a9b05ae"
+            name="Tally"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Balance the payment</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cf5eb09b-0dd5-44e4-9db2-740564b430db"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f8cea056-8979-4c25-b6b2-c17864a1cb92">
+                    <propertyInstance
+                      Id="01b5b2ef-6e53-47f7-a238-192166ff3da0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f7a411db-5f0e-4a54-9ba6-9580c3205743">
+                    <propertyInstance
+                      Id="19a00157-6725-45f5-80dc-47328d362079"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9bb36fa4-b1d2-4625-be91-aee448faef80">
+                    <propertyInstance
+                      Id="c902fb9b-67b9-4c3a-9357-11b935b2c60d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a1564745-6d00-43fb-b3e9-006d365c5438">
+                    <propertyInstance
+                      Id="7f50e6f1-5a71-4d98-ac33-dcd348c96cf4"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="45cce801-3a3e-402d-8807-e967cebca89f">
+                    <propertyInstance
+                      Id="fb044ab6-3cb6-4f5e-9c95-3e09caad7f96"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7caf64a6-5797-467d-9b22-10742a37a0a6">
+                    <propertyInstance
+                      Id="98175b5e-7006-4271-8594-56231a174eb4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6f511c4b-71e0-4174-b161-a23ae8fef23f"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d1f5904b-3f9a-4e95-8b0d-afded593af3c"
+            name="Init"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Initialiser for the payment types</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c16eeb6b-ba17-4c4e-a657-8c26e6b01ccd"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8742adc-a691-43e2-bc5b-d5cebfd76a8b">
+                    <propertyInstance
+                      Id="6eebf4af-619d-4c1f-a81b-4b637f1d2451"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="343ff4b5-d5e2-444c-ad41-93a79bf78022">
+                    <propertyInstance
+                      Id="3deaa3a6-9355-4d27-a702-a9cd949f0267"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d29c07b-f95d-4dd5-8147-e462bc8c7b96">
+                    <propertyInstance
+                      Id="2c96ab82-ef94-4110-9d09-0e60a6b18096"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c0aa459b-ae01-4155-b8e8-611d9fb57f43">
+                    <propertyInstance
+                      Id="ab9ec78c-795b-4682-835c-953a04603192"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="921f5431-2a7d-4142-8d54-99296743b782">
+                    <propertyInstance
+                      Id="b4e658ef-fb07-48e9-b787-b02473c2a70e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="88ff2479-4e23-4b9a-ad61-b1e4b14550a1">
+                    <propertyInstance
+                      Id="832862b1-697c-4516-98ac-145d3f793bbd"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9716c0c9-7bce-4868-8178-653992cb970d"
+                  name="startChange"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1563cdfa-2093-4be5-9689-58d5b9e4aef2"
+            name="Shutdown"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Shuts down the payment system</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c4f34265-87ea-493c-a959-f338b034f35e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4244316-104e-4ced-80ac-cdae949ad923">
+                    <propertyInstance
+                      Id="d1771958-2360-4657-b90c-6583dde4910c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4691ef5a-da16-465b-bfc5-56354958fb71">
+                    <propertyInstance
+                      Id="7a54b03b-5b14-46b1-8214-b38db7657f1e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dec34a38-b266-4c9c-8b0f-30fa1c0eff3d">
+                    <propertyInstance
+                      Id="9fd48c04-d96d-4d3b-a4be-5cd80f5a9eca"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6dcbb0b0-f680-4781-be13-fa4cf3457068">
+                    <propertyInstance
+                      Id="367083e9-f882-4967-a717-bf87fa378e2b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b5990913-6cf4-4137-b000-8780070db2c7">
+                    <propertyInstance
+                      Id="a9bb350c-bc50-479d-884c-764bd67f4727"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="352775a1-c98b-40d0-a95a-c2b6d76cf72d">
+                    <propertyInstance
+                      Id="30cc33bc-8896-4412-b25b-2d3de481b829"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="0b5cd1bb-1322-4e5c-90e8-ec0ece19282f"
+            name="Restart"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <description>Restart the payment system</description>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ceb1e802-39a5-4ba9-a4a5-7616b07ee776"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eee45131-c281-453a-b2e0-71168ee660da">
+                    <propertyInstance
+                      Id="e630b39e-8171-4e39-9808-fcf3916b01ab"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f5f74ea5-f5cc-4d97-b182-e24290e91b7d">
+                    <propertyInstance
+                      Id="4c8ab018-ab46-4fea-bcb3-136fbd84f3eb"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2840c58f-f0f5-4f6c-8c24-e63999b52995">
+                    <propertyInstance
+                      Id="e3e3036b-0a83-4dd8-a5a1-148333c52e36"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="891a864c-8839-4fc9-bec8-c631ad413428">
+                    <propertyInstance
+                      Id="5605b822-ed0e-4f64-8bfe-bbd6936d5bd8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1564ec2c-5d9a-4bd1-b6bb-ea93a4e9a430">
+                    <propertyInstance
+                      Id="9e85660b-028f-46a5-aa39-9700b1441f88"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4ea8b53-7e87-4aec-a0c8-415848b29101">
+                    <propertyInstance
+                      Id="1940bbeb-cc60-480a-b843-9948130e7b5e"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
       <undefinedType
-        Id="15829478-51f5-4391-9c75-0dccb6085cbd"
-        name="string" />
+        Id="a7279604-2275-447a-8a3a-35a8dd00ee6a"
+        name="int" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c6baf522-f888-497b-b966-b7d151d71e1e"
+        name="bool" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="6de4abf8-8de0-4b2b-96b1-bd42d9d6abd1"
+        name="List&lt;CashRegisterUML::CashRegister::Payment::PaymentProvider&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d47e9c7a-2da1-4c94-bf85-decdc2ad56ff"
+        name="List&lt;CashRegisterUML::CashRegister::Payment::PaymentProviderDescriptor&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="f434f8cc-4b15-4896-8e14-1de55c3cf136"
+        name="List&lt;CashRegisterUML::CashRegister::Payment::IPaymentProvider&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="2507a587-3ddb-4368-9c9d-93ddb20003bb"
+        name="List&lt;IPaymentProvider&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="204ef89c-afb5-4e01-bc91-007f5c616674"
+        name="List&lt;IPaymentProvidorDescriptor&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9ceeb854-d5d3-4e54-a27d-356953eabeb7"
+        name="do" />
     </packageHasNamedElement>
   </packagedElements>
 </package>
