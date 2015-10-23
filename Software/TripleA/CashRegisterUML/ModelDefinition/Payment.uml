@@ -179,7 +179,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c1e3661b-d2c8-4a33-8d3f-1d1d5de71773"
+                  Id="905e1851-1674-402b-beb5-4b25477705a1"
                   name="transaction"
                   direction="In"
                   isUnique="false">
@@ -187,20 +187,6 @@
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
                       LastKnownName="ITransaction"
-                      LastKnownLocation="Payment.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="52a2c2af-25f4-4afd-9ca8-42291266dc33"
-                  name="provider"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <interfaceMoniker
-                      Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
-                      LastKnownName="IPaymentProvidorDescriptor"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -269,11 +255,54 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="87e1ede6-4a6c-41f9-a03c-71f142b41f4c"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
                       LastKnownName="ITransaction"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5d5ad650-ec97-430d-bd90-e3c8ad3f44b5"
+                  name="amount"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="7e27ffb5-d5a0-4425-b837-e1fe95b3e5a7"
+                      LastKnownName="long"
+                      LastKnownLocation="Sales.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f4371c25-eabd-45cb-8f89-15538be46d80"
+                  name="description"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="15829478-51f5-4391-9c75-0dccb6085cbd"
+                      LastKnownName="string"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="167f9ab5-326d-4f18-83c6-fc68593a6e2d"
+                  name="paymentprovider"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
+                      LastKnownName="IPaymentProvidorDescriptor"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -1567,7 +1596,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="5a56a10b-a4ea-4b20-9ea3-66b52ddfb566"
-              LastKnownName="IBonPrinter"
+              LastKnownName="IPrinter"
               LastKnownLocation="Printer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1671,20 +1700,6 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="1ade0672-4c41-4865-b05d-d9b16130192b"
-                  name="provider"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <interfaceMoniker
-                      Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
-                      LastKnownName="IPaymentProvidorDescriptor"
-                      LastKnownLocation="Payment.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation
@@ -1749,11 +1764,54 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="9e65f01e-b6cd-40ca-a66a-d8d9638fdd20"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
                       LastKnownName="ITransaction"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0d92b000-7a03-4360-a27c-eb237dfc2713"
+                  name="id"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="7e27ffb5-d5a0-4425-b837-e1fe95b3e5a7"
+                      LastKnownName="long"
+                      LastKnownLocation="Sales.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="94f2581a-3247-419a-9687-92a6fdbdf108"
+                  name="description"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="15829478-51f5-4391-9c75-0dccb6085cbd"
+                      LastKnownName="string"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="790b88d9-4ae5-4f29-ac9e-c3cb3538ba71"
+                  name="paymentprovider"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e"
+                      LastKnownName="IPaymentProvidorDescriptor"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -2319,6 +2377,11 @@
             name="Created" />
         </ownedLiterals>
       </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="15829478-51f5-4391-9c75-0dccb6085cbd"
+        name="string" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

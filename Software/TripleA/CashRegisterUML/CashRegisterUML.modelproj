@@ -58,6 +58,9 @@
     <Content Include="ModelDefinition\Discount.uml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="ModelDefinition\Package_1222.uml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ModelDefinition\Sales.uml">
       <SubType>Content</SubType>
     </Content>

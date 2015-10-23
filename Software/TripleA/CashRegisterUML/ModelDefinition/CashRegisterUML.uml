@@ -118,6 +118,12 @@
         LastKnownName="CashRegister"
         LastKnownLocation="CashRegister.uml" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="99af74e6-14b3-46e5-aad8-930c13da9fd2"
+        LastKnownName="CashRegister::Database"
+        LastKnownLocation="Package_1222.uml" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

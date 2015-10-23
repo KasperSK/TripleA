@@ -193,18 +193,10 @@
                   <elementDefinition Id="ed7676aa-6b43-45a8-ae16-87664c69fb26" />
                   <ownedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="ca3d075b-ad1d-4b2e-9146-a124fbfaa8f2" name="transaction" direction="In" isUnique="false">
-                        <elementDefinition Id="c1e3661b-d2c8-4a33-8d3f-1d1d5de71773" />
+                      <parameter Id="22efc331-8b6e-499c-a1b5-d524342936c7" name="transaction" direction="In" isUnique="false">
+                        <elementDefinition Id="905e1851-1674-402b-beb5-4b25477705a1" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
-                        </type_NamedElement>
-                      </parameter>
-                    </operationHasOwnedParameters>
-                    <operationHasOwnedParameters>
-                      <parameter Id="6692e05a-2ef8-407e-afac-92757ebabf77" name="provider" direction="In" isUnique="false">
-                        <elementDefinition Id="52a2c2af-25f4-4afd-9ca8-42291266dc33" />
-                        <type_NamedElement>
-                          <referencedTypeMoniker Id="cfea0a13-2bd2-4844-8c81-728b24e63a9e" LastKnownName="IPaymentProvidorDescriptor" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -257,10 +249,34 @@
                   <elementDefinition Id="a43cb5b7-5626-4be0-b831-66b130292c65" />
                   <ownedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="3d129f60-a3c0-4d07-a782-db73db2ad174" direction="Return">
+                      <parameter Id="3d129f60-a3c0-4d07-a782-db73db2ad174" direction="Return" isUnique="false">
                         <elementDefinition Id="87e1ede6-4a6c-41f9-a03c-71f142b41f4c" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="25358b19-4637-4be3-a53b-9957e73f2078" name="amount" direction="In" isUnique="false">
+                        <elementDefinition Id="8eca4109-aee4-4d59-8018-76842719688b" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="53a78309-db56-4443-88bc-256deebf54fe" LastKnownName="Integer" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="7085878f-6486-47e0-bace-cdb5bba4cb1c" name="description" direction="In" isUnique="false">
+                        <elementDefinition Id="c04b32a8-68b2-4475-a5fa-769ea75460ae" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="6405bb9a-fa5c-40f8-b709-9ba1e0ec4db9" LastKnownName="string" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="2549a37b-abdf-4f80-b0a1-37f1a6f8cbcd" name="paymentprovider" direction="In">
+                        <elementDefinition Id="81a075b4-e8dc-479e-ad84-97760e1c96a2" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="cfea0a13-2bd2-4844-8c81-728b24e63a9e" LastKnownName="IPaymentProvidorDescriptor" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1081,7 +1097,7 @@
                   <elementDefinition Id="8141f7ec-78ef-4c68-9879-4c9cd0b384f8" />
                 </association>
                 <association Id="03c42e76-d995-4a0d-92c9-5984f5c47fdb" isDerived="false" sourceEndRoleName="" targetEndRoleName="BonPrinter" isLeaf="false" isAbstract="false">
-                  <interfaceMoniker Id="b8ab0935-20db-4fb3-8516-97a013008604" LastKnownName="IBonPrinter" />
+                  <interfaceMoniker Id="b8ab0935-20db-4fb3-8516-97a013008604" LastKnownName="IPrinter" />
                   <relationshipOwnedElementsInternal>
                     <associationHasOwnedEnds>
                       <memberEnd Id="18f2163c-0252-40eb-9a3a-11fa813f804c" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -1152,14 +1168,6 @@
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
-                    <operationHasOwnedParameters>
-                      <parameter Id="ecf0dc69-82d4-4e1c-982f-2af5cae373d8" name="provider" direction="In" isUnique="false">
-                        <elementDefinition Id="1ade0672-4c41-4865-b05d-d9b16130192b" />
-                        <type_NamedElement>
-                          <referencedTypeMoniker Id="cfea0a13-2bd2-4844-8c81-728b24e63a9e" LastKnownName="IPaymentProvidorDescriptor" />
-                        </type_NamedElement>
-                      </parameter>
-                    </operationHasOwnedParameters>
                   </ownedParameters>
                 </operation>
                 <operation Id="87bccf38-d262-49fc-a87d-eedcbb8691c3" name="CreateTransaction" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -1209,10 +1217,34 @@
                   <elementDefinition Id="ff464ede-a705-45e8-a9f3-9a7b15d58e56" />
                   <ownedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="1944c448-55c8-49f5-bfcb-d3b19ccc048b" direction="Return">
+                      <parameter Id="1944c448-55c8-49f5-bfcb-d3b19ccc048b" direction="Return" isUnique="false">
                         <elementDefinition Id="9e65f01e-b6cd-40ca-a66a-d8d9638fdd20" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="aea548c6-843c-44c7-93c9-5f0ba730b756" name="id" direction="In" isUnique="false">
+                        <elementDefinition Id="0d92b000-7a03-4360-a27c-eb237dfc2713" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="53a78309-db56-4443-88bc-256deebf54fe" LastKnownName="Integer" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="3a2ddd12-ab54-4094-b11e-a3cf98868352" name="description" direction="In" isUnique="false">
+                        <elementDefinition Id="94f2581a-3247-419a-9687-92a6fdbdf108" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="6405bb9a-fa5c-40f8-b709-9ba1e0ec4db9" LastKnownName="string" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="e1ce6bdd-e8a7-47a0-b193-429d373adb63" name="paymentprovider" direction="In">
+                        <elementDefinition Id="790b88d9-4ae5-4f29-ac9e-c3cb3538ba71" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="cfea0a13-2bd2-4844-8c81-728b24e63a9e" LastKnownName="IPaymentProvidorDescriptor" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1673,7 +1705,8 @@
         <elementDefinition Id="3cf4e871-650d-4c43-a73d-5ffd7b5ba7aa" />
         <packagedElements>
           <packageHasNamedElement>
-            <Interface Id="b8ab0935-20db-4fb3-8516-97a013008604" name="IBonPrinter" isAbstract="false" isLeaf="false">
+            <Interface Id="b8ab0935-20db-4fb3-8516-97a013008604" name="IPrinter" isAbstract="false" isLeaf="false">
+              <description>Interface to a printing device</description>
               <appliedStereotypesInternal>
                 <stereotypeInstance Id="5f6378df-3897-4b3d-965d-f0077ad756a6" name="interface" profile="CSharpProfile">
                   <elementDefinition Id="73a5ea18-5ca7-4804-84e6-f4d2ddf7ce2a" />
@@ -1707,7 +1740,8 @@
               </appliedStereotypesInternal>
               <elementDefinition Id="5a56a10b-a4ea-4b20-9ea3-66b52ddfb566" />
               <ownedOperations>
-                <operation Id="bf7add28-a039-4c5f-91d4-d66540cb820c" name="PrintString" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                <operation Id="bf7add28-a039-4c5f-91d4-d66540cb820c" name="AddTo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Adds a string to the print document</description>
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="3ef87e08-def4-4ae1-8b9b-f353ffe5a399" name="method" profile="CSharpProfile">
                       <elementDefinition Id="31cb6967-9617-4441-81da-30ede666ca1b" />
@@ -1755,6 +1789,7 @@
                   <ownedParameters>
                     <operationHasOwnedParameters>
                       <parameter Id="900ee520-b67d-46e4-947d-dc8a36d421fe" name="str" direction="In">
+                        <description>str is added to the print document</description>
                         <elementDefinition Id="993e9067-bf7a-4514-b34e-fe8c8bb9baf1" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="0713e429-a13d-4f7a-9078-4d5f5d14fac0" LastKnownName="String" />
@@ -1762,6 +1797,53 @@
                       </parameter>
                     </operationHasOwnedParameters>
                   </ownedParameters>
+                </operation>
+                <operation Id="474343e0-0537-4995-aaac-85d2af1b706e" name="Print" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <description>Initiates a print</description>
+                  <appliedStereotypesInternal>
+                    <stereotypeInstance Id="61ef5130-6fba-46bb-b5de-042471fce93d" name="method" profile="CSharpProfile">
+                      <elementDefinition Id="30d27250-af8d-4840-bb1a-c1a6466dd8a4" />
+                      <propertyInstances>
+                        <stereotypeInstanceHasPropertyInstances Id="207826ac-eaa3-4815-8578-2793cabcd303">
+                          <propertyInstance Id="72b50b3e-bfde-4ea7-9c4c-bb43e47776d3" name="ClrAttributes">
+                            <elementDefinition Id="39f20106-6279-452d-93e4-e27227807491" />
+                          </propertyInstance>
+                          <elementDefinition Id="4b28abe6-4f9f-41b5-9b49-bf747665ca5b" />
+                        </stereotypeInstanceHasPropertyInstances>
+                        <stereotypeInstanceHasPropertyInstances Id="722eb75d-0d8c-4a34-aa73-7b0007d2e434">
+                          <propertyInstance Id="873a8527-a485-485e-83c0-9228d784d623" name="IsPartial" value="false">
+                            <elementDefinition Id="9e7fe3a2-1454-4044-9d69-79479744f105" />
+                          </propertyInstance>
+                          <elementDefinition Id="48f6c42d-25f6-4756-9224-c36fcf228221" />
+                        </stereotypeInstanceHasPropertyInstances>
+                        <stereotypeInstanceHasPropertyInstances Id="6caa0cc4-9e8c-41d8-887a-58300bd5d1b8">
+                          <propertyInstance Id="6c23209d-af74-46af-83b4-e525a888aa19" name="IsUnsafe" value="false">
+                            <elementDefinition Id="bf67c470-4f20-4a12-a2ff-697e5693e2c0" />
+                          </propertyInstance>
+                          <elementDefinition Id="2987a161-2c09-4834-9215-8212a0b016fd" />
+                        </stereotypeInstanceHasPropertyInstances>
+                        <stereotypeInstanceHasPropertyInstances Id="30d9af6d-f1d5-4780-9377-cdf83991e27f">
+                          <propertyInstance Id="20070723-cccb-41da-8454-f58b7a8bdb79" name="Inheritance" value="none">
+                            <elementDefinition Id="c49a8c4d-5b61-4a4f-950d-2f6b9242c260" />
+                          </propertyInstance>
+                          <elementDefinition Id="97c967e9-8332-4e03-9a0c-76b892faf6cf" />
+                        </stereotypeInstanceHasPropertyInstances>
+                        <stereotypeInstanceHasPropertyInstances Id="2ca5db50-c7bc-438f-a8d5-f5224b3cea64">
+                          <propertyInstance Id="864e23f6-384b-49ad-9ae9-8ca61347fb10" name="PackageVisibility" value="internal">
+                            <elementDefinition Id="d8c04fcb-2278-482d-879e-e15bce1ed062" />
+                          </propertyInstance>
+                          <elementDefinition Id="0d9d0036-c4c8-4e08-8990-4e42b30632ed" />
+                        </stereotypeInstanceHasPropertyInstances>
+                        <stereotypeInstanceHasPropertyInstances Id="52811f1a-1cfb-4ee0-8c35-40c6cf7fd939">
+                          <propertyInstance Id="e85c846d-dc55-402e-bc9e-ccc7f6712b36" name="params" value="false">
+                            <elementDefinition Id="cd7e2da7-634e-4c99-9245-2c4d4d452fb2" />
+                          </propertyInstance>
+                          <elementDefinition Id="741bf534-61f5-4f7a-b3fb-7088524662d8" />
+                        </stereotypeInstanceHasPropertyInstances>
+                      </propertyInstances>
+                    </stereotypeInstance>
+                  </appliedStereotypesInternal>
+                  <elementDefinition Id="2b8636d8-96a7-4b58-a505-86e16b2ca01b" />
                 </operation>
               </ownedOperations>
             </Interface>
@@ -1772,6 +1854,11 @@
     <packageHasNamedElement>
       <referencedType Id="567ec540-87b2-4f1b-945a-997d46302b2c" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
         <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6405bb9a-fa5c-40f8-b709-9ba1e0ec4db9" name="string" isAbstract="false" isLeaf="false" cachedFullName="string">
+        <elementDefinition Id="15829478-51f5-4391-9c75-0dccb6085cbd" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

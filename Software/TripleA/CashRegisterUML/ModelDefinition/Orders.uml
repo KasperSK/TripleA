@@ -9,8 +9,8 @@
       visibility="Public">
       <packageMoniker
         Id="216e1634-9bf1-4dd2-9534-ce49b2fe8937"
-        LastKnownName="ShoppingList"
-        LastKnownLocation="ShoppingList.uml" />
+        LastKnownName="ShoppingLists"
+        LastKnownLocation="ShoppingLists.uml" />
     </packageImport>
     <packageImport
       Id="2c08ccbb-4b74-4243-a65b-ee2445ce4c0c"
@@ -18,7 +18,7 @@
       <packageMoniker
         Id="6788c2b9-8459-42e2-988b-58875c50a7ea"
         LastKnownName="Products"
-        LastKnownLocation="Product.uml" />
+        LastKnownLocation="Products.uml" />
     </packageImport>
     <packageImport
       Id="7871f6bf-72d4-43b2-b90d-022fba3dd964"
@@ -26,7 +26,7 @@
       <packageMoniker
         Id="c98cf058-eb43-454a-a6e6-3d16e39c8c6b"
         LastKnownName="Database"
-        LastKnownLocation="Database.uml" />
+        LastKnownLocation="Databases.uml" />
     </packageImport>
   </importedPackagesInternal>
   <packagedElements>
@@ -134,14 +134,14 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f30d280c-21d6-43d7-b073-7e585fcfe35a"
-                  name="shoppinglist"
-                  direction="In">
+                  Id="fadedf37-fe78-470b-b098-0ed035cee90c"
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3"
-                      LastKnownName="ShoppingList"
-                      LastKnownLocation="ShoppingList.uml" />
+                    <undefinedTypeMoniker
+                      Id="111ee1aa-88d0-418d-a052-657262789881"
+                      LastKnownName="Orderlist"
+                      LastKnownLocation="Sales.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -208,26 +208,28 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="bbed306e-6b60-4c93-84f8-9bf4f9ad2c95"
-                  name="id"
-                  direction="In">
+                  Id="6a3cc0b6-09cd-4157-81e2-33624f3c03aa"
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="CashRegisterUML.uml" />
+                    <undefinedTypeMoniker
+                      Id="111ee1aa-88d0-418d-a052-657262789881"
+                      LastKnownName="Orderlist"
+                      LastKnownLocation="Sales.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="6a3cc0b6-09cd-4157-81e2-33624f3c03aa"
-                  direction="Return">
+                  Id="b4fef026-6680-420e-a623-28aa595130c4"
+                  name="id"
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -294,10 +296,23 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e65016bf-192c-4817-aa72-810e1bb86b8d"
+                  Id="0778488d-cda2-401b-9307-c293670fe3a1"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5191fd13-dd57-4287-982e-948deb0e0838"
+                      LastKnownName="List&lt;Orderlist&gt;"
+                      LastKnownLocation="Orders.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9e5e4eec-4eef-482d-920c-dab52a554d9d"
                   name="n"
-                  direction="In">
-                  <description>How many orders we wish to ha returned</description>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="220a3521-e091-4221-bae9-3ef9018e845c"
@@ -314,7 +329,7 @@
     <packageHasNamedElement>
       <class
         Id="d6bd404f-e366-4602-9b66-e057575518a2"
-        name="Order"
+        name="OrderList"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -372,7 +387,7 @@
             <classMoniker
               Id="cb69bd2b-7a88-455f-87da-df39f73527ba"
               LastKnownName="OrderItem"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -858,8 +873,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -933,8 +948,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1008,8 +1023,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1081,8 +1096,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1160,7 +1175,7 @@
             <interfaceMoniker
               Id="80bc912b-5b8c-4ee3-a7d8-8d82086fa758"
               LastKnownName="IOrderDao"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <targetEnds>
@@ -1174,7 +1189,7 @@
             <interfaceMoniker
               Id="44a4218e-f377-4c85-995f-98f685d063a3"
               LastKnownName="IDatabase"
-              LastKnownLocation="Database.uml" />
+              LastKnownLocation="Databases.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1271,8 +1286,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1346,8 +1361,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1421,8 +1436,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1507,8 +1522,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                      LastKnownName="OrderList"
+                      LastKnownLocation="Orders.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1578,7 +1593,7 @@
             <interfaceMoniker
               Id="b31a4aa7-929d-4350-9cc8-daad71ce6244"
               LastKnownName="IOrderController"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <targetEnds>
@@ -1592,7 +1607,7 @@
             <interfaceMoniker
               Id="80bc912b-5b8c-4ee3-a7d8-8d82086fa758"
               LastKnownName="IOrderDao"
-              LastKnownLocation="Order.uml" />
+              LastKnownLocation="Orders.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1683,14 +1698,14 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="ce3bc2b0-a680-4498-9a0a-476ff029fc97"
-                  name="shoppinglist"
-                  direction="In">
+                  Id="6b25be7c-345f-4271-8c0c-da1e826cb121"
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="ed931ea7-f881-41ef-acd2-4862bf4ab9b3"
-                      LastKnownName="ShoppingList"
-                      LastKnownLocation="ShoppingList.uml" />
+                    <undefinedTypeMoniker
+                      Id="111ee1aa-88d0-418d-a052-657262789881"
+                      LastKnownName="Orderlist"
+                      LastKnownLocation="Sales.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1759,7 +1774,8 @@
                 <parameter
                   Id="24fe3444-9a5d-49fc-b2eb-0dbf4ded02c9"
                   name="id"
-                  direction="In">
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="220a3521-e091-4221-bae9-3ef9018e845c"
@@ -1771,12 +1787,13 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="1c1ccdd5-b94d-4a36-b10d-c5cf861e3725"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="d6bd404f-e366-4602-9b66-e057575518a2"
-                      LastKnownName="Order"
-                      LastKnownLocation="Order.uml" />
+                    <undefinedTypeMoniker
+                      Id="111ee1aa-88d0-418d-a052-657262789881"
+                      LastKnownName="Orderlist"
+                      LastKnownLocation="Sales.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1845,8 +1862,8 @@
                 <parameter
                   Id="9f0ec27c-2293-4248-a983-a1f4a48d64b8"
                   name="n"
-                  direction="In">
-                  <description>How many orders we wish to ha returned</description>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="220a3521-e091-4221-bae9-3ef9018e845c"
@@ -1855,10 +1872,33 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="36009795-4921-457f-adea-69f2194cd2a7"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5191fd13-dd57-4287-982e-948deb0e0838"
+                      LastKnownName="List&lt;Orderlist&gt;"
+                      LastKnownLocation="Orders.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
         </ownedOperationsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="df5e8113-59cd-48fa-adea-fcd11379e050"
+        name="List&lt;Order&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="5191fd13-dd57-4287-982e-948deb0e0838"
+        name="List&lt;Orderlist&gt;" />
     </packageHasNamedElement>
   </packagedElements>
 </package>
