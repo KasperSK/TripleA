@@ -26,3 +26,6 @@ C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\Proje
 C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.g.resources
 C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.Properties.Resources.resources
 C:\Users\Peter\Documents\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.csproj.GenerateResource.Cache
+D:\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\bin\Debug\ProjektGUI.exe.config
+D:\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.exe
+D:\GitHub\TripleA\Software\Udkast til GUI\ProjektGUI\ProjektGUI\obj\Debug\ProjektGUI.pdb
