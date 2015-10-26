@@ -78,7 +78,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductGroupViewModel.cs" />
+    <Compile Include="ViewModels\ProductGroupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -111,6 +111,9 @@
       <Project>{843f5c98-f659-4bef-860b-53777f095a8c}</Project>
       <Name>CashRegister</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

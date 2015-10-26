@@ -10,7 +10,7 @@
         <local:ProductGroupViewModel x:Key="ProductGroupViewModel"/>
     </Window.Resources>
     <Border Background="AliceBlue" BorderBrush="Crimson" BorderThickness="1.5">
-        <Grid Name="Classic" DataContext="{StaticResource ProductGroupViewModel}">
+        <Grid Name="Classic">
             <!--Classic grid-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -158,37 +158,87 @@
 
             <Grid Grid.Column="1" Name="RightColumn">
                 <!--Tab control til forskellige varer-->
-                <TabControl Name="GroupControl" TabStripPlacement="Right" ItemsSource="{Binding ItemList}" IsSynchronizedWithCurrentItem="True">
-                    <TabControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding GroupName}"></TextBlock>
-                        </DataTemplate>
-                    </TabControl.ItemTemplate>
-                    <TabControl.ContentTemplate >
-                        <DataTemplate>
-                            <ItemsControl ItemsSource="{Binding Products}">
-                                <ItemsControl.ItemTemplate>
-                                    
-                         
-                                
-                                    
-                                    
-                                            <Button Content="{Binding ProductNameRowOne}" />
-                                <Button Content="{Binding ProductNameRowTwo}" ></Button>
-                                            
+                <TabControl Name="GroupControl" TabStripPlacement="Right">
 
-                                       
+                    <TabItem Name="GroupTab" Header="Grupper"  Background="SandyBrown">
 
-               
-                                
-                         
-                                    
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </DataTemplate>
-                    </TabControl.ContentTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                   
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <Button Name="Fad" Grid.Row="0" Grid.Column="0" Content="FAD" MinWidth="50" MinHeight="40" Margin="5" Background="Yellow"></Button>
+                            <Button Name="ByteFad" Grid.Row="0" Grid.Column="1" MinWidth="50" MinHeight="40" Margin="5" Background="Yellow">
+                                <TextBlock TextWrapping="Wrap" > BYTEFAD</TextBlock>
+                            </Button>
+                            <Button Name="x1" Grid.Row="0" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="x2" Grid.Row="0" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="x3" Grid.Row="0" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+
+
+                            <Button Name="X4" Grid.Row="1" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="X5" Grid.Row="1" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="X6" Grid.Row="1" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="X7" Grid.Row="1" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="x8" Grid.Row="1" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Orange"></Button>
+
+
+
+                            <Button Name="XX4" Grid.Row="2" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XX5" Grid.Row="2" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XX6" Grid.Row="2" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="XX7" Grid.Row="2" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="xX8" Grid.Row="2" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Orange"></Button>
+
+
+
+                            <Button Name="XXX4" Grid.Row="3" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XXX5" Grid.Row="3" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XXX6" Grid.Row="3" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="XXX7" Grid.Row="3" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="xXX8" Grid.Row="3" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+
+
+                            <Button Name="XXXX4" Grid.Row="4" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="DeepSkyBlue"></Button>
+                            <Button Name="XXXX5" Grid.Row="4" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="DeepSkyBlue"></Button>
+                            <Button Name="XXXX6" Grid.Row="4" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="XXXX7" Grid.Row="4" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="xXXX8" Grid.Row="4" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="Øl" Header="Øl" Background="YellowGreen"  >
+
+                    </TabItem>
+                    <TabItem Name="Drinks" Header="Drinks" Background="LightGray">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Shots" Header="Shots" Background="Red">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Soda" Header="Soda" Background="DeepSkyBlue">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Snacks" Header="Snacks" Background="SaddleBrown">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Settings" Header="Indstillinger" Background="Gray">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
                 </TabControl>
             </Grid>
             <!--Grid til Tab control og varer end-->
