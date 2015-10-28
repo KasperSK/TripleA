@@ -10,6 +10,7 @@ namespace CashRegister.Database
         public CashRegisterContext()
             : base("name=CashRegisterContext")
         {
+            Database.SetInitializer(new CashRegisterInitializer());
         }
 
         public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
