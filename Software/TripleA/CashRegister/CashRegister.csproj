@@ -69,6 +69,7 @@
     <Compile Include="CashRegister\Database\CashRegisterContext.cs" />
     <Compile Include="CashRegister\Database\C__RefactorLog.cs" />
     <Compile Include="CashRegister\Database\Discount.cs" />
+    <Compile Include="CashRegister\Database\Initializer.cs" />
     <Compile Include="CashRegister\Database\OrderList.cs" />
     <Compile Include="CashRegister\Database\PaymentType.cs" />
     <Compile Include="CashRegister\Database\Price.cs" />
