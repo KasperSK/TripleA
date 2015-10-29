@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Automation.Peers;
-using CashRegister.Database;
+using CashRegister.Models;
 
 namespace CashRegister.Orders
 {
@@ -21,10 +19,10 @@ namespace CashRegister.Orders
         /// <summary>
         /// Creates an order with an unique id
         /// </summary>
-        /// <returns>The created OrderList</returns>
-        public virtual OrderList CreateOrder()
+        /// <returns>The created SalesOrder</returns>
+        public virtual SalesOrder CreateOrder()
         { 
-            OrderDao.Insert(new OrderList());
+            OrderDao.Insert(new SalesOrder());
             var order = OrderDao.GetLastOrder();
 
             return order;
@@ -34,7 +32,7 @@ namespace CashRegister.Orders
         /// Saves an order
         /// </summary>
         /// <param name="order">The order to be saved</param>
-        public void SaveOrder(OrderList order)
+        public void SaveOrder(SalesOrder order)
 	    {
 	        OrderDao.Insert(order);
 	    }
@@ -43,10 +41,9 @@ namespace CashRegister.Orders
         /// Clears an order
         /// </summary>
         /// <param name="order">The order to be cleared</param>
-        public void ClearOrder(ref OrderList order)
+        public void ClearOrder(ref SalesOrder order)
 	    {
-	        order.Products.Clear();
-            order.Transaktions.Clear();
+            order.Transactions.Clear();
 
             OrderDao.Update(order);
 	    }
@@ -56,9 +53,9 @@ namespace CashRegister.Orders
         /// </summary>
         /// <param name="order">The order</param>
         /// <returns>The missing amount</returns>
-	    public long MissingAmount(OrderList order)
+	    public long MissingAmount(SalesOrder order)
 	    {
-	        var amountLeft = order.OrderTotal - order.Transaktions.Sum(t => t.TransaktionPrice);
+	        var amountLeft = order.Total - order.Transactions.Sum(t => t.Price);
 
 	        return (long)amountLeft;
 	    }
@@ -67,8 +64,8 @@ namespace CashRegister.Orders
         /// Get an order by id
         /// </summary>
         /// <param name="id">The orders' id</param>
-        /// <returns>The OrderList with id</returns>
-        public virtual OrderList GetOrderById(long id)
+        /// <returns>The SalesOrder with id</returns>
+        public virtual SalesOrder GetOrderById(long id)
 		{
 		   return OrderDao.SelectById(id);
 		}
@@ -77,8 +74,8 @@ namespace CashRegister.Orders
         /// Get the last n orders
         /// </summary>
         /// <param name="n">The amount of orders to be returned</param>
-        /// <returns>A IEnumerable list with n amount of OrderLists</returns>
-        public virtual IEnumerable<OrderList> GetNLastOrders(int n)
+        /// <returns>A IEnumerable list with n amount of SalesOrders</returns>
+        public virtual IEnumerable<SalesOrder> GetNLastOrders(int n)
 		{
 		    return OrderDao.GetNLastOrders(n);
 		}

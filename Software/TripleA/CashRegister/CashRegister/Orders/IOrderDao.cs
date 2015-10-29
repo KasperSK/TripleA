@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CashRegister.Database;
+using CashRegister.Models;
 
 namespace CashRegister.Orders
 {
@@ -12,39 +12,39 @@ namespace CashRegister.Orders
 		/// Delete an order in the database
 		/// </summary>
 		/// <param name="order">The order to be deleted</param>
-		void Delete(OrderList order);
+		void Delete(SalesOrder order);
 
 		/// <summary>
 		/// Update an order in the database
 		/// </summary>
 		/// <param name="order">The order to be updated</param>
-		void Update(OrderList order);
+		void Update(SalesOrder order);
 
 		/// <summary>
 		/// Insert an order in to the database
 		/// </summary>
 		/// <param name="order">The order to be inserted</param>
-		void Insert(OrderList order);
+		void Insert(SalesOrder order);
 
         /// <summary>
         /// Get an order from id
         /// </summary>
         /// <param name="id">The id of the order</param>
-        /// <returns>An OrderList from an id</returns>
-        OrderList SelectById(long id);
+        /// <returns>An SalesOrder from an id</returns>
+        SalesOrder SelectById(long id);
 
         /// <summary>
         /// Get a list of the last n orders
         /// </summary>
         /// <param name="n">The amount of orders to be returned</param>
         /// <returns>A IEnumerable list of the last n orders</returns>
-        IEnumerable<OrderList> GetNLastOrders(int n);
+        IEnumerable<SalesOrder> GetNLastOrders(int n);
 
         /// <summary>
         /// Get the last order
         /// </summary>
         /// <returns>Returns the latest order</returns>
-        OrderList GetLastOrder();
+        SalesOrder GetLastOrder();
 
         /// <summary>
         /// Get the id of the last order

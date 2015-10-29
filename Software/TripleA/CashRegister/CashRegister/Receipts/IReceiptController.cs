@@ -1,4 +1,5 @@
 ﻿using CashRegister.Database;
+using CashRegister.Models;
 
 namespace CashRegister.Receipts
 {
@@ -18,6 +19,6 @@ namespace CashRegister.Receipts
         /// </summary>
         /// <param name="order">The Order to be formatted</param>
         /// <returns>A formatted Receipt</returns>
-        Receipt CreateReceipt(OrderList order);
+        Receipt CreateReceipt(SalesOrder order);
 	}
 }

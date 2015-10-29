@@ -1,10 +1,11 @@
-﻿using CashRegister.Database;
+﻿using CashRegister.Models;
 using CashRegister.Orders;
 using NSubstitute;
 using NUnit.Framework;
 
 namespace CashRegister.Test.Unit.Orders
 {
+    /*
     [TestFixture]
     public class OrderControllerUnitTest
     {
@@ -65,4 +66,5 @@ namespace CashRegister.Test.Unit.Orders
             Assert.That(_uut.MissingAmount(order), Is.EqualTo(0));
         }
     }
+    */
 }

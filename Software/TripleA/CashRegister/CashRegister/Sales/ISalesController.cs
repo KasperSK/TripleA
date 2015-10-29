@@ -4,22 +4,19 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using CashRegister.Models;
+
 namespace CashRegister.Sales
 {
-	using CashRegister.Orders;
-	using CashRegister.Payment;
-//	using CashRegister.Products;
-	using CashRegister.Receipts;
-    using CashRegister.Database;
+    using Payment;
     using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
+    using System.Collections.Generic;
 
-	/// <summary>
-	/// Controls sales
-	/// </summary>
-	public interface ISalesController 
+    /// <summary>
+    /// Controls sales
+    /// </summary>
+    public interface ISalesController 
 	{
 		/// <summary>
 		/// Adds a product to the current order
@@ -29,31 +26,31 @@ namespace CashRegister.Sales
         /// <summary>
 	    /// Returns the current order
 	    /// </summary>
-	    OrderList GetCurrentOrder();
+	    SalesOrder GetCurrentOrder();
 
         /// <summary>
-        /// Remove a product from orderlist
+        /// Remove a product from SalesOrder
         /// </summary>
         void RemoveProductFromOrder(Product product);
 
 	    /// <summary>
 	    /// Prints an order
 	    /// </summary>
-	    void CreateAndPrintReceipt(OrderList order);
+	    void CreateAndPrintReceipt(SalesOrder order);
 
 
         /// <summary>
-        /// clear orderlist
+        /// clear SalesOrder
         /// </summary>
         void ClearOrder();
 
 		/// <summary>
-		/// Starts a new Orderlist with a new id
+		/// Starts a new SalesOrder with a new id
 		/// </summary>
 		void StartNewOrder();
 
 		/// <summary>
-		/// Cancel transactions, clear orderlist
+		/// Cancel transactions, clear SalesOrder
 		/// </summary>
 		void CancelOrder();
 
@@ -63,24 +60,24 @@ namespace CashRegister.Sales
 		void SaveIncompleteOrder();
 
 		/// <summary>
-		/// Starting payment on a Orderlist
+		/// Starting payment on a SalesOrder
 		/// </summary>
 		void StartPayment(IPaymentProvidorDescriptor provider, long amountToPay);
 
 		/// <summary>
-		/// Get info on the amount missing on the orderlist
+		/// Get info on the amount missing on the SalesOrder
 		/// </summary>
 		long MissingPaymenOnOrder();
 
 		/// <summary>
 		/// Add an transaction to the order
 		/// </summary>
-		void AddTransaction(Transaktion trans);
+		void AddTransaction(Models.Transaction trans);
 
 	    /// <summary>
 	    /// Gets a list of all incomplete orders by default current data (or within a certain date or time)
 	    /// </summary>
-	    List<OrderList> GetIncompleteOrders(DateTime start, DateTime end);
+	    List<SalesOrder> GetIncompleteOrders(DateTime start, DateTime end);
 
         /// <summary>
         /// Get an incomplete order

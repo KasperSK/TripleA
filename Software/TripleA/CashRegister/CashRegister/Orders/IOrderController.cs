@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CashRegister.Database;
+using CashRegister.Models;
 
 namespace CashRegister.Orders
 {
@@ -11,40 +12,40 @@ namespace CashRegister.Orders
 		/// <summary>
 		/// Creates an order with an unique id
 		/// </summary>
-		/// <returns>The created OrderList</returns>
-		OrderList CreateOrder();
+		/// <returns>The created SalesOrder</returns>
+		SalesOrder CreateOrder();
 
         /// <summary>
         /// Saves an order
         /// </summary>
         /// <param name="order">The order to be saved</param>
-        void SaveOrder(OrderList order);
+        void SaveOrder(SalesOrder order);
 
         /// <summary>
         /// Clears an order
         /// </summary>
         /// <param name="order">The order to be cleared</param>
-        void ClearOrder(ref OrderList order);
+        void ClearOrder(ref SalesOrder order);
 
         /// <summary>
         /// Get the missing amount on an order
         /// </summary>
         /// <param name="order">The order</param>
         /// <returns>The missing amount</returns>
-	    long MissingAmount(OrderList order);
+	    long MissingAmount(SalesOrder order);
 
         /// <summary>
         /// Get an order by id
         /// </summary>
         /// <param name="id">The orders' id</param>
-        /// <returns>The OrderList with id</returns>
-        OrderList GetOrderById(long id);
+        /// <returns>The SalesOrder with id</returns>
+        SalesOrder GetOrderById(long id);
 
 		/// <summary>
 		/// Get the last n orders
 		/// </summary>
 		/// <param name="n">The amount of orders to be returned</param>
-		/// <returns>A IEnumerable list with n amount of OrderLists</returns>
-		IEnumerable<OrderList> GetNLastOrders(int n);
+		/// <returns>A IEnumerable list with n amount of SalesOrders</returns>
+		IEnumerable<SalesOrder> GetNLastOrders(int n);
 	}
 }

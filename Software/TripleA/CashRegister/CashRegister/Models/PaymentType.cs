@@ -1,4 +1,4 @@
-namespace CashRegister.Database
+namespace CashRegister.Models
 {
     using System;
     using System.Collections.Generic;
@@ -6,10 +6,17 @@ namespace CashRegister.Database
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("__RefactorLog")]
-    public partial class C__RefactorLog
+    public class PaymentType
     {
-        [Key]
-        public Guid OperationKey { get; set; }
+        
+        public PaymentType()
+        {
+        
+        }
+
+        public long Id { get; set; }
+
+        public long Description { get; set; }
+
     }
 }
