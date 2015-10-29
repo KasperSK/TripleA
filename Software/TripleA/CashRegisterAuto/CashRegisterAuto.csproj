@@ -80,7 +80,6 @@
     <Compile Include="CashRegister\Products\IProductController.cs" />
     <Compile Include="CashRegister\Products\IProductDao.cs" />
     <Compile Include="CashRegister\Products\IProductGroupController.cs" />
-    <Compile Include="CashRegister\Products\Product.cs" />
     <Compile Include="CashRegister\Products\ProductControllerImpl.cs" />
     <Compile Include="CashRegister\Products\ProductDaoImpl.cs" />
     <Compile Include="CashRegister\Products\ProductGroup.cs" />

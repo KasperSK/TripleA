@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CashRegister.Database;
+using CashRegister.Models;
 using CashRegister.Orders;
 using CashRegister.Receipts;
 using CashRegister.Sales;
@@ -30,10 +32,10 @@ namespace CashRegister.Test.Unit.Sales
 
             printerctrl = Substitute.For<ReceiptPrinter>();
             receiptctrl = Substitute.For<ReceiptController>(printerctrl);
-            testProduct = new Product { ProductName = "test" };
-            testProduct2 = new Product { ProductName = "test" };
-            testProduct3 = new Product { ProductName = "test" };
-            testProduct4 = new Product { ProductName = "test" };
+            testProduct = new Product("test", 10, true);
+            testProduct2 = new Product("test1", 11, true);
+            testProduct3 = new Product("test2", 12, true);
+            testProduct4 = new Product("test3", 13, false);
             uut = new SalesController(orderctrl, receiptctrl);
 
         }
@@ -50,7 +52,7 @@ namespace CashRegister.Test.Unit.Sales
         public void Ctor_AddProductToOrderList_ProductIsAdded()
         {
             AddingProduct(testProduct);
-            CollectionAssert.Contains(uut.GetCurrentOrder().Products, testProduct);
+            Assert.That(uut.GetCurrentOrder().Lines.Any(p => p.Product == testProduct).Equals(true));
         }
 
         [Test] //Kig igen
@@ -71,16 +73,16 @@ namespace CashRegister.Test.Unit.Sales
         {
             AddingProduct(testProduct);
             uut.RemoveProductFromOrder(testProduct);
-            var Current = uut.GetCurrentOrder();
-            CollectionAssert.DoesNotContain(Current.Products,testProduct);
+            var current = uut.GetCurrentOrder();
+            Assert.That(current.Lines.All(p => p.Product != testProduct));
         }
 
         [Test]
         public void SalesController_RemoveProductFromOrderList_ProductNotInCollection()
         {
             uut.RemoveProductFromOrder(testProduct);
-            var Current = uut.GetCurrentOrder();
-            CollectionAssert.DoesNotContain(Current.Products, testProduct);
+            var current = uut.GetCurrentOrder();
+            Assert.That(current.Lines.All(p => p.Product != testProduct));
         }
 
         [Test]
@@ -99,7 +101,7 @@ namespace CashRegister.Test.Unit.Sales
             AddingProduct(testProduct3);
             AddingProduct(testProduct4);
             uut.ClearOrder();
-            CollectionAssert.IsEmpty(uut.GetCurrentOrder().Products);
+            CollectionAssert.IsEmpty(uut.GetCurrentOrder().Lines);
         }
 
 

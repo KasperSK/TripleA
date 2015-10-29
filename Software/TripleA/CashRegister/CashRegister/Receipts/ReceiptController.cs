@@ -1,6 +1,6 @@
 ﻿using CashRegister.Printer;
 using System;
-using CashRegister.Database;
+using CashRegister.Models;
 
 namespace CashRegister.Receipts
 {
@@ -33,20 +33,21 @@ namespace CashRegister.Receipts
         /// </summary>
         /// <param name="order">The Order to be formatted</param>
         /// <returns>A formatted Receipt</returns>
-        public virtual Receipt CreateReceipt(OrderList order)
+        public virtual Receipt CreateReceipt(SalesOrder order)
 		{
             var receipt = new Receipt();
 
-            CreateHeader(receipt, order.OrderId);
+            CreateHeader(receipt, order.Id);
             
-            foreach (var p in order.Products)
+            foreach (var p in order.Lines)
             {
-                receipt.Content.Add($"{p.ProductName}\n");
+                // FIXME Mangler Quantity og discount
+                receipt.Content.Add($"{p.Quantity}x\t{p.Product.Name}\n");
                 receipt.Content.Add("              ");
-                receipt.Content.Add($"{p.Prices}\n\n");
+                receipt.Content.Add($"{p.UnitPrice}\n\n");
             }
 
-            receipt.Content.Add($"Total: {order.OrderTotal}\n\n");
+            receipt.Content.Add($"Total: {order.Total}\n\n");
 
             CreateFooter(receipt);
 

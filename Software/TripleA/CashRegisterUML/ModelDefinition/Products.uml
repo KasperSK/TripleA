@@ -364,6 +364,24 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </property>
+          <property
+            Id="27abab1d-390b-45cb-b86d-026a18d4a450"
+            name="Saleable"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="abe97fd6-663c-4c75-906e-2082025e7b62"
+                LastKnownName="Bool"
+                LastKnownLocation="Products.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -1404,108 +1422,6 @@
         </appliedStereotypesInternal>
         <ownedOperations>
           <operation
-            Id="be16b99a-e24a-44cf-bdfe-08e47a9ca20f"
-            name="CreateProduct"
-            isLeaf="true"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false">
-            <description>The only way to create a new Product, It will create the Product with the name given and a new unique ID</description>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="a5735c89-8910-4e87-98b7-812ef9cfc10d"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="9f2d3343-c63c-4c2c-a3fe-bfcb286b81a0">
-                    <propertyInstance
-                      Id="1677ba0c-1815-4165-b0fd-c61e49a8bdeb"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="32930be0-a253-41a7-b3e8-8f50b1972d7d">
-                    <propertyInstance
-                      Id="afcd5e17-4e42-4285-a62d-77caca58c45e"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="966acde2-1137-498e-80a0-3a7f1f026a9c">
-                    <propertyInstance
-                      Id="ab7cd588-1d05-4682-a438-60dc56ec778b"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a402df63-29c3-438f-981b-afb7553b4ced">
-                    <propertyInstance
-                      Id="78265a79-c407-41a5-91cf-d86d56ed799f"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="d40db78c-a9b7-401b-adf8-085995840200">
-                    <propertyInstance
-                      Id="266247f9-4a71-430a-90c8-1f925b1d99db"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="53d3b6c9-989c-45f6-8ee2-4bb39a0f18f7">
-                    <propertyInstance
-                      Id="eff2db43-f37a-4b46-9716-69101567047e"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="e6a858fd-b23b-4076-b05b-43d3a62f6506"
-                  name="name"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="CashRegisterUML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="6a305d25-146e-4384-8fe0-da1ce213b0ca"
-                  direction="Return">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
-                      LastKnownName="Product"
-                      LastKnownLocation="Products.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="1e116248-803e-4572-a7d1-4efaa5503c89"
-                  name="price"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
-                      LastKnownName="Int"
-                      LastKnownLocation="Products.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
             Id="6b622d08-ecc3-442c-ba32-71629a3544a9"
             name="GetProductsByGroup"
             isLeaf="false"
@@ -1601,6 +1517,19 @@
                       Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
                       LastKnownName="Product"
                       LastKnownLocation="Products.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="24117cc7-7551-4d0f-9e19-7c11d08bd8fa"
+                  name="onlyActive"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1757,107 +1686,6 @@
         </targetEnds>
         <ownedOperationsInternal>
           <operation
-            Id="78dc4cb9-7278-48e2-86e6-d7e51045acfe"
-            name="CreateProduct"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="17e3d482-1063-4c18-b41c-3f6317f8bdb1"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a84adc17-d967-4e73-9993-b64124a6586f">
-                    <propertyInstance
-                      Id="5d9c1b01-c1d4-4509-afa3-f429312344ea"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="702adc3a-aa9f-4c47-8bd0-bb51baa060c8">
-                    <propertyInstance
-                      Id="cda575cc-70d4-497a-b4e2-e877f9b4340a"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="139c89c8-8051-4d9a-a680-c83e31056afa">
-                    <propertyInstance
-                      Id="9331225b-c937-4a68-be1d-b88070e0544f"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="ca243ac8-ae83-4436-8301-675bcd63f6dd">
-                    <propertyInstance
-                      Id="884f45fa-02e7-44a6-8fca-6b22aeaf0df4"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a34cb98d-b741-4740-bcb5-d1f99ad7f96b">
-                    <propertyInstance
-                      Id="575b2b48-9f29-461b-881e-f86cb348a57f"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="255a91e3-3daf-4c12-b36b-dac58cbae154">
-                    <propertyInstance
-                      Id="7633e193-eb9e-49fd-866c-42bccf75363d"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="159df2d2-4932-4f16-bf1e-26d6b6595c02"
-                  name="name"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="CashRegisterUML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="abbc2972-d1ef-4129-9fee-d8bb73a444c9"
-                  direction="Return">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
-                      LastKnownName="Product"
-                      LastKnownLocation="Products.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="1c345acb-441d-4dde-9aaf-b0e878e7a6c5"
-                  name="price"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
-                      LastKnownName="Int"
-                      LastKnownLocation="Products.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
             Id="e83d8e16-da39-4ef6-816d-30c6041c48d8"
             name="GetProductsByGroup"
             isLeaf="false"
@@ -1952,6 +1780,19 @@
                       Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
                       LastKnownName="Product"
                       LastKnownLocation="Products.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="60cd58fa-87ae-494e-9132-d3be91d4dd29"
+                  name="onlyActive"
+                  direction="In">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="CashRegisterUML.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -3217,6 +3058,11 @@
       <undefinedType
         Id="bf72b994-0765-4993-ba4f-d1fd0bcf36cb"
         name="Int" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="abe97fd6-663c-4c75-906e-2082025e7b62"
+        name="Bool" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

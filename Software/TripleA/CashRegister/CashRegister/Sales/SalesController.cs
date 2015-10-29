@@ -4,29 +4,28 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using CashRegister.Models;
+
 namespace CashRegister.Sales
 {
-	using CashRegister.Orders;
-	using CashRegister.Payment;
-	//using CashRegister.Products;
-	using CashRegister.Receipts;
-	using CashRegister.Database;
-   // using CashRegister.Payment;
-    using CashRegister.DAL;
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
+    using Orders;
+    using Payment;
+    using Receipts;
+    using Database;
+    using DAL;
+    using System;
+    using System.Collections.Generic;
 
-	/// <summary>
-	/// Controls sales
-	/// </summary>
-	public class SalesController : ISalesController
+    /// <summary>
+    /// Controls sales
+    /// </summary>
+    public class SalesController : ISalesController
 	{
 		/// <summary>
 		/// Hold the current order
 		/// </summary>
-		private OrderList CurrentOrder
+		private SalesOrder CurrentOrder
 		{
 			get;
 			set;
@@ -57,23 +56,24 @@ namespace CashRegister.Sales
 	    /// <summary>
 	    /// Returns the current order
 	    /// </summary>
-	  public virtual OrderList GetCurrentOrder()
+	  public virtual SalesOrder GetCurrentOrder()
 	    {
 	        return CurrentOrder;
 	    }
 
         /// <summary>
-        /// Add a product to an orderlist
+        /// Add a product to an SalesOrder
         /// </summary>
         public virtual void AddProductToOrder(Product product)
 		{
-			CurrentOrder.Products.Add(product);
+            // FIXME OrderLines
+			// CurrentOrder.Products.Add(product);
 		}
 
         /// <summary>
         /// Prints an order
         /// </summary>
-        public virtual void CreateAndPrintReceipt(OrderList order)
+        public virtual void CreateAndPrintReceipt(SalesOrder order)
 	    {
 	      var print= ReceiptController.CreateReceipt(order);
           ReceiptController.Print(print);
@@ -81,24 +81,25 @@ namespace CashRegister.Sales
 
 
         /// <summary>
-        /// Remove a product from orderlist
+        /// Remove a product from SalesOrder
         /// </summary>
         public virtual void RemoveProductFromOrder(Product product)
 		{
-		    CurrentOrder.Products.Remove(product);
+            // FIXME OrderLines
+            // CurrentOrder.Products.Remove(product);
 		}
 
 		/// <summary>
-		/// clear orderlist
+		/// clear SalesOrder
 		/// </summary>
 		public virtual void ClearOrder()
 		{
-		    OrderList tmp = CurrentOrder;
+		    SalesOrder tmp = CurrentOrder;
 		    OrderController.ClearOrder(ref tmp);
 		}
 
 		/// <summary>
-		/// Starts a new Orderlist with a new id
+		/// Starts a new SalesOrder with a new id
 		/// </summary>
 		public virtual void StartNewOrder()
 		{
@@ -108,16 +109,16 @@ namespace CashRegister.Sales
 	    
 
 		/// <summary>
-		/// Cancel transactions, clear orderlist
+		/// Cancel transactions, clear SalesOrder
 		/// </summary>
 		public virtual void CancelOrder()
 		{
-		    foreach (var Transaktion in CurrentOrder.Transaktions)
+		    foreach (var Transaktion in CurrentOrder.Transactions)
 		    {
-		        CurrentOrder.Transaktions.Remove(Transaktion);
+		        CurrentOrder.Transactions.Remove(Transaktion);
 		    }
 
-		    OrderList tmp = CurrentOrder;
+		    SalesOrder tmp = CurrentOrder;
             OrderController.ClearOrder(ref tmp);
             StartNewOrder();
 		}
@@ -127,13 +128,13 @@ namespace CashRegister.Sales
 		/// </summary>
 		public virtual void SaveIncompleteOrder()
 		{
-		  CurrentOrder.Status.StatusName="Incomplete";
+		  CurrentOrder.Status.Name = "Incomplete";
             OrderController.SaveOrder(CurrentOrder);
             StartNewOrder();
 		}
 
 	    /// <summary>
-	    /// Starting payment on a Orderlist
+	    /// Starting payment on a SalesOrder
 	    /// </summary>
 	    public virtual void StartPayment(IPaymentProvidorDescriptor provider, long amountToPay)
 	    {
@@ -145,14 +146,14 @@ namespace CashRegister.Sales
 	        PaymentController.CreateTransaction(amountToPay, "Bla", provider);
 	        if (amountToPay == 0)
 	        {
-                CurrentOrder.Status.StatusName = "Complete";
+                CurrentOrder.Status.Name = "Complete";
 	            OrderController.SaveOrder(CurrentOrder);
                 StartNewOrder();
 	        }
 	    }
 
 		/// <summary>
-		/// Get info on the amount missing on the orderlist
+		/// Get info on the amount missing on the SalesOrder
 		/// </summary>
 		public virtual long MissingPaymenOnOrder()
 		{
@@ -163,23 +164,23 @@ namespace CashRegister.Sales
 		/// <summary>
 		/// Adds an transaction to an order
 		/// </summary>
-		public virtual void AddTransaction(Transaktion trans)
+		public virtual void AddTransaction(Models.Transaction trans)
 		{
-			CurrentOrder.Transaktions.Add(trans);
+			CurrentOrder.Transactions.Add(trans);
 		}
 
 		/// <summary>
 		/// Gets a list of all incomplete orders by default current data (or within a certain date or time)
 		/// </summary>
-		public virtual List<OrderList> GetIncompleteOrders(DateTime start, DateTime end)
+		public virtual List<SalesOrder> GetIncompleteOrders(DateTime start, DateTime end)
 		{
-            List<OrderList> NewList = new List<OrderList>();
+            List<SalesOrder> NewList = new List<SalesOrder>();
             SalesUnitOfWork SalesWork = new SalesUnitOfWork(new CashRegisterContext());
-		    var Liste = SalesWork.OrderListRepository.Get(OrderList => OrderList.Status.StatusName == "Incomplete" );
+		    var Liste = SalesWork.SalesOrderRepository.Get(SalesOrder => SalesOrder.Status.Name == "Incomplete" );
 
-		    foreach (OrderList order in Liste)
+		    foreach (SalesOrder order in Liste)
 		    {
-		        if (order.OrderDate >= start && order.OrderDate <= end)
+		        if (order.Date >= start && order.Date <= end)
                     NewList.Add(order);
 		    }
             return NewList;
@@ -192,11 +193,11 @@ namespace CashRegister.Sales
 	    public virtual void RetrieveIncompleteOrder(int OrderId, DateTime Date1, DateTime Date2)
 	    {
 
-	        List<OrderList> ListOfIncompletes = GetIncompleteOrders(Date1, Date2);
+	        List<SalesOrder> ListOfIncompletes = GetIncompleteOrders(Date1, Date2);
 
-	        foreach (OrderList orders in ListOfIncompletes)
+	        foreach (SalesOrder orders in ListOfIncompletes)
 	        {
-	            if (OrderId == orders.OrderId)
+	            if (OrderId == orders.Id)
 	                CurrentOrder = orders;
 	        }
 	    }

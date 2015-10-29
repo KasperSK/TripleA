@@ -1,6 +1,7 @@
 ﻿using System;
 using CashRegister.Database;
 using CashRegister.DAL;
+using CashRegister.Models;
 
 namespace CashRegister.DAL
 {
@@ -8,9 +9,8 @@ namespace CashRegister.DAL
     {
         private readonly CashRegisterContext Context;
         private GenericRepository<Product> _productRepository;
-        private GenericRepository<Price> _priceRepository;
-        private GenericRepository<OrderList> _OrderListRepository;
-        private GenericRepository<Status> _StatuspRepository;
+        private GenericRepository<SalesOrder> _SalesOrderRepository;
+        private GenericRepository<OrderStatus> _StatuspRepository;
 
         public SalesUnitOfWork(CashRegisterContext context)
         {
@@ -20,14 +20,12 @@ namespace CashRegister.DAL
         public GenericRepository<Product> ProductRepository
             => _productRepository ?? (_productRepository = new GenericRepository<Product>(Context));
 
-        public GenericRepository<Price> PriceRepository
-            => _priceRepository ?? (_priceRepository = new GenericRepository<Price>(Context));
+       
+        public GenericRepository<SalesOrder> SalesOrderRepository
+            => _SalesOrderRepository ?? (_SalesOrderRepository = new GenericRepository<SalesOrder>(Context));
 
-        public GenericRepository<OrderList> OrderListRepository
-            => _OrderListRepository ?? (_OrderListRepository = new GenericRepository<OrderList>(Context));
-
-        public GenericRepository<Status> StatuspRepository
-            => _StatuspRepository ?? (_StatuspRepository = new GenericRepository<Status>(Context));
+        public GenericRepository<OrderStatus> StatuspRepository
+            => _StatuspRepository ?? (_StatuspRepository = new GenericRepository<OrderStatus>(Context));
 
         public void Save()
         {

@@ -1,7 +1,10 @@
+using CashRegister.Database.CashRegister.Database;
+
 namespace CashRegister.Database
 {
     using System;
     using System.Data.Entity;
+    using Models;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
@@ -13,48 +16,26 @@ namespace CashRegister.Database
             Database.SetInitializer(new CashRegisterInitializer());
         }
 
-        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
-        public virtual DbSet<OrderList> OrderLists { get; set; }
+        public virtual DbSet<SalesOrder> SalesOrders { get; set; }
+        public virtual DbSet<OrderLine> OrderLines { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
-        public virtual DbSet<Price> Prices { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductGroup> ProductGroups { get; set; }
-        public virtual DbSet<ProductSubGroup> ProductSubGroups { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<Transaktion> Transaktions { get; set; }
+        public virtual DbSet<Transaction> Transaktions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OrderList>()
-                .HasMany(e => e.Transaktions)
-                .WithRequired(e => e.OrderList)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Configurations.Add(new DiscountEntityConfiguration());
+            modelBuilder.Configurations.Add(new ProductEntityConfiguration());
+            modelBuilder.Configurations.Add(new ProductGroupEntityConfiguration());
+            modelBuilder.Configurations.Add(new OrderLineEntityConfiguration());
+            modelBuilder.Configurations.Add(new SalesOrderEntityConfiguration());
+            modelBuilder.Configurations.Add(new TransactionEntityConfiguration());
+            modelBuilder.Configurations.Add(new PaymentTypeEntityConfiguration());
+            modelBuilder.Configurations.Add(new OrderStatusEntityConfiguration());
 
-            modelBuilder.Entity<OrderList>()
-                .HasMany(e => e.Products)
-                .WithMany(e => e.OrderLists)
-                .Map(m => m.ToTable("OrderList_Product").MapLeftKey("OrderId").MapRightKey("ProductId"));
-
-            modelBuilder.Entity<PaymentType>()
-                .HasMany(e => e.Transaktions)
-                .WithRequired(e => e.PaymentType)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.Prices)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.ProductGroups)
-                .WithMany(e => e.Products)
-                .Map(m => m.ToTable("ProductGroup_Product").MapLeftKey("ProductId").MapRightKey("ProductGroupId"));
-
-            modelBuilder.Entity<Status>()
-                .HasMany(e => e.OrderLists)
-                .WithRequired(e => e.Status)
-                .WillCascadeOnDelete(false);
         }
     }
 }

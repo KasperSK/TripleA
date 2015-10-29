@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CashRegister.Database;
+using CashRegister.Models;
 
 namespace CashRegister.DAL
 {
@@ -11,7 +8,6 @@ namespace CashRegister.DAL
     {
         private readonly CashRegisterContext Context;
         private GenericRepository<Product> _productRepository;
-        private GenericRepository<Price> _priceRepository;
         private GenericRepository<ProductGroup> _productGroupRepository;
 
         public ProductUnitOfWork(CashRegisterContext context)
@@ -20,8 +16,6 @@ namespace CashRegister.DAL
         }
 
         public GenericRepository<Product> ProductRepository => _productRepository ?? (_productRepository = new GenericRepository<Product>(Context));
-
-        public GenericRepository<Price> PriceRepository => _priceRepository ?? (_priceRepository = new GenericRepository<Price>(Context));
 
         public GenericRepository<ProductGroup> ProductGroupRepository => _productGroupRepository ?? (_productGroupRepository = new GenericRepository<ProductGroup>(Context));
 
@@ -55,8 +49,7 @@ namespace CashRegister.DAL
     {
         private readonly CashRegisterContext Context;
         private GenericRepository<Product> _productRepository;
-        private GenericRepository<Price> _priceRepository;
-        private GenericRepository<OrderList> _orderListRepository;
+        private GenericRepository<SalesOrder> _SalesOrderRepository;
 
         public OrderUnitOfWork(CashRegisterContext context)
         {
@@ -65,10 +58,8 @@ namespace CashRegister.DAL
 
         public GenericRepository<Product> ProductRepository => _productRepository ?? (_productRepository = new GenericRepository<Product>(Context));
 
-        public GenericRepository<Price> PriceRepository => _priceRepository ?? (_priceRepository = new GenericRepository<Price>(Context));
-
-        public GenericRepository<OrderList> OrderListRepository
-            => _orderListRepository ?? (_orderListRepository = new GenericRepository<OrderList>(Context)); 
+        public GenericRepository<SalesOrder> SalesOrderRepository
+            => _SalesOrderRepository ?? (_SalesOrderRepository = new GenericRepository<SalesOrder>(Context)); 
 
         public void Save()
         {
