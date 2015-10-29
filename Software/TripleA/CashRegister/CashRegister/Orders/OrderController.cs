@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CashRegister.Models;
 
@@ -10,74 +11,110 @@ namespace CashRegister.Orders
 	public class OrderController : IOrderController
 	{
 		private IOrderDao OrderDao { get; }
+        public List<SalesOrder> StashedOrders { get; }
+        public SalesOrder CurrentOrder { get; private set; }
 
 	    public OrderController (IOrderDao orderDao)
 	    {
 	        OrderDao = orderDao;
+            StashedOrders = new List<SalesOrder>();
 	    }
 
-        /// <summary>
-        /// Creates an order with an unique id
-        /// </summary>
-        /// <returns>The created SalesOrder</returns>
-        public virtual SalesOrder CreateOrder()
-        { 
-            OrderDao.Insert(new SalesOrder());
-            var order = OrderDao.GetLastOrder();
+        public virtual void CreateNewOrder()
+        {
+            StashCurrentOrder();
+            CurrentOrder = new SalesOrder() { Lines = new List<OrderLine>(), Transactions = new List<Transaction>() };
+        }
 
-            return order;
-		}
-
-        /// <summary>
-        /// Saves an order
-        /// </summary>
-        /// <param name="order">The order to be saved</param>
-        public void SaveOrder(SalesOrder order)
+        public void SaveOrder()
 	    {
-	        OrderDao.Insert(order);
+            if (CurrentOrder == null)
+                return;
+
+            CurrentOrder.Date = DateTime.Now;
+            OrderDao.Insert(CurrentOrder);
+            
+            CurrentOrder = null;
 	    }
 
-        /// <summary>
-        /// Clears an order
-        /// </summary>
-        /// <param name="order">The order to be cleared</param>
-        public void ClearOrder(ref SalesOrder order)
-	    {
-            order.Transactions.Clear();
+        public void UpdateOrder()
+        {
+            if (CurrentOrder == null)
+                return;
 
-            OrderDao.Update(order);
+            OrderDao.Update(CurrentOrder);
+
+            CurrentOrder = null;
+        }
+
+        public void GetStashedOrder(int id)
+        {
+            if (id > StashedOrders.Count)
+                return;
+
+            StashCurrentOrder();
+
+            CurrentOrder = StashedOrders[id];
+            StashedOrders.RemoveAt(id);
+        }
+
+        private void StashCurrentOrder()
+        {
+            if (CurrentOrder != null)
+                StashedOrders.Add(CurrentOrder);
+
+            CurrentOrder = null;
+        }
+
+        public void ClearOrder()
+        {
+            if (CurrentOrder == null)
+                return;
+
+            CurrentOrder.Lines.Clear();
 	    }
 
-        /// <summary>
-        /// Get the missing amount on an order
-        /// </summary>
-        /// <param name="order">The order</param>
-        /// <returns>The missing amount</returns>
-	    public long MissingAmount(SalesOrder order)
-	    {
-	        var amountLeft = order.Total - order.Transactions.Sum(t => t.Price);
+        public void AddProduct(Product product, int quantity = 1, Discount discount = null)
+        {
+            if (CurrentOrder == null)
+                return;
 
-	        return (long)amountLeft;
-	    }
+            var orderLine = new OrderLine()
+            {
+                Product = product,
+                Quantity = quantity,
+                Discount = discount,
+                UnitPrice = product.Price,
+                DiscountValue = (discount == null ? 0 : discount.Percent / 100 * product.Price)
+            };
 
-        /// <summary>
-        /// Get an order by id
-        /// </summary>
-        /// <param name="id">The orders' id</param>
-        /// <returns>The SalesOrder with id</returns>
-        public virtual SalesOrder GetOrderById(long id)
-		{
-		   return OrderDao.SelectById(id);
-		}
+            CurrentOrder.Lines.Add(orderLine);
+            CurrentOrder.Total += (orderLine.UnitPrice - orderLine.DiscountValue) * orderLine.Quantity;
+        }
 
-        /// <summary>
-        /// Get the last n orders
-        /// </summary>
-        /// <param name="n">The amount of orders to be returned</param>
-        /// <returns>A IEnumerable list with n amount of SalesOrders</returns>
-        public virtual IEnumerable<SalesOrder> GetNLastOrders(int n)
-		{
-		    return OrderDao.GetNLastOrders(n);
-		}
+        public void AddTransaction(Transaction transaction)
+        {
+            if (CurrentOrder == null)
+                return;
+
+            CurrentOrder.Transactions.Add(transaction);
+        }
+
+        public long MissingAmount()
+        {
+            return (CurrentOrder != null ? CurrentOrder.Total - CurrentOrder.Transactions.Sum(t => t.Price) : 0);
+        }
+
+        public void GetOrderById(long id)
+        {
+            StashCurrentOrder();
+            CurrentOrder = OrderDao.SelectById(id);
+        }
+
+        public IEnumerable<SalesOrder> GetNLastOrders(int n)
+        {
+            var orders = OrderDao.GetNLastOrders(n);
+            return orders;
+        }
 	}
 }
