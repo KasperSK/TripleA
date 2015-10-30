@@ -10,42 +10,61 @@ namespace CashRegister.Orders
 	public interface IOrderController 
 	{
 		/// <summary>
-		/// Creates an order with an unique id
+		/// Creates a new order and sets it as the current order.
 		/// </summary>
-		/// <returns>The created SalesOrder</returns>
-		SalesOrder CreateOrder();
+		void CreateNewOrder();
 
         /// <summary>
-        /// Saves an order
+        /// Saves the current order.
         /// </summary>
-        /// <param name="order">The order to be saved</param>
-        void SaveOrder(SalesOrder order);
+        void SaveOrder();
 
         /// <summary>
-        /// Clears an order
+        /// Updates a already existing current order
         /// </summary>
-        /// <param name="order">The order to be cleared</param>
-        void ClearOrder(ref SalesOrder order);
+        void UpdateOrder();
 
         /// <summary>
-        /// Get the missing amount on an order
+        /// Clears the order lines from the current order.
         /// </summary>
-        /// <param name="order">The order</param>
+        void ClearOrder();
+
+        /// <summary>
+        /// Adds an amount of products to the current order.
+        /// </summary>
+        /// <param name="product">Product to be added to the order</param>
+        /// <param name="quantity">The quantity of the product</param>
+        /// <param name="discount">The discount, can be excluded</param>
+        void AddProduct(Product product, int quantity, Discount discount);
+
+        /// <summary>
+        /// Adds a transcation to the current order.
+        /// </summary>
+        /// <param name="transaction">Transaction to be added to the order</param>
+        void AddTransaction(Transaction transaction);
+
+        /// <summary>
+        /// Retrieves a stashed order
+        /// </summary>
+        /// <param name="id">The internal id of the stashed item</param>
+        void GetStashedOrder(int id);
+        
+        /// <summary>
+        /// Get the missing amount from the current order
+        /// </summary>
         /// <returns>The missing amount</returns>
-	    long MissingAmount(SalesOrder order);
+	    long MissingAmount();
 
         /// <summary>
-        /// Get an order by id
+        /// Get an order by id and sets it as the current order
         /// </summary>
         /// <param name="id">The orders' id</param>
-        /// <returns>The SalesOrder with id</returns>
-        SalesOrder GetOrderById(long id);
+        void GetOrderById(long id);
 
 		/// <summary>
-		/// Get the last n orders
+		/// Get the last n orders and updates the currents orders
 		/// </summary>
 		/// <param name="n">The amount of orders to be returned</param>
-		/// <returns>A IEnumerable list with n amount of SalesOrders</returns>
 		IEnumerable<SalesOrder> GetNLastOrders(int n);
 	}
 }

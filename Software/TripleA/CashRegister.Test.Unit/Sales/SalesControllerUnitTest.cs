@@ -11,6 +11,7 @@ using NUnit.Framework;
 
 namespace CashRegister.Test.Unit.Sales
 {
+    /*
     [TestFixture]
     public class SalesControllerUnitTest
     {
@@ -105,6 +106,7 @@ namespace CashRegister.Test.Unit.Sales
         }
 
 
-
+    
     }
+    */
 }

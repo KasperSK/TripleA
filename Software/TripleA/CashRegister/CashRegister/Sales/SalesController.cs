@@ -6,7 +6,7 @@
 //------------------------------------------------------------------------------
 
 using CashRegister.Models;
-
+/*
 namespace CashRegister.Sales
 {
     using Orders;
@@ -212,4 +212,4 @@ namespace CashRegister.Sales
         }
     }
 }
-
+*/
