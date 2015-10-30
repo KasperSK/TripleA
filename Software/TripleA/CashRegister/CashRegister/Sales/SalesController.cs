@@ -62,16 +62,16 @@ namespace CashRegister.Sales
         /// </summary>
         public void AddProductToOrder(Product product, int quantity, Discount discount)
         {
-            OrderController.AddProduct(product, 1, null);
+            OrderController.AddProduct(product, quantity, discount);
         }
 
         /// <summary>
         /// Prints an order
         /// </summary>
-        public void CreateAndPrintReceipt(SalesOrder order)
+        public void CreateAndPrintReceipt()
         {
-            var print = ReceiptController.CreateReceipt(order);
-            ReceiptController.Print(print);
+            ReceiptController.CreateReceipt(OrderController.CurrentOrder);
+            OrderController.SaveOrder();
         }
 
 

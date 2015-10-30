@@ -9,6 +9,7 @@ namespace CashRegister.Orders
     /// </summary>
 	public interface IOrderController 
 	{
+        SalesOrder CurrentOrder { get;}
         List<SalesOrder> StashedOrders { get; }
         /// <summary>
         /// Creates a new order and sets it as the current order.
