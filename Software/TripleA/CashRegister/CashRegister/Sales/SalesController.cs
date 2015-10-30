@@ -108,6 +108,7 @@ namespace CashRegister.Sales
             OrderController.ClearOrder();
             OrderController.MissingAmount();
             if (OrderController.MissingAmount() == 0)
+                OrderController.SaveOrder();
                 StartNewOrder();
         }
 

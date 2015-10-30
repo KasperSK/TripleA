@@ -72,7 +72,8 @@ namespace CashRegister.Orders
                 return;
 
             CurrentOrder.Lines.Clear();
-	    }
+            CurrentOrder.Total=0;
+        }
 
         public void AddProduct(Product product, int quantity = 1, Discount discount = null)
         {
