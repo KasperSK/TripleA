@@ -1,112 +1,146 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using CashRegister.Database;
 using CashRegister.Models;
 using CashRegister.Orders;
+using CashRegister.Payment;
 using CashRegister.Receipts;
 using CashRegister.Sales;
 using CashRegister.Printer;
 using NSubstitute;
+using NSubstitute.Core;
+using NSubstitute.Core.Arguments;
 using NUnit.Framework;
 
 namespace CashRegister.Test.Unit.Sales
 {
-    /*
     [TestFixture]
     public class SalesControllerUnitTest
     {
-        private IOrderController orderctrl;
-        private IReceiptController receiptctrl;
-        private IPrinter printerctrl;
-        private ISalesController uut;
-        private Product testProduct;
-        private Product testProduct2;
-        private Product testProduct3;
-        private Product testProduct4;
-
+        private IOrderController _orderctrl;
+        private IReceiptController _receiptctrl;
+        private IPrinter _printerctrl;
+        private ISalesController _uut;
+        private ITransaction _transaction;
+        private Models.Product _product;
+        private Discount _discount;
+        private SalesController _getIncomplete;
+        private Models.Transaction trans;
 
         [SetUp]
         public void Setup()
         {
-            orderctrl = Substitute.For<OrderController>(Substitute.For<OrderDao>());
-            orderctrl.CreateOrder().Returns(new OrderList());
-
-            printerctrl = Substitute.For<ReceiptPrinter>();
-            receiptctrl = Substitute.For<ReceiptController>(printerctrl);
-            testProduct = new Product("test", 10, true);
-            testProduct2 = new Product("test1", 11, true);
-            testProduct3 = new Product("test2", 12, true);
-            testProduct4 = new Product("test3", 13, false);
-            uut = new SalesController(orderctrl, receiptctrl);
+            _orderctrl = Substitute.For<OrderController>(Substitute.For<OrderDao>());
+            _printerctrl = Substitute.For<ReceiptPrinter>();
+            _transaction = Substitute.For<ITransaction>();
+            trans = Substitute.For<Models.Transaction>();
+            //      _orderctrl.StashedOrders.Returns(new List<SalesOrder> {});
+            _receiptctrl = Substitute.For<ReceiptController>(_printerctrl);
+            _product = new Product("Fedt", 100, true);
+            _discount = Substitute.For<Discount>();
+            _uut = new SalesController(_orderctrl, _receiptctrl);
 
         }
 
-        public void AddingProduct(Product product)
+        public void AddingProductToOrder(Product product, int quantity, Discount discount)
         {
-            uut.AddProductToOrder(product);
+            _uut.AddProductToOrder(product, quantity, discount);
         }
-        
+
+
+        [Test]
+        public void CTorSalesController_SettingLocalPaymentProviderList_ListIsSet()
+        {
+
+        }
+
+        [Test]
+        public void SalesController_CallingAddProductOrderController_OrderControllerAddingProductIsCalled()
+        {
+            //_uut.AddProductToOrder(_product, 1,_discount);
+            AddingProductToOrder(_product, 1, _discount);
+            _orderctrl.Received(1).AddProduct(Arg.Any<Product>(), Arg.Any<int>(), Arg.Any<Discount>());
+        }
+
+        [Test]
+        public void SalesController_RemoveProductFromOrderList_OrderControllerAddingProductIsCalled()
+        {
+            AddingProductToOrder(_product, 1, _discount);
+            _uut.RemoveProductFromOrder(_product, 1, _discount);
+            _orderctrl.Received(1).AddProduct(Arg.Any<Product>(), Arg.Any<int>(), Arg.Any<Discount>());
+        }
+
+        [Test]
+        public void SalesController_ClearOrder_OrderControllerClearOrderIsCalled()
+        {
+            _uut.ClearOrder();
+            _orderctrl.Received(1).ClearOrder();
+        }
+
+        [Test]
+        public void SalesController_CancelOrder_StartNewOrderIsCalled()
+        {
+            //AddingProductToOrder(_product, 1, _discount);
+            _uut.CancelOrder();
+            _orderctrl.Received(2).CreateNewOrder();
+
+        }
+        [Test]
+        public void SalesController_CancelOrder_OrderControllerClearOrderIsCalled()
+        {
+            _uut.CancelOrder();
+            _orderctrl.Received(1).ClearOrder();
+        }
+        [Test]
+        public void SalesController_CancelOrder_OrderControllerMissingAmountIsCalled()
+        {
+            _uut.CancelOrder();
+            _orderctrl.Received(1).MissingAmount();
+
+        }
+        [Test]
+        public void SalesController_CancelOrder_OrderControllerSaveOrderIsCalled()
+        {
+            _uut.CancelOrder();
+            _orderctrl.Received(1).SaveOrder();
+        }
+
+        [Test]
+        public void SalesController_MissingPayment_OrderControllerMissingAmountIsCalled()
+        {
+            _uut.MissingPaymenOnOrder();
+            _orderctrl.Received(1).MissingAmount();
+        }
+/*
+        [Test]
+        public void SalesController_GetIncompleteOrders_OrdercontrollerStashedOrderIsCalled()
+        {
+            //_orderctrl.StashedOrders.Returns(new List<SalesOrder>());
+           _orderctrl.StashedOrders.Returns(x => new List<SalesOrder>());
+            Assert.That(_uut.GetIncompleteOrders(), Is.TypeOf<List<SalesOrder>>());
             
-        
-
-        [Test]
-        public void Ctor_AddProductToOrderList_ProductIsAdded()
-        {
-            AddingProduct(testProduct);
-            Assert.That(uut.GetCurrentOrder().Lines.Any(p => p.Product == testProduct).Equals(true));
         }
-
-        [Test] //Kig igen
-
-        public void SalesController_GetCurrentOrder_CurrentOrderReturned()
+*/
+        [Test]
+        public void SalesController_AddTransaction_OrderControllerAddTransactionIsCalled()
         {
-            uut.StartNewOrder();
-            var OrderTest = uut.GetCurrentOrder();
-            //OrderTest.Products.Add(testProduct);
-
-            var COrderTest = uut.GetCurrentOrder();
-            Assert.That(COrderTest.Equals(OrderTest));
-
+            _uut.AddTransaction(trans);
+            _orderctrl.Received(1).AddTransaction(Arg.Any<Models.Transaction>());
         }
 
         [Test]
-        public void SalesController_RemoveProductFromOrderList_ProductIsRemoved()
+        public void SalesController_RetrieveIncompleteOrder_OrdercontrollerGetStashedOrderIsCalled()
         {
-            AddingProduct(testProduct);
-            uut.RemoveProductFromOrder(testProduct);
-            var current = uut.GetCurrentOrder();
-            Assert.That(current.Lines.All(p => p.Product != testProduct));
+            _uut.RetrieveIncompleteOrder(1);
+            _orderctrl.Received(1).GetStashedOrder(1);
         }
 
         [Test]
-        public void SalesController_RemoveProductFromOrderList_ProductNotInCollection()
+        public void SalesController_SaveIncompleteOrder_OrderControllerCreateNewOrderIsCalled()
         {
-            uut.RemoveProductFromOrder(testProduct);
-            var current = uut.GetCurrentOrder();
-            Assert.That(current.Lines.All(p => p.Product != testProduct));
+            _uut.SaveIncompleteOrder();
+            _orderctrl.Received(1).CreateNewOrder();
         }
-
-        [Test]
-        public void SalesController_CreateAndPrintReceipt_PrintIsCalled()
-        {
-            uut.CreateAndPrintReceipt(uut.GetCurrentOrder());
-            var print = receiptctrl.CreateReceipt(uut.GetCurrentOrder());
-            receiptctrl.Received(1).Print(print);
-        }
-
-        [Test]
-        public void SalesController_ClearOrder_OrderIsCleared()
-        {
-            AddingProduct(testProduct);
-            AddingProduct(testProduct2);
-            AddingProduct(testProduct3);
-            AddingProduct(testProduct4);
-            uut.ClearOrder();
-            CollectionAssert.IsEmpty(uut.GetCurrentOrder().Lines);
-        }
-
-
-    
     }
-    */
 }
