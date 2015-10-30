@@ -9,10 +9,11 @@ namespace CashRegister.Orders
     /// </summary>
 	public interface IOrderController 
 	{
-		/// <summary>
-		/// Creates a new order and sets it as the current order.
-		/// </summary>
-		void CreateNewOrder();
+        List<SalesOrder> StashedOrders { get; }
+        /// <summary>
+        /// Creates a new order and sets it as the current order.
+        /// </summary>
+        void CreateNewOrder();
 
         /// <summary>
         /// Saves the current order.
