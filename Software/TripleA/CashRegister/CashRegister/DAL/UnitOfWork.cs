@@ -4,24 +4,52 @@ using CashRegister.Models;
 
 namespace CashRegister.DAL
 {
-    public class ProductUnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
-        private readonly CashRegisterContext Context;
-        private GenericRepository<Product> _productRepository;
-        private GenericRepository<ProductGroup> _productGroupRepository;
+        private readonly CashRegisterContext _context;
+        private readonly DalFacade _controller;
+        private IRepository<Discount> _discountRepository;
+        private IRepository<OrderLine> _orderLineRepository;
+        private IRepository<OrderStatus> _orderStatusRepository;
+        private IRepository<PaymentType> _paymentTypeRepository;
+        private IRepository<Product> _productRepository;
+        private IRepository<ProductGroup> _productGroupRepository;
+        private IRepository<SalesOrder> _salesOrderRepository;
+        private IRepository<Transaction> _transactionRepository;
 
-        public ProductUnitOfWork(CashRegisterContext context)
+
+        public IRepository<Discount> DiscountRepository => _discountRepository ?? (_discountRepository = new Repository<Discount>(_context));
+
+        public IRepository<OrderLine> OrderLineRepository
+            => _orderLineRepository ?? (_orderLineRepository = new Repository<OrderLine>(_context));
+
+        public IRepository<OrderStatus> OrderStatusRepository
+            => _orderStatusRepository ?? (_orderStatusRepository = new Repository<OrderStatus>(_context));
+
+        public IRepository<PaymentType> PaymentTypeRepository
+            => _paymentTypeRepository ?? (_paymentTypeRepository = new Repository<PaymentType>(_context));
+
+        public IRepository<Product> ProductRepository
+            => _productRepository ?? (_productRepository = new Repository<Product>(_context));
+
+        public IRepository<ProductGroup> ProductGroupRepository
+            => _productGroupRepository ?? (_productGroupRepository = new Repository<ProductGroup>(_context));
+
+        public IRepository<SalesOrder> SalesOrderRepository
+            => _salesOrderRepository ?? (_salesOrderRepository = new Repository<SalesOrder>(_context));
+
+        public IRepository<Transaction> TransactionRepository
+            => _transactionRepository ?? (_transactionRepository = new Repository<Transaction>(_context));
+
+        public UnitOfWork(CashRegisterContext context, DalFacade controller)
         {
-            Context = context;
+            _context = context;
+            _controller = controller;
         }
-
-        public GenericRepository<Product> ProductRepository => _productRepository ?? (_productRepository = new GenericRepository<Product>(Context));
-
-        public GenericRepository<ProductGroup> ProductGroupRepository => _productGroupRepository ?? (_productGroupRepository = new GenericRepository<ProductGroup>(Context));
 
         public void Save()
         {
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
         private bool _disposed = false;
@@ -32,49 +60,8 @@ namespace CashRegister.DAL
             {
                 if (diposing)
                 {
-                    Context.Dispose();
-                }
-            }
-            _disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-    }
-
-    public class OrderUnitOfWork
-    {
-        private readonly CashRegisterContext Context;
-        private GenericRepository<Product> _productRepository;
-        private GenericRepository<SalesOrder> _SalesOrderRepository;
-
-        public OrderUnitOfWork(CashRegisterContext context)
-        {
-            Context = context;
-        }
-
-        public GenericRepository<Product> ProductRepository => _productRepository ?? (_productRepository = new GenericRepository<Product>(Context));
-
-        public GenericRepository<SalesOrder> SalesOrderRepository
-            => _SalesOrderRepository ?? (_SalesOrderRepository = new GenericRepository<SalesOrder>(Context)); 
-
-        public void Save()
-        {
-            Context.SaveChanges();
-        }
-
-        private bool _disposed = false;
-
-        protected virtual void Dispose(bool diposing)
-        {
-            if (!_disposed)
-            {
-                if (diposing)
-                {
-                    Context.Dispose();
+                    _context.Dispose();
+                    _controller.ReturnUnitOfWork();
                 }
             }
             _disposed = true;

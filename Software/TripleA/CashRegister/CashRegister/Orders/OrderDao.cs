@@ -12,11 +12,12 @@ namespace CashRegister.Orders
     /// </summary>
     public class OrderDao : IOrderDao
     {
-        private OrderUnitOfWork OrderUnitOfWork { get; }
+        private IDalFacade _dalFacade;
 
-        public OrderDao()
+
+        public OrderDao(IDalFacade dalFacade)
         {
-            OrderUnitOfWork = new OrderUnitOfWork(new CashRegisterContext());    
+            _dalFacade = dalFacade;
         }
 
         /// <summary>
@@ -25,7 +26,11 @@ namespace CashRegister.Orders
         /// <param name="order">The order to be deleted</param>
         public virtual void Delete(SalesOrder order)
         {
-            OrderUnitOfWork.SalesOrderRepository.Delete(order);
+            using (var uow = _dalFacade.GetUnitOfWork())
+            {
+                uow.SalesOrderRepository.Delete(order);
+                uow.Save();
+            }
         }
 
         /// <summary>
@@ -34,7 +39,11 @@ namespace CashRegister.Orders
         /// <param name="order">The order to be updated</param>
         public virtual void Update(SalesOrder order)
         {
-            OrderUnitOfWork.SalesOrderRepository.Update(order);
+            using (var uow = _dalFacade.GetUnitOfWork())
+            {
+                uow.SalesOrderRepository.Update(order);
+                uow.Save();
+            }
         }
 
         /// <summary>
@@ -43,7 +52,11 @@ namespace CashRegister.Orders
         /// <param name="order">The order to be inserted</param>
         public virtual void Insert(SalesOrder order)
         {
-            OrderUnitOfWork.SalesOrderRepository.Insert(order);
+            using (var uow = _dalFacade.GetUnitOfWork())
+            {
+                uow.SalesOrderRepository.Insert(order);
+                uow.Save();
+            }
         }
 
         /// <summary>
@@ -53,7 +66,10 @@ namespace CashRegister.Orders
         /// <returns>An SalesOrder from an id</returns>
         public virtual SalesOrder SelectById(long id)
         {
-            return OrderUnitOfWork.SalesOrderRepository.GetById(id);
+            using (var uow = _dalFacade.GetUnitOfWork())
+            {
+                return uow.SalesOrderRepository.GetById(id);
+            }
         }
 
         /// <summary>
@@ -62,8 +78,11 @@ namespace CashRegister.Orders
         /// <param name="n">The amount of orders to be returned</param>
         /// <returns>A IEnumerable list of the last n orders</returns>
         public virtual IEnumerable<SalesOrder> GetNLastOrders(int n)
-        {     
-            return OrderUnitOfWork.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Take(n);
+        {
+            using (var uow = _dalFacade.GetUnitOfWork())
+            {
+                return uow.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Take(n);
+            }
         }
 
         /// <summary>
@@ -72,7 +91,10 @@ namespace CashRegister.Orders
         /// <returns>The last SalesOrder</returns>
         public SalesOrder GetLastOrder()
         {
-            return OrderUnitOfWork.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Last();
+            using (var uow = _dalFacade.GetUnitOfWork())
+            {
+                return uow.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Last();
+            }
         }
 
         /// <summary>
@@ -81,7 +103,10 @@ namespace CashRegister.Orders
         /// <returns>The id of the last order</returns>
         public virtual long GetLastId()
         {
-            return OrderUnitOfWork.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Last().Id;
+            using (var uow = _dalFacade.GetUnitOfWork())
+            {
+                return uow.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Last().Id;
+            }
         }
     }
 }

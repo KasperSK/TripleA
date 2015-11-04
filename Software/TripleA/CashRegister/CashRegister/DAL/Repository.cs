@@ -11,13 +11,13 @@ using CashRegister.Log;
 
 namespace CashRegister.DAL
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         internal CashRegisterContext Context;
         internal DbSet<TEntity> DbSet;
-        private readonly ILogger _logger = LogFactory.GetLogger(typeof (GenericRepository<TEntity>));
+        private readonly ILogger _logger = LogFactory.GetLogger(typeof (Repository<TEntity>));
 
-        public GenericRepository(CashRegisterContext context)
+        public Repository(CashRegisterContext context)
         {
             Context = context;
             DbSet = context.Set<TEntity>();

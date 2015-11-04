@@ -2,7 +2,7 @@ namespace CashRegister.Models
 {
     using System.Collections.Generic;
 
-    public  class Discount
+    public class Discount
     {
        
         public Discount()

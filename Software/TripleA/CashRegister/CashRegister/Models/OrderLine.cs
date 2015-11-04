@@ -17,7 +17,7 @@ namespace CashRegister.Models
 
         public int UnitPrice { get; set; }
 
-        public Discount Discount { get; set; }
+        public virtual Discount Discount { get; set; }
 
         public int DiscountValue { get; set; }
 
