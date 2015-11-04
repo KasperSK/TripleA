@@ -41,7 +41,6 @@ namespace CashRegister.Receipts
             
             foreach (var p in order.Lines)
             {
-                // FIXME Mangler Quantity og discount
                 receipt.Content.Add($"{p.Quantity}x\t{p.Product.Name}\n");
                 receipt.Content.Add("              ");
                 receipt.Content.Add($"{p.UnitPrice}\n\n");
@@ -54,6 +53,20 @@ namespace CashRegister.Receipts
             return receipt;
 		}
 
+        /// <summary>
+        /// Formats a new receipt from a transaction
+        /// </summary>
+        /// <param name="transaction">The transaction to be formatted</param>
+        /// <returns></returns>
+        public virtual Receipt CreateReceipt(Transaction transaction)
+        {
+            var receipt = new Receipt();
+            
+            receipt.Content.Add($"{transaction.Paymenttype}\nDate: {transaction.Date}\nId: {transaction.Id}\n{transaction.Price}\n\b");
+            
+            return receipt;
+        }
+        
         /// <summary>
         /// Adds the standard header to the Receipt
         /// </summary>
