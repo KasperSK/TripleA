@@ -204,7 +204,7 @@
                       <parameter Id="fd27d650-3bbf-43c9-a47b-ec9ab069c017" name="transaction" direction="In" isUnique="false">
                         <elementDefinition Id="a8491378-505b-4f08-93ff-96bb913aeba8" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -260,7 +260,7 @@
                       <parameter Id="3d129f60-a3c0-4d07-a782-db73db2ad174" direction="Return" isUnique="false">
                         <elementDefinition Id="87e1ede6-4a6c-41f9-a03c-71f142b41f4c" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -340,7 +340,7 @@
                       <parameter Id="33be74c9-420a-48ef-84ce-8945ee9d87fb" name="transaction" direction="In">
                         <elementDefinition Id="4160c21f-42d4-4fc4-94a3-9679cb6ace07" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1059,112 +1059,6 @@
             </class>
           </packageHasNamedElement>
           <packageHasNamedElement>
-            <class Id="720a3fc0-368d-496d-ba6b-9ed68689e0a5" name="Transaction" isAbstract="false" isLeaf="false" isActiveClass="false">
-              <appliedStereotypesInternal>
-                <stereotypeInstance Id="f6f770d2-c102-4782-bc0a-02f149ca91dc" name="class" profile="CSharpProfile">
-                  <elementDefinition Id="535e05c1-d37b-46fe-bd03-e288a03afb8f" />
-                  <propertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="be1aa9c7-2710-4e20-9d1d-e8c746c391e7">
-                      <propertyInstance Id="922eb52a-6759-4a0c-ab01-72eb1e0a65c6" name="ClrAttributes">
-                        <elementDefinition Id="6a7be8cc-a5a2-474f-9116-6cea781f6029" />
-                      </propertyInstance>
-                      <elementDefinition Id="ac96f9e8-f10e-4188-a30d-35d3a696afa9" />
-                    </stereotypeInstanceHasPropertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="10da6713-f4d0-4dd6-be56-49b5ab896678">
-                      <propertyInstance Id="209686c1-7b81-4cea-a37a-f712a984b524" name="IsPartial" value="false">
-                        <elementDefinition Id="ae7bf0ff-01d2-44f1-a352-ea2a34e7df1d" />
-                      </propertyInstance>
-                      <elementDefinition Id="4c545940-0ba2-4bb6-b4cb-614282cd33da" />
-                    </stereotypeInstanceHasPropertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="b0db911a-6384-4ce2-858d-5f024cf25d86">
-                      <propertyInstance Id="d24eb3e6-11d7-46b8-b904-7bbafd5dc448" name="IsStatic" value="false">
-                        <elementDefinition Id="d17ea72d-f195-46f1-a575-64e4aafd8ea9" />
-                      </propertyInstance>
-                      <elementDefinition Id="a6c9855f-b53c-422b-a10d-9d34e69f3a27" />
-                    </stereotypeInstanceHasPropertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="c912cb7d-f69d-4537-b91d-eff6f1dad73e">
-                      <propertyInstance Id="f899386d-bc2d-4060-bdf6-f19c45b2cfaf" name="IsUnsafe" value="false">
-                        <elementDefinition Id="bb99b696-e6bb-461e-8ff8-1f82e5eff3e3" />
-                      </propertyInstance>
-                      <elementDefinition Id="2782028d-64e3-4365-9d88-8f49ea8b5450" />
-                    </stereotypeInstanceHasPropertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="d5aca2e6-6d5b-4a8b-955a-fdb836c70e16">
-                      <propertyInstance Id="43dfcb52-8859-4d0a-b68a-e9f6730151b7" name="PackageVisibility" value="internal">
-                        <elementDefinition Id="5546ffda-f66e-4244-8c03-08461a60a9ee" />
-                      </propertyInstance>
-                      <elementDefinition Id="fb1575f1-7b45-4962-9f66-27eb2e47bd90" />
-                    </stereotypeInstanceHasPropertyInstances>
-                  </propertyInstances>
-                </stereotypeInstance>
-              </appliedStereotypesInternal>
-              <elementDefinition Id="91d565bc-1342-4cce-bb24-24df6bd94f6b" />
-              <suppliersInternal>
-                <interfaceRealization Id="63edb32a-301e-4b37-8e51-7c846b0bc139">
-                  <interfaceMoniker Id="c00d08d1-8910-4514-bf8d-4fff51dfa0f9" LastKnownName="ITransaction" />
-                  <elementDefinition Id="0505f0f3-6c64-4fb7-ae10-ad060b481290" />
-                </interfaceRealization>
-              </suppliersInternal>
-              <ownedOperationsInternal>
-                <operation Id="7666b118-085a-4d77-8d07-2b2282f2c3f1" name="AddObserver" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-                  <appliedStereotypesInternal>
-                    <stereotypeInstance Id="1f2ddaf7-3074-4f38-964a-d36937b2d864" name="method" profile="CSharpProfile">
-                      <elementDefinition Id="1be054eb-abe1-4776-a1d5-ec9032ae1c3d" />
-                      <propertyInstances>
-                        <stereotypeInstanceHasPropertyInstances Id="24da0886-fdc5-4b2c-abf4-89bd0b7cdfd5">
-                          <propertyInstance Id="5243f44e-599a-4d96-8867-5e292b3356ee" name="ClrAttributes">
-                            <elementDefinition Id="96faf50a-1234-4c3f-975e-ecbfdb23cb25" />
-                          </propertyInstance>
-                          <elementDefinition Id="23cac102-7e40-4c03-9816-22d86c7dd025" />
-                        </stereotypeInstanceHasPropertyInstances>
-                        <stereotypeInstanceHasPropertyInstances Id="7619d58a-9a8f-47fa-baf7-4da74d877d4b">
-                          <propertyInstance Id="5b69cb4d-0c98-4475-a3b3-b28380fb7fac" name="IsPartial" value="false">
-                            <elementDefinition Id="c4f9eb45-4bf2-43b9-94e8-fe53c59d5944" />
-                          </propertyInstance>
-                          <elementDefinition Id="8649ae57-6ce9-472a-88f3-16a7b460a370" />
-                        </stereotypeInstanceHasPropertyInstances>
-                        <stereotypeInstanceHasPropertyInstances Id="2f51bc3f-3fd9-4c12-9fbb-39ce3dd822e5">
-                          <propertyInstance Id="925a2434-e80e-4103-9911-db9e4cf003bd" name="IsUnsafe" value="false">
-                            <elementDefinition Id="ec94b5aa-c84c-43df-a970-d21afea99982" />
-                          </propertyInstance>
-                          <elementDefinition Id="d3299602-7198-4b46-96ee-55a8fba62838" />
-                        </stereotypeInstanceHasPropertyInstances>
-                        <stereotypeInstanceHasPropertyInstances Id="11c5d860-2de8-4383-bf7c-49a196ac4db1">
-                          <propertyInstance Id="a6d4a6d7-6655-4d9c-8a65-898a58cc1cc2" name="Inheritance" value="none">
-                            <elementDefinition Id="d38caea6-cf06-440d-a1b9-a186439a4a44" />
-                          </propertyInstance>
-                          <elementDefinition Id="14772044-aa48-4e60-8f08-b3f24fff494c" />
-                        </stereotypeInstanceHasPropertyInstances>
-                        <stereotypeInstanceHasPropertyInstances Id="4cd03d8a-fe5e-4fc2-8295-1c5c3309f016">
-                          <propertyInstance Id="d46f131d-0fb0-4d05-8bca-5fec3a5be74b" name="PackageVisibility" value="internal">
-                            <elementDefinition Id="dafb91b2-0abf-468e-83e5-5c2352d53180" />
-                          </propertyInstance>
-                          <elementDefinition Id="1148492a-b76b-4ee1-bcc4-e171edaf1111" />
-                        </stereotypeInstanceHasPropertyInstances>
-                        <stereotypeInstanceHasPropertyInstances Id="2478463b-b5fe-4b6e-805b-4ec761c54d0f">
-                          <propertyInstance Id="55d008c2-2068-4e59-b690-d67f3f5cd200" name="params" value="false">
-                            <elementDefinition Id="c7266b24-1366-4e78-8df5-81468ac464fc" />
-                          </propertyInstance>
-                          <elementDefinition Id="4c8d9299-48f6-4db7-8a33-aa2584e74d60" />
-                        </stereotypeInstanceHasPropertyInstances>
-                      </propertyInstances>
-                    </stereotypeInstance>
-                  </appliedStereotypesInternal>
-                  <elementDefinition Id="7bde5321-8115-4bdc-8e84-8317c72d25c5" />
-                  <ownedParameters>
-                    <operationHasOwnedParameters>
-                      <parameter Id="b7fe9c8a-06b1-4142-a447-d138077e21bd" name="observer" direction="In">
-                        <elementDefinition Id="6327fb06-54fc-4be4-a487-86fd5256630e" />
-                        <type_NamedElement>
-                          <referencedTypeMoniker Id="2b3e0145-27f6-4082-86f0-92325923e109" LastKnownName="ITransactionObserver" />
-                        </type_NamedElement>
-                      </parameter>
-                    </operationHasOwnedParameters>
-                  </ownedParameters>
-                </operation>
-              </ownedOperationsInternal>
-            </class>
-          </packageHasNamedElement>
-          <packageHasNamedElement>
             <Interface Id="67e513b9-b2fa-4db2-9f0d-0c436905b9ec" name="ITransactionObserver" isAbstract="false" isLeaf="false">
               <appliedStereotypesInternal>
                 <stereotypeInstance Id="90a9c9dd-351e-4bcd-a278-b1cbd9523b7d" name="interface" profile="CSharpProfile">
@@ -1362,7 +1256,7 @@
               </suppliersInternal>
               <targetEnds>
                 <association Id="39006bc6-d51f-43cd-8ab4-fea6e9ed8e39" isDerived="false" sourceEndRoleName="" targetEndRoleName="Transactions" isLeaf="false" isAbstract="false">
-                  <interfaceMoniker Id="c00d08d1-8910-4514-bf8d-4fff51dfa0f9" LastKnownName="ITransaction" />
+                  <interfaceMoniker Id="c00d08d1-8910-4514-bf8d-4fff51dfa0f9" LastKnownName="IObservableTransaction" />
                   <relationshipOwnedElementsInternal>
                     <associationHasOwnedEnds>
                       <memberEnd Id="211f41dd-f68b-4c0e-8f4d-abfc6e2aad8a" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
@@ -1501,7 +1395,7 @@
                       <parameter Id="5fa2aad2-419a-4878-b321-c14057c4c29c" name="transaction" direction="In" isUnique="false">
                         <elementDefinition Id="15954beb-64f1-463d-afd0-c56033534402" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1557,7 +1451,7 @@
                       <parameter Id="1944c448-55c8-49f5-bfcb-d3b19ccc048b" direction="Return" isUnique="false">
                         <elementDefinition Id="9e65f01e-b6cd-40ca-a66a-d8d9638fdd20" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1637,7 +1531,7 @@
                       <parameter Id="1e8a4fe4-4045-463e-beba-97ae246b05a3" name="transaction" direction="In">
                         <elementDefinition Id="3235a46b-5be4-4992-90f0-14cfc538c533" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="6b28cf24-38f8-474f-9113-889c6c1add26" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1660,7 +1554,7 @@
             </class>
           </packageHasNamedElement>
           <packageHasNamedElement>
-            <Interface Id="c00d08d1-8910-4514-bf8d-4fff51dfa0f9" name="ITransaction" isAbstract="false" isLeaf="false">
+            <Interface Id="c00d08d1-8910-4514-bf8d-4fff51dfa0f9" name="IObservableTransaction" isAbstract="false" isLeaf="false">
               <appliedStereotypesInternal>
                 <stereotypeInstance Id="147f6c31-841e-4caa-a646-43c7fc776fff" name="interface" profile="CSharpProfile">
                   <elementDefinition Id="64aa079b-158b-438a-ad7f-40690ed3c4f2" />
@@ -1719,22 +1613,6 @@
                     </associationHasOwnedEnds>
                   </relationshipOwnedElementsInternal>
                   <elementDefinition Id="187c3cae-b1cf-4257-9b12-ad432f773540" />
-                </association>
-                <association Id="58a66567-d53b-44ad-ab4e-ec34134e105e" isDerived="false" sourceEndRoleName="" targetEndRoleName="Status" isLeaf="false" isAbstract="false">
-                  <enumerationMoniker Id="c87deb36-076e-47c8-875d-f0e8408a85ec" LastKnownName="TransactionStatus" />
-                  <relationshipOwnedElementsInternal>
-                    <associationHasOwnedEnds>
-                      <memberEnd Id="2e50d111-0697-438f-88cd-1c754e299ce8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                        <elementDefinition Id="a3fba3aa-ddf8-4ae3-bb9c-63e7852e6e0d" />
-                      </memberEnd>
-                    </associationHasOwnedEnds>
-                    <associationHasOwnedEnds>
-                      <memberEnd Id="20e9373d-5300-416a-865d-840c6c14debb" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                        <elementDefinition Id="1598da0a-4bdb-4593-b700-4cc73eb0c454" />
-                      </memberEnd>
-                    </associationHasOwnedEnds>
-                  </relationshipOwnedElementsInternal>
-                  <elementDefinition Id="7f6713b6-4919-489f-a3e9-391759005288" />
                 </association>
               </targetEnds>
               <ownedAttributes>
@@ -1963,44 +1841,6 @@
                 </operation>
               </ownedOperations>
             </Interface>
-          </packageHasNamedElement>
-          <packageHasNamedElement>
-            <enumeration Id="c87deb36-076e-47c8-875d-f0e8408a85ec" name="TransactionStatus" isAbstract="false" isLeaf="false">
-              <appliedStereotypesInternal>
-                <stereotypeInstance Id="b9d7b65d-950b-439f-9dcc-d1c799d8b6d5" name="enum" profile="CSharpProfile">
-                  <elementDefinition Id="8ddfa65e-761e-452d-a6fa-9b096203a852" />
-                  <propertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="fba8381e-5329-453b-8f4a-fa9a9548f146">
-                      <propertyInstance Id="8ed6cd0a-1669-46aa-a536-fb3784b3bc18" name="ClrAttributes">
-                        <elementDefinition Id="bc3cb1bd-a740-4950-8ce3-60d2da817c97" />
-                      </propertyInstance>
-                      <elementDefinition Id="117919e3-da0c-4a9b-9ebb-70f5c662442b" />
-                    </stereotypeInstanceHasPropertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="ac57c48d-1597-489f-89f9-39b6f9365e09">
-                      <propertyInstance Id="445dd669-f881-4a44-95ee-73d803f93609" name="BaseType" value="int">
-                        <elementDefinition Id="434b953f-2bb0-4122-9200-ace41ba766cd" />
-                      </propertyInstance>
-                      <elementDefinition Id="f17b4549-f6e2-4b3a-bebb-f5967e6cbf20" />
-                    </stereotypeInstanceHasPropertyInstances>
-                    <stereotypeInstanceHasPropertyInstances Id="291f61cb-3119-4af0-9dd7-e04649d3e5ae">
-                      <propertyInstance Id="dfe73216-4407-4a89-bce6-6ae127c8d739" name="PackageVisibility" value="internal">
-                        <elementDefinition Id="2e45ed82-a296-4843-81c5-448e8fba2dc2" />
-                      </propertyInstance>
-                      <elementDefinition Id="899965a3-ffed-4ef4-b488-0602756abcc8" />
-                    </stereotypeInstanceHasPropertyInstances>
-                  </propertyInstances>
-                </stereotypeInstance>
-              </appliedStereotypesInternal>
-              <elementDefinition Id="9796aa46-5568-4d85-a7a1-12d8c7b5fcbd" />
-              <ownedLiterals>
-                <enumerationLiteral Id="1a463994-d21a-4f6f-8de7-a87a0daeedd6" name="Completed">
-                  <elementDefinition Id="2a9ea9ce-d638-4b4b-8d67-e32b6a2e7058" />
-                </enumerationLiteral>
-                <enumerationLiteral Id="efa11e01-aca4-495e-b207-6fc429a88a6b" name="Created">
-                  <elementDefinition Id="9f637501-4b15-4f94-9c65-5e4d3499321d" />
-                </enumerationLiteral>
-              </ownedLiterals>
-            </enumeration>
           </packageHasNamedElement>
           <packageHasNamedElement>
             <class Id="4b7f1b13-cb7c-4ce8-83b4-925655468336" name="CashPayment" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -2562,6 +2402,50 @@
               </ownedOperationsInternal>
             </class>
           </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="955454c4-8b38-4945-8fcf-1c4cc6653f75" name="ObservableTransaction" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="8a83bafc-473b-48ad-9957-3fe5cef42b0e" />
+              <suppliersInternal>
+                <interfaceRealization Id="783ba5f7-be0e-48fd-a214-feb4e054cbe7">
+                  <interfaceMoniker Id="c00d08d1-8910-4514-bf8d-4fff51dfa0f9" LastKnownName="IObservableTransaction" />
+                  <elementDefinition Id="686d770a-4c84-4c53-b2e7-a86386d98a88" />
+                </interfaceRealization>
+              </suppliersInternal>
+              <targetEnds>
+                <association Id="d66cf60d-df4b-4619-9dec-a17b4d12930e" isDerived="false" sourceEndRoleName="ObservableTransaction" targetEndRoleName="Transaction" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="72c823f3-108a-4bad-98aa-5ada294a5e1f" LastKnownName="Transaction" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="9c354b21-6b33-4e18-bcf0-eddf2dabec60" name="ObservableTransaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="84e8f909-5d9e-483a-9027-c204f55c9094" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="781a156c-f88d-4235-86fc-b7f1005f7989" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                        <elementDefinition Id="6571aafc-b189-4966-a808-e2a571215f93" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="b7b9ff1d-9283-4924-9f6a-5192c5167cc3" />
+                </association>
+              </targetEnds>
+              <ownedOperationsInternal>
+                <operation Id="12135ef3-5972-4116-988f-1dc31d405c0d" name="AddObserver" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="f225aa30-2581-45ae-bfcb-e21277baa10c" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="91b40b60-76bc-4cf6-821c-2f1ae5c4ee22" name="observer" direction="In">
+                        <elementDefinition Id="7c51b10f-8779-4666-b64e-4b39d80ec27a" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="2b3e0145-27f6-4082-86f0-92325923e109" LastKnownName="ITransactionObserver" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
         </packagedElements>
       </package>
     </logicalClassDesignerModelHasPackages>
@@ -2576,17 +2460,17 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="796775ff-b70a-44bd-8312-ed89d16ca8b9" name="Transaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::Payment::Transaction">
+      <referencedType Id="796775ff-b70a-44bd-8312-ed89d16ca8b9" name="Transaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Payment::Transaction">
         <elementDefinition Id="b647ed63-7b5b-4765-ab25-b4c0b6419231" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="cfea0a13-2bd2-4844-8c81-728b24e63a9e" name="IPaymentProvidorDescriptor" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::Payment::IPaymentProvidorDescriptor">
+      <referencedType Id="cfea0a13-2bd2-4844-8c81-728b24e63a9e" name="IPaymentProvidorDescriptor" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Payment::IPaymentProvidorDescriptor">
         <elementDefinition Id="4298fcf3-1e2b-4bf9-8a41-e2a8f3aa1d3e" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="8eee191b-3436-40a5-964f-1066ec95660f" name="Transaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::Payment::Transaction">
+      <referencedType Id="8eee191b-3436-40a5-964f-1066ec95660f" name="Transaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Payment::Transaction">
         <elementDefinition Id="91d565bc-1342-4cce-bb24-24df6bd94f6b" />
       </referencedType>
     </packageHasNamedElement>
@@ -2601,12 +2485,12 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="2b3e0145-27f6-4082-86f0-92325923e109" name="ITransactionObserver" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::Payment::ITransactionObserver">
+      <referencedType Id="2b3e0145-27f6-4082-86f0-92325923e109" name="ITransactionObserver" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Payment::ITransactionObserver">
         <elementDefinition Id="58ae8de0-7983-4d0d-920c-ed7474a094aa" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="6b28cf24-38f8-474f-9113-889c6c1add26" name="ITransaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::Payment::ITransaction">
+      <referencedType Id="6b28cf24-38f8-474f-9113-889c6c1add26" name="IObservableTransaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Payment::IObservableTransaction">
         <elementDefinition Id="d9f70f09-18c2-4ad7-9910-817026f63459" />
       </referencedType>
     </packageHasNamedElement>
@@ -2841,6 +2725,126 @@
         <elementDefinition Id="1106cc90-78bc-4212-a582-04d25ac00965" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="f7a49a54-6a84-451f-9a61-4298cb6981e6" name="Models">
+        <elementDefinition Id="ca5cdd3e-14c0-475e-a150-03092515e494" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="72c823f3-108a-4bad-98aa-5ada294a5e1f" name="Transaction" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="63b6774e-f4fa-4b9f-a454-a175a0e7512b" />
+              <targetEnds>
+                <association Id="dc8410ae-3b5d-4c6d-bb6b-23694d2103ff" isDerived="false" sourceEndRoleName="Transaction" targetEndRoleName="TransactionStatus" isLeaf="false" isAbstract="false">
+                  <enumerationMoniker Id="49274cfb-7376-4e75-8c48-2a81d694f459" LastKnownName="TransactionStatus" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="364cff05-1824-4d7b-8623-15d5fb448847" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <lowerValueInternal>
+                          <literalString Id="587db521-aef6-498d-b35e-ef4f6d40e79f" name="Lower" value="*">
+                            <elementDefinition Id="aba8d129-64c4-4aae-b0cf-66b3efe6afd9" />
+                          </literalString>
+                        </lowerValueInternal>
+                        <upperValueInternal>
+                          <literalString Id="d8ec0023-97d5-4e0e-b77a-1a1d2df01e4e" name="Upper" value="*">
+                            <elementDefinition Id="4b72a970-1fee-401c-b21c-0b63b83bbf1c" />
+                          </literalString>
+                        </upperValueInternal>
+                        <elementDefinition Id="f61d2122-1b90-4609-abdd-d662be3977d2" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="430c288f-f94d-457e-a30a-39e43c8ebc9e" name="TransactionStatus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="63028106-90ec-4826-a03d-3aba22e439b0" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="a2abd1ad-ff60-4ba5-a1eb-a81b0f8c7408" />
+                </association>
+                <association Id="3e8c12e8-0898-407c-95e8-f3f89b492b15" isDerived="false" sourceEndRoleName="Transaction" targetEndRoleName="PaymentType" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="8589f14c-0b43-4b89-bee3-f9a85cf58027" LastKnownName="PaymentType" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="b6a510a1-eb74-45ec-a78f-04f64bb93af2" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <lowerValueInternal>
+                          <literalString Id="51045cbc-0294-490e-afdf-d3c60eb216bf" name="Lower" value="*">
+                            <elementDefinition Id="35521120-68cf-422e-ac42-38a3d0161b9e" />
+                          </literalString>
+                        </lowerValueInternal>
+                        <upperValueInternal>
+                          <literalString Id="82863ff3-ead3-45f1-8204-5e9e48b434d6" name="Upper" value="*">
+                            <elementDefinition Id="969b7418-2fea-4e0f-8c58-721d421a0d8d" />
+                          </literalString>
+                        </upperValueInternal>
+                        <elementDefinition Id="9cccb72c-1291-4fce-bf13-c21020e4ca93" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="69b4e7bd-fa97-45ca-8619-c83f2aeb67a9" name="PaymentType" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="0ff25d1a-7f14-4dce-be1a-7a1b73f0cdb7" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="0d90275e-c00f-463a-9039-b1f42004424e" />
+                </association>
+              </targetEnds>
+              <ownedAttributesInternal>
+                <property Id="f800d72b-2663-436d-ac73-4ebd9eb15e72" name="Id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9f9db515-4ff4-4364-99e3-ee351cf823ac" />
+                </property>
+                <property Id="54591862-2f0c-4698-9336-90e058919a69" name="Date" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6a4c4fb4-1252-4f5b-8def-ed67aa83a257" />
+                </property>
+                <property Id="d3d18033-79de-45e8-a935-90f6a7cd08a4" name="Price" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4e062f47-271b-409f-a8c6-c98eda447c31" />
+                </property>
+              </ownedAttributesInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <enumeration Id="49274cfb-7376-4e75-8c48-2a81d694f459" name="TransactionStatus" isAbstract="false" isLeaf="false">
+              <appliedStereotypesInternal>
+                <stereotypeInstance Id="1bd7db43-321d-479f-abd3-4439e764794f" name="enum" profile="CSharpProfile">
+                  <elementDefinition Id="83bb20c6-faa6-4219-a778-df8576006368" />
+                  <propertyInstances>
+                    <stereotypeInstanceHasPropertyInstances Id="ee65bc1d-b26d-471f-8431-1c0fa83c99a9">
+                      <propertyInstance Id="cd404eb5-c864-4b84-95a8-491f57016672" name="ClrAttributes">
+                        <elementDefinition Id="ccf70ac1-0d13-4e32-a921-3ae07e00e7e0" />
+                      </propertyInstance>
+                      <elementDefinition Id="20f561f8-122e-40ff-8f5d-38d15f4c2f24" />
+                    </stereotypeInstanceHasPropertyInstances>
+                    <stereotypeInstanceHasPropertyInstances Id="e6350ba1-f40e-4b70-9918-bdc8caf32212">
+                      <propertyInstance Id="f6390e28-5872-4b6f-9ed5-83e9dce14977" name="BaseType" value="int">
+                        <elementDefinition Id="1512aca0-27b1-4ca3-baad-b1e0c7e207ee" />
+                      </propertyInstance>
+                      <elementDefinition Id="1c542509-f351-4f0b-99ba-fc738f29e536" />
+                    </stereotypeInstanceHasPropertyInstances>
+                    <stereotypeInstanceHasPropertyInstances Id="f160c90e-6d27-4c0d-8d99-0e23037eca15">
+                      <propertyInstance Id="51166c86-5454-4d33-806d-89436fe552c4" name="PackageVisibility" value="internal">
+                        <elementDefinition Id="3e5b43a4-336d-4763-9cdf-b64bd09abab8" />
+                      </propertyInstance>
+                      <elementDefinition Id="cc4e5c43-2c22-4583-983c-60df5650aa39" />
+                    </stereotypeInstanceHasPropertyInstances>
+                  </propertyInstances>
+                </stereotypeInstance>
+              </appliedStereotypesInternal>
+              <elementDefinition Id="0cfd1876-8a88-4193-bdc5-28582ccc3bd7" />
+              <ownedLiterals>
+                <enumerationLiteral Id="7743c0dc-af05-4061-b601-79c21dda3994" name="Completed">
+                  <elementDefinition Id="7e9370b6-306d-4165-9cf5-b96f11d6d9b4" />
+                </enumerationLiteral>
+                <enumerationLiteral Id="275c0f8b-2ba2-45d8-8238-87e4c7faebb7" name="Created">
+                  <elementDefinition Id="1144d037-c9c9-48d9-84fe-33527b10a2ce" />
+                </enumerationLiteral>
+              </ownedLiterals>
+            </enumeration>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="8589f14c-0b43-4b89-bee3-f9a85cf58027" name="PaymentType" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="370e2522-ab3e-4492-be86-a5b0fc3b424c" />
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
   </packagedElements>
   <package Id="7ef0f94b-47c5-4686-800f-7b5d4c35b04a" name="CashRegisterUML">
     <elementDefinition Id="90668f4d-1718-4772-9ea2-936507fd7255" />

@@ -1177,45 +1177,6 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
-          <association
-            Id="6f39b656-52dd-4d2e-b70f-655ae47ec813"
-            isDerived="false"
-            sourceEndRoleName="SalesController"
-            targetEndRoleName="Database"
-            isLeaf="false"
-            isAbstract="false">
-            <interfaceMoniker
-              Id="e9063a8f-6d3c-4154-8f5a-25d4596e968c"
-              LastKnownName="Database"
-              LastKnownLocation="Package_1222.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="fa887a09-5b29-4ae1-9315-0b9ba0621bf9"
-                  name="SalesController"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="Shared"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="aa5c26fb-c402-4969-bbb4-d698e12e2e26"
-                  name="Database"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
