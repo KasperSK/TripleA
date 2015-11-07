@@ -1,17 +1,15 @@
+using System.Data.Entity;
+using CashRegister.Database.Configurations;
+using CashRegister.Models;
+
 namespace CashRegister.Database
 {
-    using System.Data.Entity;
-
-    using CashRegister.Database;
-    using Configurations;
-    using Models;
-
-    public partial class CashRegisterContext : DbContext
+    public class CashRegisterContext : DbContext
     {
-        public CashRegisterContext()
+        public CashRegisterContext(IDatabaseInitializer<CashRegisterContext> seed = null)
             : base("name=CashRegisterContext")
         {
-            Database.SetInitializer(new CashRegisterInitializer());
+            System.Data.Entity.Database.SetInitializer(seed ?? new DropCreateDatabaseAlways<CashRegisterContext>());
         }
 
         public virtual DbSet<Discount> Discounts { get; set; }

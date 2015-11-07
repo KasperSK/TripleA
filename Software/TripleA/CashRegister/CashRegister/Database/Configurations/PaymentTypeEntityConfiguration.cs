@@ -1,21 +1,16 @@
-﻿namespace CashRegister.Database.Configurations
+﻿using System.Data.Entity.ModelConfiguration;
+using CashRegister.Models;
+
+namespace CashRegister.Database.Configurations
 {
-    using System.Data.Entity.ModelConfiguration;
-    using Models;
-
-    namespace CashRegister.Database
+    public class PaymentTypeEntityConfiguration : EntityTypeConfiguration<PaymentType>
     {
-        public class PaymentTypeEntityConfiguration : EntityTypeConfiguration<PaymentType>
+        public PaymentTypeEntityConfiguration()
         {
-            public PaymentTypeEntityConfiguration()
-            {
-                HasKey(p => p.Id);
+            HasKey(p => p.Id);
 
-                Property(p => p.Description)
-                    .IsRequired();
-                
-            }
+            Property(p => p.Description)
+                .IsRequired();
         }
     }
-
 }

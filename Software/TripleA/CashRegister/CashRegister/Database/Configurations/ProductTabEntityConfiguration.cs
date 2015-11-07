@@ -1,10 +1,10 @@
-﻿namespace CashRegister.Database.Configurations
-{
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Infrastructure.Annotations;
-    using System.Data.Entity.ModelConfiguration;
-    using Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
+using System.Data.Entity.ModelConfiguration;
+using CashRegister.Models;
 
+namespace CashRegister.Database.Configurations
+{
     public class ProductTabEntityConfiguration : EntityTypeConfiguration<ProductTab>
     {
         public ProductTabEntityConfiguration()
