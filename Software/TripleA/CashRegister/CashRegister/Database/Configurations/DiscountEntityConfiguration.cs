@@ -1,6 +1,4 @@
-﻿
-
-namespace CashRegister.Database
+﻿namespace CashRegister.Database.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
     using Models;
@@ -21,13 +19,7 @@ namespace CashRegister.Database
                     .IsRequired();
 
                 HasMany(e => e.ProductGroups)
-                    .WithMany()
-                    .Map(m =>
-                    {
-                        m.ToTable("ProductGroup_Discount");
-                        m.MapLeftKey("DiscountId");
-                        m.MapRightKey("ProductGroupId");
-                    });
+                    .WithMany();
             }
         }
     }
