@@ -202,6 +202,11 @@
               </importedPackagesInternal>
             </package>
           </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="6d489b6c-7155-47cb-8b83-60187404b8eb" name="Models">
+              <elementDefinition Id="ca5cdd3e-14c0-475e-a150-03092515e494" />
+            </package>
+          </packageHasNamedElement>
         </packagedElements>
       </package>
     </logicalClassDesignerModelHasPackages>

@@ -1611,7 +1611,7 @@
       </package>
     </logicalClassDesignerModelHasPackages>
     <packageHasNamedElement>
-      <referencedType Id="e23bf347-a73e-4dea-bfcb-564bc4a53283" name="Product" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Product::Product">
+      <referencedType Id="e23bf347-a73e-4dea-bfcb-564bc4a53283" name="Product" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Products::Product">
         <elementDefinition Id="e3432b56-05e3-461f-bcc8-e792a1711ea9" />
       </referencedType>
     </packageHasNamedElement>
@@ -1653,6 +1653,14 @@
                 </stereotypeInstance>
               </appliedStereotypesInternal>
               <elementDefinition Id="f04bc31f-744f-4785-ac42-211016849e6c" />
+              <ownedAttributes>
+                <property Id="556089ab-57b5-4cc1-a59e-8b5015ec241b" name="PaymentDescriptor" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="80c22b99-d1af-42c4-894d-4233e187e599" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="51451054-a27d-44aa-af70-54dd832a053b" LastKnownName="List&lt;IPaymentProvidorDescriptor&gt;" />
+                  </type_NamedElement>
+                </property>
+              </ownedAttributes>
               <ownedOperations>
                 <operation Id="147d3bda-a78a-4702-b18e-5195e9bca594" name="ExecuteTransaction" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
                   <appliedStereotypesInternal>
@@ -1701,10 +1709,10 @@
                   <elementDefinition Id="ed7676aa-6b43-45a8-ae16-87664c69fb26" />
                   <ownedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="73573216-6d96-4288-95a0-c08527324404" name="transaction" direction="In" isUnique="false">
-                        <elementDefinition Id="905e1851-1674-402b-beb5-4b25477705a1" />
+                      <parameter Id="df281891-5b21-4d7f-bc3d-cfc784aa3292" name="transaction" direction="In" isUnique="false">
+                        <elementDefinition Id="a8491378-505b-4f08-93ff-96bb913aeba8" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="3c6fe278-1776-4248-8d46-88132933e697" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="3c6fe278-1776-4248-8d46-88132933e697" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1760,29 +1768,29 @@
                       <parameter Id="db59bae9-3e75-44ab-91d1-ff5e75f28265" direction="Return" isUnique="false">
                         <elementDefinition Id="87e1ede6-4a6c-41f9-a03c-71f142b41f4c" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="3c6fe278-1776-4248-8d46-88132933e697" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="3c6fe278-1776-4248-8d46-88132933e697" LastKnownName="IObservableTransaction" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="65c05eea-ba82-40e9-9d48-63caa2baf58e" name="amount" direction="In" isUnique="false">
-                        <elementDefinition Id="5d5ad650-ec97-430d-bd90-e3c8ad3f44b5" />
+                      <parameter Id="637c8b31-818c-4eb8-ac1c-afdeceb862cc" name="amount" direction="In">
+                        <elementDefinition Id="94272f4e-cba2-41d3-982b-9e8879c52697" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="0ad27cc6-1660-4842-86e9-3ebbd0732878" LastKnownName="long" />
+                          <referencedTypeMoniker Id="fe30ad9c-464b-4fc3-a530-ccbf27909832" LastKnownName="Integer" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="45654617-7b2d-4c94-907e-7891e3509dd6" name="description" direction="In" isUnique="false">
-                        <elementDefinition Id="f4371c25-eabd-45cb-8f89-15538be46d80" />
+                      <parameter Id="66463721-3658-4ef6-aa59-86b9ab863782" name="desc" direction="In">
+                        <elementDefinition Id="9aa9953d-5380-4047-bcb6-b22310d207c3" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="5fb708be-2403-4379-a210-96ba78b62f19" LastKnownName="string" />
+                          <referencedTypeMoniker Id="715a6ae8-d47a-4904-8ad2-c72bb80e7edc" LastKnownName="String" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="127b0258-6043-4a72-960e-e2bac559fc09" name="paymentprovider" direction="In" isUnique="false">
-                        <elementDefinition Id="167f9ab5-326d-4f18-83c6-fc68593a6e2d" />
+                      <parameter Id="aa731135-62dc-4ec1-9f4e-4eaf8a9e07c5" name="PaymentDesciptor" direction="In">
+                        <elementDefinition Id="cc1ece61-c248-490c-85fc-fd2825d43e1b" />
                         <type_NamedElement>
                           <referencedTypeMoniker Id="e83185fb-7a1a-4b61-8021-addb99fd3396" LastKnownName="IPaymentProvidorDescriptor" />
                         </type_NamedElement>
@@ -1840,7 +1848,20 @@
                       <parameter Id="e1432865-a0d4-49bf-a9d0-b8a2d19b75dd" name="transaction" direction="In">
                         <elementDefinition Id="4160c21f-42d4-4fc4-94a3-9679cb6ace07" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="3c6fe278-1776-4248-8d46-88132933e697" LastKnownName="ITransaction" />
+                          <referencedTypeMoniker Id="3c6fe278-1776-4248-8d46-88132933e697" LastKnownName="IObservableTransaction" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+                <operation Id="7e96d382-fe90-4918-8d6f-d5a86d4aed48" name="Tally" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="f51505dd-6048-4dc9-aeb1-227a677e2731" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="cb7d3561-2f6a-466c-a09b-9884d21563f5" direction="Return">
+                        <elementDefinition Id="b34793ac-ee07-434d-8bd1-c7fc54b5cad0" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="fe30ad9c-464b-4fc3-a530-ccbf27909832" LastKnownName="Integer" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -1853,7 +1874,7 @@
       </package>
     </logicalClassDesignerModelHasPackages>
     <packageHasNamedElement>
-      <referencedType Id="3c6fe278-1776-4248-8d46-88132933e697" name="ITransaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Payment::ITransaction">
+      <referencedType Id="3c6fe278-1776-4248-8d46-88132933e697" name="IObservableTransaction" isAbstract="false" isLeaf="false" cachedFullName="CashRegisterUML::CashRegister::Payment::IObservableTransaction">
         <elementDefinition Id="d9f70f09-18c2-4ad7-9910-817026f63459" />
       </referencedType>
     </packageHasNamedElement>
@@ -2296,11 +2317,6 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="5fb708be-2403-4379-a210-96ba78b62f19" name="string" isAbstract="false" isLeaf="false" cachedFullName="string">
-        <elementDefinition Id="15829478-51f5-4391-9c75-0dccb6085cbd" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <referencedType Id="374d1cbe-027c-46fa-a14f-7aed0e9e2330" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
         <elementDefinition Id="e0575f51-e7ee-4d81-8d1e-28249d15fbb8" />
       </referencedType>
@@ -2313,6 +2329,16 @@
     <packageHasNamedElement>
       <referencedType Id="4cc2a8c9-b4b0-4be9-abbf-e24d382edbbc" name="OrderList" isAbstract="false" isLeaf="false" cachedFullName="OrderList">
         <elementDefinition Id="5876f1ad-5a72-4e57-83a8-3c961ed022f7" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="51451054-a27d-44aa-af70-54dd832a053b" name="List&lt;IPaymentProvidorDescriptor&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;IPaymentProvidorDescriptor&gt;">
+        <elementDefinition Id="204ef89c-afb5-4e01-bc91-007f5c616674" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="715a6ae8-d47a-4904-8ad2-c72bb80e7edc" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

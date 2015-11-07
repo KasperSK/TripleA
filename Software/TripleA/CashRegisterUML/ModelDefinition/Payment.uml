@@ -206,7 +206,7 @@
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-                      LastKnownName="ITransaction"
+                      LastKnownName="IObservableTransaction"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -280,7 +280,7 @@
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-                      LastKnownName="ITransaction"
+                      LastKnownName="IObservableTransaction"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -393,7 +393,7 @@
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-                      LastKnownName="ITransaction"
+                      LastKnownName="IObservableTransaction"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -1585,7 +1585,7 @@
             Id="0505f0f3-6c64-4fb7-ae10-ad060b481290">
             <interfaceMoniker
               Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-              LastKnownName="ITransaction"
+              LastKnownName="IObservableTransaction"
               LastKnownLocation="Payment.uml" />
           </interfaceRealization>
         </suppliersInternal>
@@ -1930,7 +1930,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-              LastKnownName="ITransaction"
+              LastKnownName="IObservableTransaction"
               LastKnownLocation="Payment.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -2189,7 +2189,7 @@
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-                      LastKnownName="ITransaction"
+                      LastKnownName="IObservableTransaction"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -2263,7 +2263,7 @@
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-                      LastKnownName="ITransaction"
+                      LastKnownName="IObservableTransaction"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -2376,7 +2376,7 @@
                   <type_NamedElement>
                     <interfaceMoniker
                       Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-                      LastKnownName="ITransaction"
+                      LastKnownName="IObservableTransaction"
                       LastKnownLocation="Payment.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -2412,7 +2412,7 @@
     <packageHasNamedElement>
       <Interface
         Id="d9f70f09-18c2-4ad7-9910-817026f63459"
-        name="ITransaction"
+        name="IObservableTransaction"
         isAbstract="false"
         isLeaf="false">
         <appliedStereotypesInternal>
@@ -3682,6 +3682,91 @@
       <undefinedType
         Id="9ceeb854-d5d3-4e54-a27d-356953eabeb7"
         name="do" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8a83bafc-473b-48ad-9957-3fe5cef42b0e"
+        name="ObservableTransaction"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="686d770a-4c84-4c53-b2e7-a86386d98a88">
+            <interfaceMoniker
+              Id="d9f70f09-18c2-4ad7-9910-817026f63459"
+              LastKnownName="IObservableTransaction"
+              LastKnownLocation="Payment.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="b7b9ff1d-9283-4924-9f6a-5192c5167cc3"
+            isDerived="false"
+            sourceEndRoleName="ObservableTransaction"
+            targetEndRoleName="Transaction"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="63b6774e-f4fa-4b9f-a454-a175a0e7512b"
+              LastKnownName="Transaction"
+              LastKnownLocation="Models.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="84e8f909-5d9e-483a-9027-c204f55c9094"
+                  name="ObservableTransaction"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6571aafc-b189-4966-a808-e2a571215f93"
+                  name="Transaction"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation
+            Id="f225aa30-2581-45ae-bfcb-e21277baa10c"
+            name="AddObserver"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7c51b10f-8779-4666-b64e-4b39d80ec27a"
+                  name="observer"
+                  direction="In">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="58ae8de0-7983-4d0d-920c-ed7474a094aa"
+                      LastKnownName="ITransactionObserver"
+                      LastKnownLocation="Payment.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
 </package>
