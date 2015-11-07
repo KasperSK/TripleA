@@ -39,32 +39,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CashRegister\Payment\CashPayment.cs" />
-    <Compile Include="CashRegister\Payment\IPaymentController.cs" />
-    <Compile Include="CashRegister\Payment\IPaymentProvider.cs" />
-    <Compile Include="CashRegister\Payment\IPaymentProvidorDescriptor.cs" />
-    <Compile Include="CashRegister\Payment\ITransaction.cs" />
-    <Compile Include="CashRegister\Payment\ITransactionObserver.cs" />
-    <Compile Include="CashRegister\Payment\MobilePay.cs" />
-    <Compile Include="CashRegister\Payment\Nets.cs" />
-    <Compile Include="CashRegister\Payment\PaymentControllerImpl.cs" />
-    <Compile Include="CashRegister\Payment\PaymentProvider.cs" />
-    <Compile Include="CashRegister\Payment\Transaction.cs" />
-    <Compile Include="CashRegister\Payment\TransactionStatus.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CashRegister\CashDrawers\" />
-    <Folder Include="CashRegister\Database\" />
-    <Folder Include="CashRegister\Discount\" />
-    <Folder Include="CashRegister\Log\" />
-    <Folder Include="CashRegister\Orders\" />
-    <Folder Include="CashRegister\Printer\" />
-    <Folder Include="CashRegister\Products\Groups\" />
-    <Folder Include="CashRegister\Receipts\" />
-    <Folder Include="CashRegister\Sales\" />
-    <Folder Include="CashRegister\ShoppingLists\" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

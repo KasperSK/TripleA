@@ -1,6 +1,4 @@
-﻿
-
-namespace CashRegister.Database
+﻿namespace CashRegister.Database.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
     using Models;
@@ -21,8 +19,8 @@ namespace CashRegister.Database
                 Property(p => p.UnitPrice)
                     .IsRequired();
 
-                HasRequired(e => e.Discount);
-
+                HasRequired(p => p.Discount);
+                    
                 Property(p => p.DiscountValue)
                     .IsRequired();
 

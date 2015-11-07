@@ -1423,7 +1423,7 @@
         <ownedOperations>
           <operation
             Id="6b622d08-ecc3-442c-ba32-71629a3544a9"
-            name="GetProductsByGroup"
+            name="GetProductTabs"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -1480,60 +1480,6 @@
                 </propertyInstances>
               </stereotypeInstance>
             </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="e345df55-45b4-400d-acd7-a3a5c739c7f7"
-                  name="productgroup"
-                  direction="In">
-                  <description>The ProductGroup to find alle Products of</description>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="CashRegisterUML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="4fbaa46e-00d6-47aa-a15c-9aae6e4acc88"
-                  direction="Return">
-                  <description>List of Product's that matches the ProductGroup</description>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="f9127823-cb40-4914-961f-7ad07cb822ce"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="aa1dcbd2-1ae5-4fd9-bfdd-b8007ffbbaff"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
-                      LastKnownName="Product"
-                      LastKnownLocation="Products.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="24117cc7-7551-4d0f-9e19-7c11d08bd8fa"
-                  name="onlyActive"
-                  direction="In">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
-                      LastKnownLocation="CashRegisterUML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
           </operation>
         </ownedOperations>
       </Interface>
@@ -1687,7 +1633,7 @@
         <ownedOperationsInternal>
           <operation
             Id="e83d8e16-da39-4ef6-816d-30c6041c48d8"
-            name="GetProductsByGroup"
+            name="GetProductTabs"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1743,60 +1689,6 @@
                 </propertyInstances>
               </stereotypeInstance>
             </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="f5c69f5e-411f-47eb-aa6d-cb5c6126f1b5"
-                  name="productgroup"
-                  direction="In">
-                  <description>The ProductGroup to find alle Products of</description>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="CashRegisterUML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="7fcab61b-afb9-4e75-a4a6-670e7067d0e4"
-                  direction="Return">
-                  <description>List of Product's that matches the ProductGroup</description>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="609a94f4-430a-47b4-9547-c806a3d4fe40"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="e0c1ef49-ce58-4103-8d6e-cedbe7832a00"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="e3432b56-05e3-461f-bcc8-e792a1711ea9"
-                      LastKnownName="Product"
-                      LastKnownLocation="Products.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="60cd58fa-87ae-494e-9132-d3be91d4dd29"
-                  name="onlyActive"
-                  direction="In">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
-                      LastKnownLocation="CashRegisterUML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -3063,6 +2955,13 @@
       <undefinedType
         Id="abe97fd6-663c-4c75-906e-2082025e7b62"
         name="Bool" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="11fb8eb2-b5c0-4b1d-a027-b584e30c1d6e"
+        name="Interface1"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
 </package>
