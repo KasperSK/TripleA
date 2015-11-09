@@ -21,6 +21,7 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Description = Returns the status of the transaktion
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{843F5C98-F659-4BEF-860B-53777F095A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

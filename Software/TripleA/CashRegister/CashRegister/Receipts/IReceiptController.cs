@@ -20,5 +20,12 @@ namespace CashRegister.Receipts
         /// <param name="order">The Order to be formatted</param>
         /// <returns>A formatted Receipt</returns>
         Receipt CreateReceipt(SalesOrder order);
+
+        /// <summary>
+        /// Formats a new receipt from a transaction
+        /// </summary>
+        /// <param name="tansaction">The Transaction to be formatted</param>
+        /// <returns></returns>
+        Receipt CreateReceipt(Transaction tansaction);
 	}
 }

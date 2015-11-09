@@ -55,10 +55,7 @@
     <Content Include="ModelDefinition\CashDrawers.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\Discount.uml">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="ModelDefinition\Package_1222.uml">
+    <Content Include="ModelDefinition\Models.uml">
       <SubType>Content</SubType>
     </Content>
     <Content Include="ModelDefinition\Sales.uml">
@@ -84,6 +81,13 @@
     </Content>
     <Content Include="ModelDefinition\Payment.uml">
       <SubType>Content</SubType>
+    </Content>
+    <Content Include="Models Domain.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Models Domain.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Models Domain.classdiagram</DependentUpon>
     </Content>
     <Content Include="Orders Domain.classdiagram">
       <SubType>Content</SubType>

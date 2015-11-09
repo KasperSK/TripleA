@@ -66,9 +66,9 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <packageMoniker
-        Id="7cf639d3-f766-4e3f-8d2b-e178a78f2a6e"
-        LastKnownName="Discount"
-        LastKnownLocation="Discount.uml" />
+        Id="ca5cdd3e-14c0-475e-a150-03092515e494"
+        LastKnownName="Models"
+        LastKnownLocation="Models.uml" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

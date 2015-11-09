@@ -1,19 +1,15 @@
-using CashRegister.Database.CashRegister.Database;
+using System.Data.Entity;
+using CashRegister.Database.Configurations;
+using CashRegister.Models;
 
 namespace CashRegister.Database
 {
-    using System;
-    using System.Data.Entity;
-    using Models;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-
-    public partial class CashRegisterContext : DbContext
+    public class CashRegisterContext : DbContext
     {
-        public CashRegisterContext()
+        public CashRegisterContext(IDatabaseInitializer<CashRegisterContext> seed = null)
             : base("name=CashRegisterContext")
         {
-            Database.SetInitializer(new CashRegisterInitializer());
+            System.Data.Entity.Database.SetInitializer(seed ?? new DropCreateDatabaseAlways<CashRegisterContext>());
         }
 
         public virtual DbSet<Discount> Discounts { get; set; }
@@ -24,6 +20,7 @@ namespace CashRegister.Database
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductGroup> ProductGroups { get; set; }
         public virtual DbSet<Transaction> Transaktions { get; set; }
+        public virtual DbSet<ProductTab> ProductTabs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -35,7 +32,7 @@ namespace CashRegister.Database
             modelBuilder.Configurations.Add(new TransactionEntityConfiguration());
             modelBuilder.Configurations.Add(new PaymentTypeEntityConfiguration());
             modelBuilder.Configurations.Add(new OrderStatusEntityConfiguration());
-
+            modelBuilder.Configurations.Add(new ProductTabEntityConfiguration());
         }
     }
 }
