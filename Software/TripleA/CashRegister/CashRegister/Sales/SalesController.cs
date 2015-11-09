@@ -1,4 +1,5 @@
 ﻿using CashRegister.Models;
+using CashRegister.Payment;
 
 namespace CashRegister.Sales
 {
@@ -15,15 +16,15 @@ namespace CashRegister.Sales
     /// </summary>
     public sealed class SalesController : ISalesController
     {
-        public SalesController(List<IPaymentProvidorDescriptor> paymentProvidorDescriptors)
+        public SalesController(PaymentControllerImpl payment)
         {
-            PaymentProvidorDescriptors = paymentProvidorDescriptors;
+            SalesPaymentProvidorDescriptors=payment.PaymentProvidorDescriptors;
         }
 
         /// <summary>
         /// Holds The payment providers
         /// </summary>
-        private List<IPaymentProvidorDescriptor> PaymentProvidorDescriptors { get; set; }
+        private IEnumerable<IPaymentProvidorDescriptor> SalesPaymentProvidorDescriptors { get; set; }
 
 
         public IReceiptController ReceiptController
@@ -41,12 +42,10 @@ namespace CashRegister.Sales
         /// <summary>
         /// Gets the PaymentProviderDescriptor
         /// </summary>
-       /* public List<IPaymentProvidorDescriptor> GetPaymentProviderDescriptor()
+       public IEnumerable<IPaymentProvidorDescriptor> GetPaymentProviderDescriptor()
          {
-             var PaymenProvidors = new PaymenControllerImpl;
-             PaymentProvidorDescriptors = PaymenProvidors.PaymentProvidorDescriptors;
-             return PaymentProvidorDescriptors;
-         }*/
+             return SalesPaymentProvidorDescriptors;
+       }
         /// <summary>
         /// Contructor - Calls StartNewOrder()
         /// </summary>
@@ -124,10 +123,12 @@ namespace CashRegister.Sales
         /// <summary>
         /// Starting payment on a SalesOrder
         /// </summary>
-        public void StartPayment(IPaymentProvidorDescriptor provider, int amountToPay)
+        public void StartPayment(int amountToPay, string description, IPaymentProvidorDescriptor provider)
         {
 
-            CreateTransaction(amountToPay, "Bla", provider);
+            string descriptionAndSalesOrderId = description + OrderController.CurrentOrder.Id;
+
+            CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
             if (amountToPay == 0)
             {
                 OrderController.SaveOrder();
@@ -169,13 +170,25 @@ namespace CashRegister.Sales
             OrderController.GetStashedOrder(orderId);
         }
 
-        public Transaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment)
+        public ObservableTransaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment)
         {
-            var trans = new Transaction();
+            var trans = new ObservableTransaction();
+            var transaction = new Transaction();
             trans.Amount = amountToPay;
             trans.Description = description;
-            //trans.PaymentDesciptor = payment;
+            trans.PaymentDescriptor = payment;
+           // OrderController.CurrentOrder.Transactions.Add(trans);
             return trans;
+        }
+
+        public void TransactionComplete(ObservableTransaction transaction)
+        {
+                OrderController.MissingAmount();
+        }
+
+        public SalesOrder GetCurrentOrder()
+        {
+            return OrderController.CurrentOrder;
         }
 
     }

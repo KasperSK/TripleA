@@ -24,7 +24,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Prints an order
         /// </summary>
-     //   void CreateAndPrintReceipt(SalesOrder order);
+        void CreateAndPrintReceipt();
 
         /// <summary>
         /// clear SalesOrder
@@ -49,7 +49,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Starting payment on a SalesOrder
         /// </summary>
-        void StartPayment(IPaymentProvidorDescriptor provider, int amountToPay);
+        void StartPayment(int amountToPay, string description, IPaymentProvidorDescriptor provider);
 
         /// <summary>
         /// Get info on the amount missing on the SalesOrder
@@ -71,6 +71,20 @@ namespace CashRegister.Sales
         /// </summary>
         void RetrieveIncompleteOrder(int orderId);
 
+
+        /// <summary>
+        /// Creates and return a Transaction
+        /// </summary>
+        /// <param name="amountToPay"></param>
+        /// <param name="description"></param>
+        /// <param name="payment"></param>
+        /// <returns></returns>
+        ObservableTransaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment);
+
+        ///<summary>
+        /// Returns the current order
+        /// </summary>
+        SalesOrder GetCurrentOrder();
     }
 }
 
