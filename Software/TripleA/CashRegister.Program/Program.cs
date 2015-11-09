@@ -1,5 +1,6 @@
 ﻿using System;
 using CashRegister.Database;
+using CashRegister.DAL;
 using CashRegister.Log;
 using CashRegister.Models;
 
@@ -22,6 +23,14 @@ namespace CashRegister.Program
             // var cc = new CashRegisterContext(new CashProductInitializer());
             
             cc.Database.Initialize(true);
+
+            IDalFacade dalFacade = new DalFacade();
+
+            using (var uow = dalFacade.GetUnitOfWork())
+            {
+                uow.ProductRepository.Insert(new Product("Hat", 100, true));
+                uow.Save();
+            }
 
             _logger = LogFactory.GetLogger(typeof (Program));
             _logger.Fatal("Fatal");
