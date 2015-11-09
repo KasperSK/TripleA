@@ -16,6 +16,7 @@ namespace CashRegister.Program
         private static ILogger _logger;
         static void Main(string[] args)
         {
+            _logger = LogFactory.GetLogger(typeof(Program));
 
             var cc = new CashRegisterContext();
 
@@ -23,16 +24,16 @@ namespace CashRegister.Program
             // var cc = new CashRegisterContext(new CashProductInitializer());
             
             cc.Database.Initialize(true);
+            cc.Database.Log = _logger.Debug;
 
-            IDalFacade dalFacade = new DalFacade();
+			IDalFacade dalFacade = new DalFacade();
 
             using (var uow = dalFacade.GetUnitOfWork())
             {
                 uow.ProductRepository.Insert(new Product("Hat", 100, true));
                 uow.Save();
             }
-
-            _logger = LogFactory.GetLogger(typeof (Program));
+			
             _logger.Fatal("Fatal");
             _logger.Error("Error");
             _logger.Warn("Warn");
