@@ -106,10 +106,11 @@ namespace CashRegister.Sales
         public void CancelOrder()
         {
             OrderController.ClearOrder();
-            OrderController.MissingAmount();
             if (OrderController.MissingAmount() == 0)
+            {
                 OrderController.SaveOrder();
                 StartNewOrder();
+            }
         }
 
         /// <summary>

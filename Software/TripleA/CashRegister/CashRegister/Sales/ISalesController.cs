@@ -24,7 +24,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Prints an order
         /// </summary>
-        void CreateAndPrintReceipt(SalesOrder order);
+     //   void CreateAndPrintReceipt(SalesOrder order);
 
         /// <summary>
         /// clear SalesOrder
