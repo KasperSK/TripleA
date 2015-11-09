@@ -1,12 +1,13 @@
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
 namespace CashRegister.Models
 {
-    using System.Collections.Generic;
-
+    [ExcludeFromCodeCoverage]
     public class Product
     {
         private Product()
         {
-
         }
 
         public Product(string name, int price, bool saleable)
