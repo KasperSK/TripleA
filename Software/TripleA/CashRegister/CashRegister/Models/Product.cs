@@ -2,7 +2,7 @@ namespace CashRegister.Models
 {
     using System.Collections.Generic;
 
-    public sealed class Product
+    public class Product
     {
         private Product()
         {
@@ -24,6 +24,6 @@ namespace CashRegister.Models
 
         public bool Saleable { get; set; }
 
-        public ICollection<ProductGroup> ProductGroups { get; set; }
+        public virtual ICollection<ProductGroup> ProductGroups { get; set; }
     }
 }

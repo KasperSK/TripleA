@@ -64,8 +64,11 @@
   <ItemGroup>
     <Compile Include="CashRegister\CashDrawers\CashDrawer.cs" />
     <Compile Include="CashRegister\CashDrawers\ICashDrawer.cs" />
-    <Compile Include="CashRegister\DAL\GenericRepository.cs" />
-    <Compile Include="CashRegister\DAL\SalesUnitOfWork.cs" />
+    <Compile Include="CashRegister\DAL\DALFacade.cs" />
+    <Compile Include="CashRegister\DAL\IDALFacade.cs" />
+    <Compile Include="CashRegister\DAL\Repository.cs" />
+    <Compile Include="CashRegister\DAL\IRepository.cs" />
+    <Compile Include="CashRegister\DAL\IUnitOfWork.cs" />
     <Compile Include="CashRegister\DAL\UnitOfWork.cs" />
     <Compile Include="CashRegister\Database\CashRegisterContext.cs" />
     <Compile Include="CashRegister\Database\Configurations\OrderStatusEntityConfiguration.cs" />
