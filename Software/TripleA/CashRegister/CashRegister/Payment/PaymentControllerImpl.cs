@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using CashRegister.CashDrawers;
 using CashRegister.Printer;
 
@@ -7,19 +7,9 @@ namespace CashRegister.Payment
 {
     public class PaymentControllerImpl : IPaymentController
     {
-
-        private List<PaymentProvider> PaymentProviders { get; set; }
-        private CashDrawer cashDrawer { get; set; }
-
-        public virtual IPrinter BonPrinter { get; set; }
-
-        public IEnumerable<IPaymentProvidorDescriptor> PaymentProvidorDescriptors
+        public PaymentControllerImpl(List<PaymentProvider> PDList, IPrinter bonPrinter)
         {
-            get { return PaymentProviders; }
-        }
-
-        public PaymentControllerImpl(List<PaymentProvider> PDList)
-        {
+            BonPrinter = bonPrinter;
 
             if (PDList == null)
             {
@@ -31,22 +21,22 @@ namespace CashRegister.Payment
             }
         }
 
-        public virtual void ExecuteTransaction(ITransaction transaction, IPaymentProvidorDescriptor PD)
+        private List<PaymentProvider> PaymentProviders { get; }
+
+        private CashDrawer cashDrawer { get; set; }
+
+        public virtual IPrinter BonPrinter { get; set; }
+
+        public IEnumerable<IPaymentProvidorDescriptor> PaymentProvidorDescriptors => PaymentProviders;
+
+        public virtual void ExecuteTransaction(ITransaction transaction, IPaymentProvidorDescriptor paymentProvidorDescriptor)
         {
-            PaymentProvider PaymentP = null;
+            var paymentProvider = PaymentProviders.First(p => p.ID == paymentProvidorDescriptor.ID);
 
-            foreach (var PP in PaymentProviders)
-            {
-                if (PD.ID == PP.ID)
-                {
-                    PaymentP = PP;
-                }
-            }
+            var transferSuccess = paymentProvider.TransferAmount(transaction.Amount, transaction.Description);
+            var transferStatus = paymentProvider.TransactionStatus();
 
-            bool TA = PaymentP.TransferAmount(transaction.Amount, transaction.Description);
-            bool TS = PaymentP.TransactionStatus();
-
-            if (TA && TS)
+            if (transferSuccess && transferStatus)
             {
                 cashDrawer.Open();
                 transaction.Status = TransactionStatus.Completed;
@@ -55,29 +45,28 @@ namespace CashRegister.Payment
             {
                 transaction.Status = TransactionStatus.Failed;
             }
-
         }
 
 
         public void PrintTransaction(ITransaction transaction)
         {
-            throw new NotImplementedException();
+            BonPrinter.AddTo("Betalt via: " + transaction.PaymentDescriptor.Description);
         }
 
         public int Tally()
         {
-            int startChange = 0;
-            int total = 0;
-            foreach (var PP in PaymentProviders)
+            var startChange = 0;
+            var total = 0;
+            foreach (var paymentProvider in PaymentProviders)
             {
-                if (PP.GetType() == typeof (CashPayment))
+                if (paymentProvider.GetType() == typeof (CashPayment))
                 {
-                    startChange = PP._StartChange;
+                    startChange = paymentProvider._StartChange;
                 }
-                total += PP.Tally();
+                total += paymentProvider.Tally();
             }
 
-            return total += startChange;
+            return total + startChange;
         }
     }
 }
