@@ -27,7 +27,7 @@ namespace CashRegister.Log
 			_log4Net.Info(line);
 		}
 
-		public virtual void Error(string line)
+		public virtual void Err(string line)
 		{
 			_log4Net.Error(line);
 		}

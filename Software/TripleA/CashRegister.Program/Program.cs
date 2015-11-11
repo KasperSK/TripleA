@@ -34,7 +34,7 @@ namespace CashRegister.Program
 
             _logger = LogFactory.GetLogger(typeof (Program));
             _logger.Fatal("Fatal");
-            _logger.Error("Error");
+            _logger.Err("Error");
             _logger.Warn("Warn");
             _logger.Info("Info");
             _logger.Debug("Debug");
