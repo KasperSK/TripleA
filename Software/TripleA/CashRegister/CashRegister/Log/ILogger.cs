@@ -24,7 +24,7 @@ namespace CashRegister.Log
 		/// <summary>
 		/// To use for lines of the severity error
 		/// </summary>
-		void Error(string line);
+		void Err(string line);
 
 		/// <summary>
 		/// To use for lines of the severity fatal
