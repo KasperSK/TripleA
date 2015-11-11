@@ -32,7 +32,7 @@
 
                 <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII- The Overall Grid which shows the sales-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
 
-                <Grid Name="SaleDisplay" Grid.Row="0" Margin="7">
+                <Grid Name="SaleDisplay" Grid.Row="0" Margin="7" DataContext="SalesViewModel">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="3*"/>
@@ -60,7 +60,9 @@
 
                     <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="1">
                         <Grid Name="MiddleDisplay">
-
+                        <ListBox Name="OrderBox" Background="White" ItemsSource="{Binding Products}">
+                            
+                        </ListBox>
                         </Grid>
                     </Border>
 
