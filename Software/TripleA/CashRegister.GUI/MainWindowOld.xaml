@@ -1,0 +1,253 @@
+﻿<Window x:Class="CashRegister.GUI.MainWindowOld"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CashRegister.GUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="375" Width="550">
+    <Window.Resources>
+        <local:ProductGroupViewModel x:Key="ProductGroupViewModel"/>
+    </Window.Resources>
+    <Border Background="AliceBlue" BorderBrush="Crimson" BorderThickness="1.5">
+        <Grid Name="Classic">
+            <!--Classic grid-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-The column to the left with sales and the numberpadbuttons -IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+
+            <Grid Name="LeftColumn" Grid.Column="0">
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII- The Overall Grid which shows the sales-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+                <Grid Name="SaleDisplay" Grid.Row="0" Margin="7" DataContext="SalesViewModel">
+                    <Grid.RowDefinitions>
+                        
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-Upper display-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+<!--
+                    <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="0">
+                        <Grid Name="UpperDisplay">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Name="Count" Grid.Column="0" Content="Antal" FontSize="9.333" HorizontalAlignment="Center"></Label>
+                            <Label Name="Product" Grid.Column="1" Content="Vare" FontSize="9.333" HorizontalAlignment="Center"></Label>
+                            <Label Name="Pris" Grid.Column="2" Content="Pris" FontSize="9.333" HorizontalAlignment="Center"></Label>
+
+                        </Grid>
+                    </Border>
+-->
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-Middle Display-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+                    <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="0">
+                        <Grid Name="MiddleDisplay">
+                            <DataGrid ItemsSource="{Binding TestProducts}" AutoGenerateColumns="True" ColumnWidth="*" >
+
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-Lower Display-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+                    <Border Background="AliceBlue" BorderBrush="Black" BorderThickness="1.5" Grid.Row="1">
+                        <Grid Name="LowerDiaplay">
+                            <Label Name="Total" Content="Total" HorizontalAlignment="Left"></Label>
+                            <Label Name="TotalCount" Content=""></Label>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+
+                <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-The Overall Grid with the pay and cancel buttons-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+
+                <Grid Name="PayButtons" Grid.Row="1" Margin="7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="Pay" Grid.Column="0" Grid.Row="1" MinHeight="25" Content="Betal" MinWidth="50" Margin="5"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" ></Button>
+                    <Button Name="Cancel" Grid.Column="1" Grid.Row="1" MinHeight="25" Content="Afbryd" MinWidth="50" Margin="5"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" ></Button>
+
+                </Grid>
+
+                <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-The Numberpad-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+                <Grid Name="CalcWrapper" Grid.Row="2" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-Left side of the numpad-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+                    <Grid Name="LeftCalc" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button Name="Seven" Grid.Row="0" Grid.Column="0" Content="7" ></Button>
+                        <Button Name="Eight" Grid.Row="0" Grid.Column="1" Content="8"></Button>
+                        <Button Name="Nine" Grid.Row="0" Grid.Column="2" Content="9" ></Button>
+
+                        <Button Name="Four" Grid.Row="1" Grid.Column="0" Content="4" ></Button>
+                        <Button Name="Five" Grid.Row="1" Grid.Column="1" Content="5" ></Button>
+                        <Button Name="Six" Grid.Row="1" Grid.Column="2" Content="6" ></Button>
+
+                        <Button Name="One" Grid.Row="2" Grid.Column="0" Content="1"></Button>
+                        <Button Name="Two" Grid.Row="2" Grid.Column="1" Content="2" ></Button>
+                        <Button Name="Three" Grid.Row="2" Grid.Column="2" Content="3" ></Button>
+
+                        <Button Name="Zero" Grid.Row="3" Grid.Column="0" Content="0" ></Button>
+                        <Button Name="DoubleZero" Grid.Row="3" Grid.Column="1" Content="00" ></Button>
+                        <Button Name="PointButton" Grid.Row="3" Grid.Column="2" Content="." ></Button>
+
+
+
+                    </Grid>
+                    <!--First Grid end-->
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-Right side of the Numberpad-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+                    <Grid Name="RightCalc" Grid.Column="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Name="CButton" Grid.Row="0" Content="C" ></Button>
+                        <Button Name="XButton" Grid.Row="1" Content="X" ></Button>
+
+                    </Grid>
+                    <!--Grid der omslutter de store knapper i calculator end-->
+
+
+                </Grid>
+                <!--Grid der omslutter første og anden del af calculator end-->
+
+                <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+            </Grid>
+
+            <Grid Grid.Column="1" Name="RightColumn">
+                <!--Tab control til forskellige varer-->
+                <TabControl Name="GroupControl" TabStripPlacement="Right">
+
+                    <TabItem Name="GroupTab" Header="Grupper"  Background="SandyBrown">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <Button Name="Fad" Grid.Row="0" Grid.Column="0" Content="FAD" MinWidth="50" MinHeight="40" Margin="5" Background="Yellow"></Button>
+                            <Button Name="ByteFad" Grid.Row="0" Grid.Column="1" MinWidth="50" MinHeight="40" Margin="5" Background="Yellow">
+                                <TextBlock TextWrapping="Wrap" > BYTEFAD</TextBlock>
+                            </Button>
+                            <Button Name="x1" Grid.Row="0" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="x2" Grid.Row="0" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="x3" Grid.Row="0" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+
+
+                            <Button Name="X4" Grid.Row="1" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="X5" Grid.Row="1" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="X6" Grid.Row="1" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="X7" Grid.Row="1" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Red"></Button>
+                            <Button Name="x8" Grid.Row="1" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Orange"></Button>
+
+
+
+                            <Button Name="XX4" Grid.Row="2" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XX5" Grid.Row="2" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XX6" Grid.Row="2" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="XX7" Grid.Row="2" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="xX8" Grid.Row="2" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Orange"></Button>
+
+
+
+                            <Button Name="XXX4" Grid.Row="3" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XXX5" Grid.Row="3" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
+                            <Button Name="XXX6" Grid.Row="3" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="XXX7" Grid.Row="3" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="xXX8" Grid.Row="3" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+
+
+                            <Button Name="XXXX4" Grid.Row="4" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="DeepSkyBlue"></Button>
+                            <Button Name="XXXX5" Grid.Row="4" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="DeepSkyBlue"></Button>
+                            <Button Name="XXXX6" Grid.Row="4" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="XXXX7" Grid.Row="4" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="xXXX8" Grid.Row="4" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="Øl" Header="Øl" Background="YellowGreen"  >
+
+                    </TabItem>
+                    <TabItem Name="Drinks" Header="Drinks" Background="LightGray">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Shots" Header="Shots" Background="Red">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Soda" Header="Soda" Background="DeepSkyBlue">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Snacks" Header="Snacks" Background="SaddleBrown">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                    <TabItem Name="Settings" Header="Indstillinger" Background="Gray">
+                        <Label Content="Comming soon!"></Label>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <!--Grid til Tab control og varer end-->
+
+
+        </Grid>
+        <!--Classic Grid end-->
+
+    </Border>
+</Window>
