@@ -6,7 +6,7 @@
 //------------------------------------------------------------------------------
 namespace CashRegister.Log
 {
-    public class LogFactory
+    public abstract class LogFactory
 	{
 		/// <summary>
 		/// Returns a logger instance, use a static variable to hold it 
