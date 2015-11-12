@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="CashRegister.GUI.Views.SalesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII- The Overall Grid which shows the sales-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+        <Grid Name="SaleDisplay" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-Middle Display-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+            <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="0">
+                <Grid Name="MiddleDisplay">
+                    <DataGrid ItemsSource="{Binding TestProducts}" AutoGenerateColumns="True" ColumnWidth="*" >
+
+                    </DataGrid>
+                </Grid>
+            </Border>
+
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-Lower Display-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+            <Border Background="AliceBlue" BorderBrush="Black" BorderThickness="1.5" Grid.Row="1">
+                <Grid Name="LowerDiaplay">
+                    <Label Name="Total" Content="Total" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Label>
+                    <Label Name="TotalCount" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{Binding TotalPrice}" Margin="5"></Label>
+                </Grid>
+            </Border>
+        </Grid>
+
+
+        <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-The Overall Grid with the pay and cancel buttons-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+
+        <Grid Name="PayButtons" Grid.Row="1" Margin="0,15,0,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="Pay" Grid.Column="0" Grid.Row="1" MinHeight="35" Content="Betal" MinWidth="50" Margin="5"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" ></Button>
+            <Button Name="Cancel" Grid.Column="1" Grid.Row="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" ></Button>
+        </Grid>
+    </Grid>
+</UserControl>

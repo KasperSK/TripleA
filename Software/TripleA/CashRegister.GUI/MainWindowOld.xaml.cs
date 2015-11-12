@@ -5,9 +5,9 @@ namespace CashRegister.GUI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindowOld : Window
     {
-        public MainWindow()
+        public MainWindowOld()
         {
             InitializeComponent();
         }

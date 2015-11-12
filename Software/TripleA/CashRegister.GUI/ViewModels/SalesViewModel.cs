@@ -1,44 +1,73 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using CashRegister.Database;
 using CashRegister.Models;
+using CashRegister.Sales;
 
 namespace CashRegister.GUI.ViewModels
 {
-    public class SalesViewModel
+    public class SalesViewModel : BaseViewModel
     {
         /*
-        public SalesViewModel()
+
+        private ISalesController _salesctrl;
+
+        public ObservableCollection<TestProduct> TestProducts { get; } = new ObservableCollection<TestProduct>();
+
+        public List<Product> Products = new List<Product>();
+
+        public SalesViewModel(ISalesController salesctrl = null)
         {
-            _products = new ObservableCollection<Product>();
+            _salesctrl = salesctrl;
 
-            _products.Add(new Product() {ProductName = "Digs"});
+            var currentOrder = _salesctrl.GetCurrentOrder();
+
+
+            foreach (var product in currentOrder.Products)
+            {
+                TestProducts.Add(new TestProduct(product.ProductName));
+            }
+            /*
+
+          Products.Add(new Product() {ProductName = "TestNummer1", Prices = new List<Price>()});
+            Products[0].Prices.Add(new Price() {Price1 = 50});
+          Products.Add(new Product() {ProductName = "TestNummer2", Prices = new List<Price>()});
+            Products[1].Prices.Add(new Price() { Price1 = 25 });
+
+            foreach (var product in Products)
+            {
+                TestProducts.Add(new TestProduct(product.ProductName, "50","1"));
+            }
+            */
+
         }
-        private ObservableCollection<Product> _products;
 
-        public IEnumerable<Product> Products => _products;
 
-        private ICommand _addProduct;
 
-        public ICommand AddProduct
+
+
+    public class TestProduct
+    {
+
+        public string ProdName { get; set; }
+
+        public string Price { get; set; }
+
+        public string Count { get; set; }
+
+        public TestProduct(string name, string price, string count)
         {
-            get { return _addProduct ?? (_addProduct = new RelayCommand(AddProduct_Command, AddCanExecute)); }
+            ProdName = name;
+
+            Price = Price;
+
+            Count = count;
         }
 
 
 
-        public void AddProduct_Command()
-        {
-            Product _Product = new Product() {ProductName = "TestProduct"};
-
-            _products.Add(_Product);
-        }
-
-        public bool AddCanExecute()
-        {
-            return true;
-        }
-        */
+        
 
     }
 }
