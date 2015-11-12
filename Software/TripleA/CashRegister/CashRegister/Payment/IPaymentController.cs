@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CashRegister.Models;
 
 namespace CashRegister.Payment
 {
@@ -6,10 +7,10 @@ namespace CashRegister.Payment
 	{
 		IEnumerable<IPaymentProvidorDescriptor> PaymentProvidorDescriptors { get; }
 
-	    bool ExecuteTransaction(ITransaction transaction, IPaymentProvidorDescriptor PD);
-
-        void PrintTransaction(ITransaction transaction);
-
+	    bool ExecuteTransaction(Transaction transaction);
+        
+        void PrintTransaction(Transaction transaction);
+        
 	    int Tally();
 
 	}
