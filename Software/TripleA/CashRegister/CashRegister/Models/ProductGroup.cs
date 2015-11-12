@@ -1,14 +1,11 @@
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
 namespace CashRegister.Models
 {
-    using System.Collections.Generic;
-
+    [ExcludeFromCodeCoverage]
     public class ProductGroup
     {
-        public ProductGroup()
-        {
-
-        }
-
         public long Id { get; set; }
 
         public string Name { get; set; }

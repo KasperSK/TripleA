@@ -93,6 +93,10 @@
     <Compile Include="CashRegister\Log\ILogger.cs" />
     <Compile Include="CashRegister\Log\LogFactory.cs" />
     <Compile Include="CashRegister\Log\Logger.cs" />
+    <Compile Include="CashRegister\Products\IProductController.cs" />
+    <Compile Include="CashRegister\Products\IProductDao.cs" />
+    <Compile Include="CashRegister\Products\ProductController.cs" />
+    <Compile Include="CashRegister\Products\ProductDao.cs" />
     <Compile Include="CashRegister\Orders\IOrderController.cs" />
     <Compile Include="CashRegister\Orders\IOrderDao.cs" />
     <Compile Include="CashRegister\Orders\OrderController.cs" />
@@ -118,9 +122,7 @@
     <Compile Include="CashRegister\Sales\SalesController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CashRegister\Product\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
