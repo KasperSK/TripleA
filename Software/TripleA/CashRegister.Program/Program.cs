@@ -23,7 +23,7 @@ namespace CashRegister.Program
             IDatabaseInitializer<CashRegisterContext> seed;
             
             // Empty
-            seed = null;
+            seed = new EmptyInitializer();
 
             // Kalle Seed
             seed = new CashProductInitializer();

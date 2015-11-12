@@ -1,13 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using CashRegister.Models;
+using EfEnumToLookup.LookupGenerator;
 
 namespace CashRegister.Database
 {
+    public class EmptyInitializer : DropCreateDatabaseAlways<CashRegisterContext>
+    {
+        protected override void Seed(CashRegisterContext context)
+        {
+            var enumToLookup = new EnumToLookup();
+            enumToLookup.Apply(context);
+        }
+    }
+
     public class CashProductInitializer : DropCreateDatabaseAlways<CashRegisterContext>
     {
         protected override void Seed(CashRegisterContext context)
         {
+            var enumToLookup = new EnumToLookup();
+            enumToLookup.Apply(context);
 
             var export = new Product("Export", 15, true);
             context.Products.Add(export);
