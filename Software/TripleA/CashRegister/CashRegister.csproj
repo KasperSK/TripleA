@@ -105,14 +105,10 @@
     <Compile Include="CashRegister\Payment\IPaymentController.cs" />
     <Compile Include="CashRegister\Payment\IPaymentProvider.cs" />
     <Compile Include="CashRegister\Payment\IPaymentProvidorDescriptor.cs" />
-    <Compile Include="CashRegister\Payment\ITransaction.cs" />
-    <Compile Include="CashRegister\Payment\ITransactionObserver.cs" />
     <Compile Include="CashRegister\Payment\MobilePay.cs" />
     <Compile Include="CashRegister\Payment\Nets.cs" />
     <Compile Include="CashRegister\Payment\PaymentControllerImpl.cs" />
     <Compile Include="CashRegister\Payment\PaymentProvider.cs" />
-    <Compile Include="CashRegister\Payment\Transaction.cs" />
-    <Compile Include="CashRegister\Payment\TransactionStatus.cs" />
     <Compile Include="CashRegister\Printer\IPrinter.cs" />
     <Compile Include="CashRegister\Printer\RecieptPrinter.cs" />
     <Compile Include="CashRegister\Receipts\IReceiptController.cs" />
