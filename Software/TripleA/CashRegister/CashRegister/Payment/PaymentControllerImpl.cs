@@ -29,7 +29,7 @@ namespace CashRegister.Payment
 
         public IEnumerable<IPaymentProvidorDescriptor> PaymentProvidorDescriptors => PaymentProviders;
 
-        public virtual void ExecuteTransaction(ITransaction transaction, IPaymentProvidorDescriptor paymentProvidorDescriptor)
+        public virtual bool ExecuteTransaction(ITransaction transaction, IPaymentProvidorDescriptor paymentProvidorDescriptor)
         {
             var paymentProvider = PaymentProviders.First(p => p.ID == paymentProvidorDescriptor.ID);
 
@@ -40,10 +40,12 @@ namespace CashRegister.Payment
             {
                 cashDrawer.Open();
                 transaction.Status = TransactionStatus.Completed;
+                return true;
             }
             else
             {
                 transaction.Status = TransactionStatus.Failed;
+                return false;
             }
         }
 
