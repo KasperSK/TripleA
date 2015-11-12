@@ -2,9 +2,9 @@
 {
     public abstract class PaymentProvider : IPaymentProvider
     {
-        public int ID { get; }
-        public string Name { get; }
-        public string Description { get; }
+        public int ID { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
 
 
         protected int Amount { get; set; }

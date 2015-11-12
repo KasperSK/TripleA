@@ -9,9 +9,13 @@ namespace CashRegister.Payment
 	    
 		public IPaymentProvidorDescriptor PaymentDescriptor { get; set; }
 
-	    public int Amount { get; set; }
+	    public int Amount {
+            get { return _transaction.Price; }
+	        set { _transaction.Price = Amount; } 
+	    }
 	    public string Description { get; set; }
-	    public int ID { get; }
+	    public int ID => (int)_transaction.Id;
+
 	    IEnumerable<ITransactionObserver> ITransaction.Observers
 	    {
 	        get { return Observers; }
@@ -19,7 +23,7 @@ namespace CashRegister.Payment
 	    }
 
 	    public TransactionStatus Status { get; set; }
-	    public IEnumerable<ITransactionObserver> Observers { get; set; }
+	    public IEnumerable<ITransactionObserver> Observers { get; set;}
 
 	    public virtual void AddObserver(ITransactionObserver observer)
 		{
