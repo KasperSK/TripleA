@@ -12,10 +12,16 @@ namespace CashRegister.Database.Configurations
             Property(p => p.Price)
                 .IsRequired();
 
+            Property(p => p.Description)
+                .IsRequired()
+                .HasMaxLength(50);
+
             Property(p => p.Date)
                 .IsRequired();
 
-            HasRequired(e => e.Paymenttype);
+            //HasRequired(e => e.Paymenttype);
+
+            
 
             HasRequired(e => e.SalesOrder)
                 .WithMany(e => e.Transactions);
