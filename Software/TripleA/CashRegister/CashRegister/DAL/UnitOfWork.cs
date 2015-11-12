@@ -14,6 +14,7 @@ namespace CashRegister.DAL
         private IRepository<PaymentType> _paymentTypeRepository;
         private IRepository<Product> _productRepository;
         private IRepository<ProductGroup> _productGroupRepository;
+        private IRepository<ProductTab> _productTabRepository;
         private IRepository<SalesOrder> _salesOrderRepository;
         private IRepository<Transaction> _transactionRepository;
 
@@ -34,6 +35,9 @@ namespace CashRegister.DAL
 
         public IRepository<ProductGroup> ProductGroupRepository
             => _productGroupRepository ?? (_productGroupRepository = new Repository<ProductGroup>(_context));
+
+        public IRepository<ProductTab> ProductTabRepository
+            => _productTabRepository ?? (_productTabRepository = new Repository<ProductTab>(_context));
 
         public IRepository<SalesOrder> SalesOrderRepository
             => _salesOrderRepository ?? (_salesOrderRepository = new Repository<SalesOrder>(_context));

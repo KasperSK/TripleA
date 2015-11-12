@@ -8,17 +8,113 @@ namespace CashRegister.Database
     {
         protected override void Seed(CashRegisterContext context)
         {
-            IList<Product> defaultProducts = new List<Product>();
 
-            defaultProducts.Add(new Product("Export", 15, true));
-            defaultProducts.Add(new Product("Classic", 12, true));
-            defaultProducts.Add(new Product("Blå Batman", 40, true));
-            defaultProducts.Add(new Product("Små Sure", 10, true));
+            var export = new Product("Export", 15, true);
+            context.Products.Add(export);
 
-            foreach (var defaultProduct in defaultProducts)
+            var classic = new Product("Classic", 12, true);
+            context.Products.Add(classic);
+
+            var gol = new ProductGroup
             {
-                context.Products.Add(defaultProduct);
-            }
+                Name = "Øl Gruppe",
+                Products = new List<Product> {export, classic},
+            };
+            context.ProductGroups.Add(gol);
+            context.ProductTabs.Add(new ProductTab
+            {
+                Active = true,
+                Name = "Øl Fane",
+                Priority = 2,
+                ProductGroups = new List<ProductGroup> { gol }
+            });
+
+
+
+
+            var bb = new Product("Blå Batman", 40, true);
+            context.Products.Add(bb);
+
+            var ks = new Product("K Special", 48, true);
+            context.Products.Add(ks);
+
+            var gdrinks = new ProductGroup
+            {
+                Name = "Drinks Gruppe",
+                Products = new List<Product> { bb, ks },
+            };
+
+            context.ProductGroups.Add(gdrinks);
+            context.ProductTabs.Add(new ProductTab
+            {
+                Active = true,
+                Name = "Drinks Fane",
+                Priority = 3,
+                ProductGroups = new List<ProductGroup> { gdrinks }
+            });
+
+
+
+            var ss = new Product("Små Sure", 10, true);
+            context.Products.Add(ss);
+
+            var gj = new Product("Gajol", 10, false);
+            context.Products.Add(gj);
+
+            var gshots = new ProductGroup
+            {
+                Name = "Shots Gruppe",
+                Products = new List<Product> { ss, gj },
+            };
+
+            context.ProductGroups.Add(gshots);
+            context.ProductTabs.Add(new ProductTab
+            {
+                Active = true,
+                Name = "Shots Fane",
+                Priority = 5,
+                ProductGroups = new List<ProductGroup> { gshots }
+            });
+
+
+
+            var kc = new Product("Kims Chips", 20, false);
+            context.Products.Add(kc);
+
+            var gsnacks = new ProductGroup()
+            {
+                Name = "Snacks Gruppe",
+                Products = new List<Product>() {kc},
+            };
+            context.ProductGroups.Add(gsnacks);
+            context.ProductTabs.Add(new ProductTab
+            {
+                Active = true,
+                Name = "Snacks Fane",
+                Priority = 4,
+                ProductGroups = new List<ProductGroup> { gsnacks }
+            });
+
+
+
+
+
+            var gis = new ProductGroup
+            {
+                Name = "Is Gruppe",
+                Products = new List<Product>(),
+            };
+            context.ProductGroups.Add(gis);
+            context.ProductTabs.Add(new ProductTab
+            {
+                Active = true,
+                Name = "Is Fane",
+                Priority = 6,
+                ProductGroups = new List<ProductGroup> {gis}
+            });
+            
+
+
 
             base.Seed(context);
         }

@@ -1,10 +1,13 @@
-﻿namespace CashRegister.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CashRegister.Models
 {
     using System.Collections.Generic;
 
     /// <summary>
     /// Class to determine which products goes on which tab
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class ProductTab
 	{
 		/// <summary>
