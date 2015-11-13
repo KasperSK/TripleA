@@ -2,11 +2,13 @@
 {
     public class MainViewModel
     {
-        public BaseViewModel ViewModel { get; set; }
+        public BaseViewModel SalesViewModel { get; set; }
+        public BaseViewModel NumpadViewModel { get; set; }
 
         public MainViewModel()
         {
-            ViewModel = new SettingsViewModel();
+            SalesViewModel = new SalesViewModel();
+            NumpadViewModel = new NumpadViewModel();
         }
     }
 }
