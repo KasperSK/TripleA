@@ -10,6 +10,9 @@ namespace CashRegister.GUI
         public MainWindow()
         {
             InitializeComponent();
+
+            TestWindow UserControlTest = new TestWindow();
+            UserControlTest.Show();
         }
     }
 }
