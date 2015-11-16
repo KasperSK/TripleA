@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Windows.Controls;
 using CashRegister.CashDrawers;
+using CashRegister.CashRegister.Payment;
 using CashRegister.Models;
 using CashRegister.Printer;
 using CashRegister.Receipts;
@@ -9,9 +12,11 @@ namespace CashRegister.Payment
 {
     public class PaymentControllerImpl : IPaymentController
     {
-        public PaymentControllerImpl(List<PaymentProvider> paymentProviderList, IReceiptController receiptcontroller)
+        public PaymentControllerImpl(List<PaymentProvider> paymentProviderList, IReceiptController receiptcontroller, IPaymentDao paymentDao)
         {
-           ReceiptController = receiptcontroller;
+            ReceiptController = receiptcontroller;
+            _paymentDao = paymentDao;
+
 
             if (paymentProviderList != null)
             {
@@ -19,9 +24,11 @@ namespace CashRegister.Payment
             }
             else
             {
-                paymentProviderList = new List<PaymentProvider> {new CashPayment()};
+                PaymentProviders = new List<PaymentProvider> {new CashPayment()};
             }
         }
+
+        private IPaymentDao _paymentDao;
 
         private List<PaymentProvider> PaymentProviders { get; }
 
@@ -42,11 +49,14 @@ namespace CashRegister.Payment
             {
                 cashDrawer.Open();
                 transaction.Status = TransactionStatus.Completed;
+                _paymentDao.Insert(transaction);
+
                 return true;
             }
             else
             {
                 transaction.Status = TransactionStatus.Failed;
+                _paymentDao.Insert(transaction);
                 return false;
             }
         }
@@ -73,5 +83,7 @@ namespace CashRegister.Payment
 
             return total + startChange;
         }
+
+        
     }
 }
