@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CashRegister.Models;
 
-namespace CashRegister.CashRegister.Payment
+namespace CashRegister.Payment
 {
     public interface IPaymentDao
     {

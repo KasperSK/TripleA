@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CashRegister.DAL;
 using CashRegister.Models;
+using CashRegister.Payment;
 
-namespace CashRegister.CashRegister.Payment
+namespace CashRegister.Payment
 {
     class PaymentDao : IPaymentDao
     {
