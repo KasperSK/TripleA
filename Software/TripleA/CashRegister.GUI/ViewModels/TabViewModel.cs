@@ -15,7 +15,7 @@ using CashRegister.Products;
 
 namespace CashRegister.GUI.ViewModels
 {
-    public class TabViewModel : INotifyPropertyChanged
+    public class TabViewModel : BaseViewModel
     {
         // View Ressourses 
         public Dictionary<string, List<TabItem>> TabDictionary { get; set; } = new Dictionary<string, List<TabItem>>();
@@ -96,14 +96,6 @@ namespace CashRegister.GUI.ViewModels
             }
             if(first != null)
                 TabDictionary[first].ForEach(n => TabItems.Add(n));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
