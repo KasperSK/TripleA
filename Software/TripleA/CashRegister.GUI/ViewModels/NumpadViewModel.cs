@@ -4,17 +4,10 @@ namespace CashRegister.GUI.ViewModels
 {
     public class NumpadViewModel : BaseViewModel
     {
-        public NumpadViewModel()
-        {
-        }
-
         private string _input;
         public string Input
         {
-            get
-            {
-                return _input;
-            }
+            get { return _input; }
             set
             {
                 if (Input == value) return;
@@ -29,6 +22,14 @@ namespace CashRegister.GUI.ViewModels
         public void NumpadClicked_Command(string num)
         {
             Input += num;
+        }
+
+        private ICommand _numpadClear;
+        public ICommand NumpadClear => _numpadClear ?? (_numpadClear = new RelayCommand(NumpadClear_Command));
+
+        public void NumpadClear_Command()
+        {
+            Input = "";
         }
     }
 }
