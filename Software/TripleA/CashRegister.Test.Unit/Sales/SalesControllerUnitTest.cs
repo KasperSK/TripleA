@@ -22,7 +22,6 @@ namespace CashRegister.Test.Unit.Sales
         private IReceiptController _receiptctrl;
         private IPrinter _printerctrl;
         private ISalesController _uut;
-        private ITransaction _transaction;
         private Models.Product _product;
         private Discount _discount;
         private SalesController _getIncomplete;
@@ -31,9 +30,9 @@ namespace CashRegister.Test.Unit.Sales
         [SetUp]
         public void Setup()
         {
-            _orderctrl = Substitute.For<OrderController>(Substitute.For<OrderDao>());
+            _orderctrl = Substitute.For<OrderController>(Substitute.For<IOrderDao>());
             _printerctrl = Substitute.For<ReceiptPrinter>();
-            _transaction = Substitute.For<ITransaction>();
+
             trans = Substitute.For<Models.Transaction>();
             //      _orderctrl.StashedOrders.Returns(new List<SalesOrder> {});
             _receiptctrl = Substitute.For<ReceiptController>(_printerctrl);
@@ -140,7 +139,7 @@ namespace CashRegister.Test.Unit.Sales
         public void SalesController_SaveIncompleteOrder_OrderControllerCreateNewOrderIsCalled()
         {
             _uut.SaveIncompleteOrder();
-            _orderctrl.Received(1).CreateNewOrder();
+            _orderctrl.Received(2).CreateNewOrder();
         }
     }
 }
