@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Ink;
 using System.Windows.Input;
 using CashRegister.Database;
 using CashRegister.Models;
@@ -9,65 +11,60 @@ namespace CashRegister.GUI.ViewModels
 {
     public class SalesViewModel : BaseViewModel
     {
+
+
         /*
+         private ISalesController _salesctrl;
 
-        private ISalesController _salesctrl;
+         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
 
-        public ObservableCollection<TestProduct> TestProducts { get; } = new ObservableCollection<TestProduct>();
-
-        public List<Product> Products = new List<Product>();
-
-        public SalesViewModel(ISalesController salesctrl = null)
-        {
-            _salesctrl = salesctrl;
-
-            var currentOrder = _salesctrl.GetCurrentOrder();
+         public SalesViewModel(ISalesController salesctrl = null)
+         {
+             _salesctrl = salesctrl;
 
 
-            foreach (var product in currentOrder.Products)
-            {
-                TestProducts.Add(new TestProduct(product.ProductName));
-            }
-            /*
 
-          Products.Add(new Product() {ProductName = "TestNummer1", Prices = new List<Price>()});
-            Products[0].Prices.Add(new Price() {Price1 = 50});
-          Products.Add(new Product() {ProductName = "TestNummer2", Prices = new List<Price>()});
-            Products[1].Prices.Add(new Price() { Price1 = 25 });
+         }
 
-            foreach (var product in Products)
-            {
-                TestProducts.Add(new TestProduct(product.ProductName, "50","1"));
-            }
-            */
+         public void OnCurrentOrderChanged()
+         {
+             var currentOrder = _salesctrl.GetCurrentOrder();
 
-        }
+             foreach (var lineElement in currentOrder.Lines)
+             {
+                 var price = (lineElement.UnitPrice*lineElement.Quantity).ToString();
+
+                 ViewProducts.Add(new ViewProduct(lineElement.Product.Name, price, lineElement.Quantity.ToString()));
+             }
+         }
 
 
 
 
 
-    public class TestProduct
-    {
+         public class ViewProduct
+         {
 
-        public string ProdName { get; set; }
+             public string Navn { get; set; }
 
-        public string Price { get; set; }
+             public string Pris { get; set; }
 
-        public string Count { get; set; }
+             public string Antal { get; set; }
 
-        public TestProduct(string name, string price, string count)
-        {
-            ProdName = name;
+             public ViewProduct(string name, string price, string count)
+             {
+                 Navn = name;
 
-            Price = Price;
+                 Pris = price;
 
-            Count = count;
-        }
+                 Antal = count;
+             }
 
 
 
-        
 
+
+         }
+         */
     }
 }
