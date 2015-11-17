@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="375" Width="550">
     <Window.Resources>
-        <local:ProductGroupViewModel x:Key="ProductGroupViewModel"/>
+
     </Window.Resources>
     <Border Background="AliceBlue" BorderBrush="Crimson" BorderThickness="1.5">
         <Grid Name="Classic">

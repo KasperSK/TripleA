@@ -10,5 +10,8 @@
         <DataTemplate DataType="{x:Type viewModels:NumpadViewModel}">
             <views:NumpadView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:TabViewModel}">
+            <views:ProductView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
