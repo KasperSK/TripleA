@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using CashRegister.Database;
 using CashRegister.DAL;
@@ -81,7 +82,7 @@ namespace CashRegister.GUI.ViewModels
             var product = new ProductController(new ProductDao(new DalFacade()));
             foreach (var tab in product.ProductTabs)
             {
-                TabHead.Add(new TabHeader(tab.Name, ChangeTab));
+                TabHead.Add(new TabHeader(tab.Name, ChangeTab, tab.Color));
                 if (!foundFirst)
                 {
                     first = tab.Name;
