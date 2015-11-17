@@ -22,7 +22,7 @@ namespace CashRegister.Sales
         /// Provides Product tabs to GUI
         /// </summary>
         /// <returns></returns>
-        IReadOnlyCollection<ProductTab> ProductTabs();
+        IReadOnlyCollection<ProductTab> ProductTabs { get; }
 
         /// <summary>
         /// Remove a product from SalesOrder
@@ -62,7 +62,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Get info on the amount missing on the SalesOrder
         /// </summary>
-        long MissingPaymenOnOrder();
+        long MissingPaymentOnOrder();
 
         /// <summary>
         /// Add an transaction to the order
@@ -72,7 +72,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Gets a list of all incomplete orders by default current data (or within a certain date or time)
         /// </summary>
-        IReadOnlyCollection<SalesOrder> GetIncompleteOrders();
+        IReadOnlyCollection<SalesOrder> IncompleteOrders { get; }
 
         /// <summary>
         /// Get an incomplete order
@@ -92,7 +92,12 @@ namespace CashRegister.Sales
         ///<summary>
         /// Returns the current order
         /// </summary>
-        SalesOrder GetCurrentOrder();
+        SalesOrder CurrentOrder { get; }
+
+        /// <summary>
+        ///     Gets the PaymentProviderDescriptor
+        /// </summary>
+        IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor { get; }
     }
 }
 

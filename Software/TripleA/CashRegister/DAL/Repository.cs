@@ -1,28 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using CashRegister.Database;
 using CashRegister.Log;
 
-namespace CashRegister.DAL
+namespace CashRegister.Dal
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
+        private readonly ILogger _logger = LogFactory.GetLogger(typeof (Repository<TEntity>));
         internal CashRegisterContext Context;
         internal DbSet<TEntity> DbSet;
-        private readonly ILogger _logger = LogFactory.GetLogger(typeof (Repository<TEntity>));
 
         public Repository(CashRegisterContext context)
         {
             Context = context;
             DbSet = context.Set<TEntity>();
             _logger.Debug("Generic Repository instantiatet");
-
         }
 
         public virtual TEntity GetById(object id)
@@ -37,7 +33,7 @@ namespace CashRegister.DAL
 
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = DbSet.Find(id);
+            var entityToDelete = DbSet.Find(id);
             Delete(entityToDelete);
         }
 
@@ -67,7 +63,7 @@ namespace CashRegister.DAL
             }
 
             //.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
-            foreach (var includeProperty in includeProperties ?? (new string[0])) 
+            foreach (var includeProperty in includeProperties ?? new string[0])
             {
                 query = query.Include(includeProperty);
             }
@@ -76,11 +72,7 @@ namespace CashRegister.DAL
             {
                 return orderBy(query).ToList();
             }
-            else
-            {
-                return query.ToList();
-            }
-
-        } 
+            return query.ToList();
+        }
     }
 }

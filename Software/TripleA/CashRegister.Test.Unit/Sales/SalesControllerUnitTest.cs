@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using CashRegister.Database;
+﻿using System;
 using CashRegister.Models;
 using CashRegister.Orders;
 using CashRegister.Payment;
 using CashRegister.Receipts;
 using CashRegister.Sales;
 using CashRegister.Printer;
+using CashRegister.Products;
 using NSubstitute;
-using NSubstitute.Core;
-using NSubstitute.Core.Arguments;
 using NUnit.Framework;
 
 namespace CashRegister.Test.Unit.Sales
@@ -20,29 +16,35 @@ namespace CashRegister.Test.Unit.Sales
     {
         private IOrderController _orderctrl;
         private IReceiptController _receiptctrl;
-        private IPrinter _printerctrl;
+        private IPaymentController _paymentController;
+        private IProductController _productController;
         private ISalesController _uut;
-        private Models.Product _product;
+        private Product _product;
         private Discount _discount;
-        private SalesController _getIncomplete;
-        private Models.Transaction trans;
+        private Transaction _trans;
 
         [SetUp]
         public void Setup()
         {
-            _orderctrl = Substitute.For<OrderController>(Substitute.For<IOrderDao>());
-            _printerctrl = Substitute.For<ReceiptPrinter>();
+            _orderctrl = Substitute.For<IOrderController>();
+            _paymentController = Substitute.For<IPaymentController>();
+            _productController = Substitute.For<IProductController>();
+            _receiptctrl = Substitute.For<IReceiptController>();
 
-            trans = Substitute.For<Models.Transaction>();
-            //      _orderctrl.StashedOrders.Returns(new List<SalesOrder> {});
-            _receiptctrl = Substitute.For<ReceiptController>(_printerctrl);
+            _trans = Substitute.For<Transaction>();
+            
             _product = new Product("Fedt", 100, true);
-            _discount = Substitute.For<Discount>();
-            _uut = new SalesController(_orderctrl, _receiptctrl);
+            _discount = new Discount
+            {
+                Description = "Test Discount",
+                Id = 0,
+                Percent = 10
+            };
+            _uut = new SalesController(_orderctrl, _receiptctrl, _productController, _paymentController);
 
         }
 
-        public void AddingProductToOrder(Product product, int quantity, Discount discount)
+        private void AddingProductToOrder(Product product, int quantity, Discount discount)
         {
             _uut.AddProductToOrder(product, quantity, discount);
         }
@@ -59,7 +61,7 @@ namespace CashRegister.Test.Unit.Sales
         {
             //_uut.AddProductToOrder(_product, 1,_discount);
             AddingProductToOrder(_product, 1, _discount);
-            _orderctrl.Received(1).AddProduct(Arg.Any<Product>(), Arg.Any<int>(), Arg.Any<Discount>());
+            _orderctrl.Received(1).AddProduct(_product, 1, _discount);
         }
 
         [Test]
@@ -67,7 +69,7 @@ namespace CashRegister.Test.Unit.Sales
         {
             AddingProductToOrder(_product, 1, _discount);
             _uut.RemoveProductFromOrder(_product, 1, _discount);
-            _orderctrl.Received(1).AddProduct(Arg.Any<Product>(), Arg.Any<int>(), Arg.Any<Discount>());
+            _orderctrl.Received(1).AddProduct(_product, -1, _discount);
         }
 
         [Test]
@@ -108,7 +110,7 @@ namespace CashRegister.Test.Unit.Sales
         [Test]
         public void SalesController_MissingPayment_OrderControllerMissingAmountIsCalled()
         {
-            _uut.MissingPaymenOnOrder();
+            _uut.MissingPaymentOnOrder();
             _orderctrl.Received(1).MissingAmount();
         }
 /*
@@ -124,7 +126,7 @@ namespace CashRegister.Test.Unit.Sales
         [Test]
         public void SalesController_AddTransaction_OrderControllerAddTransactionIsCalled()
         {
-            _uut.AddTransaction(trans);
+            _uut.AddTransaction(_trans);
             _orderctrl.Received(1).AddTransaction(Arg.Any<Models.Transaction>());
         }
 

@@ -6,9 +6,11 @@ namespace CashRegister.Payment
     public class MobilePay : PaymentProvider
 	{
         public override PaymentType Type => PaymentType.MobilePay;
+        public override string Name => "MobilePay";
+        public override string Description => "MobilePay from Danske Bank";
         public override void Init(){}
 
-        public override bool TransferAmount(int amount, string desc)
+        public override bool TransferAmount(int amount, string description)
 	    {
 	        throw new NotImplementedException();
 	    }

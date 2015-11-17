@@ -70,7 +70,7 @@ namespace CashRegister.Orders
 		/// <summary>
 		/// Get the last n orders and updates the currents orders
 		/// </summary>
-		/// <param name="n">The amount of orders to be returned</param>
-		IEnumerable<SalesOrder> GetNLastOrders(int n);
+		/// <param name="amount">The amount of orders to be returned</param>
+		IEnumerable<SalesOrder> GetLastOrders(int amount);
 	}
 }

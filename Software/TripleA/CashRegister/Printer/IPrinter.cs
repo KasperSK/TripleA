@@ -8,8 +8,8 @@
         /// <summary>
         /// Adds a string to the print document
         /// </summary>
-        /// <param name="str">str is added to the print document</param>
-        void AddTo(string str);
+        /// <param name="line">line is added to the print document</param>
+        void AddTo(string line);
 
 		/// <summary>
 		/// Initiates a print

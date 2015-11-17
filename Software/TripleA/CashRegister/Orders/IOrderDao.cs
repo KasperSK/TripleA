@@ -36,20 +36,20 @@ namespace CashRegister.Orders
         /// <summary>
         /// Get a list of the last n orders
         /// </summary>
-        /// <param name="n">The amount of orders to be returned</param>
+        /// <param name="amount">The amount of orders to be returned</param>
         /// <returns>A IEnumerable list of the last n orders</returns>
-        IEnumerable<SalesOrder> GetNLastOrders(int n);
+        IEnumerable<SalesOrder> GetLastOrders(int amount);
 
         /// <summary>
         /// Get the last order
         /// </summary>
         /// <returns>Returns the latest order</returns>
-        SalesOrder GetLastOrder();
+        SalesOrder LastOrder { get; }
 
         /// <summary>
         /// Get the id of the last order
         /// </summary>
         /// <returns>The id of the last order</returns>
-        long GetLastId();
+        long LastId { get; }
     }
 }

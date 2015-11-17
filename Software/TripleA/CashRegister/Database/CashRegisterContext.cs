@@ -26,7 +26,7 @@ namespace CashRegister.Database
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductGroup> ProductGroups { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
-        public virtual DbSet<Transaction> Transaktions { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<ProductTab> ProductTabs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

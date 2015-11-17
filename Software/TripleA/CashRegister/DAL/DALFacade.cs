@@ -1,33 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CashRegister.Database;
-using CashRegister.DAL;
 
-namespace CashRegister.DAL
+namespace CashRegister.Dal
 {
     public class DalFacade : IDalFacade
     {
         private CashRegisterContext _context;
+        private bool _disposed;
         private UnitOfWork _unitOfWork;
-        private bool _disposed = false;
 
-        public IUnitOfWork GetUnitOfWork()
+        public IUnitOfWork UnitOfWork
         {
-            if(_unitOfWork != null)
-                throw new Exception("The unit of work is in use");
+            get
+            {
+                if (_unitOfWork != null)
+                    throw new InvalidOperationException("The unit of work is in use");
 
-            _context = new CashRegisterContext();
-            _unitOfWork = new UnitOfWork(_context, this);
-            return _unitOfWork;
-        }
-
-        public void ReturnUnitOfWork()
-        {
-            _unitOfWork = null;
-            _context = null;
+                _context = new CashRegisterContext();
+                _unitOfWork = new UnitOfWork(_context, this);
+                return _unitOfWork;
+            }
         }
 
         public string DatabaseName { get; set; }
@@ -36,6 +28,12 @@ namespace CashRegister.DAL
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void ReturnUnitOfWork()
+        {
+            _unitOfWork = null;
+            _context = null;
         }
 
         protected virtual void Dispose(bool disposing)

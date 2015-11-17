@@ -1,4 +1,4 @@
-﻿using CashRegister.DAL;
+﻿using CashRegister.Dal;
 using CashRegister.Products;
 using NSubstitute;
 using NUnit.Framework;
@@ -8,9 +8,6 @@ namespace CashRegister.Test.Unit.Products
     [TestFixture]
     public class ProductDaoUnitTest
     {
-        private IProductDao _uut;
-        private IDalFacade _fakeDalFacade;
-
         [SetUp]
         public void ProductDaoSetup()
         {
@@ -18,11 +15,14 @@ namespace CashRegister.Test.Unit.Products
             _uut = new ProductDao(_fakeDalFacade);
         }
 
+        private IProductDao _uut;
+        private IDalFacade _fakeDalFacade;
+
         [Test]
         public void ProductDao_GetProductTabs_CallsDal()
         {
             _uut.GetProductTabs(true);
-            _fakeDalFacade.Received(1).GetUnitOfWork();
+            var temp = _fakeDalFacade.Received(1).UnitOfWork;
         }
     }
 }

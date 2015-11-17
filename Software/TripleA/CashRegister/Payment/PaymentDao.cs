@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CashRegister.DAL;
+﻿using CashRegister.Dal;
 using CashRegister.Models;
-using CashRegister.Payment;
 
 namespace CashRegister.Payment
 {
-    class PaymentDao : IPaymentDao
+    internal class PaymentDao : IPaymentDao
     {
-        private IDalFacade _dalFacade;
+        private readonly IDalFacade _dalFacade;
 
 
         public PaymentDao(IDalFacade dalFacade)
@@ -22,7 +16,7 @@ namespace CashRegister.Payment
         // ------------------ Delete ----------------------- //
         public void Delete(Transaction transaction)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 uow.TransactionRepository.Delete(transaction);
                 uow.Save();
@@ -32,7 +26,7 @@ namespace CashRegister.Payment
         // ------------------ Insert ----------------------- //
         public void Insert(Transaction transaction)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 uow.TransactionRepository.Insert(transaction);
                 uow.Save();
@@ -41,7 +35,7 @@ namespace CashRegister.Payment
 
         public Transaction SelectByTransactionId(long id)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 return uow.TransactionRepository.GetById(id);
             }
@@ -51,7 +45,7 @@ namespace CashRegister.Payment
         // ------------------ Update ----------------------- //
         public void Update(Transaction transaction)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 uow.TransactionRepository.Update(transaction);
                 uow.Save();
