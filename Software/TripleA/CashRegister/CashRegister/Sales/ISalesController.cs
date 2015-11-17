@@ -1,4 +1,5 @@
-﻿using CashRegister.Models;
+﻿using System.ComponentModel;
+using CashRegister.Models;
 
 namespace CashRegister.Sales
 {
@@ -9,7 +10,7 @@ namespace CashRegister.Sales
     /// <summary>
     /// Controls sales
     /// </summary>
-    public interface ISalesController
+    public interface ISalesController : INotifyPropertyChanged
     {
         /// <summary>
         /// Adds a product to the current order
