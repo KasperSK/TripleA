@@ -13,62 +13,58 @@ namespace CashRegister.GUI.ViewModels
     {
 
 
-        private ISalesController _salesctrl;
-
-        public ObservableCollection<ViewProduct> TestProducts { get; } = new ObservableCollection<ViewProduct>();
-
-        public List<Product> Products = new List<Product>();
-
-        public SalesViewModel(ISalesController salesctrl = null)
-        {
-
-        }
-
         /*
+         private ISalesController _salesctrl;
 
-            ICommand _refreshCurrentOrder;
+         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
 
-
-            public Icommand RefreshCurrentOrder
-    */
-
-
-
+         public SalesViewModel(ISalesController salesctrl = null)
+         {
+             _salesctrl = salesctrl;
 
 
 
+         }
 
-        public class ViewProduct
-        {
+         public void OnCurrentOrderChanged()
+         {
+             var currentOrder = _salesctrl.GetCurrentOrder();
 
-            public string Navn { get; set; }
+             foreach (var lineElement in currentOrder.Lines)
+             {
+                 var price = (lineElement.UnitPrice*lineElement.Quantity).ToString();
 
-            public string Pris { get; set; }
-
-            public string Antal { get; set; }
-
-            public ViewProduct(string name, string price, string count)
-            {
-                Navn = name;
-
-                Pris = price;
-
-                Antal = count;
-            }
-
-            public void IncrementCount()
-            {
-                var count = Int32.Parse(Antal);
-
-                count++;
-
-                Antal = count.ToString();
-            }
+                 ViewProducts.Add(new ViewProduct(lineElement.Product.Name, price, lineElement.Quantity.ToString()));
+             }
+         }
 
 
 
 
 
-        }
+         public class ViewProduct
+         {
+
+             public string Navn { get; set; }
+
+             public string Pris { get; set; }
+
+             public string Antal { get; set; }
+
+             public ViewProduct(string name, string price, string count)
+             {
+                 Navn = name;
+
+                 Pris = price;
+
+                 Antal = count;
+             }
+
+
+
+
+
+         }
+         */
     }
 }
