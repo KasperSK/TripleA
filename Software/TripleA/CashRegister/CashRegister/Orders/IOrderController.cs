@@ -10,7 +10,9 @@ namespace CashRegister.Orders
 	public interface IOrderController 
 	{
         SalesOrder CurrentOrder { get;}
-        List<SalesOrder> StashedOrders { get; }
+
+        IReadOnlyCollection<SalesOrder> StashedOrders { get; }
+
         /// <summary>
         /// Creates a new order and sets it as the current order.
         /// </summary>
@@ -37,6 +39,8 @@ namespace CashRegister.Orders
         /// <param name="product">Product to be added to the order</param>
         /// <param name="quantity">The quantity of the product</param>
         /// <param name="discount">The discount, can be excluded</param>
+        void AddProduct(Product product);
+        void AddProduct(Product product, int quantity);
         void AddProduct(Product product, int quantity, Discount discount);
 
         /// <summary>

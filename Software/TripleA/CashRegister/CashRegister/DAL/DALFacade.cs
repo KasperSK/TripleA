@@ -12,6 +12,7 @@ namespace CashRegister.DAL
     {
         private CashRegisterContext _context;
         private UnitOfWork _unitOfWork;
+        private bool _disposed = false;
 
         public IUnitOfWork GetUnitOfWork()
         {
@@ -30,5 +31,24 @@ namespace CashRegister.DAL
         }
 
         public string DatabaseName { get; set; }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _unitOfWork.Dispose();
+                    _context.Dispose();
+                }
+                _disposed = true;
+            }
+        }
     }
 }

@@ -6,7 +6,14 @@ namespace CashRegister.Database
 {
     public class CashRegisterContext : DbContext
     {
-        public CashRegisterContext(IDatabaseInitializer<CashRegisterContext> seed = null)
+
+        // Fixes: Default parameters should not be used
+        public CashRegisterContext() : this(null)
+        {
+            
+        }
+
+        public CashRegisterContext(IDatabaseInitializer<CashRegisterContext> seed)
             : base("name=CashRegisterContext")
         {
             System.Data.Entity.Database.SetInitializer(seed ?? new DropCreateDatabaseAlways<CashRegisterContext>());

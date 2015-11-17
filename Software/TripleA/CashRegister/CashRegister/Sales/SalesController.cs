@@ -178,7 +178,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Gets a list of all incomplete orders by default current data (or within a certain date or time)
         /// </summary>
-        public List<SalesOrder> GetIncompleteOrders()
+        public IReadOnlyCollection<SalesOrder> GetIncompleteOrders()
         {
             return OrderController.StashedOrders;
         }

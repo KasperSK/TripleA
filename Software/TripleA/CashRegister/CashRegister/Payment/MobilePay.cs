@@ -8,7 +8,7 @@ namespace CashRegister.Payment
         public override PaymentType Type => PaymentType.MobilePay;
         public override void Init(){}
 
-	    public override bool TransferAmount(int amount, string desc = null)
+        public override bool TransferAmount(int amount, string desc)
 	    {
 	        throw new NotImplementedException();
 	    }

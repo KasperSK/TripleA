@@ -11,7 +11,7 @@ namespace CashRegister.Test.Unit.Orders
     public class OrderControllerUnitTest
     {
         private IOrderDao _dao;
-        private OrderController _uut;
+        private IOrderController _uut;
 
         private readonly int[] _oddNumbers = {1, 3, 5, 7, 9};
 

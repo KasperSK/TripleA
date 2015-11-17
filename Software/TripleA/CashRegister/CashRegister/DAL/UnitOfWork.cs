@@ -58,11 +58,11 @@ namespace CashRegister.DAL
 
         private bool _disposed = false;
 
-        protected virtual void Dispose(bool diposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
             {
-                if (diposing)
+                if (disposing)
                 {
                     _context.Dispose();
                     _controller.ReturnUnitOfWork();
