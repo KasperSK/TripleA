@@ -29,15 +29,6 @@ namespace CashRegister.Payment
             }
         }
 
-        public void Delete(PaymentType paymentType)
-        {
-            using (var uow = _dalFacade.GetUnitOfWork())
-            {
-                uow.PaymentTypeRepository.Delete(paymentType);
-                uow.Save();
-            }
-        }
-
         // ------------------ Insert ----------------------- //
         public void Insert(Transaction transaction)
         {
@@ -45,24 +36,6 @@ namespace CashRegister.Payment
             {
                 uow.TransactionRepository.Insert(transaction);
                 uow.Save();
-            }
-        }
-
-        public void Insert(PaymentType paymentType)
-        {
-            using (var uow = _dalFacade.GetUnitOfWork())
-            {
-                uow.PaymentTypeRepository.Insert(paymentType);
-                uow.Save();
-            }
-        }
-
-        // ------------------ Select ----------------------- //
-        public PaymentType SelectByPaymentTypeId(long id)
-        {
-            using (var uow = _dalFacade.GetUnitOfWork())
-            {
-                return uow.PaymentTypeRepository.GetById(id);
             }
         }
 
@@ -81,15 +54,6 @@ namespace CashRegister.Payment
             using (var uow = _dalFacade.GetUnitOfWork())
             {
                 uow.TransactionRepository.Update(transaction);
-                uow.Save();
-            }
-        }
-
-        public void Update(PaymentType paymentType)
-        {
-            using (var uow = _dalFacade.GetUnitOfWork())
-            {
-                uow.PaymentTypeRepository.Update(paymentType);
                 uow.Save();
             }
         }

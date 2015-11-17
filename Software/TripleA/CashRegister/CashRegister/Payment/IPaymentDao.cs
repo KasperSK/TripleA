@@ -10,16 +10,16 @@ namespace CashRegister.Payment
 {
     public interface IPaymentDao
     {
-        void Delete(PaymentType paymentType);
+        
         void Delete(Transaction transaction);
 
-        void Update(PaymentType paymentType);
+        
         void Update(Transaction transaction);
 
-        void Insert(PaymentType paymentType);
+        
         void Insert(Transaction transaction);
 
-        PaymentType SelectByPaymentTypeId(long id);
+        
         Transaction SelectByTransactionId(long id);
 
     }
