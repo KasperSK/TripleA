@@ -18,6 +18,9 @@ namespace CashRegister.Database.Configurations
             Property(p => p.Active)
                 .IsRequired();
 
+            Property(p => p.Color)
+                .IsRequired();
+
             Property(p => p.Priority)
                 .IsRequired()
                 .HasColumnAnnotation(
