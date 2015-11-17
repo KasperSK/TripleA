@@ -41,7 +41,7 @@ namespace CashRegister.Payment
 
         public virtual bool ExecuteTransaction(Transaction transaction)
         {
-            var paymentProvider = PaymentProviders.First(p => p.ID == transaction.Paymenttype.ID);
+            var paymentProvider = PaymentProviders.First(p => p.Type == transaction.PaymentType);
 
             var transferSuccess = paymentProvider.TransferAmount(transaction.Price, transaction.Description);
             var transferStatus = paymentProvider.TransactionStatus();

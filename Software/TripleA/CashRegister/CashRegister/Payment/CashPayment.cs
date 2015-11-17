@@ -1,4 +1,6 @@
-﻿namespace CashRegister.Payment
+﻿using CashRegister.Models;
+
+namespace CashRegister.Payment
 {
     /// <summary>
 	/// The Cash drawers functionalities
@@ -19,7 +21,9 @@
 	        
 	    }
 
-	    public override bool TransferAmount(int amount, string desc)
+        public override PaymentType Type => PaymentType.Cash;
+
+        public override bool TransferAmount(int amount, string desc)
 	    {
 	        Amount += amount;
 	        return true;

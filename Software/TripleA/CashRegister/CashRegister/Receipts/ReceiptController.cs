@@ -62,7 +62,7 @@ namespace CashRegister.Receipts
         {
             var receipt = new Receipt();
             
-            receipt.Content.Add($"{transaction.Paymenttype}\nDate: {transaction.Date}\nId: {transaction.Id}\n{transaction.Price}\n\b");
+            receipt.Content.Add($"{transaction.PaymentType}\nDate: {transaction.Date}\nId: {transaction.Id}\n{transaction.Price}\n\b");
             
             return receipt;
         }
