@@ -43,7 +43,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Holds The payment providers
         /// </summary>
-        private IEnumerable<IPaymentProvidorDescriptor> SalesPaymentProvidorDescriptors { get; set; }
+        private IEnumerable<PaymentType> SalesPaymentProvidorDescriptors { get; set; }
 
 
         public IReceiptController ReceiptController
@@ -61,7 +61,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Gets the PaymentProviderDescriptor
         /// </summary>
-       public IEnumerable<IPaymentProvidorDescriptor> GetPaymentProviderDescriptor()
+       public IEnumerable<PaymentType> GetPaymentProviderDescriptor()
          {
              return SalesPaymentProvidorDescriptors;
        }
@@ -145,7 +145,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Starting payment on a SalesOrder
         /// </summary>
-        public void StartPayment(int amountToPay, string description, IPaymentProvidorDescriptor provider)
+        public void StartPayment(int amountToPay, string description, PaymentType provider)
         {
             string descriptionAndSalesOrderId = description + " " + OrderController.CurrentOrder.Id;
             var trans = CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
@@ -191,14 +191,16 @@ namespace CashRegister.Sales
                OrderController.GetStashedOrder(orderId);
         }
 
-        public Transaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment)
+        public Transaction CreateTransaction(int amountToPay, string description, PaymentType payment)
         {
-            var transaction = new Transaction();
-            transaction.Id = OrderController.CurrentOrder.Id;
-            transaction.Price = amountToPay;
-            transaction.Paymenttype = payment;
-            transaction.Description = description;
-           bool paymentCompleted = _paymentControllerImpl.ExecuteTransaction(transaction);
+            var transaction = new Transaction
+            {
+                Id = OrderController.CurrentOrder.Id,
+                Price = amountToPay,
+                PaymentType = payment,
+                Description = description
+            };
+            bool paymentCompleted = _paymentControllerImpl.ExecuteTransaction(transaction);
             if (paymentCompleted == true)
             {
                 return transaction;

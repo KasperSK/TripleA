@@ -56,7 +56,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Starting payment on a SalesOrder
         /// </summary>
-        void StartPayment(int amountToPay, string description, IPaymentProvidorDescriptor provider);
+        void StartPayment(int amountToPay, string description, PaymentType provider);
 
         /// <summary>
         /// Get info on the amount missing on the SalesOrder
@@ -86,7 +86,7 @@ namespace CashRegister.Sales
         /// <param name="description"></param>
         /// <param name="payment"></param>
         /// <returns></returns>
-        Transaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment);
+        Transaction CreateTransaction(int amountToPay, string description, PaymentType payment);
 
         ///<summary>
         /// Returns the current order
