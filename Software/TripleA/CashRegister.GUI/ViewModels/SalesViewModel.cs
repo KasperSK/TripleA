@@ -4,7 +4,11 @@ using System.Collections.ObjectModel;
 using System.Windows.Ink;
 using System.Windows.Input;
 using CashRegister.Database;
+using CashRegister.DAL;
 using CashRegister.Models;
+using CashRegister.Orders;
+using CashRegister.Printer;
+using CashRegister.Receipts;
 using CashRegister.Sales;
 
 namespace CashRegister.GUI.ViewModels
@@ -13,28 +17,43 @@ namespace CashRegister.GUI.ViewModels
     {
 
 
-        /*
+        
          private ISalesController _salesctrl;
 
          public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
 
-         public SalesViewModel(ISalesController salesctrl = null)
+        public SalesViewModel()
+        {
+            //_salesctrl = new SalesController(new OrderController(new OrderDao(new DalFacade())),new ReceiptController(new ReceiptPrinter()));
+
+            _salesctrl = null;
+        }
+
+         public SalesViewModel(ISalesController salesCtrl)
          {
-             _salesctrl = salesctrl;
+             _salesctrl = salesCtrl;
 
 
 
          }
 
-         public void OnCurrentOrderChanged()
+        public void SetSalesController(ISalesController salesController)
+        {
+            _salesctrl = salesController;
+        }
+
+         public void OnCurrentOrderChanged()                                        //Happening when receiving event from SalesController
          {
-             var currentOrder = _salesctrl.GetCurrentOrder();
+             var currentOrder = _salesctrl.GetCurrentOrder();                       //Retrieving currentorder via SAlesController
 
-             foreach (var lineElement in currentOrder.Lines)
+             foreach (var lineElement in currentOrder.Lines)                        //Itterating through all orderlines in currentorder
              {
-                 var price = (lineElement.UnitPrice*lineElement.Quantity).ToString();
+                 var price = (lineElement.UnitPrice*lineElement.Quantity).ToString(); //Making total price for Orderline
 
-                 ViewProducts.Add(new ViewProduct(lineElement.Product.Name, price, lineElement.Quantity.ToString()));
+                 ViewProducts
+                    .Add(new ViewProduct(lineElement.Product.Name,                  //Adding new Viewproducts to be displayed in SalesView
+                    price, 
+                    lineElement.Quantity.ToString()));
              }
          }
 
@@ -65,6 +84,6 @@ namespace CashRegister.GUI.ViewModels
 
 
          }
-         */
+         
     }
 }
