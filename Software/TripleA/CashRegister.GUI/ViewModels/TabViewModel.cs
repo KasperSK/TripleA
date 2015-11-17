@@ -37,12 +37,18 @@ namespace CashRegister.GUI.ViewModels
             seed = null;
 
             // Kalle Seed
-            seed = new CashProductInitializer();
+            // seed = new CashProductInitializer();
+
+            // Lærke Seed
+            seed = new FullCashProductInitializer();
 
             using (var contex = new CashRegisterContext(seed))
             {
                 contex.Database.Initialize(true);
             }
+            
+
+
             //TabHead.Add(new TabHeader() { Name = "Standart", Com = ChangeTab });
             //TabHead.Add(new TabHeader() { Name = "Luksus", Com = ChangeTab });
             //TabHead.Add(new TabHeader() { Name = "Billig", Com = ChangeTab });
@@ -89,7 +95,11 @@ namespace CashRegister.GUI.ViewModels
                     foreach (var products in tabPG.Products)
                     {
                         tabItem.Add(new TabItem(products.Name, i, j++));
-                        if (j >= 4) i++;
+                        if (j >= 5)
+                        {
+                            i++;
+                            j = 0;
+                        }
                     }
                     TabDictionary.Add(tab.Name, tabItem);      
                 }

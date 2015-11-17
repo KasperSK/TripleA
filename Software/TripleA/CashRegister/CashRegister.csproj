@@ -82,6 +82,7 @@
     <Compile Include="CashRegister\Database\Configurations\OrderLineEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\DiscountEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\ProductGroupEntityConfiguration.cs" />
+    <Compile Include="CashRegister\Database\InitializerDB.cs" />
     <Compile Include="CashRegister\Models\Discount.cs" />
     <Compile Include="CashRegister\Database\Initializer.cs" />
     <Compile Include="CashRegister\Models\OrderLine.cs" />

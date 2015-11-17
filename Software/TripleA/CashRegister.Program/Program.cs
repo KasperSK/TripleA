@@ -26,7 +26,10 @@ namespace CashRegister.Program
             seed = new EmptyInitializer();
 
             // Kalle Seed
-            seed = new CashProductInitializer();
+            //seed = new CashProductInitializer();
+
+            // Lærke Seed
+            seed = new FullCashProductInitializer();
 
             using (var contex = new CashRegisterContext(seed))
             {
