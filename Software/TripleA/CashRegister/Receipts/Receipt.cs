@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace CashRegister.Receipts
 {
@@ -7,11 +10,30 @@ namespace CashRegister.Receipts
     /// </summary>
 	public class Receipt
 	{
-        public ICollection<string> Content { get; }
+        public IReadOnlyCollection<string> Content => _contentList.ToList();
+        private readonly IList<string> _contentList;  
+        private readonly IFormatProvider _formatProvider;
 
-	    public Receipt()
-	    {
-	        Content = new List<string>();
+        public Receipt() : this(CultureInfo.InvariantCulture)
+        {
+            
+        }
+
+        public Receipt(IFormatProvider formatProvider)
+        {
+            _formatProvider = formatProvider;
+	        _contentList = new List<string>();
+
 	    }
+
+        public void Add(string line)
+        {
+            _contentList.Add(line);
+        }
+
+        public void AddLine(FormattableString formattable)
+        {
+            Add(formattable.ToString(_formatProvider));
+        }
 	}
 }
