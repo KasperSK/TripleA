@@ -77,6 +77,7 @@
     <Compile Include="CashRegister\Database\CashRegisterContext.cs" />
     <Compile Include="CashRegister\Database\Configurations\OrderStatusEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\ProductTabEntityConfiguration.cs" />
+    <Compile Include="CashRegister\Database\Configurations\ProductTypeEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\TransactionEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\SalesOrderEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\OrderLineEntityConfiguration.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="CashRegister\Database\Initializer.cs" />
     <Compile Include="CashRegister\Models\OrderLine.cs" />
     <Compile Include="CashRegister\Models\ProductTab.cs" />
+    <Compile Include="CashRegister\Models\ProductType.cs" />
     <Compile Include="CashRegister\Models\SalesOrder.cs" />
     <Compile Include="CashRegister\Database\Configurations\ProductEntityConfiguration.cs" />
     <Compile Include="CashRegister\Models\Product.cs" />

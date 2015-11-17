@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
-using CashRegister.Log;
+using System.Runtime.ConstrainedExecution;
 using CashRegister.Models;
 using EfEnumToLookup.LookupGenerator;
 
@@ -14,266 +12,267 @@ namespace CashRegister.Database
         {
             var enumToLookup = new EnumToLookup();
             enumToLookup.Apply(context);
+            base.Seed(context);
         }
     }
 
-    public class CashProductInitializer : DropCreateDatabaseAlways<CashRegisterContext>
+    public class InitHelper
+    {
+        private readonly CashRegisterContext _context;
+        private readonly List<ProductGroup> _groups;
+        private readonly List<Product> _products;
+        private readonly List<ProductTab> _tabs;
+        private readonly List<ProductType> _types;
+        private ProductGroup _group;
+        private Product _product;
+
+        private ProductTab _tab;
+        private ProductType _type;
+
+        public InitHelper(CashRegisterContext context)
+        {
+            _context = context;
+            _groups = new List<ProductGroup>();
+            _tabs = new List<ProductTab>();
+            _products = new List<Product>();
+            _types = new List<ProductType>();
+        }
+
+        public void AddTab(string name, int priority, string color)
+        {
+            AddTab(name, priority, color, true);
+        }
+
+        public void AddTab(string name, int priority, string color, bool active)
+        {
+            _tab = new ProductTab
+            {
+                Active = active,
+                Color = color,
+                Name = name,
+                Priority = priority,
+            };
+            _tabs.Add(_tab);
+        }
+
+        public void AddType(string name, int price, string color)
+        {
+            _type = new ProductType
+            {
+                Color = color,
+                Name = name,
+                Price = price,
+            };
+            _tab.ProductTypes.Add(_type);
+            _types.Add(_type);
+        }
+
+        public void AddGroup(string name)
+        {
+            _group = new ProductGroup
+            {
+                Name = name,
+            };
+            _type.ProductGroups.Add(_group);
+            _groups.Add(_group);
+        }
+
+        public void AddProduct(string name)
+        {
+            AddProduct(name, int.MaxValue, true);
+        }
+
+        public void AddProduct(string name, bool saleable)
+        {
+            AddProduct(name, int.MaxValue, saleable);
+        }
+
+        public void AddProduct(string name, int price)
+        {
+            AddProduct(name, price, true);
+        }
+
+        public void AddProduct(string name, int price, bool saleable)
+        {
+            if (price == int.MaxValue)
+                price = _type.Price;
+            _product = new Product(name, price, saleable);
+            _group.Products.Add(_product);
+            _products.Add(_product);
+        }
+
+        public void Save()
+        {
+            foreach (var product in _products)
+            {
+                _context.Products.Add(product);
+            }
+
+            foreach (var productGroup in _groups)
+            {
+                _context.ProductGroups.Add(productGroup);
+            }
+
+            foreach (var productType in _types)
+            {
+                _context.ProductTypes.Add(productType);
+            }
+
+            foreach (var productTab in _tabs)
+            {
+                _context.ProductTabs.Add(productTab);
+            }
+        }
+    }
+
+    public class FullProductInitializer : EmptyInitializer
     {
         protected override void Seed(CashRegisterContext context)
         {
-            var enumToLookup = new EnumToLookup();
-            enumToLookup.Apply(context);
+            var s = new InitHelper(context);
 
-            var export = new Product("Export", 15, true);
-            context.Products.Add(export);
+            s.AddTab("Øl Fane", 0, "Green");
 
-            var classic = new Product("Classic", 12, true);
-            context.Products.Add(classic);
+            s.AddType("Billig Øl Type", 12, "Yellow");
+            s.AddGroup("Billig Øl Gruppe");
+            s.AddProduct("Ceres Top");
+            s.AddProduct("Royal Classic");
 
-            var gol = new ProductGroup
-            {
-                Name = "Øl Gruppe",
-                Products = new List<Product> {export, classic},
-            };
-            context.ProductGroups.Add(gol);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Øl Fane",
-                Priority = 2,
-                Color = "Blue",
-                ProductGroups = new List<ProductGroup> { gol }
-            });
+            s.AddType("Special Øl Type", 15, "Green");
+            s.AddGroup("Special Øl Gruppe");
+            s.AddProduct("Royal Export");
+            s.AddProduct("Blå Thor");
+            s.AddProduct("Heineken");
+            s.AddProduct("Stout");
+            s.AddProduct("Giraf Kalle");
+            s.AddProduct("Havskum");
+
+            s.AddType("Udenlandsk Øl Type", 15, "Green");
+            s.AddGroup("Udenlandsk Øl Gruppe");
+            s.AddProduct("Sol");
+            s.AddProduct("Edelweiss");
+            s.AddProduct("Newcastle");
+            s.AddProduct("Moretti");
+            s.AddProduct("Krusovice");
+
+            s.AddType("Fadøl Type", 18, "Blue");
+            s.AddGroup("Fadøl Gruppe");
+            s.AddProduct("Royal Fad");
+            s.AddProduct("Jule Fad");
+
+            s.AddTab("Drinks", 1, "Blue");
+
+            s.AddType("Billig Drinks Type", 20, "Yellow");
+            s.AddGroup("Billig Drinks Gruppe");
+            s.AddProduct("Brandbil");
+            s.AddProduct("Tequila Sunrise");
+            s.AddProduct("Champangne Brus");
+            s.AddProduct("Piña Colada");
+            s.AddProduct("Southern Delight");
+            s.AddProduct("Pawadise");
+            s.AddProduct("Fidel Castro");
+            s.AddProduct("Sommer Morgan");
+            s.AddProduct("Pink Pussy");
+
+            s.AddType("30 kr drinks", 30, "Purple");
+            s.AddGroup("30 kr Drinks Gruppe");
+            s.AddProduct("Moscow Mule");
+            s.AddProduct("Fake Cherry");
+            s.AddProduct("Sweet Bombay");
+            s.AddProduct("Den Hvide Enke");
+            s.AddProduct("Irish Coffee");
+            s.AddProduct("Kaptain Eventyr");
+            s.AddProduct("White Russian");
+            s.AddProduct("Vodka Redbull");
+            s.AddProduct("Labre Larver");
+
+            s.AddType("35 kr drinks", 35, "Brown");
+            s.AddGroup("35 kr Drinks Gruppe");
+            s.AddProduct("Gøglermælk");
+
+            s.AddType("40 kr drinks", 40, "Blue");
+            s.AddGroup("40 kr Drinks Gruppe");
+            s.AddProduct("Blå Batman");
+            s.AddProduct("Party Hamster");
+            s.AddProduct("Cosmopolitan");
+
+            s.AddType("45 kr drinks", 45, "Orange");
+            s.AddGroup("45 kr Drinks Gruppe");
+            s.AddProduct("Long Island Iced Tea");
+            s.AddProduct("Memory Leak");
+            s.AddProduct("K-Special");
+
+            s.AddType("50 kr drinks", 50, "Gray");
+            s.AddGroup("50 kr Drinks Gruppe");
+            s.AddProduct("Kold Krig (2 drinks)");
+
+            s.AddTab("Shots", 2, "Yellow");
+
+            s.AddType("Billig Shots Type", 10, "Yellow");
+            s.AddGroup("Billig Shots Gruppe");
+            s.AddProduct("Jägermeister");
+            s.AddProduct("Sambuca");
+            s.AddProduct("Små Diverse");
+            s.AddProduct("Tequila");
+            s.AddProduct("Vodka");
+            s.AddProduct("Rom");
+
+            s.AddType("Alm Shots Type", 15, "Blue");
+            s.AddGroup("Alm Shots Gruppe");
+            s.AddProduct("Arnbitter");
+            s.AddProduct("Cointreau");
+            s.AddProduct("Fernet Branca/Menta");
+            s.AddProduct("Galliano");
+            s.AddProduct("Gin");
+            s.AddProduct("Khalua");
+            s.AddProduct("Pisang Ambon");
+            s.AddProduct("Southern Comfort");
+            s.AddProduct("Whiskey");
+            s.AddProduct("Bailey");
+            s.AddProduct("Galliano Hotshots");
+
+            s.AddType("Dyre Shots Type", 20, "Orange");
+            s.AddGroup("Dyre Shots Gruppe");
+            s.AddProduct("Jägerbombs");
+            s.AddProduct("Snefnugg");
+
+            s.AddTab("SodaPopz", 3, "Red");
+            s.AddType("Sodapop", 25, "Orange");
+            s.AddGroup("Sodapop");
+            s.AddProduct("Blue Desire");
+            s.AddProduct("Dirty Passion");
+            s.AddProduct("Pure Exotic");
+            s.AddProduct("White Lies");
+            s.AddProduct("Senven Sins");
+            s.AddProduct("Brezzer Lemon");
 
 
-
-
-            var bb = new Product("Blå Batman", 40, true);
-            context.Products.Add(bb);
-
-            var ks = new Product("K Special", 48, true);
-            context.Products.Add(ks);
-
-            var gdrinks = new ProductGroup
-            {
-                Name = "Drinks Gruppe",
-                Products = new List<Product> { bb, ks },
-            };
-
-            context.ProductGroups.Add(gdrinks);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Drinks Fane",
-                Priority = 3,
-                Color = "Red",
-                ProductGroups = new List<ProductGroup> { gdrinks }
-            });
-
-
-
-            var ss = new Product("Små Sure", 10, true);
-            context.Products.Add(ss);
-
-            var gj = new Product("Gajol", 10, false);
-            context.Products.Add(gj);
-
-            var gshots = new ProductGroup
-            {
-                Name = "Shots Gruppe",
-                Products = new List<Product> { ss, gj },
-            };
-
-            context.ProductGroups.Add(gshots);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Shots Fane",
-                Priority = 5,
-                Color = "Yellow",
-                ProductGroups = new List<ProductGroup> { gshots }
-            });
-
-
-
-            var kc = new Product("Kims Chips", 20, false);
-            context.Products.Add(kc);
-
-            var gsnacks = new ProductGroup()
-            {
-                Name = "Snacks Gruppe",
-                Products = new List<Product>() {kc},
-            };
-            context.ProductGroups.Add(gsnacks);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Snacks Fane",
-                Priority = 4,
-                Color = "Green",
-                ProductGroups = new List<ProductGroup> { gsnacks }
-            });
-
-
-
-
-
-            var gis = new ProductGroup
-            {
-                Name = "Is Gruppe",
-                Products = new List<Product>(),
-            };
-            context.ProductGroups.Add(gis);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Is Fane",
-                Priority = 6,
-                Color = "Gray",
-                ProductGroups = new List<ProductGroup> {gis}
-            });
-            
-
-
+            s.Save();
 
             base.Seed(context);
         }
     }
 
-    public class FullCashProductInitializer : DropCreateDatabaseAlways<CashRegisterContext>
+    public class CashProductInitializer : EmptyInitializer
     {
-        ILogger _logger = new Logger(typeof(FullCashProductInitializer));
-
         protected override void Seed(CashRegisterContext context)
         {
-            var oel = GetProductList("../../../CashRegister/CashRegister/Database/Oel.txt");
+            var s = new InitHelper(context);
 
-            var gol = new ProductGroup
-            {
-                Name = "Øl Gruppe",
-                Products = oel
-            };
-            context.ProductGroups.Add(gol);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Øl Fane",
-                Priority = 2,
-                Color = "Green",
-                ProductGroups = new List<ProductGroup> { gol }
-            });
+            s.AddTab("Øl fane", 0, "Green");
+            s.AddType("Billig Øl", 12, "Yellow");
+            s.AddGroup("Billig Øl Gruppe");
+            s.AddProduct("Top");
+            s.AddGroup("Billig Øl Gruppe 2");
+            s.AddProduct("Classic");
 
-
-            var drinks = GetProductList("../../../CashRegister/CashRegister/Database/drinks.txt");
-
-
-
-            var gdrinks = new ProductGroup
-            {
-                Name = "Drinks Gruppe",
-                Products = drinks
-            };
-
-            context.ProductGroups.Add(gdrinks);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Drinks Fane",
-                Priority = 3,
-                Color = "Yellow",
-                ProductGroups = new List<ProductGroup> { gdrinks }
-            });
-
-
-            var shots = GetProductList("../../../CashRegister/CashRegister/Database/shots.txt");
-
-            var gshots = new ProductGroup
-            {
-                Name = "Shots Gruppe",
-                Products = shots
-            };
-
-            context.ProductGroups.Add(gshots);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Shots Fane",
-                Priority = 5,
-                Color = "Blue",
-                ProductGroups = new List<ProductGroup> { gshots }
-            });
-
-
-
-            var kc = new Product("Kims Chips", 20, true);
-            context.Products.Add(kc);
-
-            var gsnacks = new ProductGroup()
-            {
-                Name = "Snacks Gruppe",
-                Products = new List<Product>() { kc },
-            };
-            context.ProductGroups.Add(gsnacks);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Snacks Fane",
-                Priority = 4,
-                Color = "Red",
-                ProductGroups = new List<ProductGroup> { gsnacks }
-            });
-
-
-            var soda = GetProductList("../../../CashRegister/CashRegister/Database/soda.txt");
-
-
-            var gSoda = new ProductGroup
-            {
-                Name = "Soda Popz Gruppe",
-                Products = soda,
-            };
-            context.ProductGroups.Add(gSoda);
-            context.ProductTabs.Add(new ProductTab
-            {
-                Active = true,
-                Name = "Soda Popz Fane",
-                Priority = 6,
-                Color = "White",
-                ProductGroups = new List<ProductGroup> { gSoda }
-            });
+            s.AddTab("Drinks", 1, "Blue");
+            s.AddType("Billig Drinks", 20, "Orange");
+            s.AddGroup("Billig Drinks");
+            s.AddProduct("Tequilla Sunrise");
+            s.AddProduct("Vodka Juice", 20, false);
 
             base.Seed(context);
         }
-
-        private List<Product> GetProductList(string path)
-        {
-            var productList = new List<Product>();
-
-            try
-            {
-                var fs = new FileStream(@path, FileMode.Open, FileAccess.Read);
-                var reader = new StreamReader(fs);
-
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var fields = line.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (!(fields.Length < 3))
-                    {
-                        var newProduct = new Product(fields[0], Convert.ToInt32(fields[1]), Convert.ToBoolean(fields[2]));
-                        productList.Add(newProduct);
-                    }
-                }
-
-            }
-            catch (IOException ex)
-            {
-                _logger.Debug(ex.Message);
-            }
-
-            return productList;
-        }
-
     }
-
 }

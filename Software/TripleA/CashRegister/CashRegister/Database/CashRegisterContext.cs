@@ -18,6 +18,7 @@ namespace CashRegister.Database
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductGroup> ProductGroups { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<Transaction> Transaktions { get; set; }
         public virtual DbSet<ProductTab> ProductTabs { get; set; }
 
@@ -31,6 +32,7 @@ namespace CashRegister.Database
             modelBuilder.Configurations.Add(new TransactionEntityConfiguration());
             modelBuilder.Configurations.Add(new OrderStatusEntityConfiguration());
             modelBuilder.Configurations.Add(new ProductTabEntityConfiguration());
+            modelBuilder.Configurations.Add(new ProductTypeEntityConfiguration());
         }
     }
 }

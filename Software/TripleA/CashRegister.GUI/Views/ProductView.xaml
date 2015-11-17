@@ -107,7 +107,7 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Path=Name}" Command="{Binding Path=Com}" CommandParameter="{Binding Path=Name}" Background="{Binding Path=Colour}" Style="{StaticResource TabHead}">
+                    <Button Content="{Binding Path=Name}" Command="{Binding Path=Com}" CommandParameter="{Binding Path=Id}" Background="{Binding Path=Colour}" Style="{StaticResource TabHead}">
                     </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

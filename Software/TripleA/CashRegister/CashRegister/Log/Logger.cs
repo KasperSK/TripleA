@@ -42,7 +42,7 @@ namespace CashRegister.Log
 			_log4Net.Debug(line);
 		}
 
-		internal Logger(System.Type type)
+        internal Logger(System.Type type)
 		{
 		    _log4Net = LogManager.GetLogger(type);
 		}
