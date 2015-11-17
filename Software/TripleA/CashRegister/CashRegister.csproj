@@ -93,6 +93,8 @@
     <Compile Include="CashRegister\Log\ILogger.cs" />
     <Compile Include="CashRegister\Log\LogFactory.cs" />
     <Compile Include="CashRegister\Log\Logger.cs" />
+    <Compile Include="CashRegister\Payment\IPaymentDao.cs" />
+    <Compile Include="CashRegister\Payment\PaymentDao.cs" />
     <Compile Include="CashRegister\Products\IProductController.cs" />
     <Compile Include="CashRegister\Products\IProductDao.cs" />
     <Compile Include="CashRegister\Products\ProductController.cs" />
