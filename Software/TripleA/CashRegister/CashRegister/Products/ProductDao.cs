@@ -25,8 +25,8 @@ namespace CashRegister.Products
                 return
                     new ReadOnlyCollection<ProductTab>(
                         uow.ProductTabRepository.Get(
-                            p => p.Active && p.ProductGroups.Any(q => q.Products.Any(r => r.Saleable)),
-                            includeProperties: new[] {"ProductGroups", "ProductGroups.Products"}).ToList());
+                            p => p.Active && p.ProductTypes.Any(s => s.ProductGroups.Any(q => q.Products.Any(r => r.Saleable))),
+                            includeProperties: new[] {"ProductTypes", "ProductTypes.ProductGroups", "ProductTypes.ProductGroups.Products" }).ToList());
             }
         }
 

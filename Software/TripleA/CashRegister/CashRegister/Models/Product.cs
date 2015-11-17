@@ -6,11 +6,13 @@ namespace CashRegister.Models
     [ExcludeFromCodeCoverage]
     public class Product
     {
-        private Product()
+        public Product()
         {
+            ProductGroups = new List<ProductGroup>();
+            Id = 0;
         }
 
-        public Product(string name, int price, bool saleable)
+        public Product(string name, int price, bool saleable) : this()
         {
             Name = name;
             Price = price;
@@ -25,6 +27,6 @@ namespace CashRegister.Models
 
         public bool Saleable { get; set; }
 
-        public virtual ICollection<ProductGroup> ProductGroups { get; set; }
+        public virtual ICollection<ProductGroup> ProductGroups { get; }
     }
 }

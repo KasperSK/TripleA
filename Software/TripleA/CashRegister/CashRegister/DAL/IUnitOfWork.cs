@@ -10,6 +10,7 @@ namespace CashRegister.DAL
         IRepository<OrderStatus> OrderStatusRepository { get; }
         IRepository<Product> ProductRepository { get; }
         IRepository<ProductGroup> ProductGroupRepository { get; }
+        IRepository<ProductType> ProductTypeRepository { get; }
         IRepository<ProductTab> ProductTabRepository { get; }
         IRepository<SalesOrder> SalesOrderRepository { get; }
         IRepository<Transaction> TransactionRepository { get; }

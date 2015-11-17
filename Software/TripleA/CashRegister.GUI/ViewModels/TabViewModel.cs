@@ -1,33 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using CashRegister.Database;
 using CashRegister.DAL;
-using CashRegister.GUI.Annotations;
+using CashRegister.Log;
 using CashRegister.Products;
 
 namespace CashRegister.GUI.ViewModels
 {
     public class TabViewModel : BaseViewModel
     {
-        // View Ressourses 
-        public Dictionary<string, List<TabItem>> TabDictionary { get; set; } = new Dictionary<string, List<TabItem>>();
-        public ObservableCollection<TabItem> TabItems { get; set; } = new ObservableCollection<TabItem>();
-        public ObservableCollection<TabHeader> TabHead { get; set; } = new ObservableCollection<TabHeader>();
         private string _backGroundColour;
-        public string BackGroundColour {
-            get { return _backGroundColour; }
-            set { _backGroundColour = value;
-                OnPropertyChanged();
-            } }
+
+        // RelayCommads
+        private RelayCommand<int> _changeTab;
+        private ILogger _logger = LogFactory.GetLogger(typeof (TabViewModel));
 
         //Construct View
         public TabViewModel()
@@ -41,13 +30,12 @@ namespace CashRegister.GUI.ViewModels
             // seed = new CashProductInitializer();
 
             // Lærke Seed
-            seed = new FullCashProductInitializer();
+            seed = new FullProductInitializer();
 
             using (var contex = new CashRegisterContext(seed))
             {
                 contex.Database.Initialize(true);
             }
-            
 
 
             //TabHead.Add(new TabHeader() { Name = "Standart", Com = ChangeTab });
@@ -62,62 +50,80 @@ namespace CashRegister.GUI.ViewModels
             BackGroundColour = "Green";
         }
 
-        // RelayCommads
-        private RelayCommand<string> _changeTab;
-        public ICommand ChangeTab => _changeTab ?? (_changeTab = new RelayCommand<string>(ChangeTabCommand));
+        // View Ressourses 
+        public Dictionary<int, List<TabItem>> TabDictionary { get; set; } = new Dictionary<int, List<TabItem>>();
+        public ObservableCollection<TabItem> TabItems { get; set; } = new ObservableCollection<TabItem>();
+        public ObservableCollection<TabHeader> TabHead { get; set; } = new ObservableCollection<TabHeader>();
 
-        private void ChangeTabCommand(string button)
+        public string BackGroundColour
         {
+            get { return _backGroundColour; }
+            set
+            {
+                _backGroundColour = value;
+                OnPropertyChanged();
+            }
+        }
 
+        public ICommand ChangeTab => _changeTab ?? (_changeTab = new RelayCommand<int>(ChangeTabCommand));
+
+        private void ChangeTabCommand(int buttonid)
+        {
             TabItems.Clear();
-            TabDictionary[button].ForEach(n => TabItems.Add(n));
-            BackGroundColour = TabHead.First(th => th.Name == button).Colour;
+            TabDictionary[buttonid].ForEach(n => TabItems.Add(n));
+            BackGroundColour = TabHead.First(th => th.Id == buttonid).Colour;
         }
 
         //Populate Tabs
         private void FetchView()
         {
-            string first = null;
-            bool foundFirst = false;
+            var first = -1;
+            var foundFirst = false;
             var product = new ProductController(new ProductDao(new DalFacade()));
             foreach (var tab in product.ProductTabs)
             {
-                TabHead.Add(new TabHeader(tab.Name, ChangeTab, tab.Color));
+                TabHead.Add(new TabHeader(tab.Id, tab.Name, ChangeTab, tab.Color));
                 if (!foundFirst)
                 {
-                    first = tab.Name;
+                    first = tab.Id;
                     foundFirst = true;
                 }
-                foreach (var tabPG in tab.ProductGroups)
+                var tabItem = new List<TabItem>();
+                var i = 0;
+                var j = 0;
+                foreach (var productType in tab.ProductTypes)
                 {
-                    var tabItem = new List<TabItem>();
-                    var i = 0;
-                    var j = 0;
-                    foreach (var products in tabPG.Products)
+                    foreach (var productGroup in productType.ProductGroups)
                     {
-                        tabItem.Add(new TabItem(products.Name, i, j++));
-                        if (j >= 5)
+                        foreach (var products in productGroup.Products)
                         {
-                            i++;
-                            j = 0;
+                            tabItem.Add(new TabItem(products.Name, i, j++, productType.Color));
+                            if (j >= 5)
+                            {
+                                i++;
+                                j = 0;
+                            }
                         }
                     }
-                    TabDictionary.Add(tab.Name, tabItem);      
                 }
+                TabDictionary.Add(tab.Id, tabItem);
             }
-            if(first != null)
+            if (first != -1)
                 TabDictionary[first].ForEach(n => TabItems.Add(n));
         }
     }
 
     public class TabHeader
     {
-        public TabHeader(string name = null, ICommand command = null, string colour = "blue")
+        public TabHeader(int id, string name = null, ICommand command = null, string colour = "blue")
         {
             Name = name;
             Com = command;
             Colour = colour;
+            Id = id;
         }
+
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Colour { get; set; }
         public ICommand Com { get; set; }
@@ -132,6 +138,7 @@ namespace CashRegister.GUI.ViewModels
             Column = column;
             Colour = colour;
         }
+
         public string Name { get; set; }
         public string Colour { get; set; }
         public int Row { get; set; }

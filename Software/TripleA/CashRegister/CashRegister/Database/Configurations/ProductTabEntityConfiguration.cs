@@ -33,7 +33,7 @@ namespace CashRegister.Database.Configurations
                         )
                 );
 
-            HasMany(p => p.ProductGroups)
+            HasMany(p => p.ProductTypes)
                 .WithMany();
         }
     }
