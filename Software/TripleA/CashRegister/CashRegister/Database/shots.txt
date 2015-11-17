@@ -1,0 +1,19 @@
+Jägermeister;10;true
+Sambuca;10;true
+Små Diverse;10;true
+Tequila;10;true
+Vodka;10;true
+Rom;10;true
+Arnbitter;15;true
+Cointreau;15;true
+Fernet Branca/Menta;15;true
+Galliano;15;true
+Gin;15;true
+Khalua;15;true
+Pisang Ambon;15;true
+Southern Comfort;15;true
+Whiskey;15;true
+Bailey;15;true
+Galliano Hotshots;15;true
+Jägerbombs;20;true
+Snefnugg;20;true

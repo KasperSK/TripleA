@@ -1,0 +1,27 @@
+Brandbil;20;true
+Tequila Sunrise;20;true
+Champangne Brus;20;true 
+Piña Colada;20;true
+Southern Delight;20;true
+Pawadise;20;true
+Fidel Castro;20;true
+Sommer Morgan;20;true
+Pink Pussy;20;true
+Memory Leak;45;true
+Blå Batman;40;true
+Party Hamster;40;true
+Moscow Mule;30;true
+Fake Cherry;30;true
+Sweet Bombay;30;true
+Den Hvide Enke;30;true
+Irish Coffee;30;true
+Kaptain Eventyr;30;true
+White Russian;30;true
+Vodka Redbull;30;true
+Labre Larver;30;true
+Kold Krig (2 drinks);50;true
+Long Island Iced Tea;45;true
+Cosmopolitan;40;true
+Gøglermælk;35;true
+K-Special;45;true
+

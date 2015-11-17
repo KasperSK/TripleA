@@ -1,0 +1,15 @@
+Royal Pilsner;18;true
+Ceres Top;12;true
+Royal Classic;12;true
+Royal Export;15;true
+Blå Thor;15;true
+Heineken;15;true
+Stout;15;true
+Giraf;15;true
+Havskum;15;true
+Sol;20;true
+Edelweiss;20;true
+Newcastle;20;true
+Moretti;20;true
+Krusovice;20;true
+
