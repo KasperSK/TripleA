@@ -16,6 +16,13 @@ namespace CashRegister.Sales
         /// </summary>
         void AddProductToOrder(Product product, int quantity, Discount discount);
 
+
+        /// <summary>
+        /// Provides Product tabs to GUI
+        /// </summary>
+        /// <returns></returns>
+        IReadOnlyCollection<ProductTab> ProductTabs();
+
         /// <summary>
         /// Remove a product from SalesOrder
         /// </summary>
@@ -79,7 +86,7 @@ namespace CashRegister.Sales
         /// <param name="description"></param>
         /// <param name="payment"></param>
         /// <returns></returns>
-        ObservableTransaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment);
+        Transaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment);
 
         ///<summary>
         /// Returns the current order

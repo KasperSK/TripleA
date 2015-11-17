@@ -1,5 +1,8 @@
-﻿using CashRegister.Models;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using CashRegister.Models;
 using CashRegister.Payment;
+using CashRegister.Products;
 
 namespace CashRegister.Sales
 {
@@ -14,11 +17,27 @@ namespace CashRegister.Sales
     /// <summary>
     /// Controls sales
     /// </summary>
-    public sealed class SalesController : ISalesController
+    public class SalesController : ISalesController, INotifyPropertyChanged
     {
-        public SalesController(PaymentControllerImpl payment)
+        private readonly PaymentControllerImpl _paymentControllerImpl;
+        private readonly IProductController _productController;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs eventArgs)
         {
-            SalesPaymentProvidorDescriptors=payment.PaymentProvidorDescriptors;
+            var handler = PropertyChanged;
+            handler?.Invoke(this, eventArgs);
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
+
+        public SalesController(PaymentControllerImpl payment,IProductController controller)
+        {
+            _paymentControllerImpl = payment;
+            _productController = controller;
         }
 
         /// <summary>
@@ -62,6 +81,7 @@ namespace CashRegister.Sales
         public void AddProductToOrder(Product product, int quantity, Discount discount)
         {
             OrderController.AddProduct(product, quantity, discount);
+            OnPropertyChanged("Product Added");
         }
 
         /// <summary>
@@ -120,16 +140,17 @@ namespace CashRegister.Sales
             OrderController.CreateNewOrder();
         }
 
+
+
         /// <summary>
         /// Starting payment on a SalesOrder
         /// </summary>
         public void StartPayment(int amountToPay, string description, IPaymentProvidorDescriptor provider)
         {
-
-            string descriptionAndSalesOrderId = description + OrderController.CurrentOrder.Id;
-
-            CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
-            if (amountToPay == 0)
+            string descriptionAndSalesOrderId = description + " " + OrderController.CurrentOrder.Id;
+            var trans = CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
+            OrderController.CurrentOrder.Transactions.Add(trans);
+            if (MissingPaymenOnOrder() == 0)
             {
                 OrderController.SaveOrder();
                 StartNewOrder();
@@ -167,21 +188,30 @@ namespace CashRegister.Sales
         /// </summary>
         public void RetrieveIncompleteOrder(int orderId)
         {
-            OrderController.GetStashedOrder(orderId);
+               OrderController.GetStashedOrder(orderId);
         }
 
-        public ObservableTransaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment)
+        public Transaction CreateTransaction(int amountToPay, string description, IPaymentProvidorDescriptor payment)
         {
-            var trans = new ObservableTransaction();
             var transaction = new Transaction();
-            trans.Amount = amountToPay;
-            trans.Description = description;
-            trans.PaymentDescriptor = payment;
-           // OrderController.CurrentOrder.Transactions.Add(trans);
-            return trans;
+            transaction.Id = OrderController.CurrentOrder.Id;
+            transaction.Price = amountToPay;
+            transaction.Paymenttype = payment;
+            transaction.Description = description;
+           bool paymentCompleted = _paymentControllerImpl.ExecuteTransaction(transaction);
+            if (paymentCompleted == true)
+            {
+                return transaction;
+            }
+            else
+            {
+                transaction.Description = "Transaction failed";
+                return transaction;
+            }
+            
         }
 
-        public void TransactionComplete(ObservableTransaction transaction)
+        public void TransactionComplete(Transaction transaction)
         {
                 OrderController.MissingAmount();
         }
@@ -191,6 +221,16 @@ namespace CashRegister.Sales
             return OrderController.CurrentOrder;
         }
 
+
+
+        /// <summary>
+        /// Provides Product tabs to GUI
+        /// </summary>
+        /// <returns></returns>
+       public IReadOnlyCollection<ProductTab> ProductTabs()
+        {
+            return _productController.ProductTabs;
+        }
     }
 }
 
