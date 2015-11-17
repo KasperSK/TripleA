@@ -205,7 +205,7 @@ namespace CashRegister.Database
 
 
 
-            var kc = new Product("Kims Chips", 20, false);
+            var kc = new Product("Kims Chips", 20, true);
             context.Products.Add(kc);
 
             var gsnacks = new ProductGroup()
@@ -230,7 +230,7 @@ namespace CashRegister.Database
             var gSoda = new ProductGroup
             {
                 Name = "Soda Popz Gruppe",
-                Products = new List<Product>(),
+                Products = soda,
             };
             context.ProductGroups.Add(gSoda);
             context.ProductTabs.Add(new ProductTab
