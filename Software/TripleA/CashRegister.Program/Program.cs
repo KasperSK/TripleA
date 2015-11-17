@@ -23,10 +23,13 @@ namespace CashRegister.Program
             IDatabaseInitializer<CashRegisterContext> seed;
             
             // Empty
-            seed = null;
+            // seed = new EmptyInitializer();
 
             // Kalle Seed
-            seed = new CashProductInitializer();
+            //seed = new CashProductInitializer();
+
+            // Lærke Seed
+            seed = new FullCashProductInitializer();
 
             using (var contex = new CashRegisterContext(seed))
             {

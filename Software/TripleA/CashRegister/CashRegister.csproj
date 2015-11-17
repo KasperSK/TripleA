@@ -33,6 +33,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EfEnumToLookup, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1fde139e1e56f7c4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ef-enum-to-lookup.1.9.0\lib\net45\EfEnumToLookup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -72,7 +76,6 @@
     <Compile Include="CashRegister\DAL\UnitOfWork.cs" />
     <Compile Include="CashRegister\Database\CashRegisterContext.cs" />
     <Compile Include="CashRegister\Database\Configurations\OrderStatusEntityConfiguration.cs" />
-    <Compile Include="CashRegister\Database\Configurations\PaymentTypeEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\ProductTabEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\TransactionEntityConfiguration.cs" />
     <Compile Include="CashRegister\Database\Configurations\SalesOrderEntityConfiguration.cs" />
@@ -84,7 +87,6 @@
     <Compile Include="CashRegister\Models\OrderLine.cs" />
     <Compile Include="CashRegister\Models\ProductTab.cs" />
     <Compile Include="CashRegister\Models\SalesOrder.cs" />
-    <Compile Include="CashRegister\Models\PaymentType.cs" />
     <Compile Include="CashRegister\Database\Configurations\ProductEntityConfiguration.cs" />
     <Compile Include="CashRegister\Models\Product.cs" />
     <Compile Include="CashRegister\Models\ProductGroup.cs" />
@@ -93,6 +95,8 @@
     <Compile Include="CashRegister\Log\ILogger.cs" />
     <Compile Include="CashRegister\Log\LogFactory.cs" />
     <Compile Include="CashRegister\Log\Logger.cs" />
+    <Compile Include="CashRegister\Payment\IPaymentDao.cs" />
+    <Compile Include="CashRegister\Payment\PaymentDao.cs" />
     <Compile Include="CashRegister\Products\IProductController.cs" />
     <Compile Include="CashRegister\Products\IProductDao.cs" />
     <Compile Include="CashRegister\Products\ProductController.cs" />

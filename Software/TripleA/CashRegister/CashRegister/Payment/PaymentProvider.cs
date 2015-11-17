@@ -1,8 +1,10 @@
-﻿namespace CashRegister.Payment
+﻿using CashRegister.Models;
+
+namespace CashRegister.Payment
 {
     public abstract class PaymentProvider : IPaymentProvider
     {
-        public int ID { get; private set; }
+        public abstract PaymentType Type { get; }
         public string Name { get; private set; }
         public string Description { get; private set; }
 

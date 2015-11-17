@@ -1,4 +1,5 @@
 ﻿using System;
+using CashRegister.Models;
 
 namespace CashRegister.Payment
 {
@@ -36,8 +37,8 @@ namespace CashRegister.Payment
 	        throw new NotImplementedException();
 	    }
 
-	    public int ID { get; set; }
-	    public string Name { get; set; }
+	    public PaymentType Type => PaymentType.Nets;
+        public string Name { get; set; }
 	    public string Description { get; set; }
 	}
 }
