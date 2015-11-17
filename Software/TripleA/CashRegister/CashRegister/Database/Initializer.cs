@@ -38,6 +38,7 @@ namespace CashRegister.Database
                 Active = true,
                 Name = "Øl Fane",
                 Priority = 2,
+                Color = "Blue",
                 ProductGroups = new List<ProductGroup> { gol }
             });
 
@@ -62,6 +63,7 @@ namespace CashRegister.Database
                 Active = true,
                 Name = "Drinks Fane",
                 Priority = 3,
+                Color = "Red",
                 ProductGroups = new List<ProductGroup> { gdrinks }
             });
 
@@ -85,6 +87,7 @@ namespace CashRegister.Database
                 Active = true,
                 Name = "Shots Fane",
                 Priority = 5,
+                Color = "Yellow",
                 ProductGroups = new List<ProductGroup> { gshots }
             });
 
@@ -104,6 +107,7 @@ namespace CashRegister.Database
                 Active = true,
                 Name = "Snacks Fane",
                 Priority = 4,
+                Color = "Green",
                 ProductGroups = new List<ProductGroup> { gsnacks }
             });
 
@@ -122,6 +126,7 @@ namespace CashRegister.Database
                 Active = true,
                 Name = "Is Fane",
                 Priority = 6,
+                Color = "Gray",
                 ProductGroups = new List<ProductGroup> {gis}
             });
             

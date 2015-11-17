@@ -46,6 +46,15 @@ namespace CashRegister.Models
             set;
         }
 
+        /// <summary>
+		/// Color of the tab
+		/// </summary>
+		public virtual string Color
+        {
+            get;
+            set;
+        }
+
 
         public virtual ICollection<ProductGroup> ProductGroups
 		{
