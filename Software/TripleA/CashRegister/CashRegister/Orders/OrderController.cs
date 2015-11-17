@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CashRegister.Models;
 
 namespace CashRegister.Orders
@@ -11,13 +12,14 @@ namespace CashRegister.Orders
 	public class OrderController : IOrderController
 	{
 		private IOrderDao OrderDao { get; }
-        public List<SalesOrder> StashedOrders { get; }
+        private readonly List<SalesOrder> _stashedOrders; 
+        public IReadOnlyCollection<SalesOrder> StashedOrders => _stashedOrders;
         public SalesOrder CurrentOrder { get; private set; }
 
 	    public OrderController (IOrderDao orderDao)
 	    {
 	        OrderDao = orderDao;
-            StashedOrders = new List<SalesOrder>();
+            _stashedOrders = new List<SalesOrder>();
 	    }
 
         public virtual void CreateNewOrder()
@@ -54,14 +56,14 @@ namespace CashRegister.Orders
 
             StashCurrentOrder();
 
-            CurrentOrder = StashedOrders[id];
-            StashedOrders.RemoveAt(id);
+            CurrentOrder = _stashedOrders[id];
+            _stashedOrders.RemoveAt(id);
         }
 
         private void StashCurrentOrder()
         {
             if (CurrentOrder != null)
-                StashedOrders.Add(CurrentOrder);
+                _stashedOrders.Add(CurrentOrder);
 
             CurrentOrder = null;
         }
@@ -75,7 +77,19 @@ namespace CashRegister.Orders
             CurrentOrder.Total=0;
         }
 
-        public void AddProduct(Product product, int quantity = 1, Discount discount = null)
+        // Fixes: Default parameters should not be used
+        public void AddProduct(Product product)
+        {
+            AddProduct(product, 1);
+        }
+
+        // Fixes: Default parameters should not be used
+        public void AddProduct(Product product, int quantity)
+        {
+            AddProduct(product, quantity, null);
+        }
+
+        public void AddProduct(Product product, int quantity, Discount discount)
         {
             if (CurrentOrder == null)
                 return;

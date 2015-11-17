@@ -7,7 +7,7 @@ namespace CashRegister.Receipts
     /// </summary>
 	public class Receipt
 	{
-        public List<string> Content { get; private set; }
+        public ICollection<string> Content { get; }
 
 	    public Receipt()
 	    {

@@ -72,7 +72,7 @@ namespace CashRegister.Sales
         /// <summary>
         /// Gets a list of all incomplete orders by default current data (or within a certain date or time)
         /// </summary>
-        List<SalesOrder> GetIncompleteOrders();
+        IReadOnlyCollection<SalesOrder> GetIncompleteOrders();
 
         /// <summary>
         /// Get an incomplete order

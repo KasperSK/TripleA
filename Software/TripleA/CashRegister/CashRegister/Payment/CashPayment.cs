@@ -6,8 +6,9 @@ namespace CashRegister.Payment
 	/// The Cash drawers functionalities
 	/// </summary>
 	public class CashPayment : PaymentProvider
-	{
-	    public CashPayment(int startChange=0)
+    {
+
+        public CashPayment(int startChange)
 	    {
 	        _StartChange = startChange;
 	    }

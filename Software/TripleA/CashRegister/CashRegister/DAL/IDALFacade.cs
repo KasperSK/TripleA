@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashRegister.DAL
 {
-    public interface IDalFacade
+    public interface IDalFacade : IDisposable
     {
         IUnitOfWork GetUnitOfWork();
 

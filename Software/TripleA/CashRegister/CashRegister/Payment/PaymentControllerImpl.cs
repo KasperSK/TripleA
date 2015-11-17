@@ -12,9 +12,9 @@ namespace CashRegister.Payment
 {
     public class PaymentControllerImpl : IPaymentController
     {
-        public PaymentControllerImpl(List<PaymentProvider> paymentProviderList, IReceiptController receiptcontroller, IPaymentDao paymentDao, ICashDrawer cashDrawer)
+        public PaymentControllerImpl(IReadOnlyCollection<PaymentProvider> paymentProviderList, IReceiptController receiptController, IPaymentDao paymentDao, ICashDrawer cashDrawer)
         {
-            ReceiptController = receiptcontroller;
+            ReceiptController = receiptController;
             _paymentDao = paymentDao;
 
             _cashDrawer = cashDrawer;
@@ -25,13 +25,13 @@ namespace CashRegister.Payment
             }
             else
             {
-                PaymentProviders = new List<PaymentProvider> {new CashPayment()};
+                PaymentProviders = new List<PaymentProvider> {new CashPayment(0)};
             }
         }
 
-        private IPaymentDao _paymentDao;
+        private readonly IPaymentDao _paymentDao;
 
-        private List<PaymentProvider> PaymentProviders { get; }
+        private IReadOnlyCollection<PaymentProvider> PaymentProviders { get; }
 
         private ICashDrawer _cashDrawer { get; set; }
 
