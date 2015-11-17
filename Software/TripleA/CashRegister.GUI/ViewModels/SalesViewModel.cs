@@ -20,21 +20,16 @@ namespace CashRegister.GUI.ViewModels
         
          private ISalesController _salesctrl;
 
-         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
+         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();  //Collection the salesView will bind to
 
         public SalesViewModel()
         {
-            //_salesctrl = new SalesController(new OrderController(new OrderDao(new DalFacade())),new ReceiptController(new ReceiptPrinter()));
-
             _salesctrl = null;
         }
 
          public SalesViewModel(ISalesController salesCtrl)
          {
              _salesctrl = salesCtrl;
-
-
-
          }
 
         public void SetSalesController(ISalesController salesController)
@@ -51,9 +46,10 @@ namespace CashRegister.GUI.ViewModels
                  var price = (lineElement.UnitPrice*lineElement.Quantity).ToString(); //Making total price for Orderline
 
                  ViewProducts
-                    .Add(new ViewProduct(lineElement.Product.Name,                  //Adding new Viewproducts to be displayed in SalesView
-                    price, 
-                    lineElement.Quantity.ToString()));
+                    .Add(new ViewProduct(lineElement.Quantity.ToString()
+                    ,                  //Adding new Viewproducts to be displayed in SalesView
+                   lineElement.Product.Name,
+                     price));
              }
          }
 
@@ -64,20 +60,22 @@ namespace CashRegister.GUI.ViewModels
          public class ViewProduct
          {
 
+             public string Antal { get; set; }
+
              public string Navn { get; set; }
 
              public string Pris { get; set; }
 
-             public string Antal { get; set; }
-
-             public ViewProduct(string name, string price, string count)
+             public ViewProduct(string count, string name, string price)
              {
-                 Navn = name;
 
-                 Pris = price;
+                Antal = count;
 
-                 Antal = count;
-             }
+                Navn = name;
+
+                Pris = price;
+
+            }
 
 
 
