@@ -24,7 +24,7 @@ namespace CashRegister.Orders
         public void CreateNewOrder()
         {
             StashCurrentOrder();
-            CurrentOrder = new SalesOrder();
+            CurrentOrder = new SalesOrder {Status = OrderStatus.Created };
         }
 
         public void SaveOrder()

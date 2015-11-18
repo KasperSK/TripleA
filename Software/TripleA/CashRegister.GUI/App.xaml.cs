@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Data.Entity;
+using System.Windows;
+using CashRegister.Database;
 using CashRegister.GUI.ViewModels;
+using CashRegister.Sales;
 
 namespace CashRegister.GUI
 {
@@ -10,9 +13,26 @@ namespace CashRegister.GUI
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            IDatabaseInitializer<CashRegisterContext> seed;
+
+            // Empty
+            seed = null;
+
+            // Kalle Seed
+            // seed = new CashProductInitializer();
+
+            // Lærke Seed
+            seed = new FullProductInitializer();
+
+            using (var contex = new CashRegisterContext(seed))
+            {
+                contex.Database.Initialize(true);
+            }
+
             base.OnStartup(e);
             Window win = new MainWindow();
-            win.DataContext = new MainViewModel();
+            var salesCtrl = SalesFactory.GuiSalesController;
+            win.DataContext = new MainViewModel(salesCtrl);
             win.Show();
         }
     }

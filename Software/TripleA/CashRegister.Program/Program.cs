@@ -3,6 +3,7 @@ using System.Data.Entity;
 using CashRegister.Dal;
 using CashRegister.Database;
 using CashRegister.Log;
+using CashRegister.Models;
 using CashRegister.Products;
 
 namespace CashRegister.Program
@@ -23,7 +24,7 @@ namespace CashRegister.Program
             IDatabaseInitializer<CashRegisterContext> seed;
 
             // Empty
-            //seed = new EmptyInitializer();
+            // seed = new EmptyInitializer();
 
             // Kalle Seed
             //seed = new CashProductInitializer();
@@ -33,7 +34,9 @@ namespace CashRegister.Program
 
             using (var contex = new CashRegisterContext(seed))
             {
+                Console.WriteLine("FLAF");
                 contex.Database.Initialize(true);
+                contex.SaveChanges();
             }
 
 
@@ -41,8 +44,39 @@ namespace CashRegister.Program
             IProductDao pd = new ProductDao(dalFacade);
             IProductController pc = new ProductController(pd);
 
+            using (var uow = dalFacade.UnitOfWork)
+            {
+                var d = new Discount
+                {
+                    Description = "Discount",
+                    Percent = 0,
+                };
+                uow.DiscountRepository.Insert(d);
+                uow.Save();
 
-            Console.WriteLine("ProductTabs");
+                var o = new SalesOrder
+                {
+                    Date = DateTime.Now,
+                    Status = OrderStatus.Created,
+                    Total = 20,
+                };
+                uow.SalesOrderRepository.Insert(o);
+
+                var t = new Transaction
+                {
+                    Date = DateTime.Now,
+                    Description = "Flaf",
+                    PaymentType = PaymentType.Cash,
+                    Price = 20,
+                    SalesOrder = o,
+                    Status = TransactionStatus.Created
+                };
+                uow.TransactionRepository.Insert(t);
+                uow.Save();
+            }
+
+
+                Console.WriteLine("ProductTabs");
             foreach (var productTab in pc.ProductTabs)
             {
                 Console.WriteLine(productTab.Priority + ": " + productTab.Name);

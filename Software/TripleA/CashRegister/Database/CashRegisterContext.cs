@@ -6,23 +6,20 @@ namespace CashRegister.Database
 {
     public class CashRegisterContext : DbContext
     {
-
         // Fixes: Default parameters should not be used
         public CashRegisterContext() : this(null)
         {
-            
         }
 
         public CashRegisterContext(IDatabaseInitializer<CashRegisterContext> seed)
             : base("name=CashRegisterContext")
         {
-            System.Data.Entity.Database.SetInitializer(seed ?? new DropCreateDatabaseAlways<CashRegisterContext>());
+            System.Data.Entity.Database.SetInitializer(seed ?? new CreateDatabaseIfNotExists<CashRegisterContext>());
         }
 
         public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<SalesOrder> SalesOrders { get; set; }
         public virtual DbSet<OrderLine> OrderLines { get; set; }
-        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductGroup> ProductGroups { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
@@ -37,7 +34,6 @@ namespace CashRegister.Database
             modelBuilder.Configurations.Add(new OrderLineEntityConfiguration());
             modelBuilder.Configurations.Add(new SalesOrderEntityConfiguration());
             modelBuilder.Configurations.Add(new TransactionEntityConfiguration());
-            modelBuilder.Configurations.Add(new OrderStatusEntityConfiguration());
             modelBuilder.Configurations.Add(new ProductTabEntityConfiguration());
             modelBuilder.Configurations.Add(new ProductTypeEntityConfiguration());
         }

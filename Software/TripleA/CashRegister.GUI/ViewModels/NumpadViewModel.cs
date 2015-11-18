@@ -2,7 +2,13 @@
 
 namespace CashRegister.GUI.ViewModels
 {
-    public class NumpadViewModel : BaseViewModel
+    public interface INumpad
+    {
+        void ClearNumpad();
+        int Amount { get; }
+    }
+
+    public class NumpadViewModel : BaseViewModel, INumpad
     {
         private string _input;
         public string Input
@@ -19,7 +25,7 @@ namespace CashRegister.GUI.ViewModels
         private ICommand _numpadClicked;
         public ICommand NumpadClicked => _numpadClicked ?? (_numpadClicked = new RelayCommand<string>(NumpadClicked_Command));
 
-        public void NumpadClicked_Command(string num)
+        private void NumpadClicked_Command(string num)
         {
             Input += num;
         }
@@ -27,9 +33,26 @@ namespace CashRegister.GUI.ViewModels
         private ICommand _numpadClear;
         public ICommand NumpadClear => _numpadClear ?? (_numpadClear = new RelayCommand(NumpadClear_Command));
 
-        public void NumpadClear_Command()
+        private void NumpadClear_Command()
         {
             Input = "";
         }
+
+        public void ClearNumpad()
+        {
+            NumpadClear_Command();
+        }
+
+        public int Amount
+        {
+            get
+            {
+                int returnvalue;
+                int.TryParse(_input, out returnvalue);
+                return returnvalue == 0 ? 1 : returnvalue;
+            }
+        }
+
+        
     }
 }

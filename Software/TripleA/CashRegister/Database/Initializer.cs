@@ -125,10 +125,14 @@ namespace CashRegister.Database
         }
     }
 
-    public class FullProductInitializer : EmptyInitializer
+    public class FullProductInitializer : DropCreateDatabaseAlways<CashRegisterContext>
     {
         protected override void Seed(CashRegisterContext context)
         {
+
+            var enumToLookup = new EnumToLookup();
+            enumToLookup.Apply(context);
+
             var s = new InitHelper(context);
 
             s.AddTab("Øl Fane", 0, "LimeGreen");

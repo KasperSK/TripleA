@@ -1,16 +1,20 @@
-﻿namespace CashRegister.GUI.ViewModels
+﻿using CashRegister.Sales;
+
+namespace CashRegister.GUI.ViewModels
 {
     public class MainViewModel
     {
-        public BaseViewModel SalesViewModel { get; set; }
-        public BaseViewModel NumpadViewModel { get; set; }
-        public BaseViewModel TabViewModel { get; set; }
+        private ISalesController _salesController ;
+        public SalesViewModel SalesViewModel { get; private set; }
+        public NumpadViewModel NumpadViewModel { get; private set; }
+        public TabViewModel TabViewModel { get; private set; }
 
-        public MainViewModel()
+        public MainViewModel(ISalesController salesController)
         {
-            SalesViewModel = new SalesViewModel();
+            _salesController = salesController;
             NumpadViewModel = new NumpadViewModel();
-            TabViewModel = new TabViewModel();
+            TabViewModel = new TabViewModel(salesController, NumpadViewModel);
+            SalesViewModel = new SalesViewModel(salesController);
         }
     }
 }

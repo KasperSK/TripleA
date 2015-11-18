@@ -7,7 +7,6 @@ namespace CashRegister.Dal
     {
         IRepository<Discount> DiscountRepository { get; }
         IRepository<OrderLine> OrderLineRepository { get; }
-        IRepository<OrderStatus> OrderStatusRepository { get; }
         IRepository<Product> ProductRepository { get; }
         IRepository<ProductGroup> ProductGroupRepository { get; }
         IRepository<ProductType> ProductTypeRepository { get; }

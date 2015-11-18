@@ -14,7 +14,6 @@ namespace CashRegister.Payment
             _receiptController = receiptController;
             _paymentDao = paymentDao;
             CashDrawer = cashDrawer;
-
             PaymentProviders = paymentProviderList ?? new List<PaymentProvider> {new CashPayment(0)};
         }
 
@@ -23,11 +22,12 @@ namespace CashRegister.Payment
         private readonly IPaymentDao _paymentDao;
         private ICashDrawer CashDrawer { get; }
 
-       
+        private IReceiptController ReceiptController { get; }
+
 
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptors => PaymentProviders;
 
-        public virtual bool ExecuteTransaction(Transaction transaction)
+        public bool ExecuteTransaction(Transaction transaction)
         {
             var paymentProvider = PaymentProviders.First(p => p.Type == transaction.PaymentType);
 

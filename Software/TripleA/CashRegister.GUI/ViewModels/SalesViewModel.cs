@@ -1,24 +1,20 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
+using CashRegister.Models;
 using CashRegister.Sales;
 
 namespace CashRegister.GUI.ViewModels
 {
     public class SalesViewModel : BaseViewModel
     {
-        private ISalesController _salesctrl;
+        private readonly ISalesController _salesController;
 
-        public SalesViewModel()
+        public SalesViewModel(ISalesController salesController)
         {
-            _salesctrl = null;
-
             total = 0;
-        }
-
-        public SalesViewModel(ISalesController salesCtrl)
-        {
-            _salesctrl = salesCtrl;
-
-            total = 0;
+            _salesController = salesController;
+            _salesController.PropertyChanged += OnCurrentOrderChanged;
         }
 
         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
@@ -26,14 +22,11 @@ namespace CashRegister.GUI.ViewModels
 
         public long total { get; set; }
 
-        public void SetSalesController(ISalesController salesController)
+        public void OnCurrentOrderChanged(object sender, PropertyChangedEventArgs e) //Happening when receiving event from SalesController
         {
-            _salesctrl = salesController;
-        }
+            var currentOrder = _salesController.CurrentOrder; //Retrieving currentorder via SAlesController
 
-        public void OnCurrentOrderChanged() //Happening when receiving event from SalesController
-        {
-            var currentOrder = _salesctrl.CurrentOrder; //Retrieving currentorder via SAlesController
+            ViewProducts.Clear();
 
             foreach (var lineElement in currentOrder.Lines) //Itterating through all orderlines in currentorder
             {
@@ -48,7 +41,6 @@ namespace CashRegister.GUI.ViewModels
                 OnPropertyChanged();
             }
         }
-
 
         public class ViewProduct
         {
@@ -66,6 +58,30 @@ namespace CashRegister.GUI.ViewModels
             public string Navn { get; set; }
 
             public string Pris { get; set; }
+        }
+
+        //RelayCommands
+        private RelayCommand _paymentCommand;
+        public ICommand PaymentCommand => _paymentCommand ?? (_paymentCommand = new RelayCommand(PaymentCommandExecute, PaymentCommandCanExecute));
+
+        private void PaymentCommandExecute()
+        {
+            var amount = _salesController.MissingPaymentOnOrder();
+            _salesController.StartPayment((int)amount, "Cash", PaymentType.Cash);
+        }
+
+        private bool PaymentCommandCanExecute()
+        {
+            return ViewProducts.Count > 0;
+        }
+
+        private RelayCommand _abortCommand;
+        public ICommand AbortCommand => _abortCommand ?? (_abortCommand = new RelayCommand(AbortCommandExecute));
+
+        private void AbortCommandExecute()
+        {
+            _salesController.ClearOrder();
+            ViewProducts.Clear();
         }
     }
 }

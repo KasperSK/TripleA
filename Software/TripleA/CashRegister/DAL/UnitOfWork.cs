@@ -12,7 +12,6 @@ namespace CashRegister.Dal
 
         private bool _disposed;
         private IRepository<OrderLine> _orderLineRepository;
-        private IRepository<OrderStatus> _orderStatusRepository;
         private IRepository<ProductGroup> _productGroupRepository;
         private IRepository<Product> _productRepository;
         private IRepository<ProductTab> _productTabRepository;
@@ -32,9 +31,6 @@ namespace CashRegister.Dal
 
         public IRepository<OrderLine> OrderLineRepository
             => _orderLineRepository ?? (_orderLineRepository = new Repository<OrderLine>(_context));
-
-        public IRepository<OrderStatus> OrderStatusRepository
-            => _orderStatusRepository ?? (_orderStatusRepository = new Repository<OrderStatus>(_context));
 
         public IRepository<Product> ProductRepository
             => _productRepository ?? (_productRepository = new Repository<Product>(_context));
