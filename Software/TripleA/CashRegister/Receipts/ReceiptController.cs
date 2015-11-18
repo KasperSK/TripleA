@@ -1,5 +1,6 @@
 ﻿using CashRegister.Printer;
 using System;
+using System.Globalization;
 using CashRegister.Models;
 
 namespace CashRegister.Receipts
@@ -8,11 +9,18 @@ namespace CashRegister.Receipts
     /// Implementation of a ReceiptController
     /// </summary>
     public class ReceiptController : IReceiptController
-	{
+    {
+        private readonly IFormatProvider _formatProvider;
         private IPrinter Printer { get; }
 
-        public ReceiptController(IPrinter printer)
+        public ReceiptController(IPrinter printer) : this(printer, CultureInfo.InvariantCulture)
         {
+            
+        }
+
+        public ReceiptController(IPrinter printer, IFormatProvider formatProvider)
+        {
+            _formatProvider = formatProvider;
             Printer = printer;
         }
 
@@ -28,6 +36,7 @@ namespace CashRegister.Receipts
 		    }
 		}
 
+
         /// <summary>
         /// Formats a new receipt from an order
         /// </summary>
@@ -35,18 +44,18 @@ namespace CashRegister.Receipts
         /// <returns>A formatted Receipt</returns>
         public virtual Receipt CreateReceipt(SalesOrder order)
 		{
-            var receipt = new Receipt();
+            var receipt = new Receipt(_formatProvider);
 
             CreateHeader(receipt, order.Id);
             
             foreach (var p in order.Lines)
             {
-                receipt.Content.Add($"{p.Quantity}x\t{p.Product.Name}\n");
-                receipt.Content.Add("              ");
-                receipt.Content.Add($"{p.UnitPrice}\n\n");
+                receipt.AddLine($"{p.Quantity}x\t{p.Product.Name}\n");
+                receipt.Add("              ");
+                receipt.AddLine($"{p.UnitPrice}\n\n");
             }
 
-            receipt.Content.Add($"Total: {order.Total}\n\n");
+            receipt.AddLine($"Total: {order.Total}\n\n");
 
             CreateFooter(receipt);
 
@@ -60,10 +69,10 @@ namespace CashRegister.Receipts
         /// <returns></returns>
         public virtual Receipt CreateReceipt(Transaction transaction)
         {
-            var receipt = new Receipt();
+            var receipt = new Receipt(_formatProvider);
             
-            receipt.Content.Add($"{transaction.PaymentType}\nDate: {transaction.Date}\nId: {transaction.Id}\n{transaction.Price}\n\b");
-            
+            receipt.AddLine($"{transaction.PaymentType}\nDate: {transaction.Date}\nId: {transaction.Id}\n{transaction.Price}\n\b");
+
             return receipt;
         }
         
@@ -74,12 +83,12 @@ namespace CashRegister.Receipts
         /// <param name="orderId">The OrderId from the Order being formatted</param>
         private static void CreateHeader(Receipt receipt, object orderId)
         {
-            var currentDateAndTime = DateTime.Today.ToString("G");
+            //var currentDateAndTime = DateTime.Today.ToString("G");
 
-	        receipt.Content.Add("Katrines Kælder\nFinlandsgade 22\nDK-8200 Aarhus N\n\n");
-            receipt.Content.Add($"Dato: {currentDateAndTime}\n");
-            receipt.Content.Add($"Ordre id: {orderId}\n\n");
-            receipt.Content.Add("-----\n");
+	        receipt.Add("Katrines Kælder\nFinlandsgade 22\nDK-8200 Aarhus N\n\n");
+            receipt.AddLine($"Dato: {DateTime.Today}\n");
+            receipt.AddLine($"Ordre id: {orderId}\n\n");
+            receipt.Add("-----\n");
         }
 
         /// <summary>
@@ -88,8 +97,8 @@ namespace CashRegister.Receipts
         /// <param name="receipt">The Receipt that is being formatted</param>
         private static void CreateFooter(Receipt receipt)
         {
-            receipt.Content.Add("-----\n");
-            receipt.Content.Add("På gensyn\n\n");
+            receipt.Add("-----\n");
+            receipt.Add("På gensyn\n\n");
         }
     }
 }
