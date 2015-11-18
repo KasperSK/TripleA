@@ -24,7 +24,7 @@ namespace CashRegister.Test.Unit.Sales
         private ISalesController _uut;
         private Models.Product _product;
         private Discount _discount;
-        private SalesController _getIncomplete;
+      //  private SalesController _getIncomplete;
         private Models.Transaction trans;
 
         [SetUp]

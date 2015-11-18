@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using CashRegister.Models;
 using CashRegister.Payment;
 using CashRegister.Products;
@@ -21,19 +22,7 @@ namespace CashRegister.Sales
     {
         private readonly PaymentControllerImpl _paymentControllerImpl;
         private readonly IProductController _productController;
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs eventArgs)
-        {
-            var handler = PropertyChanged;
-            handler?.Invoke(this, eventArgs);
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
-        }
-
+            
         public SalesController(PaymentControllerImpl payment,IProductController controller)
         {
             _paymentControllerImpl = payment;
@@ -81,7 +70,7 @@ namespace CashRegister.Sales
         public void AddProductToOrder(Product product, int quantity, Discount discount)
         {
             OrderController.AddProduct(product, quantity, discount);
-            OnPropertyChanged("Product Added");
+            OnPropertyChanged();
         }
 
         /// <summary>
@@ -232,6 +221,13 @@ namespace CashRegister.Sales
        public IReadOnlyCollection<ProductTab> ProductTabs()
         {
             return _productController.ProductTabs;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
