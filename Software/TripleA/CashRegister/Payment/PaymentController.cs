@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Windows.Controls;
 using CashRegister.CashDrawers;
-using CashRegister.Payment;
 using CashRegister.Models;
-using CashRegister.Printer;
 using CashRegister.Receipts;
 
 namespace CashRegister.Payment
 {
-    public class PaymentControllerImpl : IPaymentController
+    public class PaymentController : IPaymentController
     {
-        public PaymentControllerImpl(IReadOnlyCollection<PaymentProvider> paymentProviderList, IReceiptController receiptController, IPaymentDao paymentDao, ICashDrawer cashDrawer)
+        private readonly IPaymentDao _paymentDao;
+
+        public PaymentController(IReadOnlyCollection<PaymentProvider> paymentProviderList,
+            IReceiptController receiptController, IPaymentDao paymentDao, ICashDrawer cashDrawer)
         {
             ReceiptController = receiptController;
             _paymentDao = paymentDao;
@@ -29,15 +28,13 @@ namespace CashRegister.Payment
             }
         }
 
-        private readonly IPaymentDao _paymentDao;
-
         private IReadOnlyCollection<PaymentProvider> PaymentProviders { get; }
 
-        private ICashDrawer _cashDrawer { get; set; }
+        private ICashDrawer _cashDrawer { get; }
 
         public IReceiptController ReceiptController { get; set; }
 
-        public IEnumerable<IPaymentProvidorDescriptor> PaymentProvidorDescriptors => PaymentProviders;
+        public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptors => PaymentProviders;
 
         public virtual bool ExecuteTransaction(Transaction transaction)
         {
@@ -54,19 +51,16 @@ namespace CashRegister.Payment
 
                 return true;
             }
-            else
-            {
-                transaction.Status = TransactionStatus.Failed;
-                _paymentDao.Insert(transaction);
-                return false;
-            }
+            transaction.Status = TransactionStatus.Failed;
+            _paymentDao.Insert(transaction);
+            return false;
         }
 
         public void PrintTransaction(Transaction transaction)
         {
             var receip = ReceiptController.CreateReceipt(transaction);
             ReceiptController.Print(receip);
-             ;
+            ;
         }
 
         public int Tally()
@@ -77,14 +71,12 @@ namespace CashRegister.Payment
             {
                 if (paymentProvider.GetType() == typeof (CashPayment))
                 {
-                    startChange = paymentProvider._StartChange;
+                    startChange = paymentProvider.StartChange;
                 }
                 total += paymentProvider.Tally();
             }
 
             return total + startChange;
         }
-
-        
     }
 }

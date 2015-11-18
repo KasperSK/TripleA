@@ -219,8 +219,8 @@ namespace CashRegister.Test.Unit.Orders
         [Test, TestCaseSource(nameof(_oddNumbers))]
         public void GetNLastOrders_CalledWithN_OrderDaoGetNLastOrdersIsCalledWithN(int n)
         {
-            _uut.GetNLastOrders(n);
-            _dao.Received().GetNLastOrders(n);
+            _uut.GetLastOrders(n);
+            _dao.Received().GetLastOrders(n);
         }
 
         [Test]

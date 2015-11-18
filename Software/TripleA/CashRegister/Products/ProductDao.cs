@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using CashRegister.DAL;
+using CashRegister.Dal;
 using CashRegister.Models;
 
 namespace CashRegister.Products
@@ -20,13 +20,18 @@ namespace CashRegister.Products
         // Still have error when product is not saleable
         public ReadOnlyCollection<ProductTab> GetProductTabs(bool onlyActive)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 return
                     new ReadOnlyCollection<ProductTab>(
                         uow.ProductTabRepository.Get(
-                            p => p.Active && p.ProductTypes.Any(s => s.ProductGroups.Any(q => q.Products.Any(r => r.Saleable))),
-                            includeProperties: new[] {"ProductTypes", "ProductTypes.ProductGroups", "ProductTypes.ProductGroups.Products" }).ToList());
+                            p =>
+                                p.Active &&
+                                p.ProductTypes.Any(s => s.ProductGroups.Any(q => q.Products.Any(r => r.Saleable))),
+                            includeProperties:
+                                new[]
+                                {"ProductTypes", "ProductTypes.ProductGroups", "ProductTypes.ProductGroups.Products"})
+                            .ToList());
             }
         }
 
@@ -34,7 +39,7 @@ namespace CashRegister.Products
         /// <param name="product">Product to be inserted into the database</param>
         public virtual long Insert(Product product)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 uow.ProductRepository.Insert(product);
             }
@@ -43,7 +48,7 @@ namespace CashRegister.Products
 
         public virtual Product SelectById(int id)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 return uow.ProductRepository.GetById(id);
             }
@@ -51,7 +56,7 @@ namespace CashRegister.Products
 
         public virtual void Delete(Product product)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 uow.ProductRepository.Delete(product);
             }
@@ -59,7 +64,7 @@ namespace CashRegister.Products
 
         public virtual void Update(Product product)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 uow.ProductRepository.Update(product);
             }
@@ -67,7 +72,7 @@ namespace CashRegister.Products
 
         public virtual ProductGroup SelectByGroupId(int id)
         {
-            using (var uow = _dalFacade.GetUnitOfWork())
+            using (var uow = _dalFacade.UnitOfWork)
             {
                 return uow.ProductGroupRepository.GetById(id);
             }

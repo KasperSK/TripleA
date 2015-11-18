@@ -3,7 +3,7 @@
     /// <summary>
 	/// Interface for the different paymenttypes
 	/// </summary>
-	public interface IPaymentProvider  : IPaymentProvidorDescriptor
+	public interface IPaymentProvider  : IPaymentProviderDescriptor
 	{
         /// <summary>
         /// Initialiser for the payment types
@@ -13,7 +13,7 @@
         /// <summary>
         /// Transfor the price amount
         /// </summary>
-        bool TransferAmount(int amount, string desc);
+        bool TransferAmount(int amount, string description);
 
         /// <summary>
         /// Writes the transaktionstatus

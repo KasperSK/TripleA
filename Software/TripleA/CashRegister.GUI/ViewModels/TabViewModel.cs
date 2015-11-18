@@ -4,9 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Windows.Input;
 using CashRegister.Database;
-using CashRegister.DAL;
 using CashRegister.Log;
-using CashRegister.Products;
+using CashRegister.Sales;
 
 namespace CashRegister.GUI.ViewModels
 {
@@ -79,8 +78,11 @@ namespace CashRegister.GUI.ViewModels
         {
             var first = -1;
             var foundFirst = false;
-            var product = new ProductController(new ProductDao(new DalFacade()));
-            foreach (var tab in product.ProductTabs)
+
+            //var product = new ProductController(new ProductDao(new DalFacade()));
+            var salesController = SalesFactory.GuiSalesController;
+
+            foreach (var tab in salesController.ProductTabs)
             {
                 TabHead.Add(new TabHeader(tab.Id, tab.Name, ChangeTab, tab.Color));
                 if (!foundFirst)

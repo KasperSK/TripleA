@@ -5,7 +5,7 @@ namespace CashRegister.Payment
 {
     public interface IPaymentController 
 	{
-		IEnumerable<IPaymentProvidorDescriptor> PaymentProvidorDescriptors { get; }
+		IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptors { get; }
 
 	    bool ExecuteTransaction(Transaction transaction);
         

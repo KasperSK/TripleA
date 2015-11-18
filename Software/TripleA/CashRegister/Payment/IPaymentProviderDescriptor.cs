@@ -3,9 +3,9 @@
 namespace CashRegister.Payment
 {
     /// <summary>
-	/// Contians Description of the Paymentprovidor and is the interface used outside this namespace
+	/// Contians Description of the Paymentprovider and is the interface used outside this namespace
 	/// </summary>
-	public interface IPaymentProvidorDescriptor 
+	public interface IPaymentProviderDescriptor 
 	{
         /// <summary>
         /// The PaymentProviders unique Type

@@ -7,7 +7,7 @@ namespace CashRegister.Models
        
         public Discount()
         {
-            
+            ProductGroups = new List<ProductGroup>();
         }
 
         public long Id { get; set; }
@@ -16,7 +16,7 @@ namespace CashRegister.Models
 
         public int Percent { get; set; }
 
-        public virtual ICollection<ProductGroup> ProductGroups { get; set; }
+        public virtual ICollection<ProductGroup> ProductGroups { get; }
 
     }
 }

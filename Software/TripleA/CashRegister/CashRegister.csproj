@@ -69,12 +69,12 @@
   <ItemGroup>
     <Compile Include="CashDrawers\CashDrawer.cs" />
     <Compile Include="CashDrawers\ICashDrawer.cs" />
-    <Compile Include="DAL\DALFacade.cs" />
-    <Compile Include="DAL\IDALFacade.cs" />
-    <Compile Include="DAL\Repository.cs" />
-    <Compile Include="DAL\IRepository.cs" />
-    <Compile Include="DAL\IUnitOfWork.cs" />
-    <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="Dal\DalFacade.cs" />
+    <Compile Include="Dal\IDalFacade.cs" />
+    <Compile Include="Dal\Repository.cs" />
+    <Compile Include="Dal\IRepository.cs" />
+    <Compile Include="Dal\IUnitOfWork.cs" />
+    <Compile Include="Dal\UnitOfWork.cs" />
     <Compile Include="Database\CashRegisterContext.cs" />
     <Compile Include="Database\Configurations\OrderStatusEntityConfiguration.cs" />
     <Compile Include="Database\Configurations\ProductTabEntityConfiguration.cs" />
@@ -111,10 +111,10 @@
     <Compile Include="Payment\CashPayment.cs" />
     <Compile Include="Payment\IPaymentController.cs" />
     <Compile Include="Payment\IPaymentProvider.cs" />
-    <Compile Include="Payment\IPaymentProvidorDescriptor.cs" />
+    <Compile Include="Payment\IPaymentProviderDescriptor.cs" />
     <Compile Include="Payment\MobilePay.cs" />
     <Compile Include="Payment\Nets.cs" />
-    <Compile Include="Payment\PaymentControllerImpl.cs" />
+    <Compile Include="Payment\PaymentController.cs" />
     <Compile Include="Payment\PaymentProvider.cs" />
     <Compile Include="Printer\IPrinter.cs" />
     <Compile Include="Printer\RecieptPrinter.cs" />

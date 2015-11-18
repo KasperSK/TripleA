@@ -4,29 +4,27 @@ namespace CashRegister.Payment
 {
     public abstract class PaymentProvider : IPaymentProvider
     {
-        public abstract PaymentType Type { get; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-
-
         protected int Amount { get; set; }
-        public int _StartChange { get; protected set; }
+        public int StartChange { get; protected set; }
+        public abstract PaymentType Type { get; }
+        public abstract string Name { get; }
+        public abstract string Description { get; }
 
 
         public abstract void Init();
 
         /// <summary>
-        /// Transfor the amount and describtion, and returns true og false whether the transaktion was a succes or not
+        ///     Transfor the amount and describtion, and returns true og false whether the transaktion was a succes or not
         /// </summary>
-        public abstract bool TransferAmount(int amount, string desc);
+        public abstract bool TransferAmount(int amount, string description);
 
         /// <summary>
-        /// Writes the transaktionstatus
+        ///     Writes the transaktionstatus
         /// </summary>
         public abstract bool TransactionStatus();
 
         /// <summary>
-        /// Balance the payment
+        ///     Balance the payment
         /// </summary>
         public virtual int Tally()
         {
@@ -34,12 +32,12 @@ namespace CashRegister.Payment
         }
 
         /// <summary>
-        /// Shuts down the payment system
+        ///     Shuts down the payment system
         /// </summary>
         public abstract void Shutdown();
 
         /// <summary>
-        /// Restart the payment system
+        ///     Restart the payment system
         /// </summary>
         public abstract void Restart();
     }

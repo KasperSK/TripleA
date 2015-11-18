@@ -7,7 +7,8 @@ namespace CashRegister.Models
     {
         public SalesOrder()
         {
-            
+            Transactions = new List<Transaction>();
+            Lines = new List<OrderLine>();
         }
 
         public long Id { get; set; }
@@ -18,8 +19,8 @@ namespace CashRegister.Models
 
         public virtual OrderStatus Status  { get; set; }
 
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transactions { get;  }
 
-        public virtual ICollection<OrderLine> Lines { get; set; }
+        public virtual ICollection<OrderLine> Lines { get;  }
     }
 }

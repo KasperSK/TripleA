@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
+using CashRegister.Dal;
 using CashRegister.Database;
-using CashRegister.DAL;
 using CashRegister.Log;
 using CashRegister.Products;
 

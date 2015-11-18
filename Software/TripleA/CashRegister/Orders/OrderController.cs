@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using CashRegister.Models;
 
 namespace CashRegister.Orders
@@ -22,10 +21,10 @@ namespace CashRegister.Orders
             _stashedOrders = new List<SalesOrder>();
 	    }
 
-        public virtual void CreateNewOrder()
+        public void CreateNewOrder()
         {
             StashCurrentOrder();
-            CurrentOrder = new SalesOrder() { Lines = new List<OrderLine>(), Transactions = new List<Transaction>() };
+            CurrentOrder = new SalesOrder();
         }
 
         public void SaveOrder()
@@ -94,7 +93,7 @@ namespace CashRegister.Orders
             if (CurrentOrder == null)
                 return;
 
-            var orderLine = new OrderLine()
+            var orderLine = new OrderLine
             {
                 Product = product,
                 Quantity = quantity,
@@ -126,9 +125,9 @@ namespace CashRegister.Orders
             CurrentOrder = OrderDao.SelectById(id);
         }
 
-        public IEnumerable<SalesOrder> GetNLastOrders(int n)
+        public IEnumerable<SalesOrder> GetLastOrders(int amount)
         {
-            var orders = OrderDao.GetNLastOrders(n);
+            var orders = OrderDao.GetLastOrders(amount);
             return orders;
         }
 	}

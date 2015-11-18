@@ -2,24 +2,33 @@
 using CashRegister.Database;
 using CashRegister.Models;
 
-namespace CashRegister.DAL
+namespace CashRegister.Dal
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly CashRegisterContext _context;
         private readonly DalFacade _controller;
         private IRepository<Discount> _discountRepository;
+
+        private bool _disposed;
         private IRepository<OrderLine> _orderLineRepository;
         private IRepository<OrderStatus> _orderStatusRepository;
-        private IRepository<Product> _productRepository;
         private IRepository<ProductGroup> _productGroupRepository;
-        private IRepository<ProductType> _productTypeRepository;
+        private IRepository<Product> _productRepository;
         private IRepository<ProductTab> _productTabRepository;
+        private IRepository<ProductType> _productTypeRepository;
         private IRepository<SalesOrder> _salesOrderRepository;
         private IRepository<Transaction> _transactionRepository;
 
+        public UnitOfWork(CashRegisterContext context, DalFacade controller)
+        {
+            _context = context;
+            _controller = controller;
+        }
 
-        public IRepository<Discount> DiscountRepository => _discountRepository ?? (_discountRepository = new Repository<Discount>(_context));
+
+        public IRepository<Discount> DiscountRepository
+            => _discountRepository ?? (_discountRepository = new Repository<Discount>(_context));
 
         public IRepository<OrderLine> OrderLineRepository
             => _orderLineRepository ?? (_orderLineRepository = new Repository<OrderLine>(_context));
@@ -45,18 +54,16 @@ namespace CashRegister.DAL
         public IRepository<Transaction> TransactionRepository
             => _transactionRepository ?? (_transactionRepository = new Repository<Transaction>(_context));
 
-        public UnitOfWork(CashRegisterContext context, DalFacade controller)
-        {
-            _context = context;
-            _controller = controller;
-        }
-
         public void Save()
         {
             _context.SaveChanges();
         }
 
-        private bool _disposed = false;
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         protected virtual void Dispose(bool disposing)
         {
@@ -69,12 +76,6 @@ namespace CashRegister.DAL
                 }
             }
             _disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }
