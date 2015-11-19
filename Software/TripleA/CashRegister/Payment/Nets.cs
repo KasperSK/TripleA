@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CashRegister.Models;
 
 namespace CashRegister.Payment
 {
+    [ExcludeFromCodeCoverage]
     public class Nets : PaymentProvider
 	{
 		public virtual void GetDescriptor()
@@ -14,12 +16,12 @@ namespace CashRegister.Payment
 
 	    public override bool TransferAmount(int amount, string description)
 	    {
-	        throw new NotImplementedException();
+	        return false;
 	    }
 
 	    public override bool TransactionStatus()
 	    {
-	        throw new NotImplementedException();
+	        return false;
 	    }
 
 	    public override void Restart()
@@ -34,7 +36,7 @@ namespace CashRegister.Payment
 
 	    public override int Tally()
 	    {
-	        throw new NotImplementedException();
+	        return 0;
 	    }
 
 	    public override PaymentType Type => PaymentType.Nets;

@@ -1,4 +1,5 @@
-﻿using CashRegister.Models;
+﻿using System.Diagnostics.CodeAnalysis;
+using CashRegister.Models;
 
 namespace CashRegister.Payment
 {
@@ -16,19 +17,16 @@ namespace CashRegister.Payment
         public override string Name => "CashPayment";
         public override string Description => "CashPayment, nothing fancy here";
 
-        public override void Shutdown()
-        {
-        }
+        [ExcludeFromCodeCoverage]
+        public override void Shutdown() { }
 
-        public override void Restart()
-        {
-        }
+        [ExcludeFromCodeCoverage]
+        public override void Restart() { }
 
-        public override void Init()
-        {
-        }
+        [ExcludeFromCodeCoverage]
+        public override void Init() { }
 
-        public override bool TransferAmount(int amount, string description)
+        public override bool TransferAmount(int amount, string desc = null)
         {
             Amount += amount;
             return true;

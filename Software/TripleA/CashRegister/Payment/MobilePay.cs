@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CashRegister.Models;
 
 namespace CashRegister.Payment
 {
+    [ExcludeFromCodeCoverage]
     public class MobilePay : PaymentProvider
 	{
         public override PaymentType Type => PaymentType.MobilePay;
@@ -11,13 +13,13 @@ namespace CashRegister.Payment
         public override void Init(){}
 
         public override bool TransferAmount(int amount, string description)
-	    {
-	        throw new NotImplementedException();
-	    }
+        {
+            return false;
+        }
 
 	    public override bool TransactionStatus()
 	    {
-	        throw new NotImplementedException();
+	        return false;
 	    }
 
 	    public override void Restart()
@@ -29,6 +31,11 @@ namespace CashRegister.Payment
 	    {
 	        throw new NotImplementedException();
 	    }
-	}
+
+        public override int Tally()
+        {
+            return 0;
+        }
+    }
 }
 
