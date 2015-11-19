@@ -8,31 +8,22 @@ namespace CashRegister.Payment
 {
     public class PaymentController : IPaymentController
     {
-        private readonly IPaymentDao _paymentDao;
-
         public PaymentController(IReadOnlyCollection<PaymentProvider> paymentProviderList,
             IReceiptController receiptController, IPaymentDao paymentDao, ICashDrawer cashDrawer)
         {
-            ReceiptController = receiptController;
+            _receiptController = receiptController;
             _paymentDao = paymentDao;
+            CashDrawer = cashDrawer;
 
-            _cashDrawer = cashDrawer;
-
-            if (paymentProviderList != null)
-            {
-                PaymentProviders = paymentProviderList;
-            }
-            else
-            {
-                PaymentProviders = new List<PaymentProvider> {new CashPayment(0)};
-            }
+            PaymentProviders = paymentProviderList ?? new List<PaymentProvider> {new CashPayment(0)};
         }
 
         private IReadOnlyCollection<PaymentProvider> PaymentProviders { get; }
+        private readonly IReceiptController _receiptController;
+        private readonly IPaymentDao _paymentDao;
+        private ICashDrawer CashDrawer { get; }
 
-        private ICashDrawer _cashDrawer { get; }
-
-        public IReceiptController ReceiptController { get; set; }
+       
 
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptors => PaymentProviders;
 
@@ -45,12 +36,13 @@ namespace CashRegister.Payment
 
             if (transferSuccess && transferStatus)
             {
-                _cashDrawer.Open();
+                CashDrawer.Open();
                 transaction.Status = TransactionStatus.Completed;
                 _paymentDao.Insert(transaction);
 
                 return true;
             }
+
             transaction.Status = TransactionStatus.Failed;
             _paymentDao.Insert(transaction);
             return false;
@@ -58,8 +50,8 @@ namespace CashRegister.Payment
 
         public void PrintTransaction(Transaction transaction)
         {
-            var receip = ReceiptController.CreateReceipt(transaction);
-            ReceiptController.Print(receip);
+            var receip = _receiptController.CreateReceipt(transaction);
+            _receiptController.Print(receip);
             ;
         }
 
