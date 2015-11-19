@@ -16,7 +16,7 @@ namespace CashRegister.Payment
         /// <summary>
         ///     Transfor the amount and describtion, and returns true og false whether the transaktion was a succes or not
         /// </summary>
-        public abstract bool TransferAmount(int amount, string description = null);
+        public abstract bool TransferAmount(int amount, string description);
 
         /// <summary>
         ///     Writes the transaktionstatus

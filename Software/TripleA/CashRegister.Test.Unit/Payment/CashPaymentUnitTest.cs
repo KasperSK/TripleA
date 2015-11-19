@@ -33,7 +33,7 @@ namespace CashRegister.Test.Unit.Payment
         [Test]
         public void TransferAmount_TestReturnValue_ReturnTrue()
         {
-            var transferBool = _uut.TransferAmount(100);
+            var transferBool = _uut.TransferAmount(100, "Desciption");
 
             Assert.That(transferBool, Is.EqualTo(true));
         }
@@ -41,7 +41,7 @@ namespace CashRegister.Test.Unit.Payment
         [Test]
         public void Tally_Tranfer100_TallyIs100()
         {
-            _uut.TransferAmount(100);
+            _uut.TransferAmount(100, "Desciption");
             var amount = _uut.Tally();
 
             Assert.That(amount, Is.EqualTo(100));
@@ -50,8 +50,8 @@ namespace CashRegister.Test.Unit.Payment
         [Test]
         public void Tally_Transfer100and10_TallyIs150()
         {
-            _uut.TransferAmount(100);
-            _uut.TransferAmount(50);
+            _uut.TransferAmount(100, "Desciption");
+            _uut.TransferAmount(50, "Desciption");
 
             var amount = _uut.Tally();
 

@@ -26,7 +26,7 @@ namespace CashRegister.Payment
         [ExcludeFromCodeCoverage]
         public override void Init() { }
 
-        public override bool TransferAmount(int amount, string desc = null)
+        public override bool TransferAmount(int amount, string description)
         {
             Amount += amount;
             return true;
