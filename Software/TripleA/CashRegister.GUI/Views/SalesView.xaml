@@ -13,15 +13,16 @@
    
     <Grid >
         <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII- The Overall Grid which shows the sales-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
 
         <Grid Name="SaleDisplay" Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -29,7 +30,7 @@
 
             <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="0">
                 <Grid Name="MiddleDisplay" >
-                    <DataGrid ItemsSource="{Binding ViewProducts}" AutoGenerateColumns="True" ColumnWidth="*" >
+                    <DataGrid ItemsSource="{Binding ViewProducts}" AutoGenerateColumns="True" ColumnWidth="*" IsReadOnly="True" GridLinesVisibility="None">
 
                     </DataGrid>
                 </Grid>
@@ -40,7 +41,7 @@
             <Border Background="AliceBlue" BorderBrush="Black" BorderThickness="1.5" Grid.Row="1">
                 <Grid Name="LowerDiaplay">
                     <Label Name="Total" Content="Total" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Label>
-                    <Label Name="TotalCount" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{Binding TotalPrice}" Margin="5"></Label>
+                    <Label Name="TotalCount" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{Binding Path=total}" Margin="5"></Label>
                 </Grid>
             </Border>
         </Grid>
@@ -49,7 +50,7 @@
         <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-The Overall Grid with the pay and cancel buttons-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
 
 
-        <Grid Name="PayButtons" Grid.Row="1" Margin="0,15,0,15">
+        <Grid Name="PayButtons" Grid.Row="1" RowSpan="2"  Margin="0,5,0,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -59,8 +60,13 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="Pay" Grid.Column="0" Grid.Row="1" MinHeight="35" Content="Betal" MinWidth="50" Margin="5"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" ></Button>
-            <Button Name="Cancel" Grid.Column="1" Grid.Row="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" ></Button>
+            
+            <Button Name="Pay" Grid.Row="1" Grid.Column="0"  MinHeight="35" Content="Betal" MinWidth="50" Margin="2.5,1,5,1"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" ></Button>
+
+
+            <Button Name="Cancel" Grid.Row="1" Grid.Column="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5,1,2.5,1"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" >
+            </Button>
+            
         </Grid>
     </Grid>
 </UserControl>

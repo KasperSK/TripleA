@@ -46,7 +46,7 @@ namespace CashRegister.GUI.ViewModels
             //TabDictionary.Add("Billig", new List<TabItem>() { new TabItem() { Name = "Star", Colour = "Green", Row = 1, Column = 0 }, new TabItem() { Name = "Krudtugle", Colour = "Red", Row = 2, Column = 0 } });
             //TabDictionary["Standart"].ForEach(n => TabItems.Add(n));
             FetchView();
-            BackGroundColour = "Green";
+            BackGroundColour = "LimeGreen";
         }
 
         // View Ressourses 

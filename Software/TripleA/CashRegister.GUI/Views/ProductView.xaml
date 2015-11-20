@@ -9,22 +9,26 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <ViewModel:TabViewModel x:Key="TabViewModel"/>
-        
+
         <Style x:Key="TabHead" TargetType="{x:Type Button}">
             <Setter Property="FrameworkElement.Margin">
                 <Setter.Value>
                     <Thickness>0,2,2,2</Thickness>
                 </Setter.Value>
+
             </Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Name="ButtonBorder" 
-                                CornerRadius="0"
-                                BorderThickness="0,1,1,1"
+                                CornerRadius="15"
+                                BorderThickness="1.5"
                                 BorderBrush="Gray"
                                 Background="{TemplateBinding Background}"
+                                
                                 >
+
                             <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -50,67 +54,90 @@
             <Setter Property="RenderTransformOrigin" Value="0.1,0.1"/>
         </Style>
     </UserControl.Resources>
-    <Grid DataContext="{StaticResource TabViewModel}" ClipToBounds="True" SnapsToDevicePixels="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
 
-        <ItemsControl Grid.Column="0" ItemsSource="{Binding Path=TabItems}" Background="{Binding Path=BackGroundColour}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <!--     <UniformGrid Columns="5"/> -->
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            
-            <ItemsControl.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Grid.Column" Value="{Binding Path=Column}" />
-                    <Setter Property="Grid.Row" Value="{Binding Path=Row}" />
-                    <Setter Property="Grid.Margin" Value="3"/>
-                </Style>
-            </ItemsControl.ItemContainerStyle>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{Binding Path=Name}" Background="{Binding Path=Colour}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2">
 
-        <ItemsControl Grid.Column="1" ItemsSource="{Binding TabHead}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+        <Grid Name="ProductGrid"  DataContext="{StaticResource TabViewModel}" ClipToBounds="True" SnapsToDevicePixels="True">
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{Binding Path=Name}" Command="{Binding Path=Com}" CommandParameter="{Binding Path=Id}" Background="{Binding Path=Colour}" Style="{StaticResource TabHead}">
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </Grid>
+
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="{Binding Path=BackGroundColour}" Offset="0.2"/>
+                    <GradientStop Color="LightGray" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="0.9"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ItemsControl Grid.Column="0" ItemsSource="{Binding Path=TabItems}">
+
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <!--     <UniformGrid Columns="5"/> -->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Grid.Column" Value="{Binding Path=Column}" />
+                        <Setter Property="Grid.Row" Value="{Binding Path=Row}" />
+                        <Setter Property="Grid.Margin" Value="3"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <Button Content="{Binding Path=Name}" Background="{Binding Path=Colour}" Style="{StaticResource NormalButton}"/>
+                        
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ItemsControl Grid.Column="1" ItemsSource="{Binding TabHead}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Path=Name}" Command="{Binding Path=Com}" CommandParameter="{Binding Path=Id}" Background="{Binding Path=Colour}" Style="{StaticResource TabHead}">
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+
+        </Grid>
+        
+    </Border>
 </UserControl>
