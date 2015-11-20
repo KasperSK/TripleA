@@ -28,7 +28,7 @@ namespace CashRegister.Test.Unit.Sales
         private string _description;
         private IPaymentController _paymentControllerFail;
         private IOrderController _orderControllerMissingNone;
-        private SalesFactory _salesFactory;
+
 
         [SetUp]
         public void Setup()
