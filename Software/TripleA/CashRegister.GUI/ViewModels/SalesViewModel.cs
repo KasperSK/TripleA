@@ -10,15 +10,21 @@ namespace CashRegister.GUI.ViewModels
         public SalesViewModel()
         {
             _salesctrl = null;
+
+            total = 0;
         }
 
         public SalesViewModel(ISalesController salesCtrl)
         {
             _salesctrl = salesCtrl;
+
+            total = 0;
         }
 
         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
         //Collection the salesView will bind to
+
+        public long total { get; set; }
 
         public void SetSalesController(ISalesController salesController)
         {
@@ -38,6 +44,8 @@ namespace CashRegister.GUI.ViewModels
                         , //Adding new Viewproducts to be displayed in SalesView
                         lineElement.Product.Name,
                         price));
+                total += lineElement.UnitPrice * lineElement.Quantity;
+                OnPropertyChanged();
             }
         }
 

@@ -4,6 +4,10 @@
              xmlns:viewModels="clr-namespace:CashRegister.GUI.ViewModels"
              xmlns:views="clr-namespace:CashRegister.GUI.Views">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         <DataTemplate DataType="{x:Type viewModels:SalesViewModel}">
             <views:SalesView />
         </DataTemplate>
@@ -13,5 +17,6 @@
         <DataTemplate DataType="{x:Type viewModels:TabViewModel}">
             <views:ProductView/>
         </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

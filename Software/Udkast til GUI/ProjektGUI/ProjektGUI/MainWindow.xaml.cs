@@ -109,6 +109,11 @@ namespace ProjektGUI
 
         }
 
+        private void XX6_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
 
         /*
         private void Grupper_clicked(object sender, MouseButtonEventArgs e)

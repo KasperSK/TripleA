@@ -195,7 +195,7 @@
                        
                             <Button Name="XX4" Grid.Row="2" Grid.Column="0" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
                             <Button Name="XX5" Grid.Row="2" Grid.Column="1" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="YellowGreen"></Button>
-                            <Button Name="XX6" Grid.Row="2" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
+                            <Button Name="XX6" Grid.Row="2" Grid.Column="2" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Click="XX6_Click"></Button>
                             <Button Name="XX7" Grid.Row="2" Grid.Column="3" Content="XXX" MinWidth="50" MinHeight="40" Margin="5"></Button>
                             <Button Name="xX8" Grid.Row="2" Grid.Column="4" Content="XXX" MinWidth="50" MinHeight="40" Margin="5" Background="Orange"></Button>
 
@@ -222,7 +222,7 @@
                 <TabItem Name="Drinks" Header="Drinks" Background="LightGray">
                     <Label Content="Comming soon!"></Label>
                 </TabItem>
-                <TabItem Name="Shots" Header="Shots" Background="Red">
+                <TabItem Name="Shots" Header="Shots" Background="IndianRed">
                         <Label Content="Comming soon!"></Label>
                     </TabItem>
                 <TabItem Name="Soda" Header="Soda" Background="DeepSkyBlue">

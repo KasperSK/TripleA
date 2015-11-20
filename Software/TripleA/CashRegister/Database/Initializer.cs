@@ -131,14 +131,14 @@ namespace CashRegister.Database
         {
             var s = new InitHelper(context);
 
-            s.AddTab("Øl Fane", 0, "Green");
+            s.AddTab("Øl Fane", 0, "LimeGreen");
 
-            s.AddType("Billig Øl Type", 12, "Yellow");
+            s.AddType("Billig Øl Type", 12, "YellowGreen");
             s.AddGroup("Billig Øl Gruppe");
             s.AddProduct("Ceres Top");
             s.AddProduct("Royal Classic");
 
-            s.AddType("Special Øl Type", 15, "Green");
+            s.AddType("Special Øl Type", 15, "GreenYellow");
             s.AddGroup("Special Øl Gruppe");
             s.AddProduct("Royal Export");
             s.AddProduct("Blå Thor");
@@ -147,7 +147,7 @@ namespace CashRegister.Database
             s.AddProduct("Giraf Kalle");
             s.AddProduct("Havskum");
 
-            s.AddType("Udenlandsk Øl Type", 15, "Green");
+            s.AddType("Udenlandsk Øl Type", 15, "LawnGreen");
             s.AddGroup("Udenlandsk Øl Gruppe");
             s.AddProduct("Sol");
             s.AddProduct("Edelweiss");
@@ -155,14 +155,14 @@ namespace CashRegister.Database
             s.AddProduct("Moretti");
             s.AddProduct("Krusovice");
 
-            s.AddType("Fadøl Type", 18, "Blue");
+            s.AddType("Fadøl Type", 18, "Yellow");
             s.AddGroup("Fadøl Gruppe");
             s.AddProduct("Royal Fad");
             s.AddProduct("Jule Fad");
 
-            s.AddTab("Drinks", 1, "Blue");
+            s.AddTab("Drinks", 1, "DodgerBlue");
 
-            s.AddType("Billig Drinks Type", 20, "Yellow");
+            s.AddType("Billig Drinks Type", 20, "LightSkyBlue");
             s.AddGroup("Billig Drinks Gruppe");
             s.AddProduct("Brandbil");
             s.AddProduct("Tequila Sunrise");
@@ -174,7 +174,7 @@ namespace CashRegister.Database
             s.AddProduct("Sommer Morgan");
             s.AddProduct("Pink Pussy");
 
-            s.AddType("30 kr drinks", 30, "Purple");
+            s.AddType("30 kr drinks", 30, "SkyBlue");
             s.AddGroup("30 kr Drinks Gruppe");
             s.AddProduct("Moscow Mule");
             s.AddProduct("Fake Cherry");
@@ -186,29 +186,29 @@ namespace CashRegister.Database
             s.AddProduct("Vodka Redbull");
             s.AddProduct("Labre Larver");
 
-            s.AddType("35 kr drinks", 35, "Brown");
+            s.AddType("35 kr drinks", 35, "DeepSkyBlue");
             s.AddGroup("35 kr Drinks Gruppe");
             s.AddProduct("Gøglermælk");
 
-            s.AddType("40 kr drinks", 40, "Blue");
+            s.AddType("40 kr drinks", 40, "");
             s.AddGroup("40 kr Drinks Gruppe");
             s.AddProduct("Blå Batman");
             s.AddProduct("Party Hamster");
             s.AddProduct("Cosmopolitan");
 
-            s.AddType("45 kr drinks", 45, "Orange");
+            s.AddType("45 kr drinks", 45, "PowderBlue");
             s.AddGroup("45 kr Drinks Gruppe");
             s.AddProduct("Long Island Iced Tea");
             s.AddProduct("Memory Leak");
             s.AddProduct("K-Special");
 
-            s.AddType("50 kr drinks", 50, "Gray");
+            s.AddType("50 kr drinks", 50, "SteelBlue");
             s.AddGroup("50 kr Drinks Gruppe");
             s.AddProduct("Kold Krig (2 drinks)");
 
-            s.AddTab("Shots", 2, "Yellow");
+            s.AddTab("Shots", 2, "IndianRed");
 
-            s.AddType("Billig Shots Type", 10, "Yellow");
+            s.AddType("Billig Shots Type", 10, "DarkOrange");
             s.AddGroup("Billig Shots Gruppe");
             s.AddProduct("Jägermeister");
             s.AddProduct("Sambuca");
@@ -217,7 +217,7 @@ namespace CashRegister.Database
             s.AddProduct("Vodka");
             s.AddProduct("Rom");
 
-            s.AddType("Alm Shots Type", 15, "Blue");
+            s.AddType("Alm Shots Type", 15, "OrangeRed");
             s.AddGroup("Alm Shots Gruppe");
             s.AddProduct("Arnbitter");
             s.AddProduct("Cointreau");
@@ -231,13 +231,13 @@ namespace CashRegister.Database
             s.AddProduct("Bailey");
             s.AddProduct("Galliano Hotshots");
 
-            s.AddType("Dyre Shots Type", 20, "Orange");
+            s.AddType("Dyre Shots Type", 20, "Red");
             s.AddGroup("Dyre Shots Gruppe");
             s.AddProduct("Jägerbombs");
             s.AddProduct("Snefnugg");
 
-            s.AddTab("SodaPopz", 3, "Red");
-            s.AddType("Sodapop", 25, "Orange");
+            s.AddTab("SodaPopz", 3, "Coral");
+            s.AddType("Sodapop", 25, "DarkSalmon");
             s.AddGroup("Sodapop");
             s.AddProduct("Blue Desire");
             s.AddProduct("Dirty Passion");
