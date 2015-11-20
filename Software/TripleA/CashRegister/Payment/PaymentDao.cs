@@ -3,7 +3,7 @@ using CashRegister.Models;
 
 namespace CashRegister.Payment
 {
-    internal class PaymentDao : IPaymentDao
+    public class PaymentDao : IPaymentDao
     {
         private readonly IDalFacade _dalFacade;
 
