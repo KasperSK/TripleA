@@ -4,11 +4,16 @@
     <Style x:Key="NormalButton" TargetType="{x:Type Button}">
 
         <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="5" Opacity="0.7"/>
+            </Setter.Value>
+        </Setter>
         
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="border" CornerRadius="15" BorderThickness="0.9" BorderBrush="Black" Background="{TemplateBinding Background}" >
+                    <Border x:Name="border" CornerRadius="15" BorderThickness="0.9" BorderBrush="Black" Background="{TemplateBinding Background}"  >
                         
                         <ContentPresenter Content="{TemplateBinding Content}"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         

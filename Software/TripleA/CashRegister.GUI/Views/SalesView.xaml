@@ -61,10 +61,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            <Button Name="Pay" Grid.Row="1" Grid.Column="0"  MinHeight="35" Content="Betal" MinWidth="50" Margin="2.5,1,5,1"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" ></Button>
+            <Button Name="Pay" Grid.Row="1" Grid.Column="0"  MinHeight="35" Content="Betal" MinWidth="50" Margin="2.5,1,5,1"  Background="DodgerBlue" Style="{StaticResource NormalButton}" ></Button>
 
 
-            <Button Name="Cancel" Grid.Row="1" Grid.Column="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5,1,2.5,1"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" >
+            <Button Name="Cancel" Grid.Row="1" Grid.Column="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5,1,2.5,1"  Background="Red" Style="{StaticResource NormalButton}" >
             </Button>
             
         </Grid>

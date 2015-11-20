@@ -15,7 +15,11 @@
                 <Setter.Value>
                     <Thickness>0,2,2,2</Thickness>
                 </Setter.Value>
-
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="5" Opacity="0.7"/>
+                </Setter.Value>
             </Setter>
             <Setter Property="FontSize" Value="18"></Setter>
             <Setter Property="Template">
@@ -57,16 +61,21 @@
 
 
 
-    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2">
+    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2" Margin="7">
 
-        <Grid Name="ProductGrid"  DataContext="{StaticResource TabViewModel}" ClipToBounds="True" SnapsToDevicePixels="True">
+        <Grid Name="ProductGrid"  DataContext="{StaticResource TabViewModel}" ClipToBounds="True" SnapsToDevicePixels="True" >
 
 
             <Grid.Background>
                 <LinearGradientBrush>
-                    <GradientStop Color="{Binding Path=BackGroundColour}" Offset="0.2"/>
-                    <GradientStop Color="LightGray" Offset="0.0"/>
                     <GradientStop Color="White" Offset="0.9"/>
+                    <!-- White: Used to be 0.9-->
+                    <GradientStop Color="LightGray" Offset="0.0"/>
+                    <!-- Gray: Used to be 0.0-->
+
+                    <GradientStop Color="{Binding Path=BackGroundColour}" Offset="0.2"/>
+                    <!-- Back: Used to be 0.2. Offset sets where the are in grid-->
+
                 </LinearGradientBrush>
             </Grid.Background>
 
@@ -114,9 +123,9 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        
+
                         <Button Content="{Binding Path=Name}" Background="{Binding Path=Colour}" Style="{StaticResource NormalButton}"/>
-                        
+
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -124,7 +133,7 @@
             <ItemsControl Grid.Column="1" ItemsSource="{Binding TabHead}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel />
+                        <StackPanel/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
@@ -138,6 +147,6 @@
 
 
         </Grid>
-        
+
     </Border>
 </UserControl>
