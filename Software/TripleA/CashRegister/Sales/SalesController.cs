@@ -125,7 +125,7 @@ namespace CashRegister.Sales
         {
             var descriptionAndSalesOrderId = description + " " + _orderController.CurrentOrder.Id;
             var trans = CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
-            _orderController.CurrentOrder.Transactions.Add(trans);
+            _orderController.AddTransaction(trans);
             if (MissingPaymentOnOrder() == 0)
             {
                 _orderController.SaveOrder();
@@ -140,15 +140,6 @@ namespace CashRegister.Sales
         {
             return _orderController.MissingAmount();
         }
-
-        /// <summary>
-        ///     Adds an transaction to an order
-        /// </summary>
-        public void AddTransaction(Transaction trans)
-        {
-            _orderController.AddTransaction(trans);
-        }
-
 
         /// <summary>
         ///     Gets a list of all incomplete orders by default current data (or within a certain date or time)
@@ -173,12 +164,15 @@ namespace CashRegister.Sales
                 PaymentType = payment,
                 Description = description
             };
-            var paymentCompleted = _paymentController.ExecuteTransaction(transaction);
+            var paymentCompleted = true;
+            paymentCompleted = _paymentController.ExecuteTransaction(transaction);
             if (paymentCompleted)
             {
-                return transaction;
+                transaction.Description = "Transaction completed";
+                return transaction;  
             }
             transaction.Description = "Transaction failed";
+
             return transaction;
         }
 
@@ -207,11 +201,11 @@ namespace CashRegister.Sales
         /// </summary>
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor => _paymentController.PaymentProviderDescriptors;
         
-
+/*
         public void TransactionComplete(Transaction transaction)
         {
             // FIX What is wrong
             _orderController.MissingAmount();
-        }
+        }*/
     }
 }

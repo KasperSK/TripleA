@@ -65,11 +65,6 @@ namespace CashRegister.Sales
         long MissingPaymentOnOrder();
 
         /// <summary>
-        /// Add an transaction to the order
-        /// </summary>
-        void AddTransaction(Models.Transaction trans);
-
-        /// <summary>
         /// Gets a list of all incomplete orders by default current data (or within a certain date or time)
         /// </summary>
         IReadOnlyCollection<SalesOrder> IncompleteOrders { get; }
