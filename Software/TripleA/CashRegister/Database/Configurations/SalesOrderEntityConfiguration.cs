@@ -15,7 +15,8 @@ namespace CashRegister.Database.Configurations
             Property(p => p.Total)
                 .IsRequired();
 
-            HasRequired(e => e.Status);
+            Property(p => p.Status)
+                .IsRequired();
 
             HasMany(e => e.Transactions)
                 .WithRequired(e => e.SalesOrder);

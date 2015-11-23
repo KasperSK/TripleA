@@ -3,6 +3,13 @@ namespace CashRegister.Models
     using System;
     using System.Collections.Generic;
 
+    public enum OrderStatus
+    {
+        Created = 0,
+        Completed = 1,
+        Failed = 2,
+    }
+
     public class SalesOrder
     {
         public SalesOrder()
@@ -17,7 +24,7 @@ namespace CashRegister.Models
 
         public int Total { get; set; }
 
-        public virtual OrderStatus Status  { get; set; }
+        public OrderStatus Status  { get; set; }
 
         public virtual ICollection<Transaction> Transactions { get;  }
 

@@ -25,10 +25,7 @@
                                 CornerRadius="15"
                                 BorderThickness="1.5"
                                 BorderBrush="Gray"
-                                Background="{TemplateBinding Background}"
-                                
-                                >
-
+                                Background="{TemplateBinding Background}">
                             <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -54,14 +51,8 @@
             <Setter Property="RenderTransformOrigin" Value="0.1,0.1"/>
         </Style>
     </UserControl.Resources>
-
-
-
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2">
-
         <Grid Name="ProductGrid"  DataContext="{StaticResource TabViewModel}" ClipToBounds="True" SnapsToDevicePixels="True">
-
-
             <Grid.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="{Binding Path=BackGroundColour}" Offset="0.2"/>
@@ -80,8 +71,6 @@
             </Grid.ColumnDefinitions>
 
             <ItemsControl Grid.Column="0" ItemsSource="{Binding Path=TabItems}">
-
-
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <!--     <UniformGrid Columns="5"/> -->
@@ -113,10 +102,8 @@
                 </ItemsControl.ItemContainerStyle>
 
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        
-                        <Button Content="{Binding Path=Name}" Background="{Binding Path=Colour}" Style="{StaticResource NormalButton}"/>
-                        
+                    <DataTemplate>                        
+                        <Button Content="{Binding Path=Name}" Background="{Binding Path=Colour}" Style="{StaticResource NormalButton}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=Product}/>                   
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -130,14 +117,11 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Path=Name}" Command="{Binding Path=Com}" CommandParameter="{Binding Path=Id}" Background="{Binding Path=Colour}" Style="{StaticResource TabHead}">
+                        <Button Content="{Binding Path=Name}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=Id}" Background="{Binding Path=Colour}" Style="{StaticResource TabHead}">
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-
-
         </Grid>
-        
     </Border>
 </UserControl>

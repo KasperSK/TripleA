@@ -60,13 +60,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <Button Name="Pay" Grid.Row="1" Grid.Column="0"  MinHeight="35" Content="Betal" MinWidth="50" Margin="2.5,1,5,1"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" ></Button>
 
+            <Button Name="Pay" Grid.Column="0" Grid.Row="1" MinHeight="35" Content="Betal" MinWidth="50" Margin="5"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" Command="{Binding Path=PaymentCommand}"/>
+            <Button Name="Cancel" Grid.Column="1" Grid.Row="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" Command="{Binding Path=AbortCommand}"/>
 
-            <Button Name="Cancel" Grid.Row="1" Grid.Column="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5,1,2.5,1"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" >
-            </Button>
-            
         </Grid>
     </Grid>
 </UserControl>

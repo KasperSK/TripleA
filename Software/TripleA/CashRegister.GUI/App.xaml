@@ -9,10 +9,10 @@
                 <ResourceDictionary Source="ButtonResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         <DataTemplate DataType="{x:Type viewModels:SalesViewModel}">
-            <views:SalesView />
+            <views:SalesView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModels:NumpadViewModel}">
-            <views:NumpadView />
+            <views:NumpadView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModels:TabViewModel}">
             <views:ProductView/>

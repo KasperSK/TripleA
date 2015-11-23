@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using CashRegister.GUI.Annotations;
+using CashRegister.Sales;
 
 namespace CashRegister.GUI.ViewModels
 {

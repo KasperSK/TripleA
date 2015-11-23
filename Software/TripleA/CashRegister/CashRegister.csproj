@@ -76,7 +76,6 @@
     <Compile Include="Dal\IUnitOfWork.cs" />
     <Compile Include="Dal\UnitOfWork.cs" />
     <Compile Include="Database\CashRegisterContext.cs" />
-    <Compile Include="Database\Configurations\OrderStatusEntityConfiguration.cs" />
     <Compile Include="Database\Configurations\ProductTabEntityConfiguration.cs" />
     <Compile Include="Database\Configurations\ProductTypeEntityConfiguration.cs" />
     <Compile Include="Database\Configurations\TransactionEntityConfiguration.cs" />
@@ -93,7 +92,6 @@
     <Compile Include="Database\Configurations\ProductEntityConfiguration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductGroup.cs" />
-    <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Log\ILogger.cs" />
     <Compile Include="Log\LogFactory.cs" />

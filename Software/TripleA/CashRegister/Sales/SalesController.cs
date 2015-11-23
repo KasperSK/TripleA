@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using CashRegister.CashDrawers;
 using CashRegister.Dal;
+using CashRegister.Log;
 using CashRegister.Models;
 using CashRegister.Orders;
 using CashRegister.Payment;
@@ -36,7 +37,7 @@ namespace CashRegister.Sales
         private readonly IProductController _productController;
         private readonly IOrderController _orderController;
         private readonly IReceiptController _receiptController;
-
+        private readonly ILogger _logger;
 
 
         /// <summary>
@@ -48,6 +49,7 @@ namespace CashRegister.Sales
             _receiptController = receiptController;
             _productController = productController;
             _paymentController = paymentController;
+            _logger = LogFactory.GetLogger(typeof (SalesController));
             StartNewOrder();
         }
 
@@ -60,6 +62,7 @@ namespace CashRegister.Sales
         {
             _orderController.AddProduct(product, quantity, discount);
             OnPropertyChanged("Product Added");
+            _logger.Debug("Product Added");
         }
 
         /// <summary>
@@ -159,7 +162,7 @@ namespace CashRegister.Sales
         {
             var transaction = new Transaction
             {
-                Id = _orderController.CurrentOrder.Id,
+                SalesOrder = _orderController.CurrentOrder,
                 Price = amountToPay,
                 PaymentType = payment,
                 Description = description
