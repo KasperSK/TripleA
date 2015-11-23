@@ -18,11 +18,11 @@ using CashRegister.GUI.ViewModels;
 namespace CashRegister.GUI.Views
 {
     /// <summary>
-    /// Interaction logic for ProductView.xaml
+    /// Interaction logic for TabView.xaml
     /// </summary>
-    public partial class ProductView : UserControl
+    public partial class TabView : UserControl
     {
-        public ProductView()
+        public TabView()
         {
             InitializeComponent();
         }
