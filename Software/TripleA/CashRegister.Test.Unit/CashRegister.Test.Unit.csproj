@@ -72,11 +72,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receipts\ReceiptUnitTest.cs" />
     <Compile Include="Sales\SalesControllerUnitTest.cs" />
+    <Compile Include="ViewModels\NumpadUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CashRegister.GUI\CashRegister.GUI.csproj">
+      <Project>{c312ad67-98d8-42dc-94e3-4d5f934cc41d}</Project>
+      <Name>CashRegister.GUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CashRegister\CashRegister.csproj">
       <Project>{843f5c98-f659-4bef-860b-53777f095a8c}</Project>
       <Name>CashRegister</Name>
