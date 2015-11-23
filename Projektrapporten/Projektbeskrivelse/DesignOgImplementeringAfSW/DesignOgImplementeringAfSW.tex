@@ -1,2 +1,42 @@
 %!TEX root = ../../main.tex
 \section{Design og Implementering Software}
+
+\subsection{GUI}
+\subsubsection{GUI Design}
+Den grafiske brugergrænseflade er først og fremmest lavet ud fra et design som Katrines kælder
+har ønsket. Dette design er baseret på det eksisterende kasseaparats tastatur og mærkater,
+således at overgangen fra at skulle bruge det gamle kasseaparat til det nye ville mindskes.
+\newline
+\newline
+Hertil er der blevet tegnet et skitse som kuhnne bruges til at lave et mock-up af den kommende GUI.
+\newline
+\newline
+(Indsæt billede af skitse)
+\newline
+\newline
+\subsubsection{Mock-up}
+Det første mock-up blev lavet som en ren illustrativ GUI uden nogen form for funktionalitet. 
+Hertil blev den lavet uden fornemmelse for hvad der var smart men kun med tankerne om 
+hvordan den kunne ligne det gamle kasseaparats tastatur. 
+\newline
+\newline
+(Indsæt udklip af Mock-up)
+\newline
+\newline
+\subsubsection{MVVM}
+Da det første mock-up var lavet gik der et sprint hvor der intet GUI blev lavet, men mere fokuseret
+på business logik. Herefter blev der taget fat i GUI'en igen hvor selv hovedvinduet blev delt i tre 
+UserContents. Dette var smart da det blev aftalt at GUI'en skulle laves efter MVVM princippet og her kunne
+de tre usercontents så repræsentere et view hver. 
+Til hver af disse views skulle der så laves en tilhørende viewModel som kunne hente data fra businesslogikken
+således at Viewet ikke skulle tænke på dette selv. Den tilhørende viewmodel skulle nemlig modellere viewet alt efter 
+hvad der skete i businesslogikken. Dette blev gjort med Bindings fra View til Viewmodel, Og Events fra businesslogik til 
+Viewmodel. 
+\newline
+\newline
+Selve udseendet af GUI'en blev præget meget af Resources der skulle gøre det hele mere ensartet. Hertil er der blevet dataTemplates, 
+styles og bindings mm.
+ \newline
+ \newline
+Den færdige GUI kom til i sin enkelthed at lige det mock-up der blev lavet, men der kom meget mere fokus på controls der var smarte, og 
+hvilke der ikke var smarte og så fik den en fin afpusning der gjorde den pænere at se på.  
