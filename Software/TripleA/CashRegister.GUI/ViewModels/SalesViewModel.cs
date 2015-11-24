@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using CashRegister.GUI.Dialogs;
 using CashRegister.Models;
 using CashRegister.Sales;
 
@@ -63,13 +64,20 @@ namespace CashRegister.GUI.ViewModels
         }
 
         //RelayCommands
+        private RelayCommand<PaymentType> _paytypeCommand;
+        public ICommand PaytypeCommand => _paytypeCommand ?? (_paytypeCommand = new RelayCommand<PaymentType>(PaytypeCommandExecute));
+
+        private void PaytypeCommandExecute(PaymentType paymentType)
+        {
+            var amount = _salesController.MissingPaymentOnOrder();
+            _salesController.StartPayment((int)amount, "", paymentType);
+        }
+
         private RelayCommand _paymentCommand;
         public ICommand PaymentCommand => _paymentCommand ?? (_paymentCommand = new RelayCommand(PaymentCommandExecute, PaymentCommandCanExecute));
 
         private void PaymentCommandExecute()
         {
-            var amount = _salesController.MissingPaymentOnOrder();
-            _salesController.StartPayment((int)amount, "Cash", PaymentType.Cash);
         }
 
         private bool PaymentCommandCanExecute()

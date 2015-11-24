@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CashRegister.GUI.Dialogs;
+using CashRegister.GUI.ViewModels;
+using CashRegister.Log;
 
 namespace CashRegister.GUI.Views
 {
@@ -30,7 +33,23 @@ namespace CashRegister.GUI.Views
             FontSize = ((ActualHeight+ActualWidth)/40);
 
             Total.FontSize = (ActualWidth + ActualHeight)/30;
+        }
 
+        private ILogger _logger = LogFactory.GetLogger(typeof (SalesView));
+
+        private void Pay_Click(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+            PaymentDialog dlg = new PaymentDialog();
+            dlg.Owner = parentWindow;
+            
+            if (dlg.ShowDialog() == true)
+            {
+                _logger.Debug("Payment choice " + dlg.PaymentChoice);
+                var helper = parentWindow?.DataContext as MainViewModel;
+                var relay = helper?.SalesViewModel.PaytypeCommand; 
+                relay?.Execute(dlg.PaymentChoice);
+            }
         }
     }
 }
