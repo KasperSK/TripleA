@@ -28,9 +28,9 @@ namespace CashRegister.GUI.ViewModels
         }
 
         // View Ressourses 
-        public Dictionary<int, List<TabItem>> TabDictionary { get; set; } = new Dictionary<int, List<TabItem>>();
-        public ObservableCollection<TabItem> TabItems { get; set; } = new ObservableCollection<TabItem>();
-        public ObservableCollection<TabHeader> TabHead { get; set; } = new ObservableCollection<TabHeader>();
+        public Dictionary<int, List<TabItem>> TabDictionary { get; } = new Dictionary<int, List<TabItem>>();
+        public ObservableCollection<TabItem> TabItems { get; } = new ObservableCollection<TabItem>();
+        public ObservableCollection<TabHeader> TabHead { get; } = new ObservableCollection<TabHeader>();
 
         //Fokused tab colour
         public string BackGroundColour
@@ -60,7 +60,6 @@ namespace CashRegister.GUI.ViewModels
                 _salesController.AddProductToOrder(product, _numpad.Amount > 1 ? _numpad.Amount : 1,
                     new Discount {Description = "No DISCOUNT FOR YOU", Percent = 0});
                 _numpad.ClearNumpad();
-  
         }
 
         //Populate Tabs

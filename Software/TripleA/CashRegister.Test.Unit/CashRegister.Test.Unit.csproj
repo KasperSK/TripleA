@@ -73,6 +73,7 @@
     <Compile Include="Receipts\ReceiptUnitTest.cs" />
     <Compile Include="Sales\SalesControllerUnitTest.cs" />
     <Compile Include="ViewModels\NumpadUnitTest.cs" />
+    <Compile Include="ViewModels\TabViewUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
