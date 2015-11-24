@@ -26,7 +26,7 @@ namespace CashRegister.Printer
         /// Adds a string to a print document
         /// </summary>
         /// <param name="str">str is added to the print document</param>
-        public virtual void AddTo(string line)
+        public void AddTo(string line)
         {
             _paragraph.Inlines.Add(new Run(line));
         }
@@ -34,7 +34,7 @@ namespace CashRegister.Printer
         /// <summary>
         /// Initiates a print to the reciept printer from the default Windows printer dialog
         /// </summary>
-        public virtual void Print()
+        public void Print()
         {
             var printDlg = new PrintDialog();
 

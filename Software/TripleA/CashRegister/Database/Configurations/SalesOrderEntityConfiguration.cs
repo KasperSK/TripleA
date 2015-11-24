@@ -12,17 +12,13 @@ namespace CashRegister.Database.Configurations
             Property(p => p.Date)
                 .IsRequired();
 
-            Property(p => p.Total)
-                .IsRequired();
-
             Property(p => p.Status)
                 .IsRequired();
 
             HasMany(e => e.Transactions)
-                .WithRequired(e => e.SalesOrder);
+                .WithRequired(p => p.SalesOrder);
 
-            HasMany(e => e.Lines)
-                .WithRequired(e => e.SalesOrder);
+            HasMany(e => e.Lines);
         }
     }
 }

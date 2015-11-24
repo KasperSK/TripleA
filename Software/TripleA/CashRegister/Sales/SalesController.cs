@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using CashRegister.CashDrawers;
 using CashRegister.Dal;
@@ -21,7 +23,7 @@ namespace CashRegister.Sales
             {
                 var dalfacade = new DalFacade();
                 var productController = new ProductController(new ProductDao(dalfacade));
-                var receiptController = new ReceiptController(new ReceiptPrinter());
+                var receiptController = new ReceiptController(new ReceiptPrinter(), CultureInfo.InvariantCulture);
                 var paymentController =
                     new PaymentController(
                         new List<PaymentProvider>() {new CashPayment(0), new MobilePay(), new Nets()}, receiptController,
@@ -55,7 +57,6 @@ namespace CashRegister.Sales
             _productController = productController;
             _paymentController = paymentController;
             _logger = LogFactory.GetLogger(typeof (SalesController));
-            StartNewOrder();
         }
 
         /// <summary>
@@ -95,23 +96,17 @@ namespace CashRegister.Sales
         }
 
         /// <summary>
-        ///     Starts a new SalesOrder with a new id
-        /// </summary>
-        public void StartNewOrder()
-        {
-            _orderController.CreateNewOrder();
-        }
-
-        /// <summary>
         ///     Cancel transactions, clear SalesOrder
         /// </summary>
         public void CancelOrder()
         {
-            _orderController.ClearOrder();
-            if (_orderController.MissingAmount() == 0)
+            if (_orderController.CurrentOrder.Transactions.Count > 0)
             {
                 _orderController.SaveOrder();
-                StartNewOrder();
+            }
+            else
+            {
+                _orderController.ClearOrder();
             }
         }
 
@@ -120,7 +115,7 @@ namespace CashRegister.Sales
         /// </summary>
         public void SaveIncompleteOrder()
         {
-            _orderController.CreateNewOrder();
+            _orderController.SaveOrder();
         }
 
 
@@ -130,12 +125,11 @@ namespace CashRegister.Sales
         public void StartPayment(int amountToPay, string description, PaymentType provider)
         {
             var descriptionAndSalesOrderId = description + " " + _orderController.CurrentOrder.Id;
-            var trans = CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
-            _orderController.AddTransaction(trans);
+            CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
             if (MissingPaymentOnOrder() == 0)
             {
                 _orderController.SaveOrder();
-                StartNewOrder();
+                OnPropertyChanged("New Order");
             }
         }
 
@@ -165,6 +159,8 @@ namespace CashRegister.Sales
         {
             var transaction = new Transaction
             {
+                Date = DateTime.Now,
+                Status = TransactionStatus.Created,
                 SalesOrder = _orderController.CurrentOrder,
                 Price = amountToPay,
                 PaymentType = payment,
@@ -198,7 +194,7 @@ namespace CashRegister.Sales
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

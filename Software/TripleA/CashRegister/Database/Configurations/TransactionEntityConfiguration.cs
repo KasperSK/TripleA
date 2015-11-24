@@ -26,7 +26,7 @@ namespace CashRegister.Database.Configurations
                 .IsRequired();
 
             HasRequired(e => e.SalesOrder)
-                .WithMany(e => e.Transactions);
+                .WithMany(p => p.Transactions);
         }
     }
 }

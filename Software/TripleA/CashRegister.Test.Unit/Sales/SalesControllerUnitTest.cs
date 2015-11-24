@@ -108,6 +108,7 @@ namespace CashRegister.Test.Unit.Sales
             _orderctrl.SaveOrder();
         }
 
+        /*
         [Test]
         public void SalesController_StartPayment_Order()
         {      
@@ -116,13 +117,16 @@ namespace CashRegister.Test.Unit.Sales
             _uut.StartPayment(_amountToPay, _description, _paymentType);
             _orderctrl.Received(1).AddTransaction(Arg.Any<Transaction>());
         }
+        */
 
+        /*
         [Test]
         public void SalesController_StartPayment_OrderControllerAddTransactionIsCalled()
         {
             _uut.StartPayment(_amountToPay, _description, _paymentType);
             _orderctrl.Received(1).AddTransaction(Arg.Any<Transaction>());
         }
+        */
 
         [Test]
         public void SalesController_StartPayment_OrderControllerSaveOrderIsCalled()
@@ -174,15 +178,15 @@ namespace CashRegister.Test.Unit.Sales
         public void SalesController_CancelOrder_StartNewOrderIsNotCalled()
         {
             _uut.CancelOrder();
-            _orderctrl.Received(1).CreateNewOrder();
+            _orderctrl.Received(1).ClearOrder();
         }
 
         [Test]
-        public void SalesController_CancelOrder_StartNewOrderIsCalled()
+        public void SalesController_CancelOrder_ClearOrderIsCalled()
         {
             var uut = new SalesController(_orderControllerMissingNone, _receiptctrl, _productController, _paymentController);
             uut.CancelOrder();
-            _orderControllerMissingNone.Received(2).CreateNewOrder();
+            _orderControllerMissingNone.Received(1).ClearOrder();
         }
 
         [Test]
@@ -191,13 +195,7 @@ namespace CashRegister.Test.Unit.Sales
             _uut.CancelOrder();
             _orderctrl.Received(1).ClearOrder();
         }
-        [Test]
-        public void SalesController_CancelOrder_OrderControllerMissingAmountIsCalled()
-        {
-            _uut.CancelOrder();
-            _orderctrl.Received(1).MissingAmount();
 
-        }
         [Test]
         public void SalesController_CancelOrder_OrderControllerSaveOrderIsCalled()
         {
@@ -223,7 +221,7 @@ namespace CashRegister.Test.Unit.Sales
         public void SalesController_SaveIncompleteOrder_OrderControllerCreateNewOrderIsCalled()
         {
             _uut.SaveIncompleteOrder();
-            _orderctrl.Received(2).CreateNewOrder();
+            _orderctrl.Received(1).SaveOrder();
         }
     }
 }

@@ -19,6 +19,10 @@ namespace CashRegister.Test.Unit.Orders
         public void SetUp()
         {
             _dao = Substitute.For<IOrderDao>();
+
+            _dao.When(p => p.AddOrderLine(Arg.Any<OrderLine>())).Do(p => { p.Arg<OrderLine>().SalesOrder.Lines.Add(p.Arg<OrderLine>()); });
+            _dao.When(p => p.ClearOrder(Arg.Any<SalesOrder>())).Do(p => { p.Arg<SalesOrder>().Lines.Clear(); });
+
             _uut = new OrderController(_dao);
         }
 
@@ -29,38 +33,34 @@ namespace CashRegister.Test.Unit.Orders
         }
 
         [Test]
-        public void Ctor_CurrentOrderIsNotInitialized_IsNotInitialized()
+        public void Ctor_CurrentOrderIsInitialized_IsInitialized()
         {
-            Assert.That(_uut.CurrentOrder, Is.EqualTo(null));
+            Assert.That(_uut.CurrentOrder, Is.InstanceOf<SalesOrder>());
         }
 
         [Test]
         public void CreateOrder_CreatesNewSalesOrder_SalesOrderIsCreated()
         {
-            _uut.CreateNewOrder();
             Assert.That(_uut.CurrentOrder, Is.TypeOf<SalesOrder>());
         }
 
         [Test]
         public void CreateOrder_CreatesNewSalesOrder_OrderLineListIsCreated()
         {
-            _uut.CreateNewOrder();
             Assert.That(_uut.CurrentOrder.Lines, Is.TypeOf<List<OrderLine>>());
         }
 
         [Test]
         public void CreateOrder_CreatesNewSalesOrder_TransactionListIsCreated()
         {
-            _uut.CreateNewOrder();
             Assert.That(_uut.CurrentOrder.Transactions, Is.TypeOf<List<Transaction>>());
         }
 
         [Test]
         public void CreateOrder_CalledTwoTimesOrderIsStashed_SalesOrderIsStashed()
         {
-            _uut.CreateNewOrder();
             var uutOrder = _uut.CurrentOrder;
-            _uut.CreateNewOrder();
+            _uut.StashCurrentOrder();
 
             Assert.That(_uut.StashedOrders, Contains.Item(uutOrder));
         }
@@ -68,9 +68,8 @@ namespace CashRegister.Test.Unit.Orders
         [Test]
         public void CreateOrder_CalledTwoTimesOrderIsStashed_StashedOrderIsNotEqualsToCurrentOrder()
         {
-            _uut.CreateNewOrder();
             var uutOrder = _uut.CurrentOrder;
-            _uut.CreateNewOrder();
+            _uut.SaveOrder();
 
             Assert.That(_uut.CurrentOrder, Is.Not.EqualTo(uutOrder));
         }
@@ -78,7 +77,6 @@ namespace CashRegister.Test.Unit.Orders
         [Test]
         public void SaveOrder_WhenNewOrderOrderDaoInsertIsCalled_OrderDaoInsertIsCalled()
         {
-            _uut.CreateNewOrder();
             var uutOrder = _uut.CurrentOrder;
             _uut.SaveOrder();
 
@@ -86,26 +84,16 @@ namespace CashRegister.Test.Unit.Orders
         }
 
         [Test]
-        public void UpdateOrder_CurrentOrderIsUpdated_OrderDaoUpdateIsCalledIsWithCurrentOrder()
+        public void SaveOrder_CurrentOrderIsSaved_CurrentOrderIsNew()
         {
-            _uut.CreateNewOrder();
-            var uutOrder = _uut.CurrentOrder;
-            _uut.UpdateOrder();
-            _dao.Received().Update(Arg.Is(uutOrder));
-        }
-
-        [Test]
-        public void SaveOrder_CurrentOrderIsSaved_CurrentOrderIsNull()
-        {
-            _uut.CreateNewOrder();
+            var order = _uut.CurrentOrder;
             _uut.SaveOrder();
-            Assert.That(_uut.CurrentOrder, Is.EqualTo(null));
+            Assert.That(_uut.CurrentOrder, Is.Not.EqualTo(order));
         }
 
         [Test]
         public void AddProduct_AddProductWithPrice18Quantity3ToCurrentOrder_TotalIs3Times18()
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
 
             _uut.AddProduct(beer, 3);
@@ -115,7 +103,6 @@ namespace CashRegister.Test.Unit.Orders
         [Test]
         public void AddProduct_AddProductWithPrice18QuantityMinus3ToCurrentOrder_TotalIsMinus3Times18()
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
 
             _uut.AddProduct(beer, -3);
@@ -125,7 +112,6 @@ namespace CashRegister.Test.Unit.Orders
         [Test]
         public void AddProduct_AddProduct2TimesWithPrice18Quantity3ToCurrentOrder_TotalIs2Times3Times18()
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
 
             _uut.AddProduct(beer, 3);
@@ -136,7 +122,6 @@ namespace CashRegister.Test.Unit.Orders
         [Test]
         public void AddProduct_AddProductWithPrice18Quantity3ThenAddProductWithPrice18QuantityMinus3ToCurrentOrder_TotalIs0()
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
 
             _uut.AddProduct(beer, 3);
@@ -147,7 +132,6 @@ namespace CashRegister.Test.Unit.Orders
         [Test, TestCaseSource(nameof(_oddNumbers))]
         public void AddProduct_SetProductQuantityN_QuantityIsN(int n)
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
 
             _uut.AddProduct(beer, n);
@@ -159,7 +143,6 @@ namespace CashRegister.Test.Unit.Orders
         [Test]
         public void AddProduct_AddProductToOrderLine_OrderLineIsProduct()
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
 
             _uut.AddProduct(beer, 3);
@@ -169,21 +152,8 @@ namespace CashRegister.Test.Unit.Orders
         }
 
         [Test]
-        public void AddTransaction_AddsATransactionToTheSalesOrder_TransactionIsAddedToTheSalesOrder()
-        {
-            _uut.CreateNewOrder();
-            var transactionOne = new Transaction() {Price = 120};
-            _uut.AddTransaction(transactionOne);
-
-            var uutTransactions = _uut.CurrentOrder.Transactions.ToList();
-
-            Assert.That(uutTransactions[0], Is.EqualTo(transactionOne));
-        }
-
-        [Test]
         public void ClearOrder_ClearsCurrentOrderLines_CurrentOrderLinesIsCleared()
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
             
             _uut.AddProduct(beer, 3);
@@ -191,17 +161,19 @@ namespace CashRegister.Test.Unit.Orders
             Assert.That(_uut.CurrentOrder.Lines, Is.Empty);
         }
 
+        
         [Test]
         public void MissingAmount_CurrentOrderIsPopulatedWith3Times18ProductAndTransactionFor18IsDone_MissingAmountIs36()
         {
-            _uut.CreateNewOrder();
             var beer = new Product("Øl", 18, true);
 
             _uut.AddProduct(beer, 3);
-            _uut.AddTransaction(new Transaction() {Price = 18});
+
+            _uut.CurrentOrder.Transactions.Add(new Transaction() {Price = 18});
             
             Assert.That(_uut.MissingAmount(), Is.EqualTo(36));
         }
+        
 
         [Test]
         public void MissingAmount_CurrentOrderIsEmpty_MissingAmountIs0()
@@ -224,18 +196,19 @@ namespace CashRegister.Test.Unit.Orders
         }
 
         [Test]
-        public void GetStashedOrder_GetAStashedOrderThatDoesNotExist_CurrentOrderIsNull()
+        public void GetStashedOrder_GetAStashedOrderThatDoesNotExist_CurrentOrderIsSame()
         {
+            var order = _uut.CurrentOrder;
             _uut.GetStashedOrder(1);
-            Assert.That(_uut.CurrentOrder, Is.EqualTo(null));
+            Assert.That(_uut.CurrentOrder, Is.EqualTo(order));
         }
 
         [Test]
         public void GetStashedOrder_GetAStashedOrder_CurrentOrderIsStashedOrder()
         {
-            _uut.CreateNewOrder();
             var orderCompare = _uut.CurrentOrder;
-            _uut.CreateNewOrder();
+            _uut.StashCurrentOrder();
+
             _uut.GetStashedOrder(0);
             
             Assert.That(_uut.CurrentOrder, Is.EqualTo(orderCompare));

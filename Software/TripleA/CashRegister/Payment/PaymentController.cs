@@ -22,8 +22,6 @@ namespace CashRegister.Payment
         private readonly IPaymentDao _paymentDao;
         private ICashDrawer CashDrawer { get; }
 
-        private IReceiptController ReceiptController { get; }
-
 
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptors => PaymentProviders;
 

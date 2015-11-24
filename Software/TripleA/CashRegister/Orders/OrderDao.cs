@@ -70,6 +70,30 @@ namespace CashRegister.Orders
             }
         }
 
+        public virtual void AddOrderLine(OrderLine line)
+        {
+            using (var uow = _dalFacade.UnitOfWork)
+            {
+                uow.SalesOrderRepository.Update(line.SalesOrder);
+                uow.OrderLineRepository.Insert(line);
+                uow.Save();
+            }
+        }
+
+        public void ClearOrder(SalesOrder order)
+        {
+            using (var uow = _dalFacade.UnitOfWork)
+            {
+                uow.SalesOrderRepository.Update(order);
+                foreach (var orderLine in order.Lines.ToList())
+                {
+                    order.Lines.Remove(orderLine);
+                    uow.OrderLineRepository.Delete(orderLine);
+                }
+                uow.Save();
+            }
+        }
+
         /// <summary>
         ///     Get a list of the last n orders
         /// </summary>

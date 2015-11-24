@@ -44,6 +44,8 @@ namespace CashRegister.Program
             IProductDao pd = new ProductDao(dalFacade);
             IProductController pc = new ProductController(pd);
 
+            SalesOrder o;
+
             using (var uow = dalFacade.UnitOfWork)
             {
                 var d = new Discount
@@ -54,13 +56,16 @@ namespace CashRegister.Program
                 uow.DiscountRepository.Insert(d);
                 uow.Save();
 
-                var o = new SalesOrder
+                o = new SalesOrder
                 {
                     Date = DateTime.Now,
                     Status = OrderStatus.Created,
-                    Total = 20,
                 };
                 uow.SalesOrderRepository.Insert(o);
+
+            }
+            using (var uow = dalFacade.UnitOfWork)
+            {
 
                 var t = new Transaction
                 {

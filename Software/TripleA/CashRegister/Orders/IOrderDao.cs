@@ -51,5 +51,9 @@ namespace CashRegister.Orders
         /// </summary>
         /// <returns>The id of the last order</returns>
         long LastId { get; }
-    }
+
+        void AddOrderLine(OrderLine line);
+
+        void ClearOrder(SalesOrder order);
+	}
 }
