@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace CashRegister.Models
 {
     using System.Collections.Generic;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using CashRegister.CashDrawers;
@@ -15,6 +16,7 @@ using CashRegister.Receipts;
 
 namespace CashRegister.Sales
 {
+    [ExcludeFromCodeCoverage]
     public static class SalesFactory
     {
         public static ISalesController GuiSalesController
@@ -85,15 +87,6 @@ namespace CashRegister.Sales
         public void RemoveProductFromOrder(Product product, int quantity, Discount discount)
         {
             _orderController.AddProduct(product, -quantity, discount);
-        }
-
-        /// <summary>
-        ///     clear SalesOrder
-        /// </summary>
-        public void ClearOrder()
-        {
-            _orderController.ClearOrder();
-            OnPropertyChanged();
         }
 
         /// <summary>

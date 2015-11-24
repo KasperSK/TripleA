@@ -35,11 +35,6 @@ namespace CashRegister.Sales
         void CreateAndPrintReceipt();
 
         /// <summary>
-        /// clear SalesOrder
-        /// </summary>
-        void ClearOrder();
-
-        /// <summary>
         /// Cancel transactions, clear SalesOrder
         /// </summary>
         void CancelOrder();

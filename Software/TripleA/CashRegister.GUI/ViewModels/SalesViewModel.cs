@@ -81,7 +81,7 @@ namespace CashRegister.GUI.ViewModels
 
         private void AbortCommandExecute()
         {
-            _salesController.ClearOrder();
+            _salesController.CancelOrder();
         }
     }
 }
