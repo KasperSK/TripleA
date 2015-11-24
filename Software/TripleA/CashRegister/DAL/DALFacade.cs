@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Common;
 using CashRegister.Database;
 
 namespace CashRegister.Dal
@@ -7,7 +8,7 @@ namespace CashRegister.Dal
     {
         private CashRegisterContext _context;
         private bool _disposed;
-        private UnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
 
         public IUnitOfWork UnitOfWork
         {
@@ -16,13 +17,13 @@ namespace CashRegister.Dal
                 if (_unitOfWork != null)
                     throw new InvalidOperationException("The unit of work is in use");
 
-                _context = new CashRegisterContext();
+                _context = DbConnection != null ? new CashRegisterContext(DbConnection, null) : new CashRegisterContext();
                 _unitOfWork = new UnitOfWork(_context, this);
                 return _unitOfWork;
             }
         }
 
-        public string DatabaseName { get; set; }
+        public DbConnection DbConnection { get; set; }
 
         public void Dispose()
         {
@@ -43,7 +44,6 @@ namespace CashRegister.Dal
                 if (disposing)
                 {
                     _unitOfWork.Dispose();
-                    _context.Dispose();
                 }
                 _disposed = true;
             }

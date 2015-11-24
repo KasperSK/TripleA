@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Data.Common;
 
 namespace CashRegister.Dal
 {
     public interface IDalFacade : IDisposable
     {
-        string DatabaseName { get; set; }
+        DbConnection DbConnection { get; set; }
         IUnitOfWork UnitOfWork { get; }
+        void ReturnUnitOfWork();
     }
 }

@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Data.Entity;
 using CashRegister.Database.Configurations;
 using CashRegister.Models;
@@ -15,6 +16,12 @@ namespace CashRegister.Database
             : base("name=CashRegisterContext")
         {
             System.Data.Entity.Database.SetInitializer(seed ?? new CreateDatabaseIfNotExists<CashRegisterContext>());
+        }
+
+        public CashRegisterContext(DbConnection connection, IDatabaseInitializer<CashRegisterContext> seed)
+            : base(connection, true)
+        {
+            System.Data.Entity.Database.SetInitializer(seed ?? new  CreateDatabaseIfNotExists<CashRegisterContext>());
         }
 
         public virtual DbSet<Discount> Discounts { get; set; }

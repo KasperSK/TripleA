@@ -7,7 +7,7 @@ namespace CashRegister.Dal
     public class UnitOfWork : IUnitOfWork
     {
         private readonly CashRegisterContext _context;
-        private readonly DalFacade _controller;
+        private readonly IDalFacade _controller;
         private IRepository<Discount> _discountRepository;
 
         private bool _disposed;
@@ -19,12 +19,11 @@ namespace CashRegister.Dal
         private IRepository<SalesOrder> _salesOrderRepository;
         private IRepository<Transaction> _transactionRepository;
 
-        public UnitOfWork(CashRegisterContext context, DalFacade controller)
+        public UnitOfWork(CashRegisterContext context, IDalFacade controller)
         {
             _context = context;
             _controller = controller;
         }
-
 
         public IRepository<Discount> DiscountRepository
             => _discountRepository ?? (_discountRepository = new Repository<Discount>(_context));
