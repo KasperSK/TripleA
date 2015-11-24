@@ -1,4 +1,5 @@
-﻿using CashRegister.Dal;
+﻿using System;
+using CashRegister.Dal;
 using CashRegister.Models;
 
 namespace CashRegister.Payment
@@ -28,6 +29,7 @@ namespace CashRegister.Payment
         {
             using (var uow = _dalFacade.UnitOfWork)
             {
+                uow.SalesOrderRepository.Update(transaction.SalesOrder);
                 uow.TransactionRepository.Insert(transaction);
                 uow.Save();
             }

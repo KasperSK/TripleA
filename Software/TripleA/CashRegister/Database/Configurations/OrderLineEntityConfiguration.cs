@@ -22,8 +22,7 @@ namespace CashRegister.Database.Configurations
             Property(p => p.DiscountValue)
                 .IsRequired();
 
-            HasRequired(e => e.SalesOrder)
-                .WithMany(e => e.Lines);
+            HasRequired(e => e.SalesOrder);
         }
     }
 }

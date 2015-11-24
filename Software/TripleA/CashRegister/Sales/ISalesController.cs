@@ -40,11 +40,6 @@ namespace CashRegister.Sales
         void ClearOrder();
 
         /// <summary>
-        /// Starts a new SalesOrder with a new id
-        /// </summary>
-        void StartNewOrder();
-
-        /// <summary>
         /// Cancel transactions, clear SalesOrder
         /// </summary>
         void CancelOrder();

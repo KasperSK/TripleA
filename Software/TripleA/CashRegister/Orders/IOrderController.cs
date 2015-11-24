@@ -14,19 +14,9 @@ namespace CashRegister.Orders
         IReadOnlyCollection<SalesOrder> StashedOrders { get; }
 
         /// <summary>
-        /// Creates a new order and sets it as the current order.
-        /// </summary>
-        void CreateNewOrder();
-
-        /// <summary>
         /// Saves the current order.
         /// </summary>
         void SaveOrder();
-
-        /// <summary>
-        /// Updates a already existing current order
-        /// </summary>
-        void UpdateOrder();
 
         /// <summary>
         /// Clears the order lines from the current order.
@@ -43,11 +33,7 @@ namespace CashRegister.Orders
         void AddProduct(Product product, int quantity);
         void AddProduct(Product product, int quantity, Discount discount);
 
-        /// <summary>
-        /// Adds a transcation to the current order.
-        /// </summary>
-        /// <param name="transaction">Transaction to be added to the order</param>
-        void AddTransaction(Transaction transaction);
+        void StashCurrentOrder();
 
         /// <summary>
         /// Retrieves a stashed order

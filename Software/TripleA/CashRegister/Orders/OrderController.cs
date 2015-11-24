@@ -18,34 +18,26 @@ namespace CashRegister.Orders
 	    public OrderController (IOrderDao orderDao)
 	    {
 	        OrderDao = orderDao;
+            CreateNewOrder();
             _stashedOrders = new List<SalesOrder>();
 	    }
 
-        public void CreateNewOrder()
+        private void CreateNewOrder()
         {
-            StashCurrentOrder();
-            CurrentOrder = new SalesOrder {Status = OrderStatus.Created };
+            CurrentOrder = new SalesOrder
+            {
+                Status = OrderStatus.Created,
+                Date = DateTime.Now,
+            };
+            OrderDao.Insert(CurrentOrder);
         }
 
         public void SaveOrder()
 	    {
-            if (CurrentOrder == null)
-                return;
-
             CurrentOrder.Date = DateTime.Now;
-            OrderDao.Insert(CurrentOrder);
-            
-            CurrentOrder = null;
-	    }
-
-        public void UpdateOrder()
-        {
-            if (CurrentOrder == null)
-                return;
-
             OrderDao.Update(CurrentOrder);
-
-            CurrentOrder = null;
+            
+            CreateNewOrder();
         }
 
         public void GetStashedOrder(int id)
@@ -59,21 +51,18 @@ namespace CashRegister.Orders
             _stashedOrders.RemoveAt(id);
         }
 
-        private void StashCurrentOrder()
+        public void StashCurrentOrder()
         {
-            if (CurrentOrder != null)
-                _stashedOrders.Add(CurrentOrder);
-
-            CurrentOrder = null;
+            _stashedOrders.Add(CurrentOrder);
+            CreateNewOrder();
         }
 
         public void ClearOrder()
         {
-            if (CurrentOrder == null)
-                return;
 
-            CurrentOrder.Lines.Clear();
-            CurrentOrder.Total=0;
+            CurrentOrder.Date = DateTime.Now;
+            OrderDao.ClearOrder(CurrentOrder);
+
         }
 
         // Fixes: Default parameters should not be used
@@ -90,11 +79,9 @@ namespace CashRegister.Orders
 
         public void AddProduct(Product product, int quantity, Discount discount)
         {
-            if (CurrentOrder == null)
-                return;
-
             var orderLine = new OrderLine
             {
+                SalesOrder = CurrentOrder,
                 Product = product,
                 Quantity = quantity,
                 Discount = discount,
@@ -102,17 +89,9 @@ namespace CashRegister.Orders
                 DiscountValue = (discount == null ? 0 : discount.Percent / 100 * product.Price)
             };
 
-            CurrentOrder.Lines.Add(orderLine);
-            CurrentOrder.Total += (orderLine.UnitPrice - orderLine.DiscountValue) * orderLine.Quantity;
+            OrderDao.AddOrderLine(orderLine);
         }
 
-        public void AddTransaction(Transaction transaction)
-        {
-            if (CurrentOrder == null)
-                return;
-
-            CurrentOrder.Transactions.Add(transaction);
-        }
 
         public long MissingAmount()
         {
