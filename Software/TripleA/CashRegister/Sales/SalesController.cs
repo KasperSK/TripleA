@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using CashRegister.CashDrawers;
 using CashRegister.Dal;
 using CashRegister.Log;
@@ -21,7 +22,10 @@ namespace CashRegister.Sales
                 var dalfacade = new DalFacade();
                 var productController = new ProductController(new ProductDao(dalfacade));
                 var receiptController = new ReceiptController(new ReceiptPrinter());
-                var paymentController = new PaymentController(new List<PaymentProvider>() {new CashPayment(0), new MobilePay(), new Nets()}, receiptController, new PaymentDao(dalfacade), new CashDrawer());
+                var paymentController =
+                    new PaymentController(
+                        new List<PaymentProvider>() {new CashPayment(0), new MobilePay(), new Nets()}, receiptController,
+                        new PaymentDao(dalfacade), new CashDrawer());
                 var orderController = new OrderController(new OrderDao(dalfacade));
                 return new SalesController(orderController, receiptController, productController, paymentController);
             }
@@ -43,7 +47,8 @@ namespace CashRegister.Sales
         /// <summary>
         ///     Contructor - Calls StartNewOrder()
         /// </summary>
-        public SalesController(IOrderController orderController, IReceiptController receiptController, IProductController productController, IPaymentController paymentController)
+        public SalesController(IOrderController orderController, IReceiptController receiptController,
+            IProductController productController, IPaymentController paymentController)
         {
             _orderController = orderController;
             _receiptController = receiptController;
@@ -53,15 +58,13 @@ namespace CashRegister.Sales
             StartNewOrder();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         ///     Add a product to an SalesOrder
         /// </summary>
         public void AddProductToOrder(Product product, int quantity, Discount discount)
         {
             _orderController.AddProduct(product, quantity, discount);
-            OnPropertyChanged("Product Added");
+            OnPropertyChanged();
             _logger.Debug("Product Added");
         }
 
@@ -148,7 +151,7 @@ namespace CashRegister.Sales
         ///     Gets a list of all incomplete orders by default current data (or within a certain date or time)
         /// </summary>
         public IReadOnlyCollection<SalesOrder> IncompleteOrders => _orderController.StashedOrders;
-        
+
 
         /// <summary>
         ///     Get an incomplete order
@@ -172,7 +175,7 @@ namespace CashRegister.Sales
             if (paymentCompleted)
             {
                 transaction.Description = "Transaction completed";
-                return transaction;  
+                return transaction;
             }
             transaction.Description = "Transaction failed";
 
@@ -188,27 +191,16 @@ namespace CashRegister.Sales
         /// <returns></returns>
         public IReadOnlyCollection<ProductTab> ProductTabs => _productController.ProductTabs;
 
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs eventArgs)
-        {
-            var handler = PropertyChanged;
-            handler?.Invoke(this, eventArgs);
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
-        }
-
         /// <summary>
         ///     Gets the PaymentProviderDescriptor
         /// </summary>
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor => _paymentController.PaymentProviderDescriptors;
-        
-/*
-        public void TransactionComplete(Transaction transaction)
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            // FIX What is wrong
-            _orderController.MissingAmount();
-        }*/
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
