@@ -4,6 +4,9 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using log4net;
+
 namespace CashRegister.Log
 {
     public abstract class LogFactory
@@ -14,13 +17,13 @@ namespace CashRegister.Log
 		/// <param name="type">Insert the class that is using the logger ex typeof(ProductController)</param>
 		public static ILogger GetLogger(System.Type type)
 		{
-			return new Logger(type);
+			return new Logger(LogManager.GetLogger(type));
 		}
 
-		/// <summary>
-		/// Run once in start of the program. Is used to configure how the logger shall output the log
-		/// </summary>
-		public static void Configure()
+        /// <summary>
+        /// Run once in start of the program. Is used to configure how the logger shall output the log
+        /// </summary>
+        public static void Configure()
 		{
 			Logger.Configure();
 		}

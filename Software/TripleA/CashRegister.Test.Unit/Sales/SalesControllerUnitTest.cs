@@ -108,25 +108,9 @@ namespace CashRegister.Test.Unit.Sales
             _orderctrl.SaveOrder();
         }
 
-        /*
-        [Test]
-        public void SalesController_StartPayment_Order()
-        {      
 
-           // AddingProductToOrder(_product, _amountToPay, _discount);      
-            _uut.StartPayment(_amountToPay, _description, _paymentType);
-            _orderctrl.Received(1).AddTransaction(Arg.Any<Transaction>());
-        }
-        */
+           
 
-        /*
-        [Test]
-        public void SalesController_StartPayment_OrderControllerAddTransactionIsCalled()
-        {
-            _uut.StartPayment(_amountToPay, _description, _paymentType);
-            _orderctrl.Received(1).AddTransaction(Arg.Any<Transaction>());
-        }
-        */
 
         [Test]
         public void SalesController_StartPayment_OrderControllerSaveOrderIsCalled()
@@ -168,10 +152,19 @@ namespace CashRegister.Test.Unit.Sales
         }
 
         [Test]
-        public void SalesController_ClearOrder_OrderControllerClearOrderIsCalled()
+        public void SalesController_ClearEmptyOrder_OrderControllerClearOrderIsCalled()
         {
-            _uut.ClearOrder();
+            _uut.CancelOrder();
             _orderctrl.Received(1).ClearOrder();
+        }
+
+        [Test]
+        public void SalesController_ClearOrderWithTransactions_OrderControllerSaveOrderIsCalled()
+        {
+            _uut.CurrentOrder.Transactions.Add(new Transaction());
+            Console.WriteLine(@"Count: " + _uut.CurrentOrder.Transactions.Count);
+            _uut.CancelOrder();
+            _orderctrl.Received(1).SaveOrder();
         }
 
         [Test]

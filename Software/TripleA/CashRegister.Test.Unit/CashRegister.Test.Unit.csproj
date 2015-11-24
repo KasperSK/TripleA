@@ -76,6 +76,7 @@
     <Compile Include="Dal\DalFacadeUnitTest.cs" />
     <Compile Include="Dal\RepositoryUnitTest.cs" />
     <Compile Include="Dal\UnitOfWorkUnitTest.cs" />
+    <Compile Include="Logger\LoggerUnitTests.cs" />
     <Compile Include="Orders\OrderControllerUnitTest.cs" />
     <Compile Include="Payment\CashPaymentUnitTest.cs" />
     <Compile Include="Payment\PaymentControllerunitTest.cs" />
