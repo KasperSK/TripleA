@@ -1,0 +1,484 @@
+﻿@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/app")
+
+    <script>
+        $('#myDropdown .dropdown-menu').on({
+            "click": function (e) {
+                e.stopPropagation();
+            }
+        });
+    </script>
+}
+
+<h2>Settings</h2>
+<a href="#ProductTabs" data-toggle="collapse">Product Tabs</a>
+<div id="ProductTabs" class="collapse">
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Prouct tabs view-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Product Tabs</h2>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled" data-bind="foreach: ProductTabs">
+                                <li class="myList">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong><span data-bind="text: Name"></span></strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div align="right">
+                                                <small><a href="#" data-bind="click: $parent.getProductTabsDetails">Details</a></small>
+                                                <small><a href="#" data-bind="click: $parent.deleteProductTab">Delete</a></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" data-bind="visible: error">
+                        <p data-bind="text: error"></p>
+                    </div>
+                </div>
+
+                <!-- ko if:ProductTabsDetails() -->
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Detail</h2>
+                        </div>
+                        <table class="table">
+                            <tr><td>Id</td><td data-bind="text: ProductTabsDetails().Id"></td></tr>
+                            <tr><td>Name</td><td data-bind="text: ProductTabsDetails().Name"></td></tr>
+                            <tr><td>Active</td><td data-bind="text: ProductTabsDetails().Active"></td></tr>
+                            <tr><td>Color</td><td data-bind="text: ProductTabsDetails().Color"></td></tr>
+                            <tr><td>Priority</td><td data-bind="text: ProductTabsDetails().Priority"></td></tr>
+                            <tr>
+                                <td>Product types</td>
+                                <td>
+                                    <ul class="list-unstyled" data-bind="foreach: ProductTypeNames">
+                                        <li data-bind="text: Name"></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!--Add Product-->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Add ProductTab</h2>
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" data-bind="submit: addProductTab">
+                        <div class="form-group" data-bind="with: newProductTab">
+
+                            <label for="inputName" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9" row-split>
+                                <input type="text" class="form-control" id="inputName" data-bind="value:Name"/>
+                            </div>
+
+                            <label for="inputColor" class="col-sm-3 control-label">Color</label>
+                            <div class="col-sm-9 row-split">
+                                <input type="text" class="form-control" id="inputColor" data-bind="value:Color"/>
+                            </div>
+
+                            <label for="inputPriority" class="col-sm-3 control-label">Priority</label>
+                            <div class="col-sm-9 row-split">
+                                <input type="number" class="form-control" id="inputPriority" data-bind="value:Priority"/>
+                            </div>
+
+                            <label for="inputActive" class="col-sm-4 control-label">Active</label>
+                            <div class="radio col-sm-4">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="False" data-bind="checked: Active" checked> No
+                                </label>
+                            </div>
+                            <div class="radio col-sm-4">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="True" data-bind="checked: Active"> Yes
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPriority" class="col-sm-3 control-label">ProductTypes</label>
+                            <div class="col-sm-9">
+                                <div class="input-group-btn" id="myDropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <select data-bind="options: ProductTypes, optionsText: 'Name', selectedOptions: newProductTab.ProductTypes" size="15" multiple="true"></select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+
+<a href="#ProductTypes" data-toggle="collapse">Product Types</a>
+<div id="ProductTypes" class="collapse">
+    <br/>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Prouct tabs view-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Product Types</h2>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled" data-bind="foreach: ProductTypes">
+                                <li class="myList">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong><span data-bind="text: Name"></span></strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div align="right">
+                                                <small><a href="#" data-bind="click: $parent.getProductTypesDetails">Details</a></small>
+                                                <small><a href="#" data-bind="click: $parent.deleteProductType">Delete</a></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" data-bind="visible: error">
+                        <p data-bind="text: error"></p>
+                    </div>
+                </div>
+
+                <!-- ko if:ProductTypesDetails() -->
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Detail</h2>
+                        </div>
+                        <table class="table">
+                            <tr><td>Id</td><td data-bind="text: ProductTypesDetails().Id"></td></tr>
+                            <tr><td>Name</td><td data-bind="text: ProductTypesDetails().Name"></td></tr>
+                            <tr><td>Active</td><td data-bind="text: ProductTypesDetails().Price"></td></tr>
+                            <tr><td>Color</td><td data-bind="text: ProductTypesDetails().Color"></td></tr>
+                            <tr>
+                                <td>Product Groups</td>
+                                <td>
+                                    <ul class="list-unstyled" data-bind="foreach: ProductGroupNames">
+                                        <li data-bind="text: Name"></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+            </div>
+        </div>
+        <!--Add Product-->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Add ProductType</h2>
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" data-bind="submit: addProductType">
+                        <div class="form-group" data-bind="with: newProductType">
+
+                            <label for="inputName" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9" row-split>
+                                <input type="text" class="form-control" id="inputName" data-bind="value:Name"/>
+                            </div>
+
+                            <label for="inputColor" class="col-sm-3 control-label">Color</label>
+                            <div class="col-sm-9 row-split">
+                                <input type="text" class="form-control" id="inputColor" data-bind="value:Color"/>
+                            </div>
+
+                            <label for="inputPriority" class="col-sm-3 control-label">Price (kr)</label>
+                            <div class="col-sm-9 row-split">
+                                <input type="number" class="form-control" id="inputPrice" data-bind="value:Price"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputProductGroup" class="col-sm-3 control-label">Product Group</label>
+                            <div class="col-sm-9">
+                                <div class="input-group-btn" id="myDropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <select data-bind="options: ProductGroups, optionsText: 'Name', selectedOptions: newProductType.ProductGroups" size="15" multiple="true"></select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+
+<a href="#ProductGroups" data-toggle="collapse">Product Groups</a>
+<div id="ProductGroups" class="collapse">
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Prouct tabs view-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Product Groups</h2>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled" data-bind="foreach: ProductGroups">
+                                <li class="myList">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong><span data-bind="text: Name"></span></strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div align="right">
+                                                <small><a href="#" data-bind="click: $parent.getProductGroupsDetails">Details</a></small>
+                                                <small><a href="#" data-bind="click: $parent.deleteProductGroup">Delete</a></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" data-bind="visible: error">
+                        <p data-bind="text: error"></p>
+                    </div>
+                </div>
+
+                <!-- ko if:ProductGroupsDetails() -->
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Detail</h2>
+                        </div>
+                        <table class="table">
+                            <tr><td>Id</td><td data-bind="text: ProductGroupsDetails().Id"></td></tr>
+                            <tr><td>Name</td><td data-bind="text: ProductGroupsDetails().Name"></td></tr>
+                            <tr>
+                                <td>Products</td>
+                                <td>
+                                    <ul class="list-unstyled" data-bind="foreach: ProductNames">
+                                        <li data-bind="text: Name"></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+            </div>
+        </div>
+        <!--Add Product-->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Add ProductGroup</h2>
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" data-bind="submit: addProductGroup">
+                        <div class="form-group" data-bind="with: newProductGroup">
+
+                            <label for="inputName" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9" row-split>
+                                <input type="text" class="form-control" id="inputName" data-bind="value:Name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputProductGroup" class="col-sm-3 control-label">Product</label>
+                            <div class="col-sm-9">
+                                <div class="input-group-btn" id="myDropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <select data-bind="options: Products, optionsText: 'Name', selectedOptions: newProductGroup.Products" size="15" multiple="true"></select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br/>
+
+<a href="#Product" data-toggle="collapse">Products</a>
+<div id="Product" class="collapse">
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Prouct tabs view-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Product Types</h2>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled" data-bind="foreach: Products">
+                                <li class="myList">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong><span data-bind="text: Name"></span></strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div align="right">
+                                                <small><a href="#" data-bind="click: $parent.getProductsDetail">Details</a></small>
+                                                <small><a href="#" data-bind="click: $parent.deleteProduct">Delete</a></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" data-bind="visible: error">
+                        <p data-bind="text: error"></p>
+                    </div>
+                </div>
+
+                <!-- ko if:ProductDetail() -->
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Detail</h2>
+                        </div>
+                        <table class="table">
+                            <tr><td>Id</td><td data-bind="text: ProductDetail().Id"></td></tr>
+                            <tr><td>Name</td><td data-bind="text: ProductDetail().Name"></td></tr>
+                            <tr><td>Price</td><td data-bind="text: ProductDetail().Price"></td></tr>
+                            <tr><td>Saleable</td><td data-bind="text: ProductDetail().Saleable"></td></tr>
+                            <tr>
+                                <td>Product Groups</td>
+                                <td>
+                                    <ul class="list-unstyled" data-bind="foreach: ProductGroupNames">
+                                        <li data-bind="text: Name"></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+            </div>
+        </div>
+        <!--Add Product-->
+       <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Add ProductType</h2>
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" data-bind="submit: addProduct">
+                        <div class="form-group" data-bind="with: newProduct">
+
+                            <label for="inputName" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9" row-split>
+                                <input type="text" class="form-control" id="inputName" data-bind="value:Name" />
+                            </div>
+
+                            <label for="inputPrice" class="col-sm-3 control-label">Price (kr)</label>
+                            <div class="col-sm-9 row-split">
+                                <input type="number" class="form-control" id="inputPrice" data-bind="value:Price"/>
+                            </div>
+
+                            <label for="inputActive" class="col-sm-4 control-label">Saleable</label>
+                            <div class="radio col-sm-4">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="False" data-bind="checked: Saleable" checked> No
+                                </label>
+                            </div>
+                            <div class="radio col-sm-4">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="True" data-bind="checked: Saleable"> Yes
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputProductGroup" class="col-sm-3 control-label">Product Group</label>
+                            <div class="col-sm-9">
+                                <div class="input-group-btn" id="myDropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <select data-bind="options: ProductGroups, optionsText: 'Name', selectedOptions: newProduct.ProductGroups" size="15" multiple="true"></select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<br />
+
+    <style>
+        .form-horizontal .control-label {
+            /* text-align:right; */
+            text-align: left;
+        }
+
+        .myList { border-bottom: 1px solid #dddddd; padding-bottom: 5px;}
+        li:last-child { border-bottom: none;}
+    </style>
