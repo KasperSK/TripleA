@@ -24,5 +24,13 @@ namespace CashRegister.GUI.Views
         {
             InitializeComponent();
         }
+
+        private void SalesView_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            FontSize = ((ActualHeight+ActualWidth)/40);
+
+            Total.FontSize = (ActualWidth + ActualHeight)/30;
+
+        }
     }
 }

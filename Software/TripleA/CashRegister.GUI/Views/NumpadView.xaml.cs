@@ -24,5 +24,10 @@ namespace CashRegister.GUI.Views
         {
             InitializeComponent();
         }
+
+        private void NumpadView_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            FontSize = (ActualWidth/18);
+        }
     }
 }
