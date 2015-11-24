@@ -31,8 +31,14 @@
         void Shutdown();
 
         /// <summary>
-        /// Balance the payment
+        /// Current Reveneu
+        /// </summary>
+        int Revenue { get; }
+
+        /// <summary>
+        /// Tally up (this resets the Revenue)
         /// </summary>
         int Tally();
-    }
+
+	}
 }

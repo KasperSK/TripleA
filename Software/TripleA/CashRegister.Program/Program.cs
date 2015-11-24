@@ -14,7 +14,7 @@ namespace CashRegister.Program
 
         static Program()
         {
-            LogFactory.Configure();
+            LogFactory.Configure("cash.log", true);
         }
 
         private static void Main(string[] args)

@@ -4,12 +4,27 @@ namespace CashRegister.Payment
 {
     public abstract class PaymentProvider : IPaymentProvider
     {
-        protected int Amount { get; set; }
-        public int StartChange { get; protected set; }
+        protected PaymentProvider()
+        {
+            Revenue = 0;
+        }
+
+        /// <summary>
+        ///     Balance the payment
+        /// </summary>
+        public int Revenue { get; protected set; }
+
+        public int Tally()
+        {
+            var revenue = Revenue;
+            Revenue = 0;
+            return revenue;
+        }
+
+
         public abstract PaymentType Type { get; }
         public abstract string Name { get; }
         public abstract string Description { get; }
-
 
         public abstract void Init();
 
@@ -22,14 +37,6 @@ namespace CashRegister.Payment
         ///     Writes the transaktionstatus
         /// </summary>
         public abstract bool TransactionStatus();
-
-        /// <summary>
-        ///     Balance the payment
-        /// </summary>
-        public virtual int Tally()
-        {
-            return Amount;
-        }
 
         /// <summary>
         ///     Shuts down the payment system

@@ -5,7 +5,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Text;
 using log4net;
+using log4net.Appender;
+using log4net.Config;
+using log4net.Layout;
 
 namespace CashRegister.Log
 {
@@ -23,9 +27,21 @@ namespace CashRegister.Log
         /// <summary>
         /// Run once in start of the program. Is used to configure how the logger shall output the log
         /// </summary>
-        public static void Configure()
-		{
-			Logger.Configure();
+        public static void Configure(string fileName, bool append)
+        {
+            var layout = new PatternLayout("%date [%thread] %-5level %logger - %message %newline");
+            layout.ActivateOptions();
+
+            var fileappender = new FileAppender
+            {
+                AppendToFile = append,
+                Encoding = Encoding.UTF8,
+                File = fileName,
+                Layout = layout
+            };
+            fileappender.ActivateOptions();
+
+            BasicConfigurator.Configure(fileappender);
 		}
 
 	}

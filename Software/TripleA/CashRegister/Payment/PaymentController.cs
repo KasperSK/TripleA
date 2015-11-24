@@ -1,33 +1,57 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CashRegister.CashDrawers;
+using CashRegister.Dal;
+using CashRegister.Log;
 using CashRegister.Models;
 using CashRegister.Receipts;
 
 namespace CashRegister.Payment
 {
+    public static class Factory
+    {
+        public static IPaymentController GetPaymentController(IReceiptController receiptController, IDalFacade dalFacade,
+            int startchange)
+        {
+            var providers = new List<PaymentProvider>
+            {
+                new CashPayment(),
+                new MobilePay(),
+                new Nets(),
+            };
+            return new PaymentController(providers, receiptController, new PaymentDao(dalFacade), new CashDrawer(startchange));
+        }
+    }
+
     public class PaymentController : IPaymentController
     {
-        public PaymentController(IReadOnlyCollection<PaymentProvider> paymentProviderList,
+        public PaymentController(IEnumerable<IPaymentProvider> paymentProviderList,
             IReceiptController receiptController, IPaymentDao paymentDao, ICashDrawer cashDrawer)
         {
             _receiptController = receiptController;
             _paymentDao = paymentDao;
             CashDrawer = cashDrawer;
-            PaymentProviders = paymentProviderList ?? new List<PaymentProvider> {new CashPayment(0)};
+            _paymentProviders = new List<IPaymentProvider>();
+            foreach (var paymentProvider in paymentProviderList)
+            {
+                _paymentProviders.Add(paymentProvider);
+            }
+            _paymentProviders.ForEach(e => e.Init());
         }
 
-        private IReadOnlyCollection<PaymentProvider> PaymentProviders { get; }
+        private readonly ILogger _logger = LogFactory.GetLogger(typeof(PaymentController));
+
+        private readonly List<IPaymentProvider> _paymentProviders;
         private readonly IReceiptController _receiptController;
         private readonly IPaymentDao _paymentDao;
         private ICashDrawer CashDrawer { get; }
 
 
-        public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptors => PaymentProviders;
+        public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptors => _paymentProviders;
 
         public bool ExecuteTransaction(Transaction transaction)
         {
-            var paymentProvider = PaymentProviders.First(p => p.Type == transaction.PaymentType);
+            var paymentProvider = _paymentProviders.First(p => p.Type == transaction.PaymentType);
 
             var transferSuccess = paymentProvider.TransferAmount(transaction.Price, transaction.Description);
             var transferStatus = paymentProvider.TransactionStatus();
@@ -55,18 +79,16 @@ namespace CashRegister.Payment
 
         public int Tally()
         {
-            var startChange = 0;
-            var total = 0;
-            foreach (var paymentProvider in PaymentProviders)
+            _logger.Debug("Reveneu");
+            foreach (var paymentProvider in _paymentProviders)
             {
-                if (paymentProvider.GetType() == typeof (CashPayment))
-                {
-                    startChange = paymentProvider.StartChange;
-                }
-                total += paymentProvider.Tally();
+                _logger.Debug(paymentProvider.Name + ": " + paymentProvider.Revenue);
             }
-
-            return total + startChange;
+            _logger.Debug("Total: " + _paymentProviders.Sum(p => p.Revenue));
+            _logger.Debug("");
+            _logger.Debug("Money in cashdrawer: " + (_paymentProviders.First(p => p.Type == PaymentType.Cash).Revenue +
+                          CashDrawer.CashChange));
+            return _paymentProviders.Sum(p => p.Tally()) + CashDrawer.CashChange;
         }
     }
 }

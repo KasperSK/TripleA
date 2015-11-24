@@ -2,6 +2,7 @@
 using System.Windows;
 using CashRegister.Database;
 using CashRegister.GUI.ViewModels;
+using CashRegister.Log;
 using CashRegister.Sales;
 
 namespace CashRegister.GUI
@@ -13,6 +14,7 @@ namespace CashRegister.GUI
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            LogFactory.Configure("cash.log", true);
             IDatabaseInitializer<CashRegisterContext> seed;
 
             // Empty
