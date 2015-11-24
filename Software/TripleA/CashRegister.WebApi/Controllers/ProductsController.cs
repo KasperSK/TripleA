@@ -45,17 +45,15 @@ namespace CashRegister.WebApi.Controllers
             //        ProductGroups = new List<ProductGroup>()
             //    }).SingleOrDefaultAsync(p => p.Id == id);
 
-            var pm =
-                await
-                    db.Products.Include(p => p.ProductGroups)
-                        .SingleOrDefaultAsync(p => p.Id == id);
+            var pm = await db.Products.Include(p => p.ProductGroups).SingleOrDefaultAsync(p => p.Id == id);
+
             if (pm == null)
             {
                 return NotFound();
             }
 
-            var productDto = new ProductDetailsDto {Id = pm.Id, Name = pm.Name, Price = pm.Price, Saleable = pm.Saleable, ProductGroups = new List<int>()};
-            pm.ProductGroups.ForEach(pg => productDto.ProductGroups.Add((int)pg.Id));
+            var productDto = new ProductDetailsDto {Id = pm.Id, Name = pm.Name, Price = pm.Price, Saleable = pm.Saleable, ProductGroups = new List<long>()};
+            pm.ProductGroups.ForEach(pg => productDto.ProductGroups.Add(pg.Id));
 
             return Ok(productDto);
         }

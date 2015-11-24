@@ -1,5 +1,5 @@
 using System.Data.Entity;
-using CashRegister.Database.Configurations;
+using CashRegister.WebApi.Models.ModelBuilder;
 
 
 namespace CashRegister.WebApi.Models

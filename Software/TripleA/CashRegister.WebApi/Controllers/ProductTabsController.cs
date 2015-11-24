@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CashRegister.WebApi.Models;
+using WebGrease.Css.Extensions;
 
 namespace CashRegister.WebApi.Controllers
 {
@@ -18,22 +19,34 @@ namespace CashRegister.WebApi.Controllers
         private CashRegisterContext db = new CashRegisterContext();
 
         // GET: api/ProductTabs
-        public IQueryable<ProductTab> GetProductTabs()
+        public IQueryable<ProductTabDto> GetProductTabs()
         {
-            return db.ProductTabs;
+            var productTab = from pt in db.ProductTabs
+                select
+                    new ProductTabDto
+                    {
+                        Id = pt.Id,
+                        Name = pt.Name,
+                        Priority = pt.Priority
+                    };
+            return productTab;
         }
 
         // GET: api/ProductTabs/5
         [ResponseType(typeof(ProductTab))]
         public async Task<IHttpActionResult> GetProductTab(int id)
         {
-            ProductTab productTab = await db.ProductTabs.FindAsync(id);
+            ProductTab productTab = await db.ProductTabs.Include(pt => pt.ProductTypes).SingleOrDefaultAsync(pt => pt.Id == id);
             if (productTab == null)
             {
                 return NotFound();
             }
 
-            return Ok(productTab);
+            var productTabDto = new ProductTabDetailsDto() {Active = productTab.Active, Color = productTab.Color, Id = productTab.Id, Name = productTab.Name, Priority = productTab.Priority, ProductTypes = new List<int>()};
+            
+            productTab.ProductTypes.ForEach(pt => productTabDto.ProductTypes.Add(pt.Id)); 
+
+            return Ok(productTabDto);
         }
 
         // PUT: api/ProductTabs/5

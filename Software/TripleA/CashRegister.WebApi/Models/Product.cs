@@ -47,6 +47,6 @@ namespace CashRegister.WebApi.Models
 
         public bool Saleable { get; set; }
 
-        public List<int> ProductGroups { get; set; }
+        public List<long> ProductGroups { get; set; }
     }
 }

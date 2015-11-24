@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using CashRegister.WebApi.Models;
 
-namespace CashRegister.Database.Configurations
+namespace CashRegister.WebApi.Models.ModelBuilder
 {
     public class OrderLineEntityConfiguration : EntityTypeConfiguration<OrderLine>
     {

@@ -23,4 +23,11 @@ namespace CashRegister.WebApi.Models
         public long Id { get; set; }
         public string Name { get; set; }
     }
+
+    public class ProductGroupDetailsDto
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public List<long> Products { get; set; }
+    }
 }

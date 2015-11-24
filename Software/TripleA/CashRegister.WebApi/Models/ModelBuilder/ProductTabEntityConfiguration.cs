@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
-using CashRegister.WebApi.Models;
 
-namespace CashRegister.Database.Configurations
+namespace CashRegister.WebApi.Models.ModelBuilder
 {
     public class ProductTabEntityConfiguration : EntityTypeConfiguration<ProductTab>
     {

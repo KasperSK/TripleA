@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CashRegister.WebApi.Models;
+using WebGrease.Css.Extensions;
 
 namespace CashRegister.WebApi.Controllers
 {
@@ -18,22 +19,33 @@ namespace CashRegister.WebApi.Controllers
         private CashRegisterContext db = new CashRegisterContext();
 
         // GET: api/ProductTypes
-        public IQueryable<ProductType> GetProductTypes()
+        public IQueryable<ProductTypeDto> GetProductTypes()
         {
-            return db.ProductTypes;
+            var productType = from pt in db.ProductTypes
+                select
+                    new ProductTypeDto()
+                    {
+                        Id = pt.Id,
+                        Name = pt.Name
+                    };
+            return productType;
         }
 
         // GET: api/ProductTypes/5
-        [ResponseType(typeof(ProductType))]
+        [ResponseType(typeof(ProductTypeDetailsDto))]
         public async Task<IHttpActionResult> GetProductType(int id)
         {
-            ProductType productType = await db.ProductTypes.FindAsync(id);
+            ProductType productType = await db.ProductTypes.Include(pt => pt.ProductGroups).SingleOrDefaultAsync(pt => pt.Id == id);
             if (productType == null)
             {
                 return NotFound();
             }
 
-            return Ok(productType);
+            var productTypeDto = new ProductTypeDetailsDto {Color = productType.Color, Name = productType.Name, Id = productType.Id, Price = productType.Price, ProductGroups = new List<long>()};
+
+            productType.ProductGroups.ForEach(pt => productTypeDto.ProductGroups.Add(pt.Id));
+
+            return Ok(productTypeDto);
         }
 
         // PUT: api/ProductTypes/5
