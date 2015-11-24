@@ -80,7 +80,7 @@ namespace CashRegister.Sales
         /// </summary>
         SalesOrder CurrentOrder { get; }
 
-        IEnumerable<OrderLine> CurentOrderLines { get; }
+        IEnumerable<OrderLine> CurrentOrderLines { get; }
         int CurrentOrderTotal { get; }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace CashRegister.GUI.ViewModels
 
         public void OnCurrentOrderChanged(object sender, PropertyChangedEventArgs e) //Happening when receiving event from SalesController
         {
-            var currentOrderLines = _salesController.CurentOrderLines; //Retrieving currentorder via SAlesController
+            var currentOrderLines = _salesController.CurrentOrderLines; //Retrieving currentorder via SAlesController
 
             ViewProducts.Clear();
 

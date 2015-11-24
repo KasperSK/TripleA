@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using CashRegister.Dal;
 using CashRegister.Log;
@@ -14,6 +12,7 @@ using CashRegister.Payment;
 using CashRegister.Printer;
 using CashRegister.Products;
 using CashRegister.Receipts;
+using JetBrains.Annotations;
 
 namespace CashRegister.Sales
 {
@@ -171,7 +170,7 @@ namespace CashRegister.Sales
 
         public SalesOrder CurrentOrder => _orderController.CurrentOrder;
 
-        IEnumerable<OrderLine> ISalesController.CurentOrderLines => CurrentOrder.Lines;
+        public IEnumerable<OrderLine> CurrentOrderLines => CurrentOrder.Lines;
 
         public int CurrentOrderTotal => CurrentOrder.Total;
 
@@ -197,7 +196,8 @@ namespace CashRegister.Sales
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
