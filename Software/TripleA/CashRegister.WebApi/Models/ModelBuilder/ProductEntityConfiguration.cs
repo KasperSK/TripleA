@@ -19,7 +19,7 @@ namespace CashRegister.WebApi.Models.ModelBuilder
                 .IsRequired();
 
             HasMany(e => e.ProductGroups)
-                .WithMany();
+                .WithMany(e => e.Products);
         }
     }
 }
