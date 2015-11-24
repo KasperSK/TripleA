@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:CashRegister.GUI">
     <Style x:Key="NormalButton" TargetType="{x:Type Button}">
 
-        <Setter Property="FontSize" Value="18"/>
+        
         
         <Setter Property="Template">
             <Setter.Value>

@@ -26,5 +26,14 @@ namespace CashRegister.GUI.Views
         {
             InitializeComponent();
         }
+
+        private void TabView_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
+
+            FontSize = (ActualWidth/40);
+
+
+        }
     }
 }

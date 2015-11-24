@@ -86,6 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receipts\ReceiptUnitTest.cs" />
     <Compile Include="Sales\SalesControllerUnitTest.cs" />
+    <Compile Include="ViewModels\SalesViewModelUnitTest.cs" />
     <Compile Include="ViewModels\NumpadUnitTest.cs" />
     <Compile Include="ViewModels\TabViewUnitTest.cs" />
   </ItemGroup>

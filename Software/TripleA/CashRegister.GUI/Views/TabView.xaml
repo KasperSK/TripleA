@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:CashRegister.GUI.Views"
              xmlns:ViewModel="clr-namespace:CashRegister.GUI.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             SizeChanged="TabView_OnSizeChanged">
     <UserControl.Resources>
-        <ViewModel:TabViewModel x:Key="TabViewModel"/>
+       
 
         <Style x:Key="TabHead" TargetType="{x:Type Button}">
             <Setter Property="FrameworkElement.Margin">
@@ -17,8 +18,7 @@
                 </Setter.Value>
 
             </Setter>
-            <Setter Property="FontSize" Value="18"></Setter>
-            <Setter Property="Template">
+                        <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Name="ButtonBorder" 
