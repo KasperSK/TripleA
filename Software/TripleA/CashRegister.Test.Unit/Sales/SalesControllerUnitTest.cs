@@ -59,11 +59,6 @@ namespace CashRegister.Test.Unit.Sales
             _uut = new SalesController(_orderctrl, _receiptctrl, _productController, _paymentController);
         }
 
-        private void GuiSalesController_Get_ReturnASalesController()
-        {
-            
-        }
-
         private void AddingProductToOrder(Product product, int quantity, Discount discount)
         {
             _uut.AddProductToOrder(product, quantity, discount);

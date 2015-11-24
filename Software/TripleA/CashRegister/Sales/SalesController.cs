@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using CashRegister.CashDrawers;
 using CashRegister.Dal;
 using CashRegister.Models;
@@ -37,8 +38,6 @@ namespace CashRegister.Sales
         private readonly IOrderController _orderController;
         private readonly IReceiptController _receiptController;
 
-
-
         /// <summary>
         ///     Contructor - Calls StartNewOrder()
         /// </summary>
@@ -51,15 +50,13 @@ namespace CashRegister.Sales
             StartNewOrder();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         ///     Add a product to an SalesOrder
         /// </summary>
         public void AddProductToOrder(Product product, int quantity, Discount discount)
         {
             _orderController.AddProduct(product, quantity, discount);
-            OnPropertyChanged("Product Added");
+            OnPropertyChanged();
         }
 
         /// <summary>
@@ -185,27 +182,16 @@ namespace CashRegister.Sales
         /// <returns></returns>
         public IReadOnlyCollection<ProductTab> ProductTabs => _productController.ProductTabs;
 
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs eventArgs)
-        {
-            var handler = PropertyChanged;
-            handler?.Invoke(this, eventArgs);
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
-        }
-
         /// <summary>
         ///     Gets the PaymentProviderDescriptor
         /// </summary>
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor => _paymentController.PaymentProviderDescriptors;
-        
-/*
-        public void TransactionComplete(Transaction transaction)
+      
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            // FIX What is wrong
-            _orderController.MissingAmount();
-        }*/
-    }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+}
 }
