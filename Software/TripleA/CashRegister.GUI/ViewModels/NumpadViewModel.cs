@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Globalization;
+using System.Windows.Input;
 
 namespace CashRegister.GUI.ViewModels
 {
@@ -48,7 +49,7 @@ namespace CashRegister.GUI.ViewModels
             get
             {
                 int returnvalue;
-                int.TryParse(_input, out returnvalue);
+                int.TryParse(Input, out returnvalue);
                 return returnvalue == 0 ? 1 : returnvalue;
             }
         }

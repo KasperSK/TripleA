@@ -57,7 +57,7 @@ namespace CashRegister.GUI.ViewModels
         public ICommand AddProduct => _addProductCommand ?? (_addProductCommand = new RelayCommand<Product>(AddProductCommand));
         private void AddProductCommand(Product product)
         {
-                _salesController.AddProductToOrder(product, _numpad.Amount > 1 ? _numpad.Amount : 1,
+                _salesController.AddProductToOrder(product, _numpad.Amount,
                     new Discount {Description = "No DISCOUNT FOR YOU", Percent = 0});
                 _numpad.ClearNumpad();
   
