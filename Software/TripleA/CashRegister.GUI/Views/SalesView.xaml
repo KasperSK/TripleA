@@ -41,7 +41,7 @@
             <Border Background="AliceBlue" BorderBrush="Black" BorderThickness="1.5" Grid.Row="1">
                 <Grid Name="LowerDiaplay">
                     <Label Name="Total" Content="Total" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Label>
-                    <Label Name="TotalCount" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{Binding Path=total}" Margin="5"></Label>
+                    <Label Name="TotalCount" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{Binding Path=Total}" Margin="5"></Label>
                 </Grid>
             </Border>
         </Grid>

@@ -93,6 +93,7 @@ namespace CashRegister.Sales
         public void ClearOrder()
         {
             _orderController.ClearOrder();
+            OnPropertyChanged();
         }
 
         /// <summary>

@@ -12,7 +12,6 @@ namespace CashRegister.GUI.ViewModels
 
         public SalesViewModel(ISalesController salesController)
         {
-            total = 0;
             _salesController = salesController;
             _salesController.PropertyChanged += OnCurrentOrderChanged;
         }
@@ -20,7 +19,7 @@ namespace CashRegister.GUI.ViewModels
         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
         //Collection the salesView will bind to
 
-        public long total { get; set; }
+        public long Total => _salesController.CurrentOrder.Total;
 
         public void OnCurrentOrderChanged(object sender, PropertyChangedEventArgs e) //Happening when receiving event from SalesController
         {
@@ -30,16 +29,18 @@ namespace CashRegister.GUI.ViewModels
 
             foreach (var lineElement in currentOrder.Lines) //Itterating through all orderlines in currentorder
             {
-                var price = (lineElement.UnitPrice*lineElement.Quantity).ToString(); //Making total price for Orderline
+                var price = (lineElement.UnitPrice*lineElement.Quantity).ToString(); //Making Total price for Orderline
 
                 ViewProducts
                     .Add(new ViewProduct(lineElement.Quantity.ToString()
                         , //Adding new Viewproducts to be displayed in SalesView
                         lineElement.Product.Name,
                         price));
-                total += lineElement.UnitPrice * lineElement.Quantity;
+                
                 OnPropertyChanged();
             }
+            OnPropertyChanged(nameof(Total));
+
         }
 
         public class ViewProduct
@@ -81,7 +82,6 @@ namespace CashRegister.GUI.ViewModels
         private void AbortCommandExecute()
         {
             _salesController.ClearOrder();
-            ViewProducts.Clear();
         }
     }
 }
