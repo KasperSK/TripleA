@@ -12,12 +12,6 @@ namespace CashRegister.Log
     public class Logger : ILogger
 	{
 		private readonly ILog _log4Net;
-
-        [ExcludeFromCodeCoverage]
-        internal static void Configure()
-        {
-            BasicConfigurator.Configure();
-        }
         
 		public void Warn(string line)
 		{
@@ -44,9 +38,9 @@ namespace CashRegister.Log
 			_log4Net.Debug(line);
 		}
 
-        public Logger(ILog backendLogger)
+        public Logger(ILog loggerAdapter)
         {
-            _log4Net = backendLogger;
+            _log4Net = loggerAdapter;
         }
 
 	}

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using CashRegister.Log;
 using CashRegister.Models;
 
 namespace CashRegister.Payment
@@ -8,33 +9,39 @@ namespace CashRegister.Payment
     /// </summary>
     public class CashPayment : PaymentProvider
     {
-        public CashPayment(int startChange)
-        {
-            StartChange = startChange;
-        }
+        readonly ILogger _logger = LogFactory.GetLogger(typeof(CashPayment));
 
         public override PaymentType Type => PaymentType.Cash;
         public override string Name => "CashPayment";
         public override string Description => "CashPayment, nothing fancy here";
 
-        [ExcludeFromCodeCoverage]
-        public override void Shutdown() { }
-
-        [ExcludeFromCodeCoverage]
-        public override void Restart() { }
-
-        [ExcludeFromCodeCoverage]
-        public override void Init() { }
+        public override void Init()
+        {
+            _logger.Debug("Initializing");
+        }
 
         public override bool TransferAmount(int amount, string description)
         {
-            Amount += amount;
+            _logger.Debug("Transfering " + amount);
+            Revenue += amount;
             return true;
         }
 
         public override bool TransactionStatus()
         {
             return true;
+        }
+
+        public override void Restart()
+        {
+            _logger.Debug("Restarting");
+            Shutdown();
+            Init();
+        }
+
+        public override void Shutdown()
+        {
+            _logger.Debug("Shutting Down");
         }
     }
 }

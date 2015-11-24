@@ -26,10 +26,7 @@ namespace CashRegister.Sales
                 var dalfacade = new DalFacade();
                 var productController = new ProductController(new ProductDao(dalfacade));
                 var receiptController = new ReceiptController(new ReceiptPrinter(), CultureInfo.InvariantCulture);
-                var paymentController =
-                    new PaymentController(
-                        new List<PaymentProvider>() {new CashPayment(0), new MobilePay(), new Nets()}, receiptController,
-                        new PaymentDao(dalfacade), new CashDrawer());
+                var paymentController = Factory.GetPaymentController(receiptController, dalfacade, 0);
                 var orderController = new OrderController(new OrderDao(dalfacade));
                 return new SalesController(orderController, receiptController, productController, paymentController);
             }
@@ -123,7 +120,7 @@ namespace CashRegister.Sales
             if (MissingPaymentOnOrder() == 0)
             {
                 _orderController.SaveOrder();
-                OnPropertyChanged("New Order");
+                OnPropertyChanged("CurrentOrder");
             }
         }
 

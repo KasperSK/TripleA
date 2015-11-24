@@ -13,21 +13,19 @@ namespace CashRegister.Test.Unit.Payment
     class CashPaymentUnitTest
     {
         private CashPayment _uut;
-        private int _startChange;
 
         [SetUp]
         public void SetUp()
         {
-            _startChange = 100;
-            _uut = new CashPayment(_startChange);
+            _uut = new CashPayment();
         }
 
         [Test]
-        public void Ctor_StartChangeIsSetTo1000_StartChangeIs1000()
+        public void Ctor_Revenue_Is0()
         {
-            var uut = new CashPayment(1000);
+            var uut = new CashPayment();
 
-            Assert.That(uut.StartChange, Is.EqualTo(1000));
+            Assert.That(uut.Revenue, Is.EqualTo(0));
         }
 
         [Test]
@@ -39,21 +37,21 @@ namespace CashRegister.Test.Unit.Payment
         }
 
         [Test]
-        public void Tally_Tranfer100_TallyIs100()
+        public void Tally_Tranfer100_RevenueIs100()
         {
             _uut.TransferAmount(100, "Desciption");
-            var amount = _uut.Tally();
+            var amount = _uut.Revenue;
 
             Assert.That(amount, Is.EqualTo(100));
         }
 
         [Test]
-        public void Tally_Transfer100and10_TallyIs150()
+        public void Tally_Transfer100and10_RevenueIs150()
         {
             _uut.TransferAmount(100, "Desciption");
             _uut.TransferAmount(50, "Desciption");
 
-            var amount = _uut.Tally();
+            var amount = _uut.Revenue;
 
             Assert.That(amount, Is.EqualTo(150));
         }

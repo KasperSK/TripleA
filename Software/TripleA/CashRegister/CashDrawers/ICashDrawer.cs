@@ -9,5 +9,7 @@
 		/// Opens the CashDrawer
 		/// </summary>
 		void Open();
+
+        int CashChange { get; }
 	}
 }
