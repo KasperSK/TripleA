@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashRegister.Program", "Cas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashRegister.GUI", "CashRegister.GUI\CashRegister.GUI.csproj", "{C312AD67-98D8-42DC-94E3-4D5F934CC41D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashRegister.WebApi", "CashRegister.WebApi\CashRegister.WebApi.csproj", "{26E98DD1-DBFC-4D1E-B1F3-09ED6A364BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashRegister.WebApi.Tests", "CashRegister.WebApi.Tests\CashRegister.WebApi.Tests.csproj", "{2CCA66A7-E7F3-4D1F-84C7-9B23A8511E75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{C312AD67-98D8-42DC-94E3-4D5F934CC41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C312AD67-98D8-42DC-94E3-4D5F934CC41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C312AD67-98D8-42DC-94E3-4D5F934CC41D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26E98DD1-DBFC-4D1E-B1F3-09ED6A364BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E98DD1-DBFC-4D1E-B1F3-09ED6A364BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E98DD1-DBFC-4D1E-B1F3-09ED6A364BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E98DD1-DBFC-4D1E-B1F3-09ED6A364BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CCA66A7-E7F3-4D1F-84C7-9B23A8511E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CCA66A7-E7F3-4D1F-84C7-9B23A8511E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CCA66A7-E7F3-4D1F-84C7-9B23A8511E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CCA66A7-E7F3-4D1F-84C7-9B23A8511E75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
