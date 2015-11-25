@@ -32,8 +32,8 @@ namespace CashRegister.Test.Unit.ViewModels
         {
             _salesController.MissingPaymentOnOrder().Returns(100);
             _uut.ViewProducts.Add(new SalesViewModel.ViewProduct("2", "Beer", "10"));
-            var payment = _uut.PaymentCommand;
-            payment.Execute(null);
+            var payment = _uut.PaytypeCommand;
+            payment.Execute(PaymentType.Cash);
             
             
             _salesController.Received(1).StartPayment(100, Arg.Any<string>(), Arg.Any<PaymentType>());

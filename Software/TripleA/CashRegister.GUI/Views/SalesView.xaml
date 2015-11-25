@@ -6,8 +6,8 @@
              xmlns:ViewModel="clr-namespace:CashRegister.GUI.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             SizeChanged="SalesView_OnSizeChanged">
-    
+             SizeChanged="SalesView_OnSizeChanged"
+             >
     <UserControl.Resources>
         
     </UserControl.Resources>
@@ -62,7 +62,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="Pay" Grid.Column="0" Grid.Row="1" MinHeight="35" Content="Betal" MinWidth="50" Margin="5"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" Command="{Binding Path=PaymentCommand}" Style="{StaticResource NormalButton}"/>
+            <Button Name="Pay" Grid.Column="0" Grid.Row="1" MinHeight="35" Content="Betal" MinWidth="50" Margin="5"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" Click="Pay_Click" Command="{Binding Path=PaymentCommand}" Style="{StaticResource NormalButton}"/>
             <Button Name="Cancel" Grid.Column="1" Grid.Row="1" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" Command="{Binding Path=AbortCommand}" Style="{StaticResource NormalButton}"/>
 
         </Grid>
