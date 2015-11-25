@@ -2,6 +2,7 @@
     var self = this;
 
     self.ProductTabs = ko.observableArray();
+    self.error = ko.observable();
 
     var productTabsUri = '/api/producttabs';
 
