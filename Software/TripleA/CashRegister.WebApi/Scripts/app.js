@@ -9,7 +9,7 @@
     function ajaxHelper(uri, method, data) {
         self.error('');
         return $.ajax({
-            type: merhid,
+            type: method,
             url: uri,
             dataType: 'json',
             contentType: 'application/json',
