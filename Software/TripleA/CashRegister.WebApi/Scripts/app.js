@@ -4,7 +4,7 @@
     self.ProductTabs = ko.observableArray();
     self.error = ko.observable();
 
-    var productTabsUri = '/api/producttabs';
+    var productTabsUri = '/api/producttabs/';
 
     function ajaxHelper(uri, method, data) {
         self.error('');
@@ -28,4 +28,4 @@
     getAllProductTabs();
 };
 
-ko.applyBindings(new viewModel());
+ko.applyBindings(new ViewModel());
