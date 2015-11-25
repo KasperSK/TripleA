@@ -21,7 +21,7 @@ namespace CashRegister.GUI.ViewModels
         public ObservableCollection<ViewProduct> ViewProducts { get; } = new ObservableCollection<ViewProduct>();
         //Collection the salesView will bind to
 
-        public long Total => _salesController.CurrentOrder.Total;
+        public string Total => _salesController.CurrentOrder.Total.ToString() + " kr.";
 
         public void OnCurrentOrderChanged(object sender, PropertyChangedEventArgs e) //Happening when receiving event from SalesController
         {
@@ -53,7 +53,7 @@ namespace CashRegister.GUI.ViewModels
 
                 Navn = name;
 
-                Pris = price;
+                Pris = price +" kr.";
             }
 
             public string Antal { get; set; }

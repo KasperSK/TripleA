@@ -28,7 +28,17 @@ namespace CashRegister.GUI.ViewModels
 
         private void NumpadClicked_Command(string num)
         {
-            Input += num;
+            if (num == "-" && Input == "-")
+            {
+                Input = "-";
+            }
+            else
+            {
+                Input += num;
+            }
+
+
+            
         }
 
         private ICommand _numpadClear;
@@ -48,6 +58,11 @@ namespace CashRegister.GUI.ViewModels
         {
             get
             {
+                if (Input == "-")
+                {
+                    Input = "-1";
+                }
+
                 int returnvalue;
                 int.TryParse(Input, out returnvalue);
                 return returnvalue == 0 ? 1 : returnvalue;
