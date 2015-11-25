@@ -44,42 +44,50 @@
             </table>
         </div>
     </div>
-
     <!-- /ko -->
-
-
 
     <!--Add Product-->
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2 class="panel-title">Add Product</h2>
+                <h2 class="panel-title">Add ProductTab</h2>
             </div>
 
             <div class="panel-body">
-                <form class="form-horizontal" data-bind="submit: addProduct">
-                    <div class="form-group">
-                        <label for="inputAuthor" class="col-sm-4 control-label">Product Tab</label>
-                        <div class="col-sm-8">
-                            <select data-bind="options: ProductTabs, optionsText: 'Name', value: newProduct"></select>
-                        </div>
-                    </div>
+                <form class="form-horizontal" data-bind="submit: addProductTab">
 
-                    <div class="form-group" data-bind="with: newProduct">
+                    <div class="form-group" data-bind="with: newProductTab">
                         <label for="inputName" class="col-sm-4 control-label">Name</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputName" data-bind="value:Name" />
+                            <input type="text" class="form-control" id="inputName" data-bind="value:Name"/>
                         </div>
 
-                        <label for="inputPrice" class="col-sm-4 control-label">Price (kr)</label>
+                        <label for="inputActive" class="col-sm-4 control-label">Active</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" id="inputPrice" data-bind="value:Price" />
+                            <input type="text" class="form-control" id="inputActive" data-bind="value:Active" />
+                        </div>
+
+                        <label for="inputColor" class="col-sm-4 control-label">Color</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputColor" data-bind="value:Color"/>
+                        </div>
+
+                        <label for="inputPriority" class="col-sm-4 control-label">Priority</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputPriority" data-bind="value:Priority" />
+                        </div>
+
+
+
+                        @*<label for="inputPrice" class="col-sm-4 control-label">Price (kr)</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="inputPrice" data-bind="value:Price"/>
                         </div>
 
                         <label for="inputSaleable" class="col-sm-4 control-label">Saleable</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputSaleable" data-bind="value:Saleable"/>
-                        </div>
+                        </div>*@
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>

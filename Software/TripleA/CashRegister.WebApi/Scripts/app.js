@@ -7,6 +7,17 @@
     self.Products = ko.observableArray();
 
     self.ProductTabsDetails = ko.observable();
+    self.ProductTypesDetails = ko.observable();
+    self.ProductGroupsDetails = ko.observable();
+    self.ProductDetail = ko.observable();
+
+    self.newProductTab = {
+        Name: ko.observable(),
+        Color: ko.observable(),
+        Priority: ko.observable(),
+        Active: ko.observable(),
+        ProductTypes: ko.observableArray()
+    };
 
     self.error = ko.observable();
 
@@ -55,6 +66,45 @@
     self.getProductTabsDetails = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'GET').done(function(data) {
             self.ProductTabsDetails(data);
+        });
+    }
+
+    self.getProductTypesDetails = function(item) {
+        ajaxHelper(productTypesUri + item.Id, 'GET').done(function(data) {
+            self.ProductTypesDetails(data);
+        });
+    }
+
+    self.getProductGroupsDetails = function(item) {
+        ajaxHelper(productGroupsUri + item.Id, 'GET').done(function(data) {
+            self.ProductGroupsDetails(data);
+        });
+    }
+
+    self.getProductsDetail = function(item) {
+        ajaxHelper(productsUri + item.Id, 'GET').done(function(data) {
+            self.ProductDetail(data);
+        });
+    }
+
+    self.addProductTab = function (formElement) {
+        ko.utils.arrayForEach(self.ProductTabs(), function(item) {
+            if (item.Priority == self.newProductTab.Priority()) {
+                alert("Priority must be different form existing priorities");
+                return;
+            }
+        });
+        var productTab = {
+            Id: 9,
+            Name: "Vin",
+            Priority: 10,
+            Active: true,
+            Color: "Red",
+            ProductTypes: []
+        };
+
+        ajaxHelper(productTabsUri, 'POST', productTab).done(function(item) {
+            self.ProductTabs.push(item);
         });
     }
 
