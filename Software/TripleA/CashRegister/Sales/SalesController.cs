@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using CashRegister.CashDrawers;
 using CashRegister.Dal;
 using CashRegister.Log;
 using CashRegister.Models;
@@ -13,6 +12,7 @@ using CashRegister.Payment;
 using CashRegister.Printer;
 using CashRegister.Products;
 using CashRegister.Receipts;
+using JetBrains.Annotations;
 
 namespace CashRegister.Sales
 {
@@ -56,6 +56,7 @@ namespace CashRegister.Sales
             _productController = productController;
             _paymentController = paymentController;
             _logger = LogFactory.GetLogger(typeof (SalesController));
+            _orderController.PropertyChanged += RepeatNotif;
         }
 
         /// <summary>
@@ -64,7 +65,6 @@ namespace CashRegister.Sales
         public void AddProductToOrder(Product product, int quantity, Discount discount)
         {
             _orderController.AddProduct(product, quantity, discount);
-            OnPropertyChanged();
             _logger.Debug("Product Added");
         }
 
@@ -120,7 +120,6 @@ namespace CashRegister.Sales
             if (MissingPaymentOnOrder() == 0)
             {
                 _orderController.SaveOrder();
-                OnPropertyChanged("CurrentOrder");
             }
         }
 
@@ -171,6 +170,10 @@ namespace CashRegister.Sales
 
         public SalesOrder CurrentOrder => _orderController.CurrentOrder;
 
+        public IEnumerable<OrderLine> CurrentOrderLines => CurrentOrder.Lines;
+
+        public int CurrentOrderTotal => CurrentOrder.Total;
+
 
         /// <summary>
         ///     Provides Product tabs to GUI
@@ -183,9 +186,18 @@ namespace CashRegister.Sales
         /// </summary>
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor => _paymentController.PaymentProviderDescriptors;
 
+        private void RepeatNotif(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(_orderController.CurrentOrder))
+            {
+                OnPropertyChanged(nameof(CurrentOrder));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

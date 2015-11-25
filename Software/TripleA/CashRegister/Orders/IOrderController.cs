@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using CashRegister.Database;
 using CashRegister.Models;
 
@@ -7,8 +8,8 @@ namespace CashRegister.Orders
     /// <summary>
     /// Interface to the OrderController
     /// </summary>
-	public interface IOrderController 
-	{
+	public interface IOrderController : INotifyPropertyChanged
+    {
         SalesOrder CurrentOrder { get;}
 
         IReadOnlyCollection<SalesOrder> StashedOrders { get; }
