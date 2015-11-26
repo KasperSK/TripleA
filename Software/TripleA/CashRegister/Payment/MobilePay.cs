@@ -12,6 +12,8 @@ namespace CashRegister.Payment
         public override PaymentType Type => PaymentType.MobilePay;
         public override string Name => "MobilePay";
         public override string Description => "MobilePay from Danske Bank";
+
+        [ExcludeFromCodeCoverage]
         public override void Init()
         {
             _logger.Debug("Initializing");
@@ -24,11 +26,13 @@ namespace CashRegister.Payment
             return true;
         }
 
+        [ExcludeFromCodeCoverage]
         public override bool TransactionStatus()
         {
             return true;
         }
 
+        [ExcludeFromCodeCoverage]
         public override void Restart()
         {
             _logger.Debug("Restarting");
@@ -36,6 +40,7 @@ namespace CashRegister.Payment
             Init();
         }
 
+        [ExcludeFromCodeCoverage]
         public override void Shutdown()
         {
             _logger.Debug("Shutting Down");

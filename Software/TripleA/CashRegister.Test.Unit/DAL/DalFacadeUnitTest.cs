@@ -1,5 +1,6 @@
 ﻿using System;
 using CashRegister.Dal;
+using CashRegister.Database;
 using NUnit.Framework;
 
 namespace CashRegister.Test.Unit.Dal
@@ -9,7 +10,11 @@ namespace CashRegister.Test.Unit.Dal
         [SetUp]
         public void SetUp()
         {
-            Effort.Provider.EffortProviderConfiguration.RegisterProvider();           
+            using (var uut = new CashRegisterContext())
+            {
+                if (uut.Database.Exists())
+                    uut.Database.Delete();
+            }
         }
 
         [Test]
@@ -21,33 +26,23 @@ namespace CashRegister.Test.Unit.Dal
         }
 
         [Test]
-        public void UnitOfWork_UnitOfWorkIsCalledWithDbConnection_ReturnsObjectOfTypeUnitOfWork()
-        {
-            var connection = Effort.DbConnectionFactory.CreateTransient();
-            var uut = new DalFacade { DbConnection = connection };
-
-            Assert.That(uut.UnitOfWork, Is.TypeOf<UnitOfWork>());
-        }
-
-        [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void UnitOfWork_UnitOfWorkIsCalledTwoTimes_InvalidOperationExceptionThrown()
         {
             var uut = new DalFacade();
 
             var result1 = uut.UnitOfWork;
-            var result2 = uut.UnitOfWork;
+
+            Assert.That(() => uut.UnitOfWork, Throws.InvalidOperationException);
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void Dispose_WhenDisposed_UnitOfWorkIsDisposed()
         {
             var uut = new DalFacade();
             var result = uut.UnitOfWork;
             uut.Dispose();
 
-            result.ProductRepository.GetById((long) 1);
+            Assert.That(() => result.ProductRepository.GetById((long)1), Throws.TypeOf<InvalidOperationException>());
         }
     }
 }

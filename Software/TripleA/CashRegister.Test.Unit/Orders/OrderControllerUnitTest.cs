@@ -13,7 +13,7 @@ namespace CashRegister.Test.Unit.Orders
         private IOrderDao _dao;
         private IOrderController _uut;
 
-        private readonly int[] _oddNumbers = {1, 3, 5, 7, 9};
+        static readonly int[] _oddNumbers = {1, 3, 5, 7, 9};
 
         [SetUp]
         public void SetUp()
@@ -89,6 +89,37 @@ namespace CashRegister.Test.Unit.Orders
             var order = _uut.CurrentOrder;
             _uut.SaveOrder();
             Assert.That(_uut.CurrentOrder, Is.Not.EqualTo(order));
+        }
+
+        [Test]
+        public void AddProduct_AddProductWithPrice18_TotalIs18()
+        {
+            var beer = new Product("Øl", 18, true);
+
+            _uut.AddProduct(beer);
+            Assert.That(_uut.CurrentOrder.Total, Is.EqualTo(18));
+        }
+
+        [Test]
+        public void AddProduct_AddProductWithPrice18_ProductIsAddedToOrderLines()
+        {
+            var beer = new Product("Øl", 18, true);
+
+            _uut.AddProduct(beer);
+            var uutLines = _uut.CurrentOrder.Lines.ToList();
+
+            Assert.That(uutLines[0].Product, Is.EqualTo(beer));
+        }
+
+        [Test]
+        public void AddProduct_AddProductWithPrice18_QuantityIsOne()
+        {
+            var beer = new Product("Øl", 18, true);
+
+            _uut.AddProduct(beer);
+            var uutLines = _uut.CurrentOrder.Lines.ToList();
+
+            Assert.That(uutLines[0].Quantity, Is.EqualTo(1));
         }
 
         [Test]

@@ -1,7 +1,8 @@
-﻿using System.Security.RightsManagement;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace CashRegister.Models
 {
+    [ExcludeFromCodeCoverage]
     public class OrderLine
     {
         public OrderLine()

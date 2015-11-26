@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 
@@ -7,6 +8,7 @@ namespace CashRegister.Printer
     /// <summary>
     /// Implementation of a receipt printer
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class ReceiptPrinter : IPrinter
     {
         private FlowDocument _flowDocument;

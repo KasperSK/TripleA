@@ -12,7 +12,6 @@ namespace CashRegister.Orders
     {
         private readonly IDalFacade _dalFacade;
 
-
         public OrderDao(IDalFacade dalFacade)
         {
             _dalFacade = dalFacade;
@@ -64,10 +63,13 @@ namespace CashRegister.Orders
         /// <returns>An SalesOrder from an id</returns>
         public virtual SalesOrder SelectById(long id)
         {
+            SalesOrder salesOrder;
             using (var uow = _dalFacade.UnitOfWork)
             {
-                return uow.SalesOrderRepository.GetById(id);
+                salesOrder = uow.SalesOrderRepository.GetById(id);
             }
+
+            return salesOrder;
         }
 
         public virtual void AddOrderLine(OrderLine line)
@@ -101,10 +103,14 @@ namespace CashRegister.Orders
         /// <returns>A IEnumerable list of the last n orders</returns>
         public virtual IEnumerable<SalesOrder> GetLastOrders(int amount)
         {
+            IEnumerable<SalesOrder> salesOrders;
+
             using (var uow = _dalFacade.UnitOfWork)
             {
-                return uow.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Take(amount);
+                salesOrders = uow.SalesOrderRepository.Get(null, q => q.OrderBy(x => x.Id)).Take(amount);
             }
+
+            return salesOrders;
         }
 
         /// <summary>
@@ -115,10 +121,14 @@ namespace CashRegister.Orders
         {
             get
             {
+                SalesOrder salesOrder;
+
                 using (var uow = _dalFacade.UnitOfWork)
                 {
-                    return uow.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Last();
+                    salesOrder = uow.SalesOrderRepository.Get(null, q => q.OrderBy(x => x.Id)).Last();
                 }
+
+                return salesOrder;
             }
         }
 
@@ -130,10 +140,14 @@ namespace CashRegister.Orders
         {
             get
             {
+                long id;
+
                 using (var uow = _dalFacade.UnitOfWork)
                 {
-                    return uow.SalesOrderRepository.Get(null, q => q.OrderByDescending(x => x.Id)).Last().Id;
+                    id = uow.SalesOrderRepository.Get(null, q => q.OrderBy(x => x.Id)).Last().Id;
                 }
+
+                return id;
             }
         }
     }

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Runtime.ConstrainedExecution;
+using System.Diagnostics.CodeAnalysis;
 using CashRegister.Models;
 using EfEnumToLookup.LookupGenerator;
 
 namespace CashRegister.Database
 {
+    [ExcludeFromCodeCoverage]
     public class EmptyInitializer : DropCreateDatabaseAlways<CashRegisterContext>
     {
         protected override void Seed(CashRegisterContext context)
@@ -16,6 +17,7 @@ namespace CashRegister.Database
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public class InitHelper
     {
         private readonly CashRegisterContext _context;
@@ -125,11 +127,11 @@ namespace CashRegister.Database
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public class FullProductInitializer : DropCreateDatabaseAlways<CashRegisterContext>
     {
         protected override void Seed(CashRegisterContext context)
         {
-
             var enumToLookup = new EnumToLookup();
             enumToLookup.Apply(context);
 
@@ -250,13 +252,13 @@ namespace CashRegister.Database
             s.AddProduct("Senven Sins");
             s.AddProduct("Brezzer Lemon");
 
-
             s.Save();
 
             base.Seed(context);
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public class CashProductInitializer : EmptyInitializer
     {
         protected override void Seed(CashRegisterContext context)
@@ -275,6 +277,8 @@ namespace CashRegister.Database
             s.AddGroup("Billig Drinks");
             s.AddProduct("Tequilla Sunrise");
             s.AddProduct("Vodka Juice", 20, false);
+
+            s.Save();
 
             base.Seed(context);
         }

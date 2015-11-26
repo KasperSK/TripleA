@@ -17,13 +17,11 @@ namespace CashRegister.Dal
                 if (_unitOfWork != null)
                     throw new InvalidOperationException("The unit of work is in use");
 
-                _context = DbConnection != null ? new CashRegisterContext(DbConnection, null) : new CashRegisterContext();
+                _context = new CashRegisterContext();
                 _unitOfWork = new UnitOfWork(_context, this);
                 return _unitOfWork;
             }
         }
-
-        public DbConnection DbConnection { get; set; }
 
         public void Dispose()
         {
@@ -43,6 +41,7 @@ namespace CashRegister.Dal
             {
                 if (disposing)
                 {
+                    _context.Dispose();
                     _unitOfWork.Dispose();
                 }
                 _disposed = true;

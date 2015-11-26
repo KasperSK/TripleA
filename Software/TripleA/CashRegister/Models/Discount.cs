@@ -1,12 +1,11 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace CashRegister.Models
 {
-    using System.Collections.Generic;
-
+    [ExcludeFromCodeCoverage]
     public class Discount
     {
-       
         public Discount()
         {
             ProductGroups = new List<ProductGroup>();
@@ -19,6 +18,5 @@ namespace CashRegister.Models
         public int Percent { get; set; }
 
         public virtual ICollection<ProductGroup> ProductGroups { get; }
-
     }
 }

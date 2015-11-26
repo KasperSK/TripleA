@@ -1,7 +1,6 @@
 ﻿using CashRegister.Payment;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Schema;
 using CashRegister.CashDrawers;
 using CashRegister.Models;
 using CashRegister.Receipts;
@@ -11,7 +10,7 @@ using NUnit.Framework;
 namespace CashRegister.Test.Unit.Payment
 {
     [TestFixture]
-    class PaymentControllerunitTest
+    public class PaymentControllerUnitTest
     {
         private IPaymentController _uut;
 
@@ -25,7 +24,7 @@ namespace CashRegister.Test.Unit.Payment
         private IPaymentDao _fakePaymentDao;
         private IReceiptController _fakeReceiptController;
         private ICashDrawer _fakeCashDrawer;
-        
+
         [SetUp]
         public void SetUp()
         {
@@ -33,15 +32,15 @@ namespace CashRegister.Test.Unit.Payment
             _nets = Substitute.ForPartsOf<Nets>();
             _nets.When(x => x.TransferAmount(Arg.Any<int>(), Arg.Any<string>())).DoNotCallBase();
             _nets.TransferAmount(Arg.Any<int>(), Arg.Any<string>()).Returns(false);
-            
-            _paymentProviders = new List<IPaymentProvider> { _cashPayment, _nets };
+
+            _paymentProviders = new List<IPaymentProvider> {_cashPayment, _nets};
 
             _fakePaymentDao = Substitute.For<IPaymentDao>();
             _fakeReceiptController = Substitute.For<IReceiptController>();
             _fakeCashDrawer = Substitute.For<ICashDrawer>();
             _fakeCashDrawer.CashChange.Returns(1000);
 
-            _uut = new PaymentController(_paymentProviders, _fakeReceiptController,_fakePaymentDao,_fakeCashDrawer);
+            _uut = new PaymentController(_paymentProviders, _fakeReceiptController, _fakePaymentDao, _fakeCashDrawer);
 
             _cashTransaction = new Transaction()
             {
@@ -64,14 +63,16 @@ namespace CashRegister.Test.Unit.Payment
         {
             var paymentDescriptor = _uut.PaymentProviderDescriptors;
 
-            CollectionAssert.AreEquivalent(new[] { PaymentType.Cash, PaymentType.Nets,}, paymentDescriptor.Select(p => p.Type).ToList());
+            CollectionAssert.AreEquivalent(new[] {PaymentType.Cash, PaymentType.Nets,},
+                paymentDescriptor.Select(p => p.Type).ToList());
         }
 
         [Test]
         public void Ctor_PaymentProviderListIsEmpty_PaymentDescriptorIsEmpty()
         {
 
-            var uut = new PaymentController(new List<IPaymentProvider>(), _fakeReceiptController, _fakePaymentDao, _fakeCashDrawer);
+            var uut = new PaymentController(new List<IPaymentProvider>(), _fakeReceiptController, _fakePaymentDao,
+                _fakeCashDrawer);
             var paymentDescriptor = uut.PaymentProviderDescriptors;
 
             Assert.That(paymentDescriptor.Count(), Is.EqualTo(0));
@@ -139,9 +140,8 @@ namespace CashRegister.Test.Unit.Payment
         public void PrintTransaction_PrintTransaction_PrintIsCalled()
         {
             _uut.PrintTransaction(_cashTransaction);
-            var receip = _fakeReceiptController.CreateReceipt(_cashTransaction);
 
-            _fakeReceiptController.Received(1).Print(receip);
+            _fakeReceiptController.Received(1).CreateReceipt(Arg.Any<Transaction>());
         }
 
         [Test]
