@@ -209,5 +209,10 @@ namespace CashRegister.Sales
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public void Print(Receipt receipt)
+        {
+            _receiptController.Print(receipt);
+        }
     }
 }
