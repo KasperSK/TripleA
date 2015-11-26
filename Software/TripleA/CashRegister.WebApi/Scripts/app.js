@@ -31,7 +31,7 @@
         Products: ko.observableArray()
     };
 
-    self.newProductTab = {
+    self.newProduct = {
         Name: ko.observable(),
         Price: ko.observable(),
         Saleable: ko.observable(),
@@ -56,59 +56,59 @@
         }).fail(function(jqXHR, textStatus, errorThrown) {
             self.error(errorThrown);
         });
-    }
+    };
 
     function getAllProductTabs() {
         ajaxHelper(productTabsUri, 'GET').done(function(data) {
             self.ProductTabs(data);
         });
-    }
+    };
 
     function getAllProductTypes() {
         ajaxHelper(productTypesUri, 'GET').done(function(data) {
             self.ProductTypes(data);
         });
-    }
+    };
 
     function getAllProductGroups() {
         ajaxHelper(productGroupsUri, 'GET').done(function (data) {
             self.ProductGroups(data);
         });
-    }
+    };
 
     function getAllProducts() {
         ajaxHelper(productsUri, 'GET').done(function (data) {
             self.Products(data);
         });
-    }
+    };
 
     self.getProductTabsDetails = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'GET').done(function(data) {
             self.ProductTabsDetails(data);
         });
-    }
+    };
 
     self.getProductTypesDetails = function(item) {
         ajaxHelper(productTypesUri + item.Id, 'GET').done(function(data) {
             self.ProductTypesDetails(data);
         });
-    }
+    };
 
     self.getProductGroupsDetails = function(item) {
         ajaxHelper(productGroupsUri + item.Id, 'GET').done(function(data) {
             self.ProductGroupsDetails(data);
         });
-    }
+    };
 
     self.getProductsDetail = function(item) {
         ajaxHelper(productsUri + item.Id, 'GET').done(function(data) {
             self.ProductDetail(data);
         });
-    }
+    };
 
     var priorityExists = false;
 
-    self.addProductTab = function (formElement) {
+    self.addProductTab = function(formElement) {
         ko.utils.arrayForEach(self.ProductTabs(), function(item) {
             if (item.Priority == self.newProductTab.Priority()) {
                 alert("Priority must be different from existing priorities");
@@ -133,13 +133,13 @@
         ajaxHelper(productTabsUri, 'POST', productTab).done(function(item) {
             self.ProductTabs.push(item);
         });
-    }
+    };
 
     self.deleteProductTab = function(item) {
-        ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function (data) {
+        ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function(data) {
             self.ProductTabsDetails.remove(data);
         });
-    }
+    };
 
     getAllProductTabs();
     getAllProductTypes();
