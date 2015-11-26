@@ -2,9 +2,29 @@
     var self = this;
 
     self.ProductTabs = ko.observableArray();
+    self.ProductTypes = ko.observableArray();
+    self.ProductGroups = ko.observableArray();
+    self.Products = ko.observableArray();
+
+    self.ProductTabsDetails = ko.observable();
+    self.ProductTypesDetails = ko.observable();
+    self.ProductGroupsDetails = ko.observable();
+    self.ProductDetail = ko.observable();
+
+    self.newProductTab = {
+        Name: ko.observable(),
+        Color: ko.observable(),
+        Priority: ko.observable(),
+        Active: ko.observable(),
+        ProductTypes: ko.observableArray()
+    };
+
     self.error = ko.observable();
 
     var productTabsUri = '/api/producttabs/';
+    var productTypesUri = '/api/producttabs/';
+    var productGroupsUri = '/api/productgroups/';
+    var productsUri = '/api/products/';
 
     function ajaxHelper(uri, method, data) {
         self.error('');
@@ -25,7 +45,73 @@
         });
     }
 
+    function getAllProductTypes() {
+        ajaxHelper(productTypesUri, 'GET').done(function(data) {
+            self.ProductTypes(data);
+        });
+    }
+
+    function getAllProductGroups() {
+        ajaxHelper(productGroupsUri, 'GET').done(function (data) {
+            self.ProductGroups(data);
+        });
+    }
+
+    function getAllProducts() {
+        ajaxHelper(productsUri, 'GET').done(function (data) {
+            self.Products(data);
+        });
+    }
+
+    self.getProductTabsDetails = function(item) {
+        ajaxHelper(productTabsUri + item.Id, 'GET').done(function(data) {
+            self.ProductTabsDetails(data);
+        });
+    }
+
+    self.getProductTypesDetails = function(item) {
+        ajaxHelper(productTypesUri + item.Id, 'GET').done(function(data) {
+            self.ProductTypesDetails(data);
+        });
+    }
+
+    self.getProductGroupsDetails = function(item) {
+        ajaxHelper(productGroupsUri + item.Id, 'GET').done(function(data) {
+            self.ProductGroupsDetails(data);
+        });
+    }
+
+    self.getProductsDetail = function(item) {
+        ajaxHelper(productsUri + item.Id, 'GET').done(function(data) {
+            self.ProductDetail(data);
+        });
+    }
+
+    self.addProductTab = function (formElement) {
+        ko.utils.arrayForEach(self.ProductTabs(), function(item) {
+            if (item.Priority == self.newProductTab.Priority()) {
+                alert("Priority must be different form existing priorities");
+                return;
+            }
+        });
+        var productTab = {
+            Id: 9,
+            Name: "Vin",
+            Priority: 10,
+            Active: true,
+            Color: "Red",
+            ProductTypes: []
+        };
+
+        ajaxHelper(productTabsUri, 'POST', productTab).done(function(item) {
+            self.ProductTabs.push(item);
+        });
+    }
+
     getAllProductTabs();
+    getAllProductTypes();
+    getAllProductGroups();
+    getAllProducts();
 };
 
 ko.applyBindings(new ViewModel());

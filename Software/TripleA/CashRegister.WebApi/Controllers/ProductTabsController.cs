@@ -22,18 +22,18 @@ namespace CashRegister.WebApi.Controllers
         public IQueryable<ProductTabDto> GetProductTabs()
         {
             var productTab = from pt in db.ProductTabs
-                select
-                    new ProductTabDto
-                    {
-                        Id = pt.Id,
-                        Name = pt.Name,
-                        Priority = pt.Priority
-                    };
+                             select
+                                 new ProductTabDto
+                                 {
+                                     Id = pt.Id,
+                                     Name = pt.Name,
+                                     Priority = pt.Priority
+                                 };
             return productTab;
         }
 
         // GET: api/ProductTabs/5
-        [ResponseType(typeof(ProductTab))]
+        [ResponseType(typeof(ProductTabDetailsDto))]
         public async Task<IHttpActionResult> GetProductTab(int id)
         {
             ProductTab productTab = await db.ProductTabs.Include(pt => pt.ProductTypes).SingleOrDefaultAsync(pt => pt.Id == id);
@@ -42,9 +42,9 @@ namespace CashRegister.WebApi.Controllers
                 return NotFound();
             }
 
-            var productTabDto = new ProductTabDetailsDto() {Active = productTab.Active, Color = productTab.Color, Id = productTab.Id, Name = productTab.Name, Priority = productTab.Priority, ProductTypes = new List<int>()};
-            
-            productTab.ProductTypes.ForEach(pt => productTabDto.ProductTypes.Add(pt.Id)); 
+            var productTabDto = new ProductTabDetailsDto() { Active = productTab.Active, Color = productTab.Color, Id = productTab.Id, Name = productTab.Name, Priority = productTab.Priority, ProductTypes = new List<int>() };
+
+            productTab.ProductTypes.ForEach(pt => productTabDto.ProductTypes.Add(pt.Id));
 
             return Ok(productTabDto);
         }
