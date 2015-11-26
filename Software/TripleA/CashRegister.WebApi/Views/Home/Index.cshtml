@@ -18,6 +18,7 @@
             <div class="panel-body">
                 <ul class="list-unstyled" data-bind="foreach: ProductTabs">
                     <li>
+                        <small><a href="#" data-bind="click: $parent.deleteProductTab">Delete</a></small>
                         <strong><span data-bind="text: Name"></span></strong>: <span data-bind="text: Id"></span>
                         <small><a href="#" data-bind="click: $parent.getProductTabsDetails">Details</a></small>
                     </li>

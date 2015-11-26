@@ -19,6 +19,25 @@
         ProductTypes: ko.observableArray()
     };
 
+    self.newProductType = {
+        Name: ko.observable(),
+        Price: ko.observable(),
+        Color: ko.observable(),
+        ProductGroups: ko.observableArray()
+    };
+
+    self.newProductGroup = {
+        Name: ko.observable(),
+        Products: ko.observableArray()
+    };
+
+    self.newProductTab = {
+        Name: ko.observable(),
+        Price: ko.observable(),
+        Saleable: ko.observable(),
+        ProductGroups: ko.observableArray()
+    };
+
     self.error = ko.observable();
 
     var productTabsUri = '/api/producttabs/';
@@ -87,24 +106,38 @@
         });
     }
 
+    var priorityExists = false;
+
     self.addProductTab = function (formElement) {
         ko.utils.arrayForEach(self.ProductTabs(), function(item) {
             if (item.Priority == self.newProductTab.Priority()) {
-                alert("Priority must be different form existing priorities");
+                alert("Priority must be different from existing priorities");
+                priorityExists = true;
                 return;
             }
         });
+
+        if (priorityExists) {
+            priorityExists = false;
+            return;
+        };
+
         var productTab = {
-            Id: 9,
-            Name: "Vin",
-            Priority: 10,
-            Active: true,
-            Color: "Red",
-            ProductTypes: []
+            Name: self.newProductTab.Name(),
+            Priority: self.newProductTab.Priority(),
+            Active: self.newProductTab.Active(),
+            Color: self.newProductTab.Color(),
+            ProductTypes: self.newProductTab.ProductTypes()
         };
 
         ajaxHelper(productTabsUri, 'POST', productTab).done(function(item) {
             self.ProductTabs.push(item);
+        });
+    }
+
+    self.deleteProductTab = function(item) {
+        ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function (data) {
+            self.ProductTabsDetails.remove(data);
         });
     }
 
