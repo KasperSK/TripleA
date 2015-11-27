@@ -83,18 +83,32 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/ProductGroups
-        [ResponseType(typeof(ProductGroup))]
-        public async Task<IHttpActionResult> PostProductGroup(ProductGroup productGroup)
+        [ResponseType(typeof(ProductGroupDetailsDto))]
+        public async Task<IHttpActionResult> PostProductGroup(ProductGroupDetailsDto productGroupDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var workwrok = productGroupDetails.Products;
+            IQueryable<Product> products = null;
+
+            foreach (var i in workwrok)
+            {
+                products = from pt in db.Products where pt.Id == i select pt;
+            }
+
+            var productGroup = new ProductGroup { Name = productGroupDetails.Name };
+
+            products?.ForEach(e => productGroup.Products.Add(e));
+
             db.ProductGroups.Add(productGroup);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = productGroup.Id }, productGroup);
+            productGroupDetails.Id = productGroup.Id;
+
+            return CreatedAtRoute("DefaultApi", new { id = productGroupDetails.Id }, productGroupDetails);
         }
 
         // DELETE: api/ProductGroups/5

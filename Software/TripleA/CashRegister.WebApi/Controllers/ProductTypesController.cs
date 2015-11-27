@@ -84,7 +84,7 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/ProductTypes
-        [ResponseType(typeof(ProductType))]
+        [ResponseType(typeof(ProductTypeDetailsDto))]
         public async Task<IHttpActionResult> PostProductType(ProductTypeDetailsDto productTypeDetails)
         {
             if (!ModelState.IsValid)
@@ -107,7 +107,9 @@ namespace CashRegister.WebApi.Controllers
             db.ProductTypes.Add(productType);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = productType.Id }, productType);
+            productTypeDetails.Id = productType.Id;
+
+            return CreatedAtRoute("DefaultApi", new { id = productTypeDetails.Id }, productTypeDetails);
         }
 
         // DELETE: api/ProductTypes/5

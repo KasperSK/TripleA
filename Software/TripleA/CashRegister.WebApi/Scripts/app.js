@@ -154,8 +154,21 @@
             Products: self.newProductGroup.Products()
         };
 
-        ajaxHelper(productTypesUri, 'POST', productGroup).done(function (item) {
+        ajaxHelper(productGroupsUri, 'POST', productGroup).done(function (item) {
             self.ProductGroups.push(item);
+        });
+    };
+
+    self.addProductGroup = function (formElement) {
+        var product = {
+            Name: self.newProduct.Name(),
+            Price: self.newProduct.Price(),
+            Saleable: self.newProduct.Saleable(),
+            ProductGroups: self.newProduct.ProductGroups()
+        };
+
+        ajaxHelper(productsUri, 'POST', product).done(function (item) {
+            self.Products.push(item);
         });
     };
 
