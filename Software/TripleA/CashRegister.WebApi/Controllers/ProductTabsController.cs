@@ -85,18 +85,32 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/ProductTabs
-        [ResponseType(typeof(ProductTab))]
-        public async Task<IHttpActionResult> PostProductTab(ProductTab productTab)
+        [ResponseType(typeof(ProductTabDetailsDto))]
+        public async Task<IHttpActionResult> PostProductTab(ProductTabDetailsDto productTabDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var workwrok = productTabDetails.ProductTypes;
+            IQueryable<ProductType> productTypes = null;
+
+            foreach (var i in workwrok)
+            {
+                productTypes =  from pt in db.ProductTypes where pt.Id == i select pt;
+            }
+
+            var productTab = new ProductTab {Active = productTabDetails.Active, Color = productTabDetails.Color, Name = productTabDetails.Name, Priority = productTabDetails.Priority};
+
+            productTypes?.ForEach(e => productTab.ProductTypes.Add(e));
+
             db.ProductTabs.Add(productTab);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = productTab.Id }, productTab);
+            productTabDetails.Id = productTab.Id;
+
+            return CreatedAtRoute("DefaultApi", new { id = productTabDetails.Id }, productTabDetails);
         }
 
         // DELETE: api/ProductTabs/5

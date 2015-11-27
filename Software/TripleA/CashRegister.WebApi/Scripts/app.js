@@ -41,7 +41,7 @@
     self.error = ko.observable();
 
     var productTabsUri = '/api/producttabs/';
-    var productTypesUri = '/api/producttabs/';
+    var productTypesUri = '/api/producttypes/';
     var productGroupsUri = '/api/productgroups/';
     var productsUri = '/api/products/';
 
@@ -128,18 +128,62 @@
             Active: self.newProductTab.Active(),
             Color: self.newProductTab.Color(),
             ProductTypes: self.newProductTab.ProductTypes()
-        };
+    };
 
         ajaxHelper(productTabsUri, 'POST', productTab).done(function(item) {
             self.ProductTabs.push(item);
         });
     };
 
-    self.deleteProductTab = function(item) {
-        ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function(data) {
-            self.ProductTabsDetails.remove(data);
+    self.addProductType = function (formElement) {
+        var productType = {
+            Name: self.newProductType.Name(),
+            Price: self.newProductType.Price(),
+            Color: self.newProductTab.Color(),
+            ProductTypes: self.newProductTab.ProductTypes()
+        };
+
+        ajaxHelper(productTypesUri, 'POST', productType).done(function (item) {
+            self.ProductTypes.push(item);
         });
     };
+
+    self.addProductGroup = function (formElement) {
+        var productGroup = {
+            Name: self.newProductGroup.Name(),
+            Products: self.newProductGroup.Products()
+        };
+
+        ajaxHelper(productTypesUri, 'POST', productGroup).done(function (item) {
+            self.ProductGroups.push(item);
+        });
+    };
+
+
+    self.deleteProductTab = function(item) {
+        ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function(data) {
+            self.ProductTabs.remove(data);
+        });
+    };
+
+    self.deleteProductType = function (item) {
+        ajaxHelper(productTypesUri + item.Id, 'DELETE').done(function (data) {
+            self.ProductTypes.remove(data);
+        });
+    };
+
+    self.deleteProductGroup = function (item) {
+        ajaxHelper(productGroupsUri + item.Id, 'DELETE').done(function (data) {
+            self.ProductGroups.remove(data);
+        });
+    };
+
+    self.deleteProduct = function (item) {
+        ajaxHelper(productsUri + item.Id, 'DELETE').done(function (data) {
+            self.Products.remove(data);
+        });
+    };
+
 
     getAllProductTabs();
     getAllProductTypes();

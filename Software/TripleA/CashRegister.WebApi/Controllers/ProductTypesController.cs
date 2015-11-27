@@ -85,12 +85,24 @@ namespace CashRegister.WebApi.Controllers
 
         // POST: api/ProductTypes
         [ResponseType(typeof(ProductType))]
-        public async Task<IHttpActionResult> PostProductType(ProductType productType)
+        public async Task<IHttpActionResult> PostProductType(ProductTypeDetailsDto productTypeDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            var workwrok = productTypeDetails.ProductGroups;
+            IQueryable<ProductGroup> productGroups = null;
+
+            foreach (var i in workwrok)
+            {
+                productGroups = from pt in db.ProductGroups where pt.Id == i select pt;
+            }
+
+            var productType = new ProductType {  Color = productTypeDetails.Color, Name = productTypeDetails.Name, Price = productTypeDetails.Price};
+
+            productGroups?.ForEach(e => productType.ProductGroups.Add(e));
 
             db.ProductTypes.Add(productType);
             await db.SaveChangesAsync();
