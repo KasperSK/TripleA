@@ -107,8 +107,8 @@
     };
 
     var priorityExists = false;
-
-    self.addProductTab = function(formElement) {
+    var ids = [];
+    self.addProductTab = function (formElement) {
         ko.utils.arrayForEach(self.ProductTabs(), function(item) {
             if (item.Priority == self.newProductTab.Priority()) {
                 alert("Priority must be different from existing priorities");
@@ -117,18 +117,26 @@
             }
         });
 
+        
         if (priorityExists) {
             priorityExists = false;
             return;
         };
+
+        
+        ko.utils.arrayForEach(self.newProductTab.ProductTypes(), function (item) {
+            ids.push(item.Id);
+        });
+
+    
 
         var productTab = {
             Name: self.newProductTab.Name(),
             Priority: self.newProductTab.Priority(),
             Active: self.newProductTab.Active(),
             Color: self.newProductTab.Color(),
-            ProductTypes: self.newProductTab.ProductTypes()
-    };
+            ProductTypes: ids
+         };
 
         ajaxHelper(productTabsUri, 'POST', productTab).done(function(item) {
             self.ProductTabs.push(item);
