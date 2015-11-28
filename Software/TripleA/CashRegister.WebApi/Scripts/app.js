@@ -143,7 +143,7 @@
             return;
         };
 
-        
+        ids = [];
         ko.utils.arrayForEach(self.newProductTab.ProductTypes(), function (item) {
             ids.push(item.Id);
         });
@@ -164,11 +164,16 @@
     };
 
     self.addProductType = function (formElement) {
+        ids = [];
+        ko.utils.arrayForEach(self.newProductTypes.ProductGroups(), function (item) {
+            ids.push(item.Id);
+        });
+
         var productType = {
             Name: self.newProductType.Name(),
             Price: self.newProductType.Price(),
             Color: self.newProductTab.Color(),
-            ProductTypes: self.newProductTab.ProductTypes()
+            ProductTypes: ids
         };
 
         ajaxHelper(productTypesUri, 'POST', productType).done(function (item) {
@@ -177,9 +182,14 @@
     };
 
     self.addProductGroup = function (formElement) {
+        ids = [];
+        ko.utils.arrayForEach(self.newProductGroup.Products(), function (item) {
+            ids.push(item.Id);
+        });
+
         var productGroup = {
             Name: self.newProductGroup.Name(),
-            Products: self.newProductGroup.Products()
+            Products: ids
         };
 
         ajaxHelper(productGroupsUri, 'POST', productGroup).done(function (item) {
@@ -188,11 +198,16 @@
     };
 
     self.addProduct = function (formElement) {
+        ids = [];
+        ko.utils.arrayForEach(self.newProduct.ProductGroups(), function (item) {
+            ids.push(item.Id);
+        });
+
         var product = {
             Name: self.newProduct.Name(),
             Price: self.newProduct.Price(),
             Saleable: self.newProduct.Saleable(),
-            ProductGroups: self.newProduct.ProductGroups()
+            ProductGroups: ids
         };
 
         ajaxHelper(productsUri, 'POST', product).done(function (item) {
