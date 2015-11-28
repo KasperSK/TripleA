@@ -63,7 +63,7 @@
 
     // ------ 
     function listCompare() {
-
+        self.ProductTypeNames([]);
         ko.utils.arrayForEach(self.ProductTypes(), function (item){
         //ko.utils.arrayForEach(koList, function (item) {
             self.ProductTabsDetails().ProductTypes.forEach(function (entry){

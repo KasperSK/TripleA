@@ -93,11 +93,12 @@ namespace CashRegister.WebApi.Controllers
             }
 
             var workwrok = productTypeDetails.ProductGroups;
-            IQueryable<ProductGroup> productGroups = null;
+            List<ProductGroup> productGroups = new List<ProductGroup>();
 
             foreach (var i in workwrok)
             {
-                productGroups = from pt in db.ProductGroups where pt.Id == i select pt;
+                var pG = from pg in db.ProductGroups where pg.Id == i select pg;
+                pG.ForEach(pg => productGroups.Add(pg));
             }
 
             var productType = new ProductType {  Color = productTypeDetails.Color, Name = productTypeDetails.Name, Price = productTypeDetails.Price};
