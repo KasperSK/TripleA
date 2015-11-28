@@ -99,6 +99,13 @@
         });
     };
 
+    self.refreshCollections = function () {
+        console.log("refreshing");
+        var data = self.ProductTabs.slice(0);
+        self.ProductTabs([]);
+        self.ProductTabs(data);
+    };
+
     self.getProductTabsDetails = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'GET').done(function(data) {
             self.ProductTabsDetails(data);
@@ -218,7 +225,10 @@
 
     self.deleteProductTab = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function(data) {
-            self.ProductTabs.remove(data);
+            var changedIdx = self.ProductTabs.indexOf(data);
+            self.ProductTabs.splice(changedIdx, 1);
+            console.log(data);
+            self.refreshCollections();
         });
     };
 
@@ -239,6 +249,7 @@
             self.Products.remove(data);
         });
     };
+
 
 
     getAllProductTabs();

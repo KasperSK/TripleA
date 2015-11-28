@@ -114,7 +114,7 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // DELETE: api/ProductTabs/5
-        [ResponseType(typeof(ProductTab))]
+        [ResponseType(typeof(ProductTabDto))]
         public async Task<IHttpActionResult> DeleteProductTab(int id)
         {
             ProductTab productTab = await db.ProductTabs.FindAsync(id);
@@ -126,7 +126,9 @@ namespace CashRegister.WebApi.Controllers
             db.ProductTabs.Remove(productTab);
             await db.SaveChangesAsync();
 
-            return Ok(productTab);
+            var productTabDto = new ProductTabDto {Id = productTab.Id, Name = productTab.Name, Priority = productTab.Priority};
+
+            return Ok(productTabDto);
         }
 
         protected override void Dispose(bool disposing)
