@@ -97,7 +97,7 @@ namespace CashRegister.WebApi.Controllers
             foreach (var i in workwrok)
             {
                 var p = from pt in db.Products where pt.Id == i select pt;
-                p.ForEach(p => products.Add(p));
+                p.ForEach(pr => products.Add(pr));
             }
 
             var productGroup = new ProductGroup { Name = productGroupDetails.Name };
