@@ -12,6 +12,7 @@
     self.ProductDetail = ko.observable();
 
     self.ProductTypeNames = ko.observableArray();
+    self.ProductGroupNames = ko.observableArray();
 
     self.newProductTab = {
         Name: ko.observable(),
@@ -61,15 +62,19 @@
     };
 
     // ------ 
-    function listProductTypeNames() {
-        console.log("Inside");
-        console.log(self.ProductTabsDetails().Name);
+    function listCompare() {
 
-        ko.utils.arrayForEach(self.ProductTypes(), function (item) {
-            self.ProductTabsDetails().ProductTypes.forEach(function (entry) {
+        ko.utils.arrayForEach(self.ProductTypes(), function (item){
+        //ko.utils.arrayForEach(koList, function (item) {
+            self.ProductTabsDetails().ProductTypes.forEach(function (entry){
+            //compareList.forEach(function (entry) {
+                console.log("her it is: " + item.id + " " + entry);
                 if (item.Id == entry) {
+                    
                     self.ProductTypeNames.push(item);
-                }
+                   // thisList.push(item);
+                    console.log(item);
+                };
             });
         });
     };
@@ -109,13 +114,14 @@
     self.getProductTabsDetails = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'GET').done(function(data) {
             self.ProductTabsDetails(data);
-            listProductTypeNames();
+            listCompare();
         });
     };
 
     self.getProductTypesDetails = function(item) {
         ajaxHelper(productTypesUri + item.Id, 'GET').done(function(data) {
             self.ProductTypesDetails(data);
+            //listCompare(self.ProductGroups(), self.ProductTypesDetails().ProductGroups, self.ProductGroupNames);
         });
     };
 
@@ -172,14 +178,14 @@
 
     self.addProductType = function (formElement) {
         ids = [];
-        ko.utils.arrayForEach(self.newProductTypes.ProductGroups(), function (item) {
+        ko.utils.arrayForEach(self.newProductType.ProductGroups(), function (item) {
             ids.push(item.Id);
         });
 
         var productType = {
             Name: self.newProductType.Name(),
             Price: self.newProductType.Price(),
-            Color: self.newProductTab.Color(),
+            Color: self.newProductType.Color(),
             ProductTypes: ids
         };
 

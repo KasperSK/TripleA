@@ -17,49 +17,55 @@
 </div>
 
 <div class="row">
-    <!-- Prouct tabs view-->
     <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">Product Tabs</h2>
+        <!-- Prouct tabs view-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Product Tabs</h2>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled" data-bind="foreach: ProductTabs">
+                            <li>
+                                <small><a href="#" data-bind="click: $parent.deleteProductTab">Delete</a></small>
+                                <strong><span data-bind="text: Name"></span></strong>: <span data-bind="text: Id"></span>
+                                <small><a href="#" data-bind="click: $parent.getProductTabsDetails">Details</a></small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="alert alert-danger" data-bind="visible: error">
+                    <p data-bind="text: error"></p>
+                </div>
             </div>
-            <div class="panel-body">
-                <ul class="list-unstyled" data-bind="foreach: ProductTabs">
-                    <li>
-                        <small><a href="#" data-bind="click: $parent.deleteProductTab">Delete</a></small>
-                        <strong><span data-bind="text: Name"></span></strong>: <span data-bind="text: Id"></span>
-                        <small><a href="#" data-bind="click: $parent.getProductTabsDetails">Details</a></small>
-                    </li>
-                </ul>
+
+            <!-- ko if:ProductTabsDetails() -->
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Detail</h2>
+                    </div>
+                    <table class="table">
+                        <tr><td>Id</td><td data-bind="text: ProductTabsDetails().Id"></td></tr>
+                        <tr><td>Name</td><td data-bind="text: ProductTabsDetails().Name"></td></tr>
+                        <tr><td>Active</td><td data-bind="text: ProductTabsDetails().Active"></td></tr>
+                        <tr><td>Color</td><td data-bind="text: ProductTabsDetails().Color"></td></tr>
+                        <tr><td>Priority</td><td data-bind="text: ProductTabsDetails().Priority"></td></tr>
+                        <tr>
+                            <td>Product types</td>
+                            <td>
+                                <ul data-bind="foreach: ProductTypeNames">
+                                    <li data-bind="text: Name"></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="alert alert-danger" data-bind="visible: error">
-            <p data-bind="text: error"></p>
+            <!-- /ko -->
         </div>
     </div>
-
-    <!-- ko if:ProductTabsDetails() -->
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">Detail</h2>
-            </div>
-            <table class="table">
-                <tr><td>Id</td><td data-bind="text: ProductTabsDetails().Id"></td></tr>
-                <tr><td>Name</td><td data-bind="text: ProductTabsDetails().Name"></td></tr>
-                <tr><td>Active</td><td data-bind="text: ProductTabsDetails().Active"></td></tr>
-                <tr><td>Color</td><td data-bind="text: ProductTabsDetails().Color"></td></tr>
-                <tr><td>Priority</td><td data-bind="text: ProductTabsDetails().Priority"></td></tr>
-                <tr><td>Product types</td><td>
-                    <ul data-bind="foreach: ProductTypeNames">
-                        <li data-bind="text: Name"></li>
-                    </ul>                      
-                </td></tr>
-            </table>
-        </div>
-    </div>
-    <!-- /ko -->
-
     <!--Add Product-->
     <div class="col-md-6">
         <div class="panel panel-default">
