@@ -10,7 +10,6 @@ namespace CashRegister.WebApi.Models
         public Product()
         {
             ProductGroups = new List<ProductGroup>();
-            ProductGroupId = new List<long>();
             Id = 0;
         }
 
@@ -28,8 +27,6 @@ namespace CashRegister.WebApi.Models
         public int Price { get; set; }
 
         public bool Saleable { get; set; }
-
-        public virtual List<long> ProductGroupId { get; set; } 
 
         public virtual ICollection<ProductGroup> ProductGroups { get; }
     }
