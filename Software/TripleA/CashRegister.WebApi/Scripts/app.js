@@ -235,7 +235,6 @@
         ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function(data) {
             var changedIdx = self.ProductTabs.indexOf(data);
             self.ProductTabs.splice(changedIdx, 1);
-            console.log(data);
             self.refreshCollections();
         });
     };
@@ -243,18 +242,27 @@
     self.deleteProductType = function (item) {
         ajaxHelper(productTypesUri + item.Id, 'DELETE').done(function (data) {
             self.ProductTypes.remove(data);
+            var changedIdx = self.ProductTypes.indexOf(data);
+            self.ProductTypes.splice(changedIdx, 1);
+            self.refreshCollections();
         });
     };
 
     self.deleteProductGroup = function (item) {
         ajaxHelper(productGroupsUri + item.Id, 'DELETE').done(function (data) {
             self.ProductGroups.remove(data);
+            var changedIdx = self.ProductGroups.indexOf(data);
+            self.ProductGroups.splice(changedIdx, 1);
+            self.refreshCollections();
         });
     };
 
     self.deleteProduct = function (item) {
         ajaxHelper(productsUri + item.Id, 'DELETE').done(function (data) {
             self.Products.remove(data);
+            var changedIdx = self.Products.indexOf(data);
+            self.Products.splice(changedIdx, 1);
+            self.refreshCollections();
         });
     };
 
