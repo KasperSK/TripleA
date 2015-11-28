@@ -7,31 +7,6 @@
                 e.stopPropagation();
             }
         });
-
-
-
-        var options = [];
-
-        $('.dropdown-menu a').on('click', function (event) {
-
-            var $target = $(event.currentTarget),
-                val = $target.attr('value'),
-                $inp = $target.find('input'),
-                idx;
-
-            if ((idx = options.indexOf(val)) > -1) {
-                options.splice(idx, 1);
-                setTimeout(function () { $inp.prop('checked', false) }, 0);
-            } else {
-                options.push(val);
-                setTimeout(function () { $inp.prop('checked', true) }, 0);
-            }
-
-            $(event.target).blur();
-
-            console.log(options);
-            return false;
-        });
     </script>
 }
 
@@ -75,6 +50,10 @@
                 <tr><td>Active</td><td data-bind="text: ProductTabsDetails().Active"></td></tr>
                 <tr><td>Color</td><td data-bind="text: ProductTabsDetails().Color"></td></tr>
                 <tr><td>Priority</td><td data-bind="text: ProductTabsDetails().Priority"></td></tr>
+                <tr><td>Product types</td><td>
+
+                                              
+                </td></tr>
             </table>
         </div>
     </div>
