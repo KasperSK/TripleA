@@ -167,7 +167,7 @@
         });
     };
 
-    self.addProductGroup = function (formElement) {
+    self.addProduct = function (formElement) {
         var product = {
             Name: self.newProduct.Name(),
             Price: self.newProduct.Price(),
