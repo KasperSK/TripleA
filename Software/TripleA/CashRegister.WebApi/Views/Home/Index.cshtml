@@ -1,0 +1,33 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+
+    <script>
+        $('#myDropdown .dropdown-menu').on({
+            "click": function (e) {
+                e.stopPropagation();
+            }
+        });
+    </script>
+}
+
+
+
+<div class="page-header">
+    <h1>Katrines kælder</h1>
+</div>
+
+<div class="row">
+    Velkommen! alt er under settings ;)
+
+</div>
+
+
+
+<style>
+    .form-horizontal .control-label {
+        /* text-align:right; */
+        text-align: left;
+    }
+</style>
+
+
