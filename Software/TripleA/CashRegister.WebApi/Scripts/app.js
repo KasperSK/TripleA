@@ -13,6 +13,7 @@
 
     self.ProductTypeNames = ko.observableArray();
     self.ProductGroupNames = ko.observableArray();
+    self.ProductNames = ko.observableArray();
 
     self.newProductTab = {
         Name: ko.observable(),
@@ -61,26 +62,17 @@
         });
     };
 
-    // ------ 
     function listCompare(koList, compareList, thisList) {
-        //self.ProductTypeNames([]);
         thisList([]);
         
-        //ko.utils.arrayForEach(self.ProductTypes(), function (item){
         ko.utils.arrayForEach(koList, function (item) {
-            //self.ProductTabsDetails().ProductTypes.forEach(function (entry){
             compareList.forEach(function (entry) {
-                console.log("her it is: " + item.id + " " + entry);
                 if (item.Id == entry) {
-                    
-                    //self.ProductTypeNames.push(item);
                     thisList.push(item);
-                    console.log(item);
                 };
             });
         });
     };
-    // ------
 
     function getAllProductTabs() {
         ajaxHelper(productTabsUri, 'GET').done(function(data) {
@@ -130,12 +122,14 @@
     self.getProductGroupsDetails = function(item) {
         ajaxHelper(productGroupsUri + item.Id, 'GET').done(function(data) {
             self.ProductGroupsDetails(data);
+            listCompare(self.Products(), self.ProductGroupsDetails().Products, self.ProductNames);
         });
     };
 
     self.getProductsDetail = function(item) {
         ajaxHelper(productsUri + item.Id, 'GET').done(function(data) {
             self.ProductDetail(data);
+            listCompare(self.ProductGroups(), self.ProductDetail().ProductGroups, self.ProductGroupNames);
         });
     };
 
