@@ -11,6 +11,8 @@
     self.ProductGroupsDetails = ko.observable();
     self.ProductDetail = ko.observable();
 
+    self.ProductTypeNames = ko.observableArray();
+
     self.newProductTab = {
         Name: ko.observable(),
         Color: ko.observable(),
@@ -58,6 +60,21 @@
         });
     };
 
+    // ------ 
+    function listProductTypeNames() {
+        console.log("Inside");
+        console.log(self.ProductTabsDetails().Name);
+
+        ko.utils.arrayForEach(self.ProductTypes(), function (item) {
+            self.ProductTabsDetails().ProductTypes.forEach(function (entry) {
+                if (item.Id == entry) {
+                    self.ProductTypeNames.push(item);
+                }
+            });
+        });
+    };
+    // ------
+
     function getAllProductTabs() {
         ajaxHelper(productTabsUri, 'GET').done(function(data) {
             self.ProductTabs(data);
@@ -85,6 +102,7 @@
     self.getProductTabsDetails = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'GET').done(function(data) {
             self.ProductTabsDetails(data);
+            listProductTypeNames();
         });
     };
 
@@ -105,6 +123,8 @@
             self.ProductDetail(data);
         });
     };
+
+
 
     var priorityExists = false;
     var ids = [];

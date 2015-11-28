@@ -51,8 +51,9 @@
                 <tr><td>Color</td><td data-bind="text: ProductTabsDetails().Color"></td></tr>
                 <tr><td>Priority</td><td data-bind="text: ProductTabsDetails().Priority"></td></tr>
                 <tr><td>Product types</td><td>
-
-                                              
+                    <ul data-bind="foreach: ProductTypeNames">
+                        <li data-bind="text: Name"></li>
+                    </ul>                      
                 </td></tr>
             </table>
         </div>
