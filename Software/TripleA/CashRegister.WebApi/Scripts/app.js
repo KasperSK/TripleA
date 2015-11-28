@@ -62,17 +62,19 @@
     };
 
     // ------ 
-    function listCompare() {
-        self.ProductTypeNames([]);
-        ko.utils.arrayForEach(self.ProductTypes(), function (item){
-        //ko.utils.arrayForEach(koList, function (item) {
-            self.ProductTabsDetails().ProductTypes.forEach(function (entry){
-            //compareList.forEach(function (entry) {
+    function listCompare(koList, compareList, thisList) {
+        //self.ProductTypeNames([]);
+        thisList([]);
+        
+        //ko.utils.arrayForEach(self.ProductTypes(), function (item){
+        ko.utils.arrayForEach(koList, function (item) {
+            //self.ProductTabsDetails().ProductTypes.forEach(function (entry){
+            compareList.forEach(function (entry) {
                 console.log("her it is: " + item.id + " " + entry);
                 if (item.Id == entry) {
                     
-                    self.ProductTypeNames.push(item);
-                   // thisList.push(item);
+                    //self.ProductTypeNames.push(item);
+                    thisList.push(item);
                     console.log(item);
                 };
             });
@@ -114,14 +116,14 @@
     self.getProductTabsDetails = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'GET').done(function(data) {
             self.ProductTabsDetails(data);
-            listCompare();
+            listCompare(self.ProductTypes(), self.ProductTabsDetails().ProductTypes, self.ProductTypeNames);
         });
     };
 
     self.getProductTypesDetails = function(item) {
         ajaxHelper(productTypesUri + item.Id, 'GET').done(function(data) {
             self.ProductTypesDetails(data);
-            //listCompare(self.ProductGroups(), self.ProductTypesDetails().ProductGroups, self.ProductGroupNames);
+            listCompare(self.ProductGroups(), self.ProductTypesDetails().ProductGroups, self.ProductGroupNames);
         });
     };
 
@@ -186,7 +188,7 @@
             Name: self.newProductType.Name(),
             Price: self.newProductType.Price(),
             Color: self.newProductType.Color(),
-            ProductTypes: ids
+            ProductGroups: ids
         };
 
         ajaxHelper(productTypesUri, 'POST', productType).done(function (item) {
