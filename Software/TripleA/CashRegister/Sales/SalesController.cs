@@ -68,6 +68,14 @@ namespace CashRegister.Sales
             _logger.Debug("Product Added");
         }
 
+        public string Tally()
+        {
+            return _paymentController.Tally();
+        }
+        
+           
+        
+
         /// <summary>
         ///     Prints an order
         /// </summary>

@@ -51,7 +51,7 @@
             <Setter Property="RenderTransformOrigin" Value="0.1,0.1"/>
         </Style>
     </UserControl.Resources>
-    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2">
+    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2" Margin="6.5">
         <Grid Name="ProductGrid" ClipToBounds="True" SnapsToDevicePixels="True">
             <Grid.Background>
                 <LinearGradientBrush>
@@ -105,7 +105,7 @@
                     <DataTemplate>
                         <Button  Background="{Binding Path=Colour}" Style="{StaticResource NormalButton}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=Product}">
                             
-                                <TextBlock Text="{Binding Path=Name}" TextWrapping="WrapWithOverflow"></TextBlock>
+                                <TextBlock Text="{Binding Path=Name}" TextAlignment="Center" TextWrapping="WrapWithOverflow"></TextBlock>
                             
                         </Button>
                     </DataTemplate>
