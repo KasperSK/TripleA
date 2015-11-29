@@ -77,7 +77,7 @@ namespace CashRegister.Payment
             ;
         }
 
-        public int Tally()
+        public string Tally()
         {
             _logger.Debug("Reveneu");
             foreach (var paymentProvider in _paymentProviders)
@@ -88,7 +88,18 @@ namespace CashRegister.Payment
             _logger.Debug("");
             _logger.Debug("Money in cashdrawer: " + (_paymentProviders.First(p => p.Type == PaymentType.Cash).Revenue +
                           CashDrawer.CashChange));
-            return _paymentProviders.Sum(p => p.Tally()) + CashDrawer.CashChange;
+
+            string reply = "";
+            reply += "Cash in drawer: " + (_paymentProviders.First(p => p.Type == PaymentType.Cash).Revenue +
+                          CashDrawer.CashChange) + "";
+            reply += "\nTotal: " + _paymentProviders.Sum(p => p.Revenue) + "\n";
+            
+            foreach (var paymentprovider in _paymentProviders)
+            {
+                reply += "\n" + paymentprovider.Name + ": " + paymentprovider.Tally();
+            }
+
+            return reply;
         }
     }
 }

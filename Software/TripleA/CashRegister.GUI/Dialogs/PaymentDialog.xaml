@@ -5,16 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashRegister.GUI.Dialogs"
         mc:Ignorable="d"
-        Title="PaymentDialog" Height="150" Width="600">
+        Title="PaymentDialog" Height="400" Width="400">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            
         </Grid.ColumnDefinitions>
 
-        <Button Name="Cash" Grid.Column="0" Content="Cash" IsDefault="True" Style="{StaticResource NormalButton}"/>
-        <Button Name="Dankort" Grid.Column="1" Content="Dankort" Style="{StaticResource NormalButton}"/>
-        <Button Name="MobilePay" Grid.Column="2" Content="MobilePay" Style="{StaticResource NormalButton}"/>
+        <Button Name="Cash" Grid.Row="0" Grid.Column="0" Margin="10" Content="Cash" IsDefault="True" Style="{StaticResource NormalButton}"/>
+        <Button Name="Dankort" Grid.Row="1" Grid.Column="0" Margin="10" Content="Dankort" Style="{StaticResource NormalButton}"/>
+        <Button Name="MobilePay" Grid.Row="2" Grid.Column="0" Margin="10" Content="MobilePay" Style="{StaticResource NormalButton}"/>
+        
+        <TextBox Grid.Column="1" Grid.Row="0" Margin="10" Text="Kunden kan betale med Sedler og mønter. Ingen Checks!" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextAlignment="Left"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="10" Text="Kunden kan betale med diverse betalingskort. Dankort, Mastercard, Visa" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextAlignment="Left"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="10" Text="Kunden kan betale med mobile betalingsløsninger. MobilePay, Swipp." TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextAlignment="Left"></TextBox>
     </Grid>
 </Window>

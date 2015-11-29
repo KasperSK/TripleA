@@ -51,5 +51,8 @@ namespace CashRegister.GUI.Views
                 relay?.Execute(dlg.PaymentChoice);
             }
         }
+
+
+      
     }
 }
