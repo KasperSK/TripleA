@@ -247,6 +247,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Settings.cshtml" />
+    <Content Include="Views\Home\Statistic.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿var statistikViewModel = function() {
+﻿var StatistikViewModel = function() {
     var self = this;
 
     self.SalesOrders = ko.observableArray();
@@ -7,7 +7,7 @@
 
     self.error = ko.observable;
 
-    var SalesOrder = '/api/salesorders';
+    var salesOrderUri = '/api/salesorders';
 
     function ajaxHelper(uri, method, data) {
         self.error('');
@@ -23,6 +23,19 @@
     };
 
     function getAllSalesOrders() {
+        ajaxHelper(salesOrderUri, 'GET').done(function (data) {
+            self.SalesOrders(data);
+        });
+    };
 
-    }
+    self.getSaleOrderDetails = function(item) {
+        ajaxHelper(salesOrderUri + item.ID, 'GET').done(function(data) {
+            self.SalesOrdersDetails(data);
+        });
+    };
+
+
+    getAllSalesOrders();
 }
+
+ko.applyBindings(new StatistikViewModel());

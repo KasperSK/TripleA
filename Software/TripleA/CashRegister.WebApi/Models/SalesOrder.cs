@@ -41,8 +41,6 @@ namespace CashRegister.WebApi.Models
 
         public DateTime Date { get; set; }
 
-        public int Total { get; set; }
-
         public OrderStatus Status { get; set; }
     }
 
