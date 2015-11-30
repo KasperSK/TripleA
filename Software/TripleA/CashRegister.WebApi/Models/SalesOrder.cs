@@ -34,4 +34,30 @@ namespace CashRegister.WebApi.Models
 
         public virtual ICollection<OrderLine> Lines { get; }
     }
+
+    public class SalesOrderDto
+    {
+        public long Id { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public int Total { get; set; }
+
+        public OrderStatus Status { get; set; }
+    }
+
+    public class SalesOrderDetailsDto
+    {
+        public long Id { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public int Total { get; set; }
+
+        public OrderStatus Status { get; set; }
+
+        public List<long> Transactions { get; set; }
+
+        public List<long> Lines { get; set; }
+    }
 }

@@ -26,6 +26,9 @@ namespace CashRegister.WebApi
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/knockout-{version}.js", 
                 "~/Scripts/app.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Statistik").Include(
+                 "~/Scripts/knockout-{version}.js",
+                 "~/Scripts/Statistik.js"));
         }
     }
 }
