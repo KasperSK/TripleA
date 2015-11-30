@@ -71,6 +71,13 @@ namespace CashRegister.GUI.ViewModels
 
         }
 
+        public string GetTally()
+        {
+            return _salesController.Tally();
+        }
+
+        
+
         public class ViewProduct
         {
             public ViewProduct(string count, string name, string price)
@@ -123,22 +130,6 @@ namespace CashRegister.GUI.ViewModels
             OnPropertyChanged(nameof(Total));
         }
 
-        private ICommand _balanceCommand;
-
-        public ICommand BalanceCommand
-        {
-            get { return _balanceCommand ?? (_balanceCommand = new RelayCommand(BalanceCommand_Execute)); }
-        }
-
-        private void BalanceCommand_Execute()
-        {
-            var balance_string = _salesController.Tally();
-
-            var balance = new BalanceDialog(balance_string);
-
-            balance.Show();
-            
-            
-        }
+        
     }
 }
