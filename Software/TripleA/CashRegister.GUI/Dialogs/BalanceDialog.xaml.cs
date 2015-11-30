@@ -25,6 +25,7 @@ namespace CashRegister.GUI.Dialogs
             InitializeComponent();
 
 
+
             string[] splitted = balance.Split('\n');
 
 
@@ -37,6 +38,11 @@ namespace CashRegister.GUI.Dialogs
 
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }

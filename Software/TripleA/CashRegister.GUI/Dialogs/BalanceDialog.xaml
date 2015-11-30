@@ -13,18 +13,24 @@
                     <RowDefinition/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <GroupBox Grid.Row="0" Header="Kasseapparat" FontSize="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Row="0" Grid.Column="0"  Header="Kasseapparat" FontSize="15">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                              <RowDefinition/>
                         </Grid.RowDefinitions>
+                       
 
                         <TextBlock Name="CashBlock" Grid.Row="0" FontSize="10"/>
                         <TextBlock Name="TotalBlock" Grid.Row="1" FontSize="10"/>
                     </Grid>
                 </GroupBox>
-                <GroupBox  Grid.Row="1" Header="Betalingsmåder" FontSize="15">
+                <Button Grid.Row="0" Grid.Column="1" Content="Print" Style="{StaticResource NormalButton}" Margin="10" Click="Button_Click"></Button>
+                <GroupBox  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Header="Betalingsmåder" FontSize="15">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
