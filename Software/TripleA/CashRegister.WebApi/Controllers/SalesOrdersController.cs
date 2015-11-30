@@ -21,17 +21,12 @@ namespace CashRegister.WebApi.Controllers
         // GET: api/SalesOrders
         public IQueryable<SalesOrderDto> GetSalesOrders()
         {
-            var SalesOrder = from so in db.SalesOrders
-                select
-                    new SalesOrderDto()
-                    {
-                        Id = so.Id,
-                        Date = so.Date,
-                        Status = so.Status,
-                        Total = so.Total
-                    };
+            var SalesOrder = db.SalesOrders.Include(so => so.Lines);
 
-            return SalesOrder;
+            IQueryable<SalesOrderDto> salesOrderDto = SalesOrder.Select(salesOrder => new SalesOrderDto() {Date = salesOrder.Date, Id = salesOrder.Id, Status = salesOrder.Status, //Total = salesOrder.Total
+            });
+
+            return salesOrderDto;
         }
 
         // GET: api/SalesOrders/5
