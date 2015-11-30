@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CashRegister.Models;
+using JetBrains.Annotations;
 
 namespace CashRegister.Orders
 {
@@ -30,6 +33,7 @@ namespace CashRegister.Orders
                 Date = DateTime.Now,
             };
             OrderDao.Insert(CurrentOrder);
+            OnPropertyChanged(nameof(CurrentOrder));
         }
 
         public void SaveOrder()
@@ -45,10 +49,10 @@ namespace CashRegister.Orders
             if (id > StashedOrders.Count)
                 return;
 
-            StashCurrentOrder();
-
+            _stashedOrders.Add(CurrentOrder);
             CurrentOrder = _stashedOrders[id];
             _stashedOrders.RemoveAt(id);
+            OnPropertyChanged(nameof(CurrentOrder));
         }
 
         public void StashCurrentOrder()
@@ -62,6 +66,7 @@ namespace CashRegister.Orders
 
             CurrentOrder.Date = DateTime.Now;
             OrderDao.ClearOrder(CurrentOrder);
+            OnPropertyChanged(nameof(CurrentOrder));
 
         }
 
@@ -90,6 +95,7 @@ namespace CashRegister.Orders
             };
 
             OrderDao.AddOrderLine(orderLine);
+            OnPropertyChanged(nameof(CurrentOrder));
         }
 
 
@@ -108,6 +114,14 @@ namespace CashRegister.Orders
         {
             var orders = OrderDao.GetLastOrders(amount);
             return orders;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 	}
 }

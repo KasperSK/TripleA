@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using CashRegister.Models;
 
 namespace CashRegister.Sales
@@ -78,6 +79,9 @@ namespace CashRegister.Sales
         /// Returns the current order
         /// </summary>
         SalesOrder CurrentOrder { get; }
+
+        IEnumerable<OrderLine> CurrentOrderLines { get; }
+        int CurrentOrderTotal { get; }
 
         /// <summary>
         ///     Gets the PaymentProviderDescriptor

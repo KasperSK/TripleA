@@ -25,22 +25,22 @@ namespace CashRegister.GUI.ViewModels
 
         public void OnCurrentOrderChanged(object sender, PropertyChangedEventArgs e) //Happening when receiving event from SalesController
         {
-            var currentOrder = _salesController.CurrentOrder; //Retrieving currentorder via SAlesController
+            var currentOrderLines = _salesController.CurrentOrderLines; //Retrieving currentorder via SAlesController
 
             ViewProducts.Clear();
 
-            foreach (var lineElement in currentOrder.Lines) //Itterating through all orderlines in currentorder
+            foreach (var lineElement in currentOrderLines) //Itterating through all orderlines in currentorder
             {
                 var price = (lineElement.UnitPrice*lineElement.Quantity).ToString(); //Making Total price for Orderline
 
                 ViewProducts
-                    .Add(new ViewProduct(lineElement.Quantity.ToString()
-                        , //Adding new Viewproducts to be displayed in SalesView
+                    .Add(new ViewProduct(lineElement.Quantity.ToString(), //Adding new Viewproducts to be displayed in SalesView
                         lineElement.Product.Name,
                         price));
                 
-                OnPropertyChanged();
+                
             }
+            OnPropertyChanged(nameof(ViewProducts));
             OnPropertyChanged(nameof(Total));
 
         }
