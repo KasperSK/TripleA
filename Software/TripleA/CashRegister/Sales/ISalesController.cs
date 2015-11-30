@@ -17,6 +17,7 @@ namespace CashRegister.Sales
         /// </summary>
         void AddProductToOrder(Product product, int quantity, Discount discount);
 
+        string Tally();
 
         /// <summary>
         /// Provides Product tabs to GUI
