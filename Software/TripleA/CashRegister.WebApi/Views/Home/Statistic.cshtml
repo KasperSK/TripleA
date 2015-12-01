@@ -17,3 +17,31 @@
 }
 
 <h2>Statistic</h2>
+
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">OrderSales</h2>
+        </div>
+        <div class="panel-body">
+            <ul class="list-unstyled" data-bind="foreach: SalesOrders">
+                <li class="myList">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong><span data-bind="text: Id"></span></strong>
+                        </div>
+                        <div class="col-md-6">
+                            <div align="right">
+                                @*<small><a href="#" data-bind="click: $parent.getProductTypesDetails">Details</a></small>
+                                <small><a href="#" data-bind="click: $parent.deleteProductType">Delete</a></small>*@
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="alert alert-danger" data-bind="visible: error">
+        <p data-bind="text: error"></p>
+    </div>
+</div>
