@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using CashRegister.GUI.Dialogs;
 using CashRegister.Models;
@@ -23,11 +25,18 @@ namespace CashRegister.GUI.ViewModels
 
         public string Total => _salesController.CurrentOrder.Total.ToString() + " kr.";
 
+        private int _currentIndex = -1;
+
+        
+
+        
+
         public void OnCurrentOrderChanged(object sender, PropertyChangedEventArgs e) //Happening when receiving event from SalesController
         {
             var currentOrderLines = _salesController.CurrentOrderLines; //Retrieving currentorder via SAlesController
 
             ViewProducts.Clear();
+            CurrentIndex = 0;
 
             foreach (var lineElement in currentOrderLines) //Itterating through all orderlines in currentorder
             {
@@ -37,13 +46,36 @@ namespace CashRegister.GUI.ViewModels
                     .Add(new ViewProduct(lineElement.Quantity.ToString(), //Adding new Viewproducts to be displayed in SalesView
                         lineElement.Product.Name,
                         price));
-                
-                
+                CurrentIndex++;
+                OnPropertyChanged();
             }
             OnPropertyChanged(nameof(ViewProducts));
             OnPropertyChanged(nameof(Total));
 
         }
+
+        public int CurrentIndex
+        {
+            get { return _currentIndex; }
+
+            set
+            {
+                if (_currentIndex == value) return;
+                else
+                {
+                    _currentIndex = value;
+                    OnPropertyChanged(nameof(CurrentIndex));
+                }
+            }
+
+        }
+
+        public string GetTally()
+        {
+            return _salesController.Tally();
+        }
+
+        
 
         public class ViewProduct
         {
@@ -73,6 +105,8 @@ namespace CashRegister.GUI.ViewModels
             _salesController.StartPayment((int)amount, "", paymentType);
         }
 
+
+
         private RelayCommand _paymentCommand;
         public ICommand PaymentCommand => _paymentCommand ?? (_paymentCommand = new RelayCommand(PaymentCommandExecute, PaymentCommandCanExecute));
 
@@ -90,7 +124,11 @@ namespace CashRegister.GUI.ViewModels
 
         private void AbortCommandExecute()
         {
+            ViewProducts.Clear();
             _salesController.CancelOrder();
+            OnPropertyChanged(nameof(Total));
         }
+
+        
     }
 }

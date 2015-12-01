@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using CashRegister.GUI.Dialogs;
 using CashRegister.GUI.ViewModels;
 using CashRegister.Log;
+using CashRegister.Receipts;
 
 namespace CashRegister.GUI.Views
 {
@@ -50,6 +51,32 @@ namespace CashRegister.GUI.Views
                 var relay = helper?.SalesViewModel.PaytypeCommand; 
                 relay?.Execute(dlg.PaymentChoice);
             }
+        }
+
+        private void BalanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow((this));
+
+            var helper = parentWindow?.DataContext as MainViewModel;
+
+            string balance = helper?.SalesViewModel.GetTally();
+
+            var balanceDlg = new BalanceDialog(balance);
+
+            balanceDlg.Owner = parentWindow;
+
+            if (balanceDlg.ShowDialog() == true)
+            {
+                //var balanceReceipt = new Receipt();
+
+                //balanceReceipt.Add(balance);
+
+
+                ////helper?.SalesViewModel.print(balanceReceipt);
+            };
+
+            
+
         }
     }
 }

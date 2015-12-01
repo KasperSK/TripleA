@@ -11,7 +11,7 @@ namespace CashRegister.Payment
         
         void PrintTransaction(Transaction transaction);
         
-	    int Tally();
+	    string Tally();
 
 	}
 }

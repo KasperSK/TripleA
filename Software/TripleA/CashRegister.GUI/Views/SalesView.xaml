@@ -31,7 +31,7 @@
 
             <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1.5" Grid.Row="0">
                 <Grid Name="MiddleDisplay" >
-                    <DataGrid ItemsSource="{Binding ViewProducts}"   IsReadOnly="True" GridLinesVisibility="None">
+                    <DataGrid Name="MiddleDisplayDataGrid" ItemsSource="{Binding ViewProducts}"   IsReadOnly="True" GridLinesVisibility="None" >
 
                     </DataGrid>
                 </Grid>
@@ -61,9 +61,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Button Name="Pay" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" MinHeight="35" Content="Betal" MinWidth="50" Margin="5"  Background="DodgerBlue" BorderThickness="1" BorderBrush="BlueViolet" Command="{Binding Path=PaymentCommand}" Style="{StaticResource NormalButton}"/>
-            <Button Name="Cancel" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" MinHeight="35" Content="Afbryd" MinWidth="50" Margin="5"  Background="Red" BorderThickness="1" BorderBrush="DarkRed" Command="{Binding Path=AbortCommand}" Style="{StaticResource NormalButton}"/>
+            
+            <Button Name="BalanceButton" Content="Afstem" Margin="7" Style="{StaticResource NormalButton}" Click="BalanceButton_Click"></Button>
+            
+            <Button Name="Pay" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Content="Betal"  Margin="7"  Background="DodgerBlue" Click="Pay_Click"  Command="{Binding Path=PaymentCommand}" Style="{StaticResource NormalButton}"/>
+            <Button Name="Cancel" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  Content="Afbryd"  Margin="7"  Background="Red"  Command="{Binding Path=AbortCommand}" Style="{StaticResource NormalButton}"/>
 
         </Grid>
     </Grid>

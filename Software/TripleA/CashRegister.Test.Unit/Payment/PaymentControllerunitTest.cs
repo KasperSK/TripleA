@@ -149,7 +149,8 @@ namespace CashRegister.Test.Unit.Payment
         {
             var total = _uut.Tally();
 
-            Assert.That(total, Is.EqualTo(1000));
+            Assert.That(total, Is.EqualTo("Cash in drawer: 1000\nTotal: 0\n\nCashPayment: 0\nNets: 0"));  // Er sat til at returnere en streng som bruges i Afstemningsvinduet
+                                                                                                          // Hvorfor ser resultatet sådan ud Kalle?
         }
     }
 }
