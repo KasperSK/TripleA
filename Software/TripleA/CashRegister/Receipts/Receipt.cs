@@ -28,7 +28,7 @@ namespace CashRegister.Receipts
 
         public void Add(string line)
         {
-            _contentList.Add(line);
+            _contentList.Add(string.Format(_formatProvider, line));
         }
 
         public void AddLine(string formattable)

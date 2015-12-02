@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using CashRegister.Models;
+using CashRegister.Receipts;
 
 namespace CashRegister.Sales
 {
@@ -83,7 +84,7 @@ namespace CashRegister.Sales
 
         IEnumerable<OrderLine> CurrentOrderLines { get; }
         int CurrentOrderTotal { get; }
-
+        
         /// <summary>
         ///     Gets the PaymentProviderDescriptor
         /// </summary>

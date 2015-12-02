@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using CashRegister.Models;
 using JetBrains.Annotations;
 
@@ -97,7 +96,6 @@ namespace CashRegister.Orders
             OrderDao.AddOrderLine(orderLine);
             OnPropertyChanged(nameof(CurrentOrder));
         }
-
 
         public long MissingAmount()
         {
