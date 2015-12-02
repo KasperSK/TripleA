@@ -107,17 +107,7 @@ namespace CashRegister.GUI.ViewModels
 
 
 
-        private RelayCommand _paymentCommand;
-        public ICommand PaymentCommand => _paymentCommand ?? (_paymentCommand = new RelayCommand(PaymentCommandExecute, PaymentCommandCanExecute));
-
-        private void PaymentCommandExecute()
-        {
-        }
-
-        private bool PaymentCommandCanExecute()
-        {
-            return ViewProducts.Count > 0;
-        }
+       
 
         private RelayCommand _abortCommand;
         public ICommand AbortCommand => _abortCommand ?? (_abortCommand = new RelayCommand(AbortCommandExecute));
@@ -129,6 +119,53 @@ namespace CashRegister.GUI.ViewModels
             OnPropertyChanged(nameof(Total));
         }
 
-        
+        private ICommand _balanceCommand;
+
+        public ICommand BalanceCommand
+        {
+            get { return _balanceCommand ?? (_balanceCommand = new RelayCommand<Window>(BalanceCommand_execute)); }
+        }
+
+        private void BalanceCommand_execute(Window ParrentWindow)
+        {
+
+            string balance = _salesController.Tally();
+
+            var balanceDlg = new BalanceDialog(balance);
+
+            balanceDlg.Owner = ParrentWindow;
+
+            if (balanceDlg.ShowDialog() == true)
+            {
+                //var balanceReceipt = new Receipt();
+
+                //balanceReceipt.Add(balance);
+
+
+                //_salesController.Print(balanceReceipt);
+            };
+        }
+
+
+        private ICommand _payCommand;
+
+        public ICommand PayCommand
+        {
+            get { return _payCommand ?? (_payCommand = new RelayCommand<Window>(PayCommand_Execute)); }
+        }
+
+        private void PayCommand_Execute(Window parrentWindow)
+        {
+            PaymentDialog dlg = new PaymentDialog();
+            dlg.Owner = parrentWindow;
+
+            if (dlg.ShowDialog() == true)
+            {
+                PaytypeCommandExecute(dlg.PaymentChoice);
+                
+                
+            }
+        }
+
     }
 }

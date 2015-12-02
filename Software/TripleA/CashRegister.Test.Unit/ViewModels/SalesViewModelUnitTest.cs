@@ -12,31 +12,33 @@ namespace CashRegister.Test.Unit.ViewModels
     public class SalesViewModelUnitTest
     {
         private SalesViewModel _uut;
-        private ISalesController _salesController;
+        private ISalesController _fakeSalesController;
 
 
         [SetUp]
         public void Setup()
         {
-           
-            _salesController = Substitute.For<ISalesController>();
 
-            _uut = new SalesViewModel(_salesController);
+            _fakeSalesController = Substitute.For<ISalesController>();
 
-          
+            _uut = new SalesViewModel(_fakeSalesController);
+
+            _fakeSalesController.PropertyChanged += _uut.OnCurrentOrderChanged;
+
+
         }
 
 
         [Test]
         public void PaymentCommand_SalesControllerStart_StartPaymentCalled()
         {
-            _salesController.MissingPaymentOnOrder().Returns(100);
+            _fakeSalesController.MissingPaymentOnOrder().Returns(100);
             _uut.ViewProducts.Add(new SalesViewModel.ViewProduct("2", "Beer", "10"));
             var payment = _uut.PaytypeCommand;
             payment.Execute(PaymentType.Cash);
-            
-            
-            _salesController.Received(1).StartPayment(100, Arg.Any<string>(), Arg.Any<PaymentType>());
+
+
+            _fakeSalesController.Received(1).StartPayment(100, Arg.Any<string>(), Arg.Any<PaymentType>());
         }
 
         [Test]
@@ -45,7 +47,21 @@ namespace CashRegister.Test.Unit.ViewModels
             var abort = _uut.AbortCommand;
             abort.Execute(null);
 
-            _salesController.Received(1).CancelOrder();
+            _fakeSalesController.Received(1).CancelOrder();
+        }
+
+        [Test]
+        public void OnCurrentOrderChanged_OnPropertyChangedEvent_OnCurrentOrderChangedCalled()
+        {
+            var orderlines = new SalesOrder();
+
+            orderlines.Lines.Add(new OrderLine() {Product = new Product("øl",10,true),Quantity = 1,UnitPrice = 10});
+            _fakeSalesController.CurrentOrder.Returns(orderlines);
+
+            _fakeSalesController.AddProductToOrder(new Product("øl",10,true),1, null);
+            
+
+            CollectionAssert.Contains(_uut.ViewProducts,new SalesViewModel.ViewProduct("1","øl","10"));
         }
 
         
