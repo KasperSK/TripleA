@@ -6,8 +6,15 @@ using System.Web.Mvc;
 
 namespace CashRegister.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller til website
+    /// </summary>
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Funktion til at hente index siden
+        /// </summary>
+        /// <returns>Index siden</returns>
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
@@ -15,6 +22,10 @@ namespace CashRegister.WebApi.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Funktion til at hente settings siden
+        /// </summary>
+        /// <returns>Settings siden</returns>
         public ActionResult Settings()
         {
             return View();

@@ -20,19 +20,31 @@ namespace CashRegister.WebApi.Areas.HelpPage
             Src = src;
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public string Src { get; private set; }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override bool Equals(object obj)
         {
             ImageSample other = obj as ImageSample;
             return other != null && Src == other.Src;
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override int GetHashCode()
         {
             return Src.GetHashCode();
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override string ToString()
         {
             return Src;

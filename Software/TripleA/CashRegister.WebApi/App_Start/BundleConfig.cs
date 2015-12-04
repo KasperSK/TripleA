@@ -3,9 +3,16 @@ using System.Web.Optimization;
 
 namespace CashRegister.WebApi
 {
+    /// <summary>
+    /// To setup the webpart of the project
+    /// </summary>
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// To register javascript html and css pages
+        /// </summary>
+        /// <param name="bundles"></param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

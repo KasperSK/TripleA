@@ -5,7 +5,13 @@ namespace CashRegister.WebApi.Areas.HelpPage
     /// </summary>
     public enum SampleDirection
     {
+        /// <summary>
+        /// Request
+        /// </summary>
         Request = 0,
+        /// <summary>
+        /// Response
+        /// </summary>
         Response
     }
 }

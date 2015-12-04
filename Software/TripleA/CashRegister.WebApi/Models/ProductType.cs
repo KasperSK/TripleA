@@ -3,9 +3,15 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace CashRegister.WebApi.Models
 {
+    /// <summary>
+    /// Model for ProductTypes in Entity Framework
+    /// </summary>
     [ExcludeFromCodeCoverage]
     public class ProductType
     {
+        /// <summary>
+        /// Initializes list
+        /// </summary>
         public ProductType()
         {
             ProductGroups = new List<ProductGroup>();
@@ -37,6 +43,9 @@ namespace CashRegister.WebApi.Models
         public virtual ICollection<ProductGroup> ProductGroups { get; }
     }
 
+    /// <summary>
+    /// Data transfer object to send to the consumer of the webApi
+    /// </summary>
     public class ProductTypeDto
     {
         /// <summary>
@@ -50,6 +59,9 @@ namespace CashRegister.WebApi.Models
         public string Name { get; set; }
     }
 
+    /// <summary>
+    /// Detailed data transfer object to send to the consumer of the webApi
+    /// </summary>
     public class ProductTypeDetailsDto
     {
         /// <summary>

@@ -7,6 +7,9 @@ namespace CashRegister.WebApi.Areas.HelpPage
     /// </summary>
     public class InvalidSample
     {
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public InvalidSample(string errorMessage)
         {
             if (errorMessage == null)
@@ -16,19 +19,31 @@ namespace CashRegister.WebApi.Areas.HelpPage
             ErrorMessage = errorMessage;
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public string ErrorMessage { get; private set; }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override bool Equals(object obj)
         {
             InvalidSample other = obj as InvalidSample;
             return other != null && ErrorMessage == other.ErrorMessage;
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override int GetHashCode()
         {
             return ErrorMessage.GetHashCode();
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override string ToString()
         {
             return ErrorMessage;

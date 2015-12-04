@@ -1,0 +1,1735 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CashRegister.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:CashRegister.WebApi.BundleConfig">
+            <summary>
+            To setup the webpart of the project
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            To register javascript html and css pages
+            </summary>
+            <param name="bundles"></param>
+        </member>
+        <member name="T:CashRegister.WebApi.RouteConfig">
+            <summary>
+            To map the controllers to the api
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Maps the routes of the controllers
+            </summary>
+            <param name="routes"></param>
+        </member>
+        <member name="T:CashRegister.WebApi.WebApiConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.CollectionModelDescription">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.CollectionModelDescription.ElementDescription">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.KeyModelDescription">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.ValueModelDescription">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription.Documentation">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription.ModelType">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription.Name">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GeneratedModels">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GetOrCreateModelDescription(System.Type)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.#ctor(System.String)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.Name">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterAnnotation">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.AnnotationAttribute">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.Documentation">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription.#ctor">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription.Annotations">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription.Documentation">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription.Name">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription.TypeDescription">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.SimpleTypeModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:CashRegister.WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:CashRegister.WebApi.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,CashRegister.WebApi.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,CashRegister.WebApi.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:CashRegister.WebApi.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},CashRegister.WebApi.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(CashRegister.WebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,CashRegister.WebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.ParameterType">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.Equals(System.Object)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.HelpPageSampleKey.GetHashCode">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CashRegister.WebApi.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.ImageSample.Src">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ImageSample.Equals(System.Object)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ImageSample.GetHashCode">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ImageSample.ToString">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.InvalidSample.#ctor(System.String)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.InvalidSample.ErrorMessage">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.InvalidSample.Equals(System.Object)">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.InvalidSample.GetHashCode">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.InvalidSample.ToString">
+            <summary>
+            Auto generated
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Areas.HelpPage.SampleDirection.Request">
+            <summary>
+            Request
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Areas.HelpPage.SampleDirection.Response">
+            <summary>
+            Response
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.TextSample.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="P:CashRegister.WebApi.Areas.HelpPage.TextSample.Text">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.TextSample.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.TextSample.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.TextSample.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="controllerDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="actionDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="parameterDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetResponseDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="actionDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetMethodNode(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="actionDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetMemberName(System.Reflection.MethodInfo)">
+            <summary>
+            
+            </summary>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Areas.HelpPage.XmlDocumentationProvider.GetTagValue(System.Xml.XPath.XPathNavigator,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="parentNode"></param>
+            <param name="tagName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.HomeController">
+            <summary>
+            Controller til website
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.HomeController.Index">
+            <summary>
+            Funktion til at hente index siden
+            </summary>
+            <returns>Index siden</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.HomeController.Settings">
+            <summary>
+            Funktion til at hente settings siden
+            </summary>
+            <returns>Settings siden</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.ProductGroupsController">
+            <summary>
+            Controller to handle data transfer of productGroups between web and database
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.GetProductGroups">
+            <summary>
+            Get a list of all product groups
+            </summary>
+            <returns>List of products groups</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.GetProductGroup(System.Int64)">
+            <summary>
+            Get the details of a single product group
+            </summary>
+            <param name="id">Id of the productgroup to get details from</param>
+            <returns>The detailed productgroup</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.PutProductGroup(System.Int64,CashRegister.WebApi.Models.ProductGroup)">
+            <summary>
+            Input a change to a productgroup specified by id
+            </summary>
+            <param name="id">id of the group to update</param>
+            <param name="productGroup">the group itself</param>
+            <returns>Status of the transaction</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.PostProductGroup(CashRegister.WebApi.Models.ProductGroupDetailsDto)">
+            <summary>
+            Insert a new productgroup
+            </summary>
+            <param name="productGroupDetails">The Detailed dto to insert</param>
+            <returns>The dto insert or a bad status</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.DeleteProductGroup(System.Int64)">
+            <summary>
+            Delete a productgroup 
+            </summary>
+            <param name="id">Id of group to delete</param>
+            <returns>The deleted product</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.Dispose(System.Boolean)">
+            <summary>
+            Method to dispose of db context
+            </summary>
+            <param name="disposing">True if disposing</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.ProductGroupExists(System.Int64)">
+            <summary>
+            Internal helper to check if productgroup is in the db
+            </summary>
+            <param name="id">id of group to find</param>
+            <returns>true if it exists else false</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.ProductsController">
+            <summary>
+            Controller to handle data transfer of products between web and database 
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.GetProducts">
+            <summary>
+            Gets a list of all the products in the database
+            </summary>
+            <returns>List of products in JSON or XML format</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.GetProduct(System.Int64)">
+            <summary>
+            Gets the details of a product associatet with the given id
+            </summary>
+            <param name="id"></param>
+            <returns>A detailed view of a product</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.PutProduct(System.Int64,CashRegister.WebApi.Models.Product)">
+            <summary>
+            Add a new product to the database
+            </summary>
+            <param name="id">id of the product to add</param>
+            <param name="product">The product object itself</param>
+            <returns>A status code of how the transaction went</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.PostProduct(CashRegister.WebApi.Models.ProductDetailsDto)">
+            <summary>
+            Can be used to insert new items in the database
+            </summary>
+            <param name="productDetails">A ProductDetaulsDto to insert</param>
+            <returns>The Dto or bad request</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.DeleteProduct(System.Int64)">
+            <summary>
+            Delete a product from the database
+            </summary>
+            <param name="id">Id of product to delete</param>
+            <returns>The product that has been deletet</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.Dispose(System.Boolean)">
+            <summary>
+            To dispose the db when the controller is no longer in use
+            </summary>
+            <param name="disposing">True if disposing else false</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.ProductExists(System.Int64)">
+            <summary>
+            Helper method to see if product exist
+            </summary>
+            <param name="id">I d of the product</param>
+            <returns>True if it exisits else false</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.ProductTabsController">
+            <summary>
+            Controller to handle data transfer of productTabs between web and database
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.GetProductTabs">
+            <summary>
+            Get a list of all product tabs
+            </summary>
+            <returns>List of all tabs</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.GetProductTab(System.Int32)">
+            <summary>
+            Get a detailed tab
+            </summary>
+            <param name="id">Id of tab you want details from</param>
+            <returns>Detailed tab or an error code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.PutProductTab(System.Int32,CashRegister.WebApi.Models.ProductTab)">
+            <summary>
+            Input changes to producttab
+            </summary>
+            <param name="id">Id of tab to change</param>
+            <param name="productTab">Obejct with the changes</param>
+            <returns>Status code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.PostProductTab(CashRegister.WebApi.Models.ProductTabDetailsDto)">
+            <summary>
+            Input a new product to the db
+            </summary>
+            <param name="productTabDetails">An object containing the detailed product</param>
+            <returns>The insertet obejct or an errorcode</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.DeleteProductTab(System.Int32)">
+            <summary>
+            Delete a tab
+            </summary>
+            <param name="id">Id of tab to delete</param>
+            <returns>The deleted tab</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.Dispose(System.Boolean)">
+            <summary>
+            To dispose of db context
+            </summary>
+            <param name="disposing">True if disposing</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.ProductTabExists(System.Int32)">
+            <summary>
+            internal helper method to check if tab exists
+            </summary>
+            <param name="id">id of tab to check</param>
+            <returns>True if it exists</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.ProductTypesController">
+            <summary>
+            Controller to handle data transfer of productTypes between web and database
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.GetProductTypes">
+            <summary>
+            Get a list of all producttypes
+            </summary>
+            <returns>List of types</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.GetProductType(System.Int32)">
+            <summary>
+            get detailes afor a single types
+            </summary>
+            <param name="id">id of type to find details for</param>
+            <returns>Detailed types obejct</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.PutProductType(System.Int32,CashRegister.WebApi.Models.ProductType)">
+            <summary>
+            Input changes to a type
+            </summary>
+            <param name="id">id of type to change</param>
+            <param name="productType">Obejct with changes</param>
+            <returns>Status of how it went</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.PostProductType(CashRegister.WebApi.Models.ProductTypeDetailsDto)">
+            <summary>
+            Input new object to DB
+            </summary>
+            <param name="productTypeDetails">Obejct containing the new type with details</param>
+            <returns>the detailed inserted type</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.DeleteProductType(System.Int32)">
+            <summary>
+            To delete a type
+            </summary>
+            <param name="id">Id of type to delete</param>
+            <returns>The deletet type or status code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.Dispose(System.Boolean)">
+            <summary>
+            To dispose of db context
+            </summary>
+            <param name="disposing">true if disposing</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.ProductTypeExists(System.Int32)">
+            <summary>
+            Internal helper to check if type allready exist
+            </summary>
+            <param name="id">Id of type</param>
+            <returns>True if it exists</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.WebApiApplication">
+            <summary>
+            To start up the website
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.WebApiApplication.Application_Start">
+            <summary>
+            To set up the application for start
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.CashRegisterContext">
+            <summary>
+            The database context
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.CashRegisterContext.#ctor">
+            <summary>
+            To initialize a new context
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.Discounts">
+            <summary>
+            Dbset for discount
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.SalesOrders">
+            <summary>
+            Dbset for salesorders
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.OrderLines">
+            <summary>
+            Dbset for orderlines
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.Products">
+            <summary>
+            Dbset for products
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.ProductGroups">
+            <summary>
+            Dbset for product groups
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.ProductTypes">
+            <summary>
+            Dbset for ProductTypes
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.Transactions">
+            <summary>
+            Dbset for Transactions
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.CashRegisterContext.ProductTabs">
+            <summary>
+            Dbset for ProductTabs
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.CashRegisterContext.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Specification on how to build database
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.Discount">
+            <summary>
+            Model for Discount in Entity Framework
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.Discount.#ctor">
+            <summary>
+            Constructor initializes list of productgroups
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Discount.Id">
+            <summary>
+            The Discounts Db Id is primary key
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Discount.Description">
+            <summary>
+            Discription of what the discount is for
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Discount.Percent">
+            <summary>
+            Discount in percent %
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Discount.ProductGroups">
+            <summary>
+            The list of groups associatet with the discount
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.DiscountEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.DiscountEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.OrderLineEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.OrderLineEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.ProductEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.ProductEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.ProductGroupEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.ProductGroupEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.ProductTabEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.ProductTabEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.ProductTypeEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.ProductTypeEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.SalesOrderEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.SalesOrderEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ModelBuilder.TransactionEntityConfiguration">
+            <summary>
+            Class to setup the Db
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ModelBuilder.TransactionEntityConfiguration.#ctor">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.OrderLine">
+            <summary>
+            Model for OrderLine in Entity Framework
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.OrderLine.#ctor">
+            <summary>
+            Redundant?
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderLine.Id">
+            <summary>
+            The Id associatet with Orderlines is pk
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderLine.Quantity">
+            <summary>
+            How many items in the orderline
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderLine.Product">
+            <summary>
+            With product is being bougth
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderLine.UnitPrice">
+            <summary>
+            Price of the product
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderLine.Discount">
+            <summary>
+            Is there a discount associatet with the orderline
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderLine.DiscountValue">
+            <summary>
+            What the discount value is
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderLine.SalesOrder">
+            <summary>
+            Witch salesorder does this line belong to?
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.Product">
+            <summary>
+            Model for ´Product in Entity Framework
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.Product.#ctor">
+            <summary>
+            Intializes the list of product groups and sets id to 0
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.Product.#ctor(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a product with specific parameters
+            </summary>
+            <param name="name">Name of the product</param>
+            <param name="price">Price of the product</param>
+            <param name="saleable">Is the product saleable</param>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Product.Id">
+            <summary>
+            Id of the product
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Product.Name">
+            <summary>
+            Name of the product
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Product.Price">
+            <summary>
+            Pricce of the product
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Product.Saleable">
+            <summary>
+            Is the product saleable
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Product.ProductGroups">
+            <summary>
+            List of groups associatet with the product
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductDto">
+            <summary>
+            Data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductDto.Id">
+            <summary>
+            Id of the product reprecentet by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductDto.Name">
+            <summary>
+            Name of the product reprecentet by this dto
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductDetailsDto">
+            <summary>
+            Detailed data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductDetailsDto.Id">
+            <summary>
+            Id of the product reprecentet by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductDetailsDto.Name">
+            <summary>
+            Name of the product reprecentet by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductDetailsDto.Price">
+            <summary>
+            price of the product reprecentet by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductDetailsDto.Saleable">
+            <summary>
+            Is the product saleable as reprecentet by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductDetailsDto.ProductGroups">
+            <summary>
+            list of product group ID's reprecentet by this dto
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductGroup">
+            <summary>
+            Model for ProductGroups in Entity Framework
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ProductGroup.#ctor">
+            <summary>
+            Initializes the list of products
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroup.Id">
+            <summary>
+            Id of the product group
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroup.Name">
+            <summary>
+            Name of the product group
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroup.Products">
+            <summary>
+            List of products associatet with this product group
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductGroupDto">
+            <summary>
+            Data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroupDto.Id">
+            <summary>
+            id of the productgroup reprecented by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroupDto.Name">
+            <summary>
+            Name of the productgroup reprecented by this dto
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductGroupDetailsDto">
+            <summary>
+            Detailed data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroupDetailsDto.Id">
+            <summary>
+            id of the productgroup reprecented by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroupDetailsDto.Name">
+            <summary>
+            Name of the productgroup reprecented by this dto
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductGroupDetailsDto.Products">
+            <summary>
+            List of product Id's associatet with this product group
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductTab">
+            <summary>
+                Class to determine which products goes on which tab
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ProductTab.#ctor">
+            <summary>
+            Initializes list
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTab.Id">
+            <summary>
+                Uniqe Id
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTab.Name">
+            <summary>
+                Name of the Tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTab.Priority">
+            <summary>
+                In what order is this displayed
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTab.Active">
+            <summary>
+                Is it currently active
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTab.Color">
+            <summary>
+                Color of the tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTab.ProductTypes">
+            <summary>
+            List of product types associatet with the tab
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductTabDto">
+            <summary>
+            Data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDto.Id">
+            <summary>
+            Id of the product tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDto.Name">
+            <summary>
+            Name of the product tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDto.Priority">
+            <summary>
+            Priority of the product tab
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductTabDetailsDto">
+            <summary>
+            Detailed data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDetailsDto.Id">
+            <summary>
+            Id of the product tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDetailsDto.Name">
+            <summary>
+            Name of the product tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDetailsDto.Priority">
+            <summary>
+            Priority of the product tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDetailsDto.Active">
+            <summary>
+            The active states of the product tab
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDetailsDto.Color">
+            <summary>
+            Color of the product tab in gui
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTabDetailsDto.ProductTypes">
+            <summary>
+            List of product types ids 
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductType">
+            <summary>
+            Model for ProductTypes in Entity Framework
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.ProductType.#ctor">
+            <summary>
+            Initializes list
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductType.Id">
+            <summary>
+                Uniqe Id
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductType.Name">
+            <summary>
+                Name of the Type
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductType.Price">
+            <summary>
+                Price of the Type
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductType.Color">
+            <summary>
+                Color associated with the group
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductType.ProductGroups">
+            <summary>
+                Groups of products to match this
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductTypeDto">
+            <summary>
+            Data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTypeDto.Id">
+            <summary>
+                Uniqe Id
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTypeDto.Name">
+            <summary>
+                Name of the Type
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.ProductTypeDetailsDto">
+            <summary>
+            Detailed data transfer object to send to the consumer of the webApi
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTypeDetailsDto.Id">
+            <summary>
+                Uniqe Id
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTypeDetailsDto.Name">
+            <summary>
+                Name of the Type
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTypeDetailsDto.Price">
+            <summary>
+                Price of the Type
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTypeDetailsDto.Color">
+            <summary>
+                Color associated with the group
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.ProductTypeDetailsDto.ProductGroups">
+            <summary>
+                List of ProductGroup Ids
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.OrderStatus">
+            <summary>
+            Enumeration of the orderstatus... Created/Completed/Failed
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.OrderStatus.Created">
+            <summary>
+            Indicates a order has been created
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.OrderStatus.Completed">
+            <summary>
+            indicates a order has been completet
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.OrderStatus.Failed">
+            <summary>
+            Indicates a order has failed
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.SalesOrder">
+            <summary>
+            Model for SalesOrders in Entity Framework
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Models.SalesOrder.#ctor">
+            <summary>
+            Initializes lists
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrder.Id">
+            <summary>
+            Id of the sales order
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrder.Date">
+            <summary>
+            Date and time of the order
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrder.Total">
+            <summary>
+            The total sum of the sale
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrder.Status">
+            <summary>
+            The status of the order
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrder.Transactions">
+            <summary>
+            List of transactions for the order
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrder.Lines">
+            <summary>
+            List of orderlines for the order
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.TransactionStatus">
+            <summary>
+            Enumeration of the transaction status weather it has been completed or it has failed
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.TransactionStatus.Created">
+            <summary>
+            To indicate a transaction has been created
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.TransactionStatus.Completed">
+            <summary>
+            To indicate a transaction has been completed
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.TransactionStatus.Failed">
+            <summary>
+            To indicate a transaction has failed
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.PaymentType">
+            <summary>
+            Enumeration of the type of payment used be it cash, card or mobilephone
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.PaymentType.Cash">
+            <summary>
+            To indicate cash payment
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.PaymentType.Nets">
+            <summary>
+            TO indicate card payment
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.PaymentType.Swipp">
+            <summary>
+            To indicate swipp payment
+            </summary>
+        </member>
+        <member name="F:CashRegister.WebApi.Models.PaymentType.MobilePay">
+            <summary>
+            To indicate mobilepay payment
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.Transaction">
+            <summary>
+            Model for Transaction in Entity Framework
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Transaction.Id">
+            <summary>
+            Id of the transaktion in the db is pk
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Transaction.Description">
+            <summary>
+            Description of the transaction 
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Transaction.Date">
+            <summary>
+            Date and time when the transaction occured
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Transaction.Price">
+            <summary>
+            Price of the transaction
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Transaction.SalesOrder">
+            <summary>
+            Salesorder which the transaction was made on
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Transaction.PaymentType">
+            <summary>
+            The type of payment
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.Transaction.Status">
+            <summary>
+            The status of the transaction
+            </summary>
+        </member>
+    </members>
+</doc>

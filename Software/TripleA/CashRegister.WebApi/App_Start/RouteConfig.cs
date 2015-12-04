@@ -7,8 +7,15 @@ using System.Web.Routing;
 
 namespace CashRegister.WebApi
 {
+    /// <summary>
+    /// To map the controllers to the api
+    /// </summary>
     public class RouteConfig
     {
+        /// <summary>
+        /// Maps the routes of the controllers
+        /// </summary>
+        /// <param name="routes"></param>
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");

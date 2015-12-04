@@ -9,8 +9,14 @@ using System.Web.Routing;
 
 namespace CashRegister.WebApi
 {
+    /// <summary>
+    /// To start up the website
+    /// </summary>
     public class WebApiApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// To set up the application for start
+        /// </summary>
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

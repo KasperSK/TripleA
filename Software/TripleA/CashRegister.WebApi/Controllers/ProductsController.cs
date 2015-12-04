@@ -14,11 +14,18 @@ using WebGrease.Css.Extensions;
 
 namespace CashRegister.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller to handle data transfer of products between web and database 
+    /// </summary>
     public class ProductsController : ApiController
     {
         private CashRegisterContext db = new CashRegisterContext();
 
         // GET: api/Products
+        /// <summary>
+        /// Gets a list of all the products in the database
+        /// </summary>
+        /// <returns>List of products in JSON or XML format</returns>
         public IQueryable<ProductDto> GetProducts()
         {
             var products = from p in db.Products
@@ -32,6 +39,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // GET: api/Products/5
+        /// <summary>
+        /// Gets the details of a product associatet with the given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A detailed view of a product</returns>
         [ResponseType(typeof(ProductDetailsDto))]
         public async Task<IHttpActionResult> GetProduct(long id)
         {
@@ -59,6 +71,12 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // PUT: api/Products/5
+        /// <summary>
+        /// Add a new product to the database
+        /// </summary>
+        /// <param name="id">id of the product to add</param>
+        /// <param name="product">The product object itself</param>
+        /// <returns>A status code of how the transaction went</returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProduct(long id, Product product)
         {
@@ -94,6 +112,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/Products
+        /// <summary>
+        /// Can be used to insert new items in the database
+        /// </summary>
+        /// <param name="productDetails">A ProductDetaulsDto to insert</param>
+        /// <returns>The Dto or bad request</returns>
         [ResponseType(typeof(ProductDetailsDto))]
         public async Task<IHttpActionResult> PostProduct(ProductDetailsDto productDetails)
         {
@@ -124,6 +147,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // DELETE: api/Products/5
+        /// <summary>
+        /// Delete a product from the database
+        /// </summary>
+        /// <param name="id">Id of product to delete</param>
+        /// <returns>The product that has been deletet</returns>
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> DeleteProduct(long id)
         {
@@ -138,7 +166,10 @@ namespace CashRegister.WebApi.Controllers
 
             return Ok(product);
         }
-
+        /// <summary>
+        /// To dispose the db when the controller is no longer in use
+        /// </summary>
+        /// <param name="disposing">True if disposing else false</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -148,6 +179,11 @@ namespace CashRegister.WebApi.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Helper method to see if product exist
+        /// </summary>
+        /// <param name="id">I d of the product</param>
+        /// <returns>True if it exisits else false</returns>
         private bool ProductExists(long id)
         {
             return db.Products.Count(e => e.Id == id) > 0;
