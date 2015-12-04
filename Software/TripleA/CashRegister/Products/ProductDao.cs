@@ -6,18 +6,31 @@ using CashRegister.Models;
 namespace CashRegister.Products
 {
     /// <summary>
-    ///     Implementation og IProductDao
+    ///     Implementation of IProductDao
     /// </summary>
     public class ProductDao : IProductDao
     {
+		/// <summary>
+		///     Our DalFacade, how we connect and query the database.
+		/// </summary>
         private readonly IDalFacade _dalFacade;
 
+		/// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="databaseLayerFacade">Use the ProductDao with a specific DalFacade</param>
+        /// <returns>ProductDao</returns>
         public ProductDao(IDalFacade databaseLayerFacade)
         {
             _dalFacade = databaseLayerFacade;
         }
 
-        // Still have error when product is not saleable
+		/// <summary>
+        /// Collection of the ProductTabs that are active and have Products that are saleable
+		/// Still have error when product is not saleable
+		/// <param name="onlyActive">Only return Active Tabs and Saleable Products</param>
+		/// <returns>Collection of the ProductTabs</returns>
+        /// </summary>
         public ReadOnlyCollection<ProductTab> GetProductTabs(bool onlyActive)
         {
             using (var uow = _dalFacade.UnitOfWork)
