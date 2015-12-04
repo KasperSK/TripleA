@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CashRegister.Models;
+﻿using CashRegister.Models;
 using CashRegister.Payment;
 using NUnit.Framework;
 
 namespace CashRegister.Test.Unit.Payment
 {
     [TestFixture]
-    class CashPaymentUnitTest
+     public class CashPaymentUnitTest
     {
         private CashPayment _uut;
 
@@ -80,8 +75,5 @@ namespace CashRegister.Test.Unit.Payment
         {
             Assert.That(_uut.Description, Is.EqualTo("CashPayment, nothing fancy here"));
         }
-
-
     }
 }
-

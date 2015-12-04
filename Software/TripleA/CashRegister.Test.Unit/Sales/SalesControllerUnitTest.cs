@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Linq;
 using CashRegister.Models;
 using CashRegister.Orders;
 using CashRegister.Payment;
 using CashRegister.Receipts;
 using CashRegister.Sales;
-using CashRegister.Printer;
 using CashRegister.Products;
 using NSubstitute;
 using NUnit.Framework;
@@ -32,7 +30,8 @@ namespace CashRegister.Test.Unit.Sales
 
         [SetUp]
         public void Setup()
-        {   _amountToPay = 100;
+        {
+            _amountToPay = 100;
             _orderctrl = Substitute.For<IOrderController>();
             _paymentController = Substitute.For<IPaymentController>();
             _paymentController.ExecuteTransaction(Arg.Any<Transaction>()).Returns(true);
@@ -48,7 +47,7 @@ namespace CashRegister.Test.Unit.Sales
             _orderControllerMissingNone.CurrentOrder.Returns(new SalesOrder());
             _product = new Product("Fedt", 100, true);
             _paymentType = PaymentType.Cash;
-           
+
             _description = "Description";
             _discount = new Discount
             {
@@ -57,11 +56,6 @@ namespace CashRegister.Test.Unit.Sales
                 Percent = 10
             };
             _uut = new SalesController(_orderctrl, _receiptctrl, _productController, _paymentController);
-        }
-
-        private void GuiSalesController_Get_ReturnASalesController()
-        {
-            
         }
 
         private void AddingProductToOrder(Product product, int quantity, Discount discount)
@@ -107,10 +101,6 @@ namespace CashRegister.Test.Unit.Sales
             _uut.CreateAndPrintReceipt();
             _orderctrl.SaveOrder();
         }
-
-
-           
-
 
         [Test]
         public void SalesController_StartPayment_OrderControllerSaveOrderIsCalled()
@@ -215,6 +205,27 @@ namespace CashRegister.Test.Unit.Sales
         {
             _uut.SaveIncompleteOrder();
             _orderctrl.Received(1).SaveOrder();
+        }
+
+        [Test]
+        public void Tally_TallyIsCalled_PaymentControllerTallyIsCalledOnce()
+        {
+            _uut.Tally();
+            _paymentController.Received(1).Tally();
+        }
+
+        [Test]
+        public void CurrentOrderLines_CurrentOrderLinesIsCalled_OrderControllerCurrentOrderIsCalledOnce()
+        {
+            var orderlines = _uut.CurrentOrderLines;
+            var result = _orderctrl.Received(1).CurrentOrder;
+        }
+
+        [Test]
+        public void CurrentOrderTotal_CurrentOrderTotalIsCalled_OrderControllerCurrentOrderIsCalledOnce()
+        {
+            var orderlines = _uut.CurrentOrderTotal;
+            var result = _orderctrl.Received(1).CurrentOrder;
         }
     }
 }

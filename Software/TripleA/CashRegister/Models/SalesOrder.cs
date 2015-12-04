@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace CashRegister.Models
@@ -11,6 +12,7 @@ namespace CashRegister.Models
         Failed = 2
     }
 
+    [ExcludeFromCodeCoverage]
     public class SalesOrder
     {
         public SalesOrder()

@@ -23,11 +23,11 @@ namespace CashRegister.Sales
         {
             get
             {
-                var dalfacade = new DalFacade();
-                var productController = new ProductController(new ProductDao(dalfacade));
+                var dalFacade = new DalFacade();
+                var productController = new ProductController(new ProductDao(dalFacade));
                 var receiptController = new ReceiptController(new ReceiptPrinter(), CultureInfo.InvariantCulture);
-                var paymentController = Factory.GetPaymentController(receiptController, dalfacade, 0);
-                var orderController = new OrderController(new OrderDao(dalfacade));
+                var paymentController = Factory.GetPaymentController(receiptController, dalFacade, 0);
+                var orderController = new OrderController(new OrderDao(dalFacade));
                 return new SalesController(orderController, receiptController, productController, paymentController);
             }
         }
@@ -56,7 +56,7 @@ namespace CashRegister.Sales
             _productController = productController;
             _paymentController = paymentController;
             _logger = LogFactory.GetLogger(typeof (SalesController));
-            _orderController.PropertyChanged += RepeatNotif;
+            _orderController.PropertyChanged += RepeatNotify;
         }
 
         /// <summary>
@@ -72,8 +72,6 @@ namespace CashRegister.Sales
         {
             return _paymentController.Tally();
         }
-        
-           
         
 
         /// <summary>
@@ -194,7 +192,7 @@ namespace CashRegister.Sales
         /// </summary>
         public IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor => _paymentController.PaymentProviderDescriptors;
 
-        private void RepeatNotif(object sender, PropertyChangedEventArgs e)
+        private void RepeatNotify(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_orderController.CurrentOrder))
             {
@@ -208,11 +206,6 @@ namespace CashRegister.Sales
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public void Print(Receipt receipt)
-        {
-            _receiptController.Print(receipt);
         }
     }
 }

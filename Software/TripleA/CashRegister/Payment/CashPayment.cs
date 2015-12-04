@@ -15,6 +15,7 @@ namespace CashRegister.Payment
         public override string Name => "CashPayment";
         public override string Description => "CashPayment, nothing fancy here";
 
+        [ExcludeFromCodeCoverage]
         public override void Init()
         {
             _logger.Debug("Initializing");
@@ -32,6 +33,7 @@ namespace CashRegister.Payment
             return true;
         }
 
+        [ExcludeFromCodeCoverage]
         public override void Restart()
         {
             _logger.Debug("Restarting");
@@ -39,6 +41,7 @@ namespace CashRegister.Payment
             Init();
         }
 
+        [ExcludeFromCodeCoverage]
         public override void Shutdown()
         {
             _logger.Debug("Shutting Down");

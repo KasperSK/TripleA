@@ -1,4 +1,5 @@
-﻿using CashRegister.Log;
+﻿using System.Diagnostics.CodeAnalysis;
+using CashRegister.Log;
 
 namespace CashRegister.CashDrawers
 {
@@ -16,6 +17,7 @@ namespace CashRegister.CashDrawers
 		/// <summary>
 		/// Opens the CashDrawer
 		/// </summary>
+		[ExcludeFromCodeCoverage]
 		public void Open()
 		{
 		    _logger.Debug("Open");

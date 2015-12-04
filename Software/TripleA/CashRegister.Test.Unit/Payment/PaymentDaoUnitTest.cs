@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CashRegister.Dal;
+﻿using CashRegister.Dal;
 using CashRegister.Models;
 using CashRegister.Payment;
 using NSubstitute;
@@ -11,7 +6,8 @@ using NUnit.Framework;
 
 namespace CashRegister.Test.Unit.Payment
 {
-    internal class PaymentDaoUnitTest
+    [TestFixture]
+    public class PaymentDaoUnitTest
     {
         private int _id;
         private IPaymentDao _uut;

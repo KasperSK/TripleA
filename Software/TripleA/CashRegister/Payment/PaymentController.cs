@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CashRegister.CashDrawers;
 using CashRegister.Dal;
@@ -8,10 +9,11 @@ using CashRegister.Receipts;
 
 namespace CashRegister.Payment
 {
+    [ExcludeFromCodeCoverage]
     public static class Factory
     {
         public static IPaymentController GetPaymentController(IReceiptController receiptController, IDalFacade dalFacade,
-            int startchange)
+            int startChange)
         {
             var providers = new List<PaymentProvider>
             {
@@ -19,7 +21,7 @@ namespace CashRegister.Payment
                 new MobilePay(),
                 new Nets(),
             };
-            return new PaymentController(providers, receiptController, new PaymentDao(dalFacade), new CashDrawer(startchange));
+            return new PaymentController(providers, receiptController, new PaymentDao(dalFacade), new CashDrawer(startChange));
         }
     }
 
@@ -72,9 +74,7 @@ namespace CashRegister.Payment
 
         public void PrintTransaction(Transaction transaction)
         {
-            var receip = _receiptController.CreateReceipt(transaction);
-            _receiptController.Print(receip);
-            ;
+            _receiptController.CreateReceipt(transaction);
         }
 
         public string Tally()

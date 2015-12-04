@@ -1,11 +1,7 @@
-﻿
-using System.Diagnostics.CodeAnalysis;
-using log4net.Config;
+﻿using log4net;
 
 namespace CashRegister.Log
 {
-    using log4net;
-
     /// <summary>
     /// Wrapper for log4net
     /// </summary>

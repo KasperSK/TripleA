@@ -1,4 +1,4 @@
-using CashRegister.Payment;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CashRegister.Models
 {
@@ -19,6 +19,7 @@ namespace CashRegister.Models
         MobilePay = 3,
     }
 
+    [ExcludeFromCodeCoverage]
     public class Transaction
     {
         public long Id { get; set; }

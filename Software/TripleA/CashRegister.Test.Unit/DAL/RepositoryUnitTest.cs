@@ -13,7 +13,11 @@ namespace CashRegister.Test.Unit.Dal
         [SetUp]
         public void SetUp()
         {
-            Effort.Provider.EffortProviderConfiguration.RegisterProvider();
+            using (var uut = new CashRegisterContext())
+            {
+                if (uut.Database.Exists())
+                    uut.Database.Delete();
+            }
         }
 
         [Test]
@@ -21,8 +25,7 @@ namespace CashRegister.Test.Unit.Dal
         {
             var product = new Product("Øl", 20, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Insert");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 uut.Insert(product);
@@ -38,14 +41,13 @@ namespace CashRegister.Test.Unit.Dal
         {
             var testProduct = new Product("Kildevand", 18, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Delete1");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
 
@@ -62,21 +64,20 @@ namespace CashRegister.Test.Unit.Dal
         {
             var testProduct = new Product("Kildevand", 18, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Delete2");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 uut.Delete((long)1);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var result = context.Products.AsEnumerable();
                 Assert.That(result, Is.Empty);
@@ -88,14 +89,13 @@ namespace CashRegister.Test.Unit.Dal
         {
             var testProduct = new Product("Kildevand", 18, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("GetById");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.GetById((long)1);
@@ -108,14 +108,13 @@ namespace CashRegister.Test.Unit.Dal
         {
             var testProduct = new Product("Kildevand", 18, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("GetById1");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.GetById((long)1);
@@ -126,9 +125,7 @@ namespace CashRegister.Test.Unit.Dal
         [Test]
         public void GetById_ProductWithId1IsRequestedWithNoProductsInDb_NoProductIsReturnedFromDb()
         {
-            var connection = Effort.DbConnectionFactory.CreatePersistent("GetById2");
-
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.GetById((long)1);
@@ -139,8 +136,7 @@ namespace CashRegister.Test.Unit.Dal
         [Test]
         public void Get_ProductsIsRequestedWhenNoProductsInDb_ProductPriceIsInCollectionFromDb()
         {
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get1");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.Get();
@@ -153,14 +149,13 @@ namespace CashRegister.Test.Unit.Dal
         {
             var testProduct = new Product("Kildevand", 18, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get2");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.Get().ElementAt(0);
@@ -173,14 +168,13 @@ namespace CashRegister.Test.Unit.Dal
         {
             var testProduct = new Product("Kildevand", 18, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get3");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.Get().ElementAt(0);
@@ -194,15 +188,14 @@ namespace CashRegister.Test.Unit.Dal
             var testProduct1 = new Product("Kildevand", 18, true);
             var testProduct2 = new Product("Øl", 20, false);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get4");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct1);
                 context.Products.Add(testProduct2);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.Get(x => x.Id == 2).ElementAt(0);
@@ -216,15 +209,14 @@ namespace CashRegister.Test.Unit.Dal
             var testProduct1 = new Product("Kildevand", 18, true);
             var testProduct2 = new Product("Øl", 20, false);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get5");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct1);
                 context.Products.Add(testProduct2);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.Get(x => x.Saleable).ElementAt(0);
@@ -238,15 +230,14 @@ namespace CashRegister.Test.Unit.Dal
             var testProduct1 = new Product("Kildevand", 18, true);
             var testProduct2 = new Product("Øl", 20, false);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get6");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct1);
                 context.Products.Add(testProduct2);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.Get(null, q => q.OrderByDescending(x => x.Price)).ElementAt(0);
@@ -260,15 +251,14 @@ namespace CashRegister.Test.Unit.Dal
             var testProduct1 = new Product("Kildevand", 18, true);
             var testProduct2 = new Product("Øl", 20, false);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get7");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct1);
                 context.Products.Add(testProduct2);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
                 var result = uut.Get(null, q => q.OrderByDescending(x => x.Price)).ElementAt(0);
@@ -286,14 +276,13 @@ namespace CashRegister.Test.Unit.Dal
             testProductGroup.Products.Add(testProduct1);
             testProductGroup.Products.Add(testProduct2);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get8");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.ProductGroups.Add(testProductGroup);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Configuration.LazyLoadingEnabled = false;
                 var uut = new Repository<ProductGroup>(context);
@@ -313,14 +302,13 @@ namespace CashRegister.Test.Unit.Dal
             testProductGroup.Products.Add(testProduct1);
             testProductGroup.Products.Add(testProduct2);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get8");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.ProductGroups.Add(testProductGroup);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Configuration.LazyLoadingEnabled = false;
                 var uut = new Repository<ProductGroup>(context);
@@ -330,7 +318,6 @@ namespace CashRegister.Test.Unit.Dal
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void Get_ProductIsRequestedWithEmptyFilteredClause_ArgumentExceptionIsThrown()
         {
             var testProduct1 = new Product("Kildevand", 18, true);
@@ -340,19 +327,17 @@ namespace CashRegister.Test.Unit.Dal
             testProductGroup.Products.Add(testProduct1);
             testProductGroup.Products.Add(testProduct2);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Get8");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.ProductGroups.Add(testProductGroup);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<ProductGroup>(context);
                 var filter = new[] { "" };
-                var result = uut.Get(null, null, filter).ElementAt(0);
-                Assert.That(result.Products.Count, Is.EqualTo(2));
+                Assert.That(() => uut.Get(null, null, filter).ElementAt(0), Throws.ArgumentException);
             }
         }
 
@@ -361,14 +346,13 @@ namespace CashRegister.Test.Unit.Dal
         {
             var testProduct = new Product("Kildevand", 18, true);
 
-            var connection = Effort.DbConnectionFactory.CreatePersistent("Update");
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 context.Products.Add(testProduct);
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var uut = new Repository<Product>(context);
 
@@ -379,7 +363,7 @@ namespace CashRegister.Test.Unit.Dal
                 context.SaveChanges();
             }
 
-            using (var context = new CashRegisterContext(connection, null))
+            using (var context = new CashRegisterContext())
             {
                 var modifiedProduct = context.Products.FirstOrDefault(p => p.Id == 1);
 
