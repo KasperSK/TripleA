@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CashRegister.GUI.ViewModels;
 
 namespace CashRegister.GUI.Views
 {
@@ -22,18 +8,22 @@ namespace CashRegister.GUI.Views
     /// </summary>
     public partial class TabView : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TabView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Changes the font size when window is resized.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The arguments sent with the event.</param>        
         private void TabView_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            
-
             FontSize = (ActualWidth/40);
-
-
         }
     }
 }

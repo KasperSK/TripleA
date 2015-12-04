@@ -7,6 +7,9 @@ namespace CashRegister.GUI.Views
     /// </summary>
     public partial class SettingsView : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public SettingsView()
         {
             InitializeComponent();

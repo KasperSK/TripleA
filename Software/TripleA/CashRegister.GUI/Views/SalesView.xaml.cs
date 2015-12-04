@@ -24,25 +24,24 @@ namespace CashRegister.GUI.Views
     /// </summary>
     public partial class SalesView : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public SalesView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Changes the font size when window is resized.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The arguments sent with the event.</param>
         private void SalesView_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             FontSize = ((ActualHeight+ActualWidth)/40);
 
             Total.FontSize = (ActualWidth + ActualHeight)/30;
         }
-
-        
-       
-
-       
-
-            
-
-        
     }
 }

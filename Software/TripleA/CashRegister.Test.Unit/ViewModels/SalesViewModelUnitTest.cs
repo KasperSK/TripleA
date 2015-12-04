@@ -7,8 +7,6 @@ using CashRegister.Sales;
 using NSubstitute;
 using NUnit.Framework;
 
-
-
 namespace CashRegister.Test.Unit.ViewModels
 {
     [TestFixture]
@@ -16,7 +14,6 @@ namespace CashRegister.Test.Unit.ViewModels
     {
         private SalesViewModel _uut;
         private ISalesController _fakeSalesController;
-
 
         [SetUp]
         public void Setup()
@@ -28,7 +25,6 @@ namespace CashRegister.Test.Unit.ViewModels
             _fakeSalesController.PropertyChanged += _uut.OnCurrentOrderChanged;
         }
 
-
         [Test]
         public void PaymentCommand_SalesControllerStart_StartPaymentCalled()
         {
@@ -36,8 +32,6 @@ namespace CashRegister.Test.Unit.ViewModels
             _uut.ViewProducts.Add(new SalesViewModel.ViewProduct("2", "Beer", "10"));
             var payment = _uut.PaytypeCommand;
             payment.Execute(PaymentType.Cash);
-
-
             _fakeSalesController.Received(1).StartPayment(100, Arg.Any<string>(), Arg.Any<PaymentType>());
         }
 
@@ -55,10 +49,8 @@ namespace CashRegister.Test.Unit.ViewModels
         {
             _fakeSalesController.CurrentOrderLines.Returns(new List<OrderLine>() { new OrderLine() { Product = new Product("øl", 10, true), Quantity = 1, UnitPrice = 10 } });
             _fakeSalesController.PropertyChanged += Raise.Event<PropertyChangedEventHandler>(Arg.Any<object>(), Arg.Any<ProgressChangedEventArgs>());
-            
+
             Assert.That(_uut.ViewProducts.First().Navn, Is.EqualTo("øl"));
         }
-
-        
     }
 }

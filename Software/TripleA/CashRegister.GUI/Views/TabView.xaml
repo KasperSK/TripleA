@@ -10,6 +10,7 @@
              SizeChanged="TabView_OnSizeChanged">
     <UserControl.Resources>
        
+        <!-- style for the tabhead in the upper right cornor -->
 
         <Style x:Key="TabHead" TargetType="{x:Type Button}">
             <Setter Property="FrameworkElement.Margin">
@@ -51,6 +52,9 @@
             <Setter Property="RenderTransformOrigin" Value="0.1,0.1"/>
         </Style>
     </UserControl.Resources>
+    
+    <!-- The Grid with the productbuttons -->
+    
     <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2" Margin="6.5">
         <Grid Name="ProductGrid" ClipToBounds="True" SnapsToDevicePixels="True">
             <Grid.Background>
@@ -103,6 +107,9 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
+
+                        <!-- The product buttons -->
+
                         <Button  Background="{Binding Path=Colour}" Style="{StaticResource NormalButton}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=Product}">
                             
                                 <TextBlock Text="{Binding Path=Name}" TextAlignment="Center" TextWrapping="WrapWithOverflow"></TextBlock>
@@ -121,6 +128,9 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
+                        
+                        <!-- The Tabhead buttons -->
+                        
                         <Button Content="{Binding Path=Name}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=Id}" Background="{Binding Path=Colour}" Style="{StaticResource TabHead}">
                         </Button>
                     </DataTemplate>
