@@ -29,6 +29,7 @@
 		/// To use for lines of the severity debug
 		/// </summary>
 		void Debug(string line);
+		
 	}
 }
 
