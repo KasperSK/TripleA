@@ -151,7 +151,7 @@ namespace CashRegister.GUI.ViewModels
 
         public ICommand PayCommand
         {
-            get { return _payCommand ?? (_payCommand = new RelayCommand<Window>(PayCommand_Execute)); }
+            get { return _payCommand ?? (_payCommand = new RelayCommand<Window>(PayCommand_Execute, PayCommand_Execute())); }
         }
 
         private void PayCommand_Execute(Window parrentWindow)
