@@ -59,14 +59,14 @@ namespace CashRegister.WebApi.Models
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new DiscountEntityConfiguration());
-            modelBuilder.Configurations.Add(new ProductEntityConfiguration());
-            modelBuilder.Configurations.Add(new ProductGroupEntityConfiguration());
-            modelBuilder.Configurations.Add(new OrderLineEntityConfiguration());
-            modelBuilder.Configurations.Add(new SalesOrderEntityConfiguration());
-            modelBuilder.Configurations.Add(new TransactionEntityConfiguration());
-            modelBuilder.Configurations.Add(new ProductTabEntityConfiguration());
-            modelBuilder.Configurations.Add(new ProductTypeEntityConfiguration());
+            //modelBuilder.Configurations.Add(new DiscountEntityConfiguration());
+            //modelBuilder.Configurations.Add(new ProductEntityConfiguration());
+            //modelBuilder.Configurations.Add(new ProductGroupEntityConfiguration());
+            //modelBuilder.Configurations.Add(new OrderLineEntityConfiguration());
+            //modelBuilder.Configurations.Add(new SalesOrderEntityConfiguration());
+            //modelBuilder.Configurations.Add(new TransactionEntityConfiguration());
+            //modelBuilder.Configurations.Add(new ProductTabEntityConfiguration());
+            //modelBuilder.Configurations.Add(new ProductTypeEntityConfiguration());
         }
     }
 }

@@ -125,6 +125,7 @@ namespace CashRegister.Sales
             CreateTransaction(amountToPay, descriptionAndSalesOrderId, provider);
             if (MissingPaymentOnOrder() == 0)
             {
+                _orderController.CurrentOrder.Status = OrderStatus.Completed;
                 _orderController.SaveOrder();
             }
         }

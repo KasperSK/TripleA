@@ -30,5 +30,10 @@ namespace CashRegister.WebApi.Controllers
         {
             return View();
         }
+
+        public ActionResult Statistic()
+        {
+            return View();
+        }
     }
 }
