@@ -123,6 +123,9 @@ namespace CashRegister.WebApi.Areas.HelpPage
         /// </summary>
         public HashSet<string> ParameterNames { get; private set; }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public Type ParameterType { get; private set; }
 
         /// <summary>
@@ -130,6 +133,9 @@ namespace CashRegister.WebApi.Areas.HelpPage
         /// </summary>
         public SampleDirection? SampleDirection { get; private set; }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override bool Equals(object obj)
         {
             HelpPageSampleKey otherKey = obj as HelpPageSampleKey;
@@ -146,6 +152,9 @@ namespace CashRegister.WebApi.Areas.HelpPage
                 ParameterNames.SetEquals(otherKey.ParameterNames);
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public override int GetHashCode()
         {
             int hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ ActionName.ToUpperInvariant().GetHashCode();

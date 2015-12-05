@@ -2,8 +2,14 @@
 
 namespace CashRegister.WebApi.Models.ModelBuilder
 {
+    /// <summary>
+    /// Class to setup the Db
+    /// </summary>
     public class OrderLineEntityConfiguration : EntityTypeConfiguration<OrderLine>
     {
+        /// <summary>
+        /// The configuration
+        /// </summary>
         public OrderLineEntityConfiguration()
         {
             HasKey(e => e.Id);

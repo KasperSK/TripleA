@@ -14,11 +14,18 @@ using WebGrease.Css.Extensions;
 
 namespace CashRegister.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller to handle data transfer of productTabs between web and database
+    /// </summary>
     public class ProductTabsController : ApiController
     {
         private CashRegisterContext db = new CashRegisterContext();
 
         // GET: api/ProductTabs
+        /// <summary>
+        /// Get a list of all product tabs
+        /// </summary>
+        /// <returns>List of all tabs</returns>
         public IQueryable<ProductTabDto> GetProductTabs()
         {
             var productTab = from pt in db.ProductTabs
@@ -33,6 +40,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // GET: api/ProductTabs/5
+        /// <summary>
+        /// Get a detailed tab
+        /// </summary>
+        /// <param name="id">Id of tab you want details from</param>
+        /// <returns>Detailed tab or an error code</returns>
         [ResponseType(typeof(ProductTabDetailsDto))]
         public async Task<IHttpActionResult> GetProductTab(int id)
         {
@@ -50,6 +62,12 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // PUT: api/ProductTabs/5
+        /// <summary>
+        /// Input changes to producttab
+        /// </summary>
+        /// <param name="id">Id of tab to change</param>
+        /// <param name="productTab">Obejct with the changes</param>
+        /// <returns>Status code</returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProductTab(int id, ProductTab productTab)
         {
@@ -85,6 +103,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/ProductTabs
+        /// <summary>
+        /// Input a new product to the db
+        /// </summary>
+        /// <param name="productTabDetails">An object containing the detailed product</param>
+        /// <returns>The insertet obejct or an errorcode</returns>
         [ResponseType(typeof(ProductTabDetailsDto))]
         public async Task<IHttpActionResult> PostProductTab(ProductTabDetailsDto productTabDetails)
         {
@@ -115,6 +138,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // DELETE: api/ProductTabs/5
+        /// <summary>
+        /// Delete a tab
+        /// </summary>
+        /// <param name="id">Id of tab to delete</param>
+        /// <returns>The deleted tab</returns>
         [ResponseType(typeof(ProductTabDto))]
         public async Task<IHttpActionResult> DeleteProductTab(int id)
         {
@@ -131,7 +159,10 @@ namespace CashRegister.WebApi.Controllers
 
             return Ok(productTabDto);
         }
-
+        /// <summary>
+        /// To dispose of db context
+        /// </summary>
+        /// <param name="disposing">True if disposing</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -140,7 +171,11 @@ namespace CashRegister.WebApi.Controllers
             }
             base.Dispose(disposing);
         }
-
+        /// <summary>
+        /// internal helper method to check if tab exists
+        /// </summary>
+        /// <param name="id">id of tab to check</param>
+        /// <returns>True if it exists</returns>
         private bool ProductTabExists(int id)
         {
             return db.ProductTabs.Count(e => e.Id == id) > 0;

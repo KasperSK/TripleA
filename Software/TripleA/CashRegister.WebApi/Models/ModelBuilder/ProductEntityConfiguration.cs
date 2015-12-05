@@ -2,8 +2,14 @@
 
 namespace CashRegister.WebApi.Models.ModelBuilder
 {
+    /// <summary>
+    /// Class to setup the Db
+    /// </summary>
     public class ProductEntityConfiguration : EntityTypeConfiguration<Product>
     {
+        /// <summary>
+        /// The configuration
+        /// </summary>
         public ProductEntityConfiguration()
         {
             HasKey(e => e.Id);

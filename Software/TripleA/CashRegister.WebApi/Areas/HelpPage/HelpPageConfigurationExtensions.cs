@@ -16,6 +16,9 @@ using CashRegister.WebApi.Areas.HelpPage.Models;
 
 namespace CashRegister.WebApi.Areas.HelpPage
 {
+    /// <summary>
+    /// Auto generated
+    /// </summary>
     public static class HelpPageConfigurationExtensions
     {
         private const string ApiModelPrefix = "MS_HelpPageApiModel_";

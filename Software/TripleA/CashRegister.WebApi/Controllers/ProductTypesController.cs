@@ -14,11 +14,18 @@ using WebGrease.Css.Extensions;
 
 namespace CashRegister.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller to handle data transfer of productTypes between web and database
+    /// </summary>
     public class ProductTypesController : ApiController
     {
         private CashRegisterContext db = new CashRegisterContext();
 
         // GET: api/ProductTypes
+        /// <summary>
+        /// Get a list of all producttypes
+        /// </summary>
+        /// <returns>List of types</returns>
         public IQueryable<ProductTypeDto> GetProductTypes()
         {
             var productType = from pt in db.ProductTypes
@@ -32,6 +39,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // GET: api/ProductTypes/5
+        /// <summary>
+        /// get detailes afor a single types
+        /// </summary>
+        /// <param name="id">id of type to find details for</param>
+        /// <returns>Detailed types obejct</returns>
         [ResponseType(typeof(ProductTypeDetailsDto))]
         public async Task<IHttpActionResult> GetProductType(int id)
         {
@@ -49,6 +61,12 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // PUT: api/ProductTypes/5
+        /// <summary>
+        /// Input changes to a type
+        /// </summary>
+        /// <param name="id">id of type to change</param>
+        /// <param name="productType">Obejct with changes</param>
+        /// <returns>Status of how it went</returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProductType(int id, ProductType productType)
         {
@@ -84,6 +102,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/ProductTypes
+        /// <summary>
+        /// Input new object to DB
+        /// </summary>
+        /// <param name="productTypeDetails">Obejct containing the new type with details</param>
+        /// <returns>the detailed inserted type</returns>
         [ResponseType(typeof(ProductTypeDetailsDto))]
         public async Task<IHttpActionResult> PostProductType(ProductTypeDetailsDto productTypeDetails)
         {
@@ -114,6 +137,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // DELETE: api/ProductTypes/5
+        /// <summary>
+        /// To delete a type
+        /// </summary>
+        /// <param name="id">Id of type to delete</param>
+        /// <returns>The deletet type or status code</returns>
         [ResponseType(typeof(ProductType))]
         public async Task<IHttpActionResult> DeleteProductType(int id)
         {
@@ -129,6 +157,10 @@ namespace CashRegister.WebApi.Controllers
             return Ok(productType);
         }
 
+        /// <summary>
+        /// To dispose of db context
+        /// </summary>
+        /// <param name="disposing">true if disposing</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -138,6 +170,11 @@ namespace CashRegister.WebApi.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Internal helper to check if type allready exist
+        /// </summary>
+        /// <param name="id">Id of type</param>
+        /// <returns>True if it exists</returns>
         private bool ProductTypeExists(int id)
         {
             return db.ProductTypes.Count(e => e.Id == id) > 0;

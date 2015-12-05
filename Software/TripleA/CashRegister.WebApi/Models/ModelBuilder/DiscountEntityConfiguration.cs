@@ -2,8 +2,14 @@
 
 namespace CashRegister.WebApi.Models.ModelBuilder
 {
+    /// <summary>
+    /// Class to setup the Db
+    /// </summary>
     public class DiscountEntityConfiguration : EntityTypeConfiguration<Discount>
     {
+        /// <summary>
+        /// The configuration
+        /// </summary>
         public DiscountEntityConfiguration()
         {
             HasKey(e => e.Id);

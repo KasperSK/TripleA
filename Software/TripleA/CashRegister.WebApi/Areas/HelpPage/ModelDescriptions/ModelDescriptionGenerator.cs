@@ -60,6 +60,7 @@ namespace CashRegister.WebApi.Areas.HelpPage.ModelDescriptions
             },
         };
 
+
         // Modify this to add more default documentations.
         private readonly IDictionary<Type, string> DefaultTypeDocumentation = new Dictionary<Type, string>
         {
@@ -86,6 +87,9 @@ namespace CashRegister.WebApi.Areas.HelpPage.ModelDescriptions
 
         private Lazy<IModelDocumentationProvider> _documentationProvider;
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public ModelDescriptionGenerator(HttpConfiguration config)
         {
             if (config == null)
@@ -97,6 +101,9 @@ namespace CashRegister.WebApi.Areas.HelpPage.ModelDescriptions
             GeneratedModels = new Dictionary<string, ModelDescription>(StringComparer.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public Dictionary<string, ModelDescription> GeneratedModels { get; private set; }
 
         private IModelDocumentationProvider DocumentationProvider
@@ -107,6 +114,9 @@ namespace CashRegister.WebApi.Areas.HelpPage.ModelDescriptions
             }
         }
 
+        /// <summary>
+        /// Auto generated
+        /// </summary>
         public ModelDescription GetOrCreateModelDescription(Type modelType)
         {
             if (modelType == null)

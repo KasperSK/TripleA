@@ -4,8 +4,14 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace CashRegister.WebApi.Models.ModelBuilder
 {
+    /// <summary>
+    /// Class to setup the Db
+    /// </summary>
     public class ProductTabEntityConfiguration : EntityTypeConfiguration<ProductTab>
     {
+        /// <summary>
+        /// The configuration
+        /// </summary>
         public ProductTabEntityConfiguration()
         {
             HasKey(e => e.Id);
