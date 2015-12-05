@@ -152,7 +152,7 @@ namespace CashRegister.WebApi.Controllers
         /// </summary>
         /// <param name="id">Id of product to delete</param>
         /// <returns>The product that has been deletet</returns>
-        [ResponseType(typeof(Product))]
+        [ResponseType(typeof(ProductDto))]
         public async Task<IHttpActionResult> DeleteProduct(long id)
         {
             Product product = await db.Products.FindAsync(id);
@@ -164,7 +164,7 @@ namespace CashRegister.WebApi.Controllers
             db.Products.Remove(product);
             await db.SaveChangesAsync();
 
-            return Ok(product);
+            return Ok(new ProductDto { Id = product.Id, Name = product.Name, });
         }
         /// <summary>
         /// To dispose the db when the controller is no longer in use
