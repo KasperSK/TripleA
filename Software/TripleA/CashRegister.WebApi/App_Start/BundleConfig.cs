@@ -28,6 +28,8 @@ namespace CashRegister.WebApi
                 "~/Scripts/app.js"));
             bundles.Add(new ScriptBundle("~/bundles/Statistik").Include(
                  "~/Scripts/knockout-{version}.js",
+                 "~/Scripts/kendo.all.min.js",
+                 "~/Scripts/knockout-kendo.min.js",
                  "~/Scripts/Statistik.js"));
         }
     }

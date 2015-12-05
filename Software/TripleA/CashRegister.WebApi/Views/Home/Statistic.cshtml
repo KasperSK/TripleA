@@ -8,40 +8,154 @@
     @Scripts.Render("~/bundles/Statistik")
 
     <script>
-        $('#myDropdown .dropdown-menu').on({
-            "click": function (e) {
-                e.stopPropagation();
-            }
-        });
+        var vm = new StatistikViewModel;
+        
+        var list = ko.toJS(vm.OrderLines());
+
+        console.log(vm.TransactionsWithStrings());
+        console.log(list);
+
+        google.load('visualization', '1', { packages: ['corechart', 'bar'] });
+        google.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['City', '2010 Population',],
+                ['New York City, NY', 8175000],
+                ['Los Angeles, CA', 3792000],
+                ['Chicago, IL', 2695000],
+                ['Houston, TX', 2099000],
+                ['Philadelphia, PA', 1526000]
+            ]);
+
+            var options = {
+                title: 'Population of Largest U.S. Cities',
+                chartArea: { width: '50%' },
+                hAxis: {
+                    title: 'Total Population',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'City'
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+        }
     </script>
 }
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
 
 <h2>Statistic</h2>
 
-<div class="col-md-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h2 class="panel-title">OrderSales</h2>
+<hr/>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">OrderSales</h2>
+            </div>
+            <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody data-bind="foreach: SalesOrdersWithStatus">
+                    <tr>
+                        <td data-bind="text: Id"></td>
+                        <td data-bind="text: Date"></td>
+                        <td data-bind="text: Time"></td>
+                        <td data-bind="text: Status"></td>
+                        <td data-bind="text: Total"></td>
+                        <td><small><a href="#" data-bind="click: $parent.getSalesOrderDetails">Details</a></small></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="panel-body">
-            <ul class="list-unstyled" data-bind="foreach: SalesOrders">
-                <li class="myList">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <strong><span data-bind="text: Id"></span></strong>
-                        </div>
-                        <div class="col-md-6">
-                            <div align="right">
-                                @*<small><a href="#" data-bind="click: $parent.getProductTypesDetails">Details</a></small>
-                                <small><a href="#" data-bind="click: $parent.deleteProductType">Delete</a></small>*@
-                            </div>
+        <div class="alert alert-danger" data-bind="visible: error">
+            <p data-bind="text: error"></p>
+        </div>
+    </div>
+
+    <!-- ko if:SalesOrdersDetails()-->
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detail for Id : <span data-bind="text: SalesOrdersDetails().Id"></span></h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Orderlines</h4>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Discount</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody data-bind="foreach: OrderLinesFromSalesOrder">
+                            <tr>
+                                <td data-bind="text: ProductName"></td>
+                                <td data-bind="text: Quantity"></td>
+                                <td><span data-bind="text: Discount"></span>%</td>
+                                <td><span data-bind="text: (UnitPrice - (UnitPrice/100)*Discount)*Quantity"></span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="col-md-12">
+                            <b>Total: </b>&nbsp; <b data-bind="text: SalesOrdersDetails().Total"></b>
                         </div>
                     </div>
-                </li>
-            </ul>
+                    <br/>
+                    <br/>
+                    <div class="col-md-12">
+                        <h4>Transactions</h4>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>PaymentType</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody data-bind="foreach: TransactionFromSalesOrder">
+                            <tr>
+                                <td data-bind="text: PaymentType"></td>
+                                <td data-bind="text: Date"></td>
+                                <td data-bind="text: Time"></td>
+                                <td data-bind="text: Status"></td>
+                                <td data-bind="text: Price"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="alert alert-danger" data-bind="visible: error">
-        <p data-bind="text: error"></p>
-    </div>
+    <!-- /ko -->
 </div>
+<div class="row">
+    <div id="chart_div"></div>
+</div>
+

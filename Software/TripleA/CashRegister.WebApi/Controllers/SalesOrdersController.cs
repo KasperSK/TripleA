@@ -18,16 +18,26 @@ namespace CashRegister.WebApi.Controllers
     {
         private CashRegisterContext db = new CashRegisterContext();
 
-        // GET: api/SalesOrders
-        public IQueryable<SalesOrderDto> GetSalesOrders()
+        public IEnumerable<SalesOrderDto> GetSalesOrders()
         {
             var SalesOrder = db.SalesOrders.Include(so => so.Lines);
 
-            IQueryable<SalesOrderDto> salesOrderDto = SalesOrder.Select(salesOrder => new SalesOrderDto() {Date = salesOrder.Date, Id = salesOrder.Id, Status = salesOrder.Status, //Total = salesOrder.Total
-            });
+            var salesOrderDtoList = new List<SalesOrderDto>(); 
 
-            return salesOrderDto;
+            foreach (var salesOrder in SalesOrder)
+            {
+                var salesOrderDto = new SalesOrderDto();
+                salesOrderDto.Status = salesOrder.Status;
+                salesOrderDto.Date = salesOrder.Date;
+                salesOrderDto.Id = salesOrder.Id;
+                salesOrderDto.Total = salesOrder.Total;
+
+                salesOrderDtoList.Add(salesOrderDto);
+            }
+
+            return salesOrderDtoList;
         }
+
 
         // GET: api/SalesOrders/5
         [ResponseType(typeof(SalesOrder))]
