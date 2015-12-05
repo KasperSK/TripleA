@@ -6,30 +6,30 @@ using CashRegister.Models;
 namespace CashRegister.Products
 {
     /// <summary>
-    ///     Implementation of IProductDao
+    /// Implementation of IProductDao.
+    /// This controls how we access the Products, ProductGroups and ProductTabs in the Database.
     /// </summary>
     public class ProductDao : IProductDao
     {
-		/// <summary>
-		///     Our DalFacade, how we connect and query the database.
-		/// </summary>
+        /// <summary>
+        /// An interface implementation for the Data Access Logic Facade.
+        /// </summary>
         private readonly IDalFacade _dalFacade;
 
-		/// <summary>
+        /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="databaseLayerFacade">Use the ProductDao with a specific DalFacade</param>
-        /// <returns>ProductDao</returns>
+        /// <param name="databaseLayerFacade">An IDalFacade implementation.</param>
         public ProductDao(IDalFacade databaseLayerFacade)
         {
             _dalFacade = databaseLayerFacade;
         }
 
 		/// <summary>
-        /// Collection of the ProductTabs that are active and have Products that are saleable
-		/// Still have error when product is not saleable
-		/// <param name="onlyActive">Only return Active Tabs and Saleable Products</param>
-		/// <returns>Collection of the ProductTabs</returns>
+        /// Collection of the ProductTabs that are active ad have Products that are saleable.
+		/// Still have error when product is not saleable.
+		/// <param name="onlyActive">Only return Active Tabs and Saleable Products.</param>
+		/// <returns>A ReadOnlyCollection of the ProductTabs</returns>
         /// </summary>
         public ReadOnlyCollection<ProductTab> GetProductTabs(bool onlyActive)
         {

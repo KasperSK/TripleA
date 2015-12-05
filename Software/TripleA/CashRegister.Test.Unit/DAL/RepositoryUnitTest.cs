@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using CashRegister.Dal;
 using CashRegister.Database;
 using CashRegister.Models;

@@ -19,7 +19,7 @@ namespace CashRegister.Test.Unit.Receipts
         {
             var uut = new Receipt();
 
-            uut.Add("Test");
+            uut.AddLine("Test");
 
             Assert.That(uut.Content, Contains.Item("Test"));
         }

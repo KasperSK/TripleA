@@ -1,94 +1,111 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using CashRegister.Models;
-using CashRegister.Receipts;
+using CashRegister.Payment;
 
 namespace CashRegister.Sales
 {
-    using Payment;
-    using System;
-    using System.Collections.Generic;
-
     /// <summary>
-    /// Controls sales
+    /// An Interface for the SalesController.
+    /// Controls sales for the CashRegister.
     /// </summary>
     public interface ISalesController : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Adds a product to the current order
+        ///<summary>
+        /// Contains the current SalesOrder.
         /// </summary>
-        void AddProductToOrder(Product product, int quantity, Discount discount);
-
-        string Tally();
+        SalesOrder CurrentOrder { get; }
 
         /// <summary>
-        /// Provides Product tabs to GUI
+        /// Contains the Collection of OrderLines in the current SalesOrder.
         /// </summary>
-        /// <returns></returns>
+        IEnumerable<OrderLine> CurrentOrderLines { get; }
+
+        /// <summary>
+        /// Contains the current total price of the SalesOrder.
+        /// </summary>
+        int CurrentOrderTotal { get; }
+
+        /// <summary>
+        /// Contains a collection of the PaymentProviderDescriptor's.
+        /// </summary>
+        IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor { get; }
+
+        /// <summary>
+        /// Contains the ProductTabs to GUI.
+        /// </summary>
         IReadOnlyCollection<ProductTab> ProductTabs { get; }
 
         /// <summary>
-        /// Remove a product from SalesOrder
-        /// </summary>
-        void RemoveProductFromOrder(Product product, int quantity, Discount discount);
-
-        /// <summary>
-        /// Prints an order
-        /// </summary>
-        void CreateAndPrintReceipt();
-
-        /// <summary>
-        /// Cancel transactions, clear SalesOrder
-        /// </summary>
-        void CancelOrder();
-
-        /// <summary>
-        /// Save an Order as incomplete
-        /// </summary>
-        void SaveIncompleteOrder();
-
-        /// <summary>
-        /// Starting payment on a SalesOrder
-        /// </summary>
-        void StartPayment(int amountToPay, string description, PaymentType provider);
-
-        /// <summary>
-        /// Get info on the amount missing on the SalesOrder
-        /// </summary>
-        long MissingPaymentOnOrder();
-
-        /// <summary>
-        /// Gets a list of all incomplete orders by default current data (or within a certain date or time)
+        /// Gets a list of all incomplete SalesOrder's by default current data (or within a certain date or time).
         /// </summary>
         IReadOnlyCollection<SalesOrder> IncompleteOrders { get; }
 
         /// <summary>
-        /// Get an incomplete order
+        /// Adds products to the current SalesOrder.
         /// </summary>
-        void RetrieveIncompleteOrder(int orderId);
-
+        /// <param name="product">The Product to be added to the SalesOrder.</param>
+        /// <param name="quantity">The quantity of the Product. Can be negative.</param>
+        /// <param name="discount">A discount on the product. Can be null.</param>
+        void AddProductToOrder(Product product, int quantity, Discount discount);
 
         /// <summary>
-        /// Creates and return a Transaction
+        /// Tallies the sales for the CashRegister.
         /// </summary>
-        /// <param name="amountToPay"></param>
-        /// <param name="description"></param>
-        /// <param name="payment"></param>
-        /// <returns></returns>
-        Transaction CreateTransaction(int amountToPay, string description, PaymentType payment);
+        /// <returns>The turnover for the sales done.</returns>
+        string Tally();
 
-        ///<summary>
-        /// Returns the current order
+        /// <summary>
+        /// Removes a Product from SalesOrder by added a OrderLine that has a negative quantity.
         /// </summary>
-        SalesOrder CurrentOrder { get; }
-
-        IEnumerable<OrderLine> CurrentOrderLines { get; }
-        int CurrentOrderTotal { get; }
+        /// <param name="product">The Product to be removed from the SalesOrder.</param>
+        /// <param name="quantity">The quantity of the Product.</param>
+        /// <param name="discount">A discount on the product. Can be null.</param>
+        void RemoveProductFromOrder(Product product, int quantity, Discount discount);
         
         /// <summary>
-        ///     Gets the PaymentProviderDescriptor
+        /// Prints a SalesOrder.
         /// </summary>
-        IEnumerable<IPaymentProviderDescriptor> PaymentProviderDescriptor { get; }
+        void CreateAndPrintReceipt();
+
+        /// <summary>
+        /// Removes OrderLines from the current SalesOrder.
+        /// </summary>
+        void CancelOrder();
+
+        /// <summary>
+        /// Saves a SalesOrder as incomplete.
+        /// </summary>
+        void SaveIncompleteOrder();
+
+        /// <summary>
+        /// Starts a payment on the current SalesOrder.
+        /// </summary>
+        /// <param name="amountToPay">The amount to be payed.</param>
+        /// <param name="description">A description for the payment.</param>
+        /// <param name="provider">The provider for the payment.</param>
+        void StartPayment(int amountToPay, string description, PaymentType provider);
+
+        /// <summary>
+        /// Calculates and returns the missing amount on the current SalesOrder before total is reached.
+        /// </summary>
+        /// <returns>The missing amount.</returns>
+        long MissingPaymentOnOrder();
+
+        /// <summary>
+        /// Retrieve an incomplete SalesOrder.
+        /// </summary>
+        /// <param name="orderId">The id of the incomplete SalesOrder.</param>
+        void RetrieveIncompleteOrder(int orderId);
+
+        /// <summary>
+        /// Creates and returns a Transaction.
+        /// </summary>
+        /// <param name="amountToPay">The amount to be payed.</param>
+        /// <param name="description">A description for the payment.</param>
+        /// <param name="payment">The provider for the payment.</param>
+        /// <returns>A Transaction.</returns>
+        Transaction CreateTransaction(int amountToPay, string description, PaymentType payment);
     }
 }
 

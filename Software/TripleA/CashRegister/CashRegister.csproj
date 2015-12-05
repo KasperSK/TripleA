@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -120,7 +120,7 @@
     <Compile Include="Payment\PaymentController.cs" />
     <Compile Include="Payment\PaymentProvider.cs" />
     <Compile Include="Printer\IPrinter.cs" />
-    <Compile Include="Printer\RecieptPrinter.cs" />
+    <Compile Include="Printer\ReceiptPrinter.cs" />
     <Compile Include="Receipts\IReceiptController.cs" />
     <Compile Include="Receipts\Receipt.cs" />
     <Compile Include="Receipts\ReceiptController.cs" />
