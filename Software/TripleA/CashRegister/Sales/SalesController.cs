@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Runtime.CompilerServices;
 using CashRegister.Dal;
 using CashRegister.Log;
 using CashRegister.Models;
@@ -72,7 +71,6 @@ namespace CashRegister.Sales
         {
             return _paymentController.Tally();
         }
-        
 
         /// <summary>
         ///     Prints an order
@@ -82,7 +80,6 @@ namespace CashRegister.Sales
             _receiptController.CreateReceipt(_orderController.CurrentOrder);
             _orderController.SaveOrder();
         }
-
 
         /// <summary>
         ///     Remove a product from SalesOrder
@@ -114,7 +111,6 @@ namespace CashRegister.Sales
         {
             _orderController.SaveOrder();
         }
-
 
         /// <summary>
         ///     Starting payment on a SalesOrder
@@ -163,8 +159,8 @@ namespace CashRegister.Sales
                 PaymentType = payment,
                 Description = description
             };
-            var paymentCompleted = true;
-            paymentCompleted = _paymentController.ExecuteTransaction(transaction);
+
+            var paymentCompleted = _paymentController.ExecuteTransaction(transaction);
             if (paymentCompleted)
             {
                 transaction.Description = "Transaction completed";

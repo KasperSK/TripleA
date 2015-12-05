@@ -30,10 +30,10 @@ namespace CashRegister.Receipts
         /// <param name="receipt">The Receipt to be printed</param>
         public virtual void Print(Receipt receipt)
 		{
-            foreach (var line in receipt.Content)
-            {
-                Printer.AddTo(line);
-            }
+		    foreach (var line in receipt.Content)
+		    {
+		        Printer.AddTo(line);
+		    }
 
             Printer.Print();
 		}

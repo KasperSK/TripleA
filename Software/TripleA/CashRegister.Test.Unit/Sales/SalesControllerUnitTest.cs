@@ -47,7 +47,6 @@ namespace CashRegister.Test.Unit.Sales
             _orderControllerMissingNone.CurrentOrder.Returns(new SalesOrder());
             _product = new Product("Fedt", 100, true);
             _paymentType = PaymentType.Cash;
-
             _description = "Description";
             _discount = new Discount
             {
@@ -61,6 +60,12 @@ namespace CashRegister.Test.Unit.Sales
         private void AddingProductToOrder(Product product, int quantity, Discount discount)
         {
             _uut.AddProductToOrder(product, quantity, discount);
+        }
+
+        [Test]
+        public void Tally_ReturnsPaymentControllerTally_ReturnString()
+        {
+            Assert.AreEqual(_uut.Tally(),_paymentController.Tally());
         }
 
         [Test]
