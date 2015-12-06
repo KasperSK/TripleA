@@ -7,14 +7,14 @@ using System.Web.Mvc;
 namespace CashRegister.WebApi.Controllers
 {
     /// <summary>
-    /// Controller til website
+    /// Controller to website
     /// </summary>
     public class HomeController : Controller
     {
         /// <summary>
-        /// Funktion til at hente index siden
+        /// Function to get the index site
         /// </summary>
-        /// <returns>Index siden</returns>
+        /// <returns>Index site</returns>
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
@@ -23,14 +23,18 @@ namespace CashRegister.WebApi.Controllers
         }
 
         /// <summary>
-        /// Funktion til at hente settings siden
+        /// Function to get the settings site
         /// </summary>
-        /// <returns>Settings siden</returns>
+        /// <returns>Settings site</returns>
         public ActionResult Settings()
         {
             return View();
         }
 
+        /// <summary>
+        /// Function to get the statistic site
+        /// </summary>
+        /// <returns>Statistic site</returns>
         public ActionResult Statistic()
         {
             return View();

@@ -224,6 +224,82 @@
         });
     };
 
+    self.updateProductTab = function (item) {
+        ids = [];
+
+        ko.utils.arrayForEach(self.ProductTabsDetails().ProductTypes, function(object) {
+            ids.push(object.Id);
+        });
+
+        var productTab = {
+            Id: self.ProductTabsDetails().Id,
+            Name: self.ProductTabsDetails().Name,
+            Priority: self.ProductTabsDetails().Priority,
+            Active: self.ProductTabsDetails().Active,
+            Color: self.ProductTabsDetails().Color,
+            ProductTypes: ids
+        };
+
+        ajaxHelper(productTabsUri + self.ProductTabsDetails().Id, 'PUT', productTab).done(function (data) {
+        });
+ 
+    };
+
+    self.updateProductType = function(item) {
+        ids = [];
+
+        ko.utils.arrayForEach(self.ProductTypesDetails().ProductGroups, function(object) {
+            ids.push(object.Id);
+        });
+
+        var productType = {
+            Id: self.ProductTypesDetails().Id,
+            Color: self.ProductTypesDetails().Color,
+            Name: self.ProductTypesDetails().Name,
+            Price: self.ProductTypesDetails().Price,
+            ProductGroups: ids
+        };
+
+        ajaxHelper(productTypesUri + self.ProductTypesDetails().Id, 'PUT', productType).done(function(data) {
+        });
+    }
+
+    self.updateProductGroup = function (item) {
+        ids = [];
+
+        ko.utils.arrayForEach(self.ProductGroupsDetails().Products, function(object) {
+            ids.push(object.Id);
+        });
+
+        var productGroup = {
+            Id: self.ProductGroupsDetails().Id,
+            Name: self.ProductGroupsDetails().Name,
+            Products: ids
+        }
+
+        ajaxHelper(productGroupsUri + self.ProductGroupsDetails().Id, 'PUT', productGroup).done(function(data) {
+        });
+    }
+
+    self.updateProduct = function(item) {
+        ids = [];
+
+        ko.utils.arrayForEach(self.ProductDetail().ProductGroups, function (object) {
+            ids.push(object.Id);
+        });
+
+        var product = {
+            Id: self.ProductDetail().Id,
+            Name: self.ProductDetail().Name,
+            Price: self.ProductDetail().Price,
+            Saleable: self.ProductDetail().Saleable,
+            ProductGroups: ids
+        };
+
+        ajaxHelper(productsUri + self.ProductDetail().Id, 'PUT', product).done(function (data) {
+        });
+    }
+
 
     self.deleteProductTab = function(item) {
         ajaxHelper(productTabsUri + item.Id, 'DELETE').done(function(data) {

@@ -13,11 +13,18 @@ using CashRegister.WebApi.Models;
 
 namespace CashRegister.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller to handle transfer of OrderLines between web and database
+    /// </summary>
     public class OrderLinesController : ApiController
     {
         private CashRegisterContext db = new CashRegisterContext();
 
         // GET: api/OrderLines
+        /// <summary>
+        /// Get a list of all order lines
+        /// </summary>
+        /// <returns>List of all order lines</returns>
         public IQueryable<OrderlineDto> GetOrderLines()
         {
             var OrderLines = from o in db.OrderLines
@@ -33,6 +40,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // GET: api/OrderLines/5
+        /// <summary>
+        /// Get a detailed order line
+        /// </summary>
+        /// <param name="id">Id of order line you want details from</param>
+        /// <returns>Detailed Order line or an error code</returns>
         [ResponseType(typeof(OrderLine))]
         public async Task<IHttpActionResult> GetOrderLine(long id)
         {
@@ -46,6 +58,12 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // PUT: api/OrderLines/5
+        /// <summary>
+        /// Input Changes to orderline
+        /// </summary>
+        /// <param name="id">Id of orderline to change</param>
+        /// <param name="orderLine">Object with the changes</param>
+        /// <returns>Status code</returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutOrderLine(long id, OrderLine orderLine)
         {
@@ -81,6 +99,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/OrderLines
+        /// <summary>
+        /// Input a new orderline to the db
+        /// </summary>
+        /// <param name="orderLine">An object containing the detailde product</param>
+        /// <returns>The insertet object or an error code</returns>
         [ResponseType(typeof(OrderLine))]
         public async Task<IHttpActionResult> PostOrderLine(OrderLine orderLine)
         {
@@ -96,6 +119,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // DELETE: api/OrderLines/5
+        /// <summary>
+        /// Delete a orderline
+        /// </summary>
+        /// <param name="id">ID of order line to delete</param>
+        /// <returns>the deleted tab</returns>
         [ResponseType(typeof(OrderLine))]
         public async Task<IHttpActionResult> DeleteOrderLine(long id)
         {
@@ -111,6 +139,10 @@ namespace CashRegister.WebApi.Controllers
             return Ok(orderLine);
         }
 
+        /// <summary>
+        /// To dispose of db context
+        /// </summary>
+        /// <param name="disposing">True if disposing</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -120,6 +152,11 @@ namespace CashRegister.WebApi.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// internal helper method to check if orderline exists
+        /// </summary>
+        /// <param name="id">id of orderline to check</param>
+        /// <returns>True if it exists</returns>
         private bool OrderLineExists(long id)
         {
             return db.OrderLines.Count(e => e.Id == id) > 0;

@@ -848,7 +848,7 @@
             <param name="id">Id of the productgroup to get details from</param>
             <returns>The detailed productgroup</returns>
         </member>
-        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.PutProductGroup(System.Int64,CashRegister.WebApi.Models.ProductGroup)">
+        <member name="M:CashRegister.WebApi.Controllers.ProductGroupsController.PutProductGroup(System.Int64,CashRegister.WebApi.Models.ProductGroupDetailsDto)">
             <summary>
             Input a change to a productgroup specified by id
             </summary>
@@ -901,7 +901,7 @@
             <param name="id"></param>
             <returns>A detailed view of a product</returns>
         </member>
-        <member name="M:CashRegister.WebApi.Controllers.ProductsController.PutProduct(System.Int64,CashRegister.WebApi.Models.Product)">
+        <member name="M:CashRegister.WebApi.Controllers.ProductsController.PutProduct(System.Int64,CashRegister.WebApi.Models.ProductDetailsDto)">
             <summary>
             Add a new product to the database
             </summary>
@@ -954,7 +954,7 @@
             <param name="id">Id of tab you want details from</param>
             <returns>Detailed tab or an error code</returns>
         </member>
-        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.PutProductTab(System.Int32,CashRegister.WebApi.Models.ProductTab)">
+        <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.PutProductTab(System.Int32,CashRegister.WebApi.Models.ProductTabDetailsDto)">
             <summary>
             Input changes to producttab
             </summary>
@@ -1007,7 +1007,7 @@
             <param name="id">id of type to find details for</param>
             <returns>Detailed types obejct</returns>
         </member>
-        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.PutProductType(System.Int32,CashRegister.WebApi.Models.ProductType)">
+        <member name="M:CashRegister.WebApi.Controllers.ProductTypesController.PutProductType(System.Int32,CashRegister.WebApi.Models.ProductTypeDetailsDto)">
             <summary>
             Input changes to a type
             </summary>

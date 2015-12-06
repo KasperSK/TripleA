@@ -40,7 +40,7 @@ namespace CashRegister.WebApi.Models
         /// <summary>
         /// Name of the product
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Pricce of the product

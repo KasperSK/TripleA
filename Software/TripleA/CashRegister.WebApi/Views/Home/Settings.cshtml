@@ -16,6 +16,9 @@
 }
 
 <h2>Settings</h2>
+
+<hr/>
+
 <a href="#ProductTabs" data-toggle="collapse">Product Tabs</a>
 <div id="ProductTabs" class="collapse">
     <br />
@@ -28,7 +31,7 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Product Tabs</h2>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
                             <ul class="list-unstyled" data-bind="foreach: ProductTabs">
                                 <li class="myList">
                                     <div class="row">
@@ -57,21 +60,64 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Detail</h2>
                         </div>
-                        <table class="table">
-                            <tr><td>Id</td><td data-bind="text: ProductTabsDetails().Id"></td></tr>
-                            <tr><td>Name</td><td data-bind="text: ProductTabsDetails().Name"></td></tr>
-                            <tr><td>Active</td><td data-bind="text: ProductTabsDetails().Active"></td></tr>
-                            <tr><td>Color</td><td data-bind="text: ProductTabsDetails().Color"></td></tr>
-                            <tr><td>Priority</td><td data-bind="text: ProductTabsDetails().Priority"></td></tr>
-                            <tr>
-                                <td>Product types</td>
-                                <td>
-                                    <ul class="list-unstyled" data-bind="foreach: ProductTypeNames">
-                                        <li data-bind="text: Name"></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
+                        <form class="form-horizontal" data-bind="submit: updateProductTab">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr><td><strong>Id</strong></td><td data-bind="text: ProductTabsDetails().Id"></td></tr>
+                                    <tr>
+                                        <td><strong>Name</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="inputName" data-bind="value: ProductTabsDetails().Name"/>
+                                        </td>
+                                    </tr>
+                                    <tr><td><strong>Active</strong></td><td>
+                                            <input type="text" class="form-control" id="inputActive" data-bind="value: ProductTabsDetails().Active" />
+                                    </td></tr>
+                                    <tr>
+                                        <td><strong>Color</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="inputColor" data-bind="value: ProductTabsDetails().Color"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Priority</strong></td>
+                                        <td>
+                                            <input type="number" class="form-control" id="inputPriority" data-bind="value: ProductTabsDetails().Priority"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <strong>ProductTypes</strong>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <ul class="list-unstyled" data-bind="foreach: ProductTypeNames">
+                                                        <li data-bind="text: Name"></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group-btn" id="myDropdown">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <select data-bind="options: ProductTypes, optionsText: 'Name', selectedOptions: ProductTabsDetails().ProductTypes" size="15" multiple="true"></select>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>                         
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                                <br />
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /ko -->
@@ -152,7 +198,7 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Product Types</h2>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
                             <ul class="list-unstyled" data-bind="foreach: ProductTypes">
                                 <li class="myList">
                                     <div class="row">
@@ -181,24 +227,64 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Detail</h2>
                         </div>
-                        <table class="table">
-                            <tr><td>Id</td><td data-bind="text: ProductTypesDetails().Id"></td></tr>
-                            <tr><td>Name</td><td data-bind="text: ProductTypesDetails().Name"></td></tr>
-                            <tr><td>Active</td><td data-bind="text: ProductTypesDetails().Price"></td></tr>
-                            <tr><td>Color</td><td data-bind="text: ProductTypesDetails().Color"></td></tr>
-                            <tr>
-                                <td>Product Groups</td>
-                                <td>
-                                    <ul class="list-unstyled" data-bind="foreach: ProductGroupNames">
-                                        <li data-bind="text: Name"></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
+                        <form class="form-horizontal" data-bind="submit: updateProductType">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr><td><strong>Id</strong></td><td data-bind="text: ProductTypesDetails().Id"></td></tr>
+                                    <tr>
+                                        <td><strong>Name</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="inputName" data-bind="value: ProductTypesDetails().Name" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Color</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="inputColor" data-bind="value: ProductTypesDetails().Color" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Price</strong></td>
+                                        <td>
+                                            <input type="number" class="form-control" id="inputPrice" data-bind="value: ProductTypesDetails().Price" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <strong>ProductGroups</strong>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <ul class="list-unstyled" data-bind="foreach: ProductGroupNames">
+                                                        <li data-bind="text: Name"></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group-btn" id="myDropdown">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <select data-bind="options: ProductGroups, optionsText: 'Name', selectedOptions: ProductTypesDetails().ProductGroups" size="15" multiple="true"></select>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                                <br />
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /ko -->
-
             </div>
         </div>
         <!--Add Product-->
@@ -264,7 +350,7 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Product Groups</h2>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
                             <ul class="list-unstyled" data-bind="foreach: ProductGroups">
                                 <li class="myList">
                                     <div class="row">
@@ -293,18 +379,49 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Detail</h2>
                         </div>
-                        <table class="table">
-                            <tr><td>Id</td><td data-bind="text: ProductGroupsDetails().Id"></td></tr>
-                            <tr><td>Name</td><td data-bind="text: ProductGroupsDetails().Name"></td></tr>
-                            <tr>
-                                <td>Products</td>
-                                <td>
-                                    <ul class="list-unstyled" data-bind="foreach: ProductNames">
-                                        <li data-bind="text: Name"></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
+                        <form class="form-horizontal" data-bind="submit: updateProductGroup">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr><td><strong>Id</strong></td><td data-bind="text: ProductGroupsDetails().Id"></td></tr>
+                                    <tr>
+                                        <td><strong>Name</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="inputName" data-bind="value: ProductGroupsDetails().Name" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <strong>Products</strong>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <ul class="list-unstyled" data-bind="foreach: ProductNames">
+                                                        <li data-bind="text: Name"></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group-btn" id="myDropdown">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <select data-bind="options: Products, optionsText: 'Name', selectedOptions: ProductGroupsDetails().Products" size="15" multiple="true"></select>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                                <br />
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /ko -->
@@ -365,7 +482,7 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Product Types</h2>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
                             <ul class="list-unstyled" data-bind="foreach: Products">
                                 <li class="myList">
                                     <div class="row">
@@ -394,20 +511,61 @@
                         <div class="panel-heading">
                             <h2 class="panel-title">Detail</h2>
                         </div>
-                        <table class="table">
-                            <tr><td>Id</td><td data-bind="text: ProductDetail().Id"></td></tr>
-                            <tr><td>Name</td><td data-bind="text: ProductDetail().Name"></td></tr>
-                            <tr><td>Price</td><td data-bind="text: ProductDetail().Price"></td></tr>
-                            <tr><td>Saleable</td><td data-bind="text: ProductDetail().Saleable"></td></tr>
-                            <tr>
-                                <td>Product Groups</td>
-                                <td>
-                                    <ul class="list-unstyled" data-bind="foreach: ProductGroupNames">
-                                        <li data-bind="text: Name"></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
+                        <form class="form-horizontal" data-bind="submit: updateProduct">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr><td><strong>Id</strong></td><td data-bind="text: ProductDetail().Id"></td></tr>
+                                    <tr>
+                                        <td><strong>Name</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="inputName" data-bind="value: ProductDetail().Name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Price</strong></td>
+                                        <td>
+                                            <input type="number" class="form-control" id="inputPrice" data-bind="value: ProductDetail().Price" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Saleable</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="inputSaleable" data-bind="value: ProductDetail().Saleable" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <strong>ProductGroups</strong>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <ul class="list-unstyled" data-bind="foreach: ProductGroupNames">
+                                                        <li data-bind="text: Name"></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group-btn" id="myDropdown">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;Select&nbsp;<span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <select data-bind="options: ProductGroups, optionsText: 'Name', selectedOptions: ProductDetail().ProductGroups" size="15" multiple="true"></select>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                                <br />
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /ko -->

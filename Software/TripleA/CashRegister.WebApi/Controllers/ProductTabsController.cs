@@ -69,18 +69,48 @@ namespace CashRegister.WebApi.Controllers
         /// <param name="productTab">Obejct with the changes</param>
         /// <returns>Status code</returns>
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProductTab(int id, ProductTab productTab)
+        public async Task<IHttpActionResult> PutProductTab(int id, ProductTabDetailsDto productTabDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var ProductTypeList = productTabDetails.ProductTypes;
+            List<ProductType> productTypes = new List<ProductType>();
+
+            foreach (var i in ProductTypeList)
+            {
+                var pT = from pt in db.ProductTypes where pt.Id == i select pt;
+                pT.ForEach(pt => productTypes.Add(pt));
+            }
+
+            //var ProductTab = new ProductTab { Id = productTabDetails.Id, Active = productTabDetails.Active, Color = productTabDetails.Color, Name = productTabDetails.Name, Priority = productTabDetails.Priority };
+
+            //var productTab = from pt in db.ProductTabs where pt.Id == id select pt;
+
+            var productTab = db.ProductTabs.Find(id);
+
+            if (productTab != null)
+            {
+                productTab.Active = productTabDetails.Active;
+                productTab.Color = productTabDetails.Color;
+                productTab.Name = productTabDetails.Name;
+                productTab.Priority = productTabDetails.Priority;
+            }
+
+            productTab.ProductTypes.Clear();
+
+            productTypes?.ForEach(e => productTab.ProductTypes.Add(e));
+
+
+
             if (id != productTab.Id)
             {
                 return BadRequest();
             }
 
+            db.Set<ProductTab>().Attach(productTab);
             db.Entry(productTab).State = EntityState.Modified;
 
             try

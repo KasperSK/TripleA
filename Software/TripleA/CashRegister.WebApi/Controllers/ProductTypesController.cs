@@ -68,18 +68,42 @@ namespace CashRegister.WebApi.Controllers
         /// <param name="productType">Obejct with changes</param>
         /// <returns>Status of how it went</returns>
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProductType(int id, ProductType productType)
+        public async Task<IHttpActionResult> PutProductType(int id, ProductTypeDetailsDto productTypeDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var ProductGroupList = productTypeDetails.ProductGroups;
+            List<ProductGroup> productGroups = new List<ProductGroup>();
+
+            foreach (var i in ProductGroupList)
+            {
+                var pG = from pg in db.ProductGroups where pg.Id == i select pg;
+                pG.ForEach(pg => productGroups.Add(pg));
+            }
+
+            var productType = db.ProductTypes.Find(id);
+
+            if (productType != null)
+            {
+                productType.Color = productTypeDetails.Color;
+                productType.Name = productTypeDetails.Name;
+                productType.Price = productTypeDetails.Price;
+            }
+
+            productType.ProductGroups.Clear();
+
+            productGroups?.ForEach(e => productType.ProductGroups.Add(e));
+
+
             if (id != productType.Id)
             {
                 return BadRequest();
             }
 
+            db.Set<ProductType>().Attach(productType);
             db.Entry(productType).State = EntityState.Modified;
 
             try
