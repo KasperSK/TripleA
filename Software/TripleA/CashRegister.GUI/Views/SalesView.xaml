@@ -61,10 +61,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <Button Name="BalanceButton" Content="Afstem" Margin="7" Style="{StaticResource NormalButton}" Click="BalanceButton_Click"></Button>
-            
-            <Button Name="Pay" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Content="Betal"  Margin="7"  Background="DodgerBlue" Click="Pay_Click"  Command="{Binding Path=PaymentCommand}" Style="{StaticResource NormalButton}"/>
+
+            <Button Name="BalanceButton" Content="Afstem" Margin="7" Style="{StaticResource NormalButton}" Command="{Binding Path=BalanceCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"></Button>
+
+            <Button Name="Pay" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Content="Betal"  Margin="7"  Background="DodgerBlue" Command="{Binding Path=PayCommand}" Style="{StaticResource NormalButton}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
             <Button Name="Cancel" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  Content="Afbryd"  Margin="7"  Background="Red"  Command="{Binding Path=AbortCommand}" Style="{StaticResource NormalButton}"/>
 
         </Grid>

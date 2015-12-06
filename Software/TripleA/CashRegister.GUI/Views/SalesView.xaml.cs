@@ -36,47 +36,13 @@ namespace CashRegister.GUI.Views
             Total.FontSize = (ActualWidth + ActualHeight)/30;
         }
 
-        private ILogger _logger = LogFactory.GetLogger(typeof (SalesView));
+        
+       
 
-        private void Pay_Click(object sender, RoutedEventArgs e)
-        {
-            Window parentWindow = Window.GetWindow(this);
-            PaymentDialog dlg = new PaymentDialog();
-            dlg.Owner = parentWindow;
-            
-            if (dlg.ShowDialog() == true)
-            {
-                _logger.Debug("Payment choice " + dlg.PaymentChoice);
-                var helper = parentWindow?.DataContext as MainViewModel;
-                var relay = helper?.SalesViewModel.PaytypeCommand; 
-                relay?.Execute(dlg.PaymentChoice);
-            }
-        }
-
-        private void BalanceButton_Click(object sender, RoutedEventArgs e)
-        {
-            Window parentWindow = Window.GetWindow((this));
-
-            var helper = parentWindow?.DataContext as MainViewModel;
-
-            string balance = helper?.SalesViewModel.GetTally();
-
-            var balanceDlg = new BalanceDialog(balance);
-
-            balanceDlg.Owner = parentWindow;
-
-            if (balanceDlg.ShowDialog() == true)
-            {
-                //var balanceReceipt = new Receipt();
-
-                //balanceReceipt.Add(balance);
-
-
-                ////helper?.SalesViewModel.print(balanceReceipt);
-            };
+       
 
             
 
-        }
+        
     }
 }
