@@ -85,10 +85,6 @@ namespace CashRegister.WebApi.Controllers
                 pT.ForEach(pt => productTypes.Add(pt));
             }
 
-            //var ProductTab = new ProductTab { Id = productTabDetails.Id, Active = productTabDetails.Active, Color = productTabDetails.Color, Name = productTabDetails.Name, Priority = productTabDetails.Priority };
-
-            //var productTab = from pt in db.ProductTabs where pt.Id == id select pt;
-
             var productTab = db.ProductTabs.Find(id);
 
             if (productTab != null)
@@ -137,7 +133,7 @@ namespace CashRegister.WebApi.Controllers
         /// Input a new product to the db
         /// </summary>
         /// <param name="productTabDetails">An object containing the detailed product</param>
-        /// <returns>The insertet obejct or an errorcode</returns>
+        /// <returns>The insertet obejct or an error code</returns>
         [ResponseType(typeof(ProductTabDetailsDto))]
         public async Task<IHttpActionResult> PostProductTab(ProductTabDetailsDto productTabDetails)
         {
