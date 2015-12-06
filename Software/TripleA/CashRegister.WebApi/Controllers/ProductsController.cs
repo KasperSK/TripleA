@@ -78,18 +78,41 @@ namespace CashRegister.WebApi.Controllers
         /// <param name="product">The product object itself</param>
         /// <returns>A status code of how the transaction went</returns>
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProduct(long id, Product product)
+        public async Task<IHttpActionResult> PutProduct(long id, ProductDetailsDto productDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var ProductGroupList = productDetails.ProductGroups;
+            List<ProductGroup> productGroups = new List<ProductGroup>();
+
+            foreach (var i in ProductGroupList)
+            {
+                var pG = from pg in db.ProductGroups where pg.Id == i select pg;
+                pG.ForEach(pg => productGroups.Add(pg));
+            }
+
+            var product = db.Products.Find(id);
+
+            if (product != null)
+            {
+                product.Name = productDetails.Name;
+                product.Price = productDetails.Price;
+                product.Saleable = productDetails.Saleable;
+            }
+
+            product.ProductGroups.Clear();
+
+            productGroups?.ForEach(e => product.ProductGroups.Add(e));
+
             if (id != product.Id)
             {
                 return BadRequest();
             }
 
+            db.Set<Product>().Attach(product);
             db.Entry(product).State = EntityState.Modified;
 
             try

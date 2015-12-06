@@ -14,10 +14,18 @@ using WebGrease.Css.Extensions;
 
 namespace CashRegister.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller to handle data transfer of productTabs between web and database
+    /// </summary>
     public class SalesOrdersController : ApiController
     {
         private CashRegisterContext db = new CashRegisterContext();
-
+        
+        // GET: api/salesorder
+        /// <summary>
+        /// Get a list of all sales orders
+        /// </summary>
+        /// <returns>List of all sales</returns>
         public IEnumerable<SalesOrderDto> GetSalesOrders()
         {
             var SalesOrder = db.SalesOrders.Include(so => so.Lines);
@@ -40,6 +48,11 @@ namespace CashRegister.WebApi.Controllers
 
 
         // GET: api/SalesOrders/5
+        /// <summary>
+        /// Get detailed Sales
+        /// </summary>
+        /// <param name="id">Id of the sale you want details from</param>
+        /// <returns>Detailed sales or an error code</returns>
         [ResponseType(typeof(SalesOrder))]
         public async Task<IHttpActionResult> GetSalesOrder(long id)
         {
@@ -58,6 +71,12 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // PUT: api/SalesOrders/5
+        /// <summary>
+        /// Input changes to salesorder
+        /// </summary>
+        /// <param name="id">Id of sales to change</param>
+        /// <param name="salesOrder">Object with the changes</param>
+        /// <returns>Status code</returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutSalesOrder(long id, SalesOrder salesOrder)
         {
@@ -93,6 +112,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // POST: api/SalesOrders
+        /// <summary>
+        /// Input a new product to db
+        /// </summary>
+        /// <param name="salesOrder">An object containing the detailed product</param>
+        /// <returns>The insertet objecct or an error code</returns>
         [ResponseType(typeof(SalesOrder))]
         public async Task<IHttpActionResult> PostSalesOrder(SalesOrder salesOrder)
         {
@@ -108,6 +132,11 @@ namespace CashRegister.WebApi.Controllers
         }
 
         // DELETE: api/SalesOrders/5
+        /// <summary>
+        /// Delete a salesorder
+        /// </summary>
+        /// <param name="id">Id of salesoder to delete</param>
+        /// <returns>the deleted salesorder</returns>
         [ResponseType(typeof(SalesOrder))]
         public async Task<IHttpActionResult> DeleteSalesOrder(long id)
         {
@@ -123,6 +152,10 @@ namespace CashRegister.WebApi.Controllers
             return Ok(salesOrder);
         }
 
+        /// <summary>
+        /// To dispose of db context
+        /// </summary>
+        /// <param name="disposing">True if disposing</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -132,6 +165,11 @@ namespace CashRegister.WebApi.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// internal helper method to check if salesorder exists
+        /// </summary>
+        /// <param name="id">id of salesorder to check</param>
+        /// <returns>True if it exists</returns>
         private bool SalesOrderExists(long id)
         {
             return db.SalesOrders.Count(e => e.Id == id) > 0;
