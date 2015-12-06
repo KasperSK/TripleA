@@ -22,40 +22,6 @@ namespace CashRegister.Test.Unit.Receipts
         }
 
         [Test]
-        public void Print_CallsPrintWithAEmptyReceipt_PrinterAddToIsNotCalled()
-        {
-            var receipt = new Receipt();
-
-            _uut.Print(receipt);
-
-            _printer.DidNotReceive().AddTo(Arg.Any<string>());
-        }
-
-        [Test]
-        public void Print_CallsPrintWithAReceiptWithOneLine_PrinterAddToIsCalledOnce()
-        {
-            var receipt = new Receipt();
-            receipt.AddLine("TestStrings");
-
-            _uut.Print(receipt);
-
-            _printer.Received(1).AddTo(Arg.Any<string>());
-        }
-
-        [Test]
-        public void Print_CallsPrintWithAReceiptWithThreeLines_PrinterAddToIsCalledThrice()
-        {
-            var receipt = new Receipt();
-            receipt.AddLine("TestStrings");
-            receipt.AddLine("TestStrings");
-            receipt.AddLine("TestStrings");
-
-            _uut.Print(receipt);
-
-            _printer.Received(3).AddTo(Arg.Any<string>());
-        }
-
-        [Test]
         public void CreateReceipt_GenerateReceiptFromAnEmptyTransaction_ReceiptContainsOneString()
         {
             var transaction = new Transaction();

@@ -6,21 +6,29 @@ using CashRegister.Models;
 namespace CashRegister.Orders
 {
     /// <summary>
-    ///     Implementation of Data Access Objects for Orders
+    /// Implementation of SalesOrder DataAccessObjects.
+    /// This controls how we access the SalesOrder and OrderLines in the database.
     /// </summary>
     public class OrderDao : IOrderDao
     {
+        /// <summary>
+        /// An interface implementation for the Data Access Logic Facade.
+        /// </summary>
         private readonly IDalFacade _dalFacade;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dalFacade">A IDalFacade implementation.</param>
         public OrderDao(IDalFacade dalFacade)
         {
             _dalFacade = dalFacade;
         }
 
         /// <summary>
-        ///     Delete an order in the database
+        /// Delete an SalesOrder in the database.
         /// </summary>
-        /// <param name="order">The order to be deleted</param>
+        /// <param name="order">The SalesOrder to be deleted.</param>
         public virtual void Delete(SalesOrder order)
         {
             using (var uow = _dalFacade.UnitOfWork)
@@ -31,9 +39,9 @@ namespace CashRegister.Orders
         }
 
         /// <summary>
-        ///     Update an order in the database
+        /// Update a SalesOrder in the database.
         /// </summary>
-        /// <param name="order">The order to be updated</param>
+        /// <param name="order">The SalesOrder to be updated.</param>
         public virtual void Update(SalesOrder order)
         {
             using (var uow = _dalFacade.UnitOfWork)
@@ -44,9 +52,9 @@ namespace CashRegister.Orders
         }
 
         /// <summary>
-        ///     Insert an order in to the database
+        /// Insert a SalesOrder in to the database.
         /// </summary>
-        /// <param name="order">The order to be inserted</param>
+        /// <param name="order">The SalesOrder to be inserted.</param>
         public virtual void Insert(SalesOrder order)
         {
             using (var uow = _dalFacade.UnitOfWork)
@@ -57,10 +65,10 @@ namespace CashRegister.Orders
         }
 
         /// <summary>
-        ///     Get an order from id
+        /// Gets a SalesOrder from id.
         /// </summary>
-        /// <param name="id">The id of the order</param>
-        /// <returns>An SalesOrder from an id</returns>
+        /// <param name="id">The id of the SalesOrder.</param>
+        /// <returns>A SalesOrder from an id.</returns>
         public virtual SalesOrder SelectById(long id)
         {
             SalesOrder salesOrder;
@@ -71,7 +79,11 @@ namespace CashRegister.Orders
 
             return salesOrder;
         }
-
+        
+        /// <summary>
+        /// Inserts an OrderLine into the database.
+        /// </summary>
+        /// <param name="line">The OrderLine to be inserted</param>
         public virtual void AddOrderLine(OrderLine line)
         {
             using (var uow = _dalFacade.UnitOfWork)
@@ -82,6 +94,10 @@ namespace CashRegister.Orders
             }
         }
 
+        /// <summary>
+        /// Clears the orderlines from an excisting SalesOrder.
+        /// </summary>
+        /// <param name="order">The SalesOrder to be cleared.</param>
         public void ClearOrder(SalesOrder order)
         {
             using (var uow = _dalFacade.UnitOfWork)
@@ -97,10 +113,10 @@ namespace CashRegister.Orders
         }
 
         /// <summary>
-        ///     Get a list of the last n orders
+        /// Get a list of the last n SalesOrder's.
         /// </summary>
-        /// <param name="amount">The amount of orders to be returned</param>
-        /// <returns>A IEnumerable list of the last n orders</returns>
+        /// <param name="amount">The amount of SalesOrder's to be returned.</param>
+        /// <returns>A IEnumerable list of the last n SalesOrder's.</returns>
         public virtual IEnumerable<SalesOrder> GetLastOrders(int amount)
         {
             IEnumerable<SalesOrder> salesOrders;
@@ -114,9 +130,9 @@ namespace CashRegister.Orders
         }
 
         /// <summary>
-        ///     Get the last order
+        /// Get the last SalesOrder.
         /// </summary>
-        /// <returns>The last SalesOrder</returns>
+        /// <returns>Returns the last SalesOrder.</returns>
         public SalesOrder LastOrder
         {
             get
@@ -133,9 +149,9 @@ namespace CashRegister.Orders
         }
 
         /// <summary>
-        ///     Get the id of the last order
+        /// Get the id of the last SalesOrder.
         /// </summary>
-        /// <returns>The id of the last order</returns>
+        /// <returns>The id of the last SalesOrder.</returns>
         public virtual long LastId
         {
             get
