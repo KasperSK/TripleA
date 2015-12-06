@@ -12,6 +12,10 @@ namespace CashRegister.GUI
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Startup method for the application.
+        /// </summary>
+        /// <param name="e">The arguments sent with the event.</param>
         protected override void OnStartup(StartupEventArgs e)
         {
             LogFactory.Configure("cash.log", true);

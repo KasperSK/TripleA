@@ -28,22 +28,32 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <!-- Buttons 7,8,9 -->
+            
             <Button Name="Seven" Grid.Row="0" Grid.Column="0" Content="7" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Seven, Path=Content}" />
             <Button Name="Eight" Grid.Row="0" Grid.Column="1" Content="8" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Eight, Path=Content}" />
             <Button Name="Nine" Grid.Row="0" Grid.Column="2" Content="9" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Nine, Path=Content}" />
 
+            <!-- Buttons 4,5,6 -->
+            
             <Button Name="Four" Grid.Row="1" Grid.Column="0" Content="4" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Four, Path=Content}" />
             <Button Name="Five" Grid.Row="1" Grid.Column="1" Content="5" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Five, Path=Content}" />
             <Button Name="Six" Grid.Row="1" Grid.Column="2" Content="6" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Six, Path=Content}" />
 
+            <!-- Buttons 1,2,3 -->
+            
             <Button Name="One" Grid.Row="2" Grid.Column="0" Content="1" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=One, Path=Content}" />
             <Button Name="Two" Grid.Row="2" Grid.Column="1" Content="2" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Two, Path=Content}" />
             <Button Name="Three" Grid.Row="2" Grid.Column="2" Content="3" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Three, Path=Content}" />
 
+            <!-- Buttons 0,00, . (point) -->
+            
             <Button Name="Zero" Grid.Row="3" Grid.Column="0" Content="0" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=Zero, Path=Content}" />
             <Button Name="DoubleZero" Grid.Row="3" Grid.Column="1" Content="00" Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=DoubleZero, Path=Content}" />
             <Button Name="PointButton" Grid.Row="3" Grid.Column="2" Content="." Command="{Binding NumpadClicked}" CommandParameter="{Binding ElementName=PointButton, Path=Content}" />
 
+            <!-- Buttons Returnbutton, Clearbutton -->
+            
             <Button Name="ReturnButton" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Content="Retursalg" Command="{Binding NumpadClicked}" CommandParameter="-"/>
             <Button Name="CButton" Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Content="C" Command="{Binding NumpadClear}" />
         </Grid>

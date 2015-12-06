@@ -31,17 +31,8 @@
         
         <GroupBox Grid.Row="1" Header="MSSQL Connection">
             <StackPanel>
-                <Label Content="Data Source:" />
-                <TextBox Margin="5" Text="{Binding DataSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                <Label Content="Initial Catalog:" />
-                <TextBox Margin="5" Text="{Binding InitialCatalog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                <Label Content="User ID:" />
-                <TextBox Margin="5" Text="{Binding UserId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                <Label Content="Password:" />
-                <TextBox Margin="5" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Content="Connection String:" />
+                <TextBox Margin="5" Text="{Binding ConnectionString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </GroupBox>
 
