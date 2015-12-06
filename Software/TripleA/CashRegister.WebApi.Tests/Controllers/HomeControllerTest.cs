@@ -21,5 +21,19 @@ namespace CashRegister.WebApi.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual("Home Page", result.ViewBag.Title);
         }
+
+        [TestMethod]
+        public void Settings()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Settings() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Settings", result.ViewBag.Title);
+        }
     }
 }
