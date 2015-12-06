@@ -1,4 +1,7 @@
-﻿using CashRegister.GUI.ViewModels;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using CashRegister.GUI.ViewModels;
 using CashRegister.Models;
 using CashRegister.Sales;
 using NSubstitute;
@@ -18,14 +21,11 @@ namespace CashRegister.Test.Unit.ViewModels
         [SetUp]
         public void Setup()
         {
-
             _fakeSalesController = Substitute.For<ISalesController>();
 
             _uut = new SalesViewModel(_fakeSalesController);
 
             _fakeSalesController.PropertyChanged += _uut.OnCurrentOrderChanged;
-
-
         }
 
 
@@ -53,15 +53,10 @@ namespace CashRegister.Test.Unit.ViewModels
         [Test]
         public void OnCurrentOrderChanged_OnPropertyChangedEvent_OnCurrentOrderChangedCalled()
         {
-            var orderlines = new SalesOrder();
-
-            orderlines.Lines.Add(new OrderLine() {Product = new Product("øl",10,true),Quantity = 1,UnitPrice = 10});
-            _fakeSalesController.CurrentOrder.Returns(orderlines);
-
-            _fakeSalesController.AddProductToOrder(new Product("øl",10,true),1, null);
+            _fakeSalesController.CurrentOrderLines.Returns(new List<OrderLine>() { new OrderLine() { Product = new Product("øl", 10, true), Quantity = 1, UnitPrice = 10 } });
+            _fakeSalesController.PropertyChanged += Raise.Event<PropertyChangedEventHandler>(Arg.Any<object>(), Arg.Any<ProgressChangedEventArgs>());
             
-
-            CollectionAssert.Contains(_uut.ViewProducts,new SalesViewModel.ViewProduct("1","øl","10"));
+            Assert.That(_uut.ViewProducts.First().Navn, Is.EqualTo("øl"));
         }
 
         
