@@ -1,0 +1,40 @@
+\subsection*{Use Case 12}
+I denne Use Case ser vi hvordan der vises statistik over solgte produkter i systemet.
+\begin{usecase}{12}
+
+\title{ Vis statistik over salg} 
+
+\field{Mål:}{ At få vist statistik over solgte produkter }
+
+\field{Initieret af:}{ Admin }
+
+\field{Aktører:}{ Admin (Primær) }
+
+\field{Samtidige forekomster:}{1}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\field{Prækondition:}{Der skal mindt være en igangværende ordre}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\field{Postkondition:}{ Der vises statistik af solgte produkter og ordrer }
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\scenario{Hovedscenarie:}{
+	\item Admin vælger link til Statistik i Wep API
+	\item Statistik side vises og Admin vælger ordrer i ordrerlisten
+	\item Admin klikker på linket til detaljer om en ordre og detaljer om ordre vises.
+	\newline
+	[Extension 12.1: Admin klikker på andet end link til at tilføje produkt ]	
+}
+
+
+%Extensions: Alternate scenarios of success or failure.
+\scenario{Udvidelser:}{
+	\item Extension 12.1: Admin klikker på andet link end link til detaljer
+		\begin{enumerate}
+		\item[1.] Systemet går ud af produkt side og en anden side vises
+		\end{enumerate}		
+}
+
+
+\end{usecase}

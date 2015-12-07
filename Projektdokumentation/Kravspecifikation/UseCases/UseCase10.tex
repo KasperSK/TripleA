@@ -1,0 +1,42 @@
+\subsection*{Use Case 10}
+I denne Use Case ser vi hvordan et produkt i databasen bliver redigeret.
+\begin{usecase}{10}
+
+\title{ Rediger varer i kasseapparat} 
+
+\field{Mål:}{ At få ændret et produkt i kasseapparat}
+
+\field{Initieret af:}{ Admin }
+
+\field{Aktører:}{ Admin (Primær) }
+
+\field{Samtidige forekomster:}{1}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\field{Prækondition:}{Der skal være et produkt lagret i databasen}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\field{Postkondition:}{ Et produkt er ændret og kan vises på GUI }
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\scenario{Hovedscenarie:}{
+	\item Admin vælger link til settings i Wep API
+	\item Settings side vises og Admin vælger link til Products 
+	\item Products side vises og Admin vælger produkt i produktlisten.
+	\item Detaljer om produktet vises og Admin ændrer navn for produkt 
+	\item Admin klikker på linet der opdaterer produktet og produktet vises nu opdateret i produktlisten\newline
+	[Extension 10.1: Admin klikker på andet link end til at opdatere produkt ]
+	\item Produktet kan nu vises på GUI
+}
+
+
+%Extensions: Alternate scenarios of success or failure.
+\scenario{Udvidelser:}{
+	\item Extension 10.1: Admin klikker på andet link end til at opdatere produkt
+		\begin{enumerate}
+		\item[1.] Systemet går ud af produkt side og en anden side vises
+		\end{enumerate}		
+}
+
+
+\end{usecase}
