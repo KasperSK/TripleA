@@ -52,11 +52,11 @@ namespace CashRegister.Test.Unit.ViewModels
 
             _fakeSalesController.Received(1).CancelOrder();
         }
-
+/*
         [Test]
-        public void OnCurrentOrderChanged_OnPropertyChangedEvent_OnCurrentOrderChangedCalled()
+        publi c void OnCurrentOrderChanged_OnPropertyChangedEvent_OnCurrentOrderChangedCalled()
         {
-            /*
+           
             var orderlines = new SalesOrder();
 
             PropertyChangedEventHandler propertyChanged;
@@ -74,9 +74,9 @@ namespace CashRegister.Test.Unit.ViewModels
 
             CollectionAssert.Contains(_uut.ViewProducts,new SalesViewModel.ViewProduct("1","øl","10"));
 
-    */
+    
         }
-
+*/
         
     }
 }
