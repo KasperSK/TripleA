@@ -815,20 +815,79 @@
         </member>
         <member name="T:CashRegister.WebApi.Controllers.HomeController">
             <summary>
-            Controller til website
+            Controller to website
             </summary>
         </member>
         <member name="M:CashRegister.WebApi.Controllers.HomeController.Index">
             <summary>
-            Funktion til at hente index siden
+            Function to get the index site
             </summary>
-            <returns>Index siden</returns>
+            <returns>Index site</returns>
         </member>
         <member name="M:CashRegister.WebApi.Controllers.HomeController.Settings">
             <summary>
-            Funktion til at hente settings siden
+            Function to get the settings site
             </summary>
-            <returns>Settings siden</returns>
+            <returns>Settings site</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.HomeController.Statistic">
+            <summary>
+            Function to get the statistic site
+            </summary>
+            <returns>Statistic site</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.OrderLinesController">
+            <summary>
+            Controller to handle transfer of OrderLines between web and database
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.OrderLinesController.GetOrderLines">
+            <summary>
+            Get a list of all order lines
+            </summary>
+            <returns>List of all order lines</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.OrderLinesController.GetOrderLine(System.Int64)">
+            <summary>
+            Get a detailed order line
+            </summary>
+            <param name="id">Id of order line you want details from</param>
+            <returns>Detailed Order line or an error code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.OrderLinesController.PutOrderLine(System.Int64,CashRegister.WebApi.Models.OrderLine)">
+            <summary>
+            Input Changes to orderline
+            </summary>
+            <param name="id">Id of orderline to change</param>
+            <param name="orderLine">Object with the changes</param>
+            <returns>Status code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.OrderLinesController.PostOrderLine(CashRegister.WebApi.Models.OrderLine)">
+            <summary>
+            Input a new orderline to the db
+            </summary>
+            <param name="orderLine">An object containing the detailde product</param>
+            <returns>The insertet object or an error code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.OrderLinesController.DeleteOrderLine(System.Int64)">
+            <summary>
+            Delete a orderline
+            </summary>
+            <param name="id">ID of order line to delete</param>
+            <returns>the deleted tab</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.OrderLinesController.Dispose(System.Boolean)">
+            <summary>
+            To dispose of db context
+            </summary>
+            <param name="disposing">True if disposing</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.OrderLinesController.OrderLineExists(System.Int64)">
+            <summary>
+            internal helper method to check if orderline exists
+            </summary>
+            <param name="id">id of orderline to check</param>
+            <returns>True if it exists</returns>
         </member>
         <member name="T:CashRegister.WebApi.Controllers.ProductGroupsController">
             <summary>
@@ -967,7 +1026,7 @@
             Input a new product to the db
             </summary>
             <param name="productTabDetails">An object containing the detailed product</param>
-            <returns>The insertet obejct or an errorcode</returns>
+            <returns>The insertet obejct or an error code</returns>
         </member>
         <member name="M:CashRegister.WebApi.Controllers.ProductTabsController.DeleteProductTab(System.Int32)">
             <summary>
@@ -1040,6 +1099,112 @@
             Internal helper to check if type allready exist
             </summary>
             <param name="id">Id of type</param>
+            <returns>True if it exists</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.SalesOrdersController">
+            <summary>
+            Controller to handle data transfer of productTabs between web and database
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.SalesOrdersController.GetSalesOrders">
+            <summary>
+            Get a list of all sales orders
+            </summary>
+            <returns>List of all sales</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.SalesOrdersController.GetSalesOrder(System.Int64)">
+            <summary>
+            Get detailed Sales
+            </summary>
+            <param name="id">Id of the sale you want details from</param>
+            <returns>Detailed sales or an error code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.SalesOrdersController.PutSalesOrder(System.Int64,CashRegister.WebApi.Models.SalesOrder)">
+            <summary>
+            Input changes to salesorder
+            </summary>
+            <param name="id">Id of sales to change</param>
+            <param name="salesOrder">Object with the changes</param>
+            <returns>Status code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.SalesOrdersController.PostSalesOrder(CashRegister.WebApi.Models.SalesOrder)">
+            <summary>
+            Input a new product to db
+            </summary>
+            <param name="salesOrder">An object containing the detailed product</param>
+            <returns>The insertet objecct or an error code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.SalesOrdersController.DeleteSalesOrder(System.Int64)">
+            <summary>
+            Delete a salesorder
+            </summary>
+            <param name="id">Id of salesoder to delete</param>
+            <returns>the deleted salesorder</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.SalesOrdersController.Dispose(System.Boolean)">
+            <summary>
+            To dispose of db context
+            </summary>
+            <param name="disposing">True if disposing</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.SalesOrdersController.SalesOrderExists(System.Int64)">
+            <summary>
+            internal helper method to check if salesorder exists
+            </summary>
+            <param name="id">id of salesorder to check</param>
+            <returns>True if it exists</returns>
+        </member>
+        <member name="T:CashRegister.WebApi.Controllers.TransactionsController">
+            <summary>
+            Controller to handle data transfer of Transactions betweeen web and database
+            </summary>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.TransactionsController.GetTransactions">
+            <summary>
+            Get a list of all transaction
+            </summary>
+            <returns>List of all transactions</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.TransactionsController.GetTransaction(System.Int64)">
+            <summary>
+            Get a detailed transactions
+            </summary>
+            <param name="id">Id of tab you want details from</param>
+            <returns>Detailed tab or an error code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.TransactionsController.PutTransaction(System.Int64,CashRegister.WebApi.Models.Transaction)">
+            <summary>
+            Input changes to transaction
+            </summary>
+            <param name="id">Id of transaction to change</param>
+            <param name="transaction">Object with the change</param>
+            <returns>Status code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.TransactionsController.PostTransaction(CashRegister.WebApi.Models.Transaction)">
+            <summary>
+            Input changes to Transactions
+            </summary>
+            <param name="transaction">An object containing the detailed product</param>
+            <returns>The insertet object or an error code</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.TransactionsController.DeleteTransaction(System.Int64)">
+            <summary>
+            Delete a Transaction
+            </summary>
+            <param name="id">Id of transaction to delete</param>
+            <returns>The deleted transaction</returns>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.TransactionsController.Dispose(System.Boolean)">
+            <summary>
+            To dispose of db context
+            </summary>
+            <param name="disposing">True if disposing</param>
+        </member>
+        <member name="M:CashRegister.WebApi.Controllers.TransactionsController.TransactionExists(System.Int64)">
+            <summary>
+            internal helper method to check if Transaction exists
+            </summary>
+            <param name="id">Id of the tab to check</param>
             <returns>True if it exists</returns>
         </member>
         <member name="T:CashRegister.WebApi.WebApiApplication">

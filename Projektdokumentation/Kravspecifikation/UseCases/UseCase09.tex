@@ -1,0 +1,42 @@
+\subsection*{Use Case 9}
+I denne Use Case ser vi hvordan et produkt bliver tilføjet til databasen.
+\begin{usecase}{9}
+
+\title{ Tilføj varer til kasseapparat} 
+
+\field{Mål:}{ At få tilføjet et nyt produkt til kasseapparatet }
+
+\field{Initieret af:}{ Admin }
+
+\field{Aktører:}{ Admin (Primær) }
+
+\field{Samtidige forekomster:}{1}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\field{Prækondition:}{System skal være tændt og klar}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\field{Postkondition:}{ Et produkt er tilføjet og kan vises på GUI }
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\scenario{Hovedscenarie:}{
+	\item Admin vælger link til settings i Wep API
+	\item Settings side vises og Admin vælger link til Products 
+	\item Products side vises og Admin indskriver Navn, pris, Produktgruppe og produktet er salgsbart.
+	\item Admin klikker på linket der tiløjer produktet \newline
+	[Extension 1.1: Admin klikker på andet end link til at tilføje produkt ]
+	\item Produktet vises nu under produkttyper
+	\item Produktet kan nu vises på GUI
+}
+
+
+%Extensions: Alternate scenarios of success or failure.
+\scenario{Udvidelser:}{
+	\item Extension 1.1: Admin klikker på andet end link til at tilføje produkt
+		\begin{enumerate}
+		\item[1.] Systemet går ud af produkt side og en anden side vises
+		\end{enumerate}		
+}
+
+
+\end{usecase}
