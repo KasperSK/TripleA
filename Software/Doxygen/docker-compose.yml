@@ -1,10 +1,19 @@
-compile:
+compilelib:
   image: kalledk/doxygen:1.0
 
   volumes:
     - ../TripleA/CashRegister:/data/src:Z
     - ./Doxyfile:/data/Doxyfile:Z
-    - ./output:/data/output:Z
+    - ./output/CashRegister:/data/output:Z
+    - /usr/bin/vi:/usr/bin/vi:Z
+
+compileweb:
+  image: kalledk/doxygen:1.0
+
+  volumes:
+    - ../TripleA/CashRegister.WebApi:/data/src:Z
+    - ./Doxyfile:/data/Doxyfile:Z
+    - ./output/CashRegister.WebApi:/data/output:Z
     - /usr/bin/vi:/usr/bin/vi:Z
 
 web:
