@@ -13,6 +13,9 @@ namespace CashRegister.Models
 
     public enum PaymentType
     {
+        /// <summary>
+        /// Creates a new SalesOrder and inserts it into the database.
+        /// </summary>
         Cash = 0,
         Nets = 1,
         Swipp = 2,
