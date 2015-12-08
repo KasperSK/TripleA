@@ -7,9 +7,9 @@ namespace CashRegister.Models
 {
     public enum OrderStatus
     {
-        Created = 0,  // Order has been created and inserted to the database
-        Completed = 1, // Order has been fully payed
-        Failed = 2 // Order did not get finished, saved for history
+        Created = 0,  /*!< Order has been created and inserted to the database */
+        Completed = 1, /*!< Order has been fully payed */
+        Failed = 2 /*!< Order did not get finished, saved for history */
     }
 
     [ExcludeFromCodeCoverage]
