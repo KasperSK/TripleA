@@ -5,11 +5,25 @@ using System.Linq;
 
 namespace CashRegister.Models
 {
+    /// <summary>
+    /// Statuses that en SalesOrder can have.
+    /// </summary>
     public enum OrderStatus
     {
-        Created = 0,  /*!< Order has been created and inserted to the database */
-        Completed = 1, /*!< Order has been fully payed */
-        Failed = 2 /*!< Order did not get finished, saved for history */
+        /// <summary>
+        /// Order has been created and inserted to the database
+        /// </summary>
+        Created = 0,
+
+        /// <summary>
+        /// Order has been fully payed
+        /// </summary>
+        Completed = 1,
+
+        /// <summary>
+        /// Order did not get finished, saved for history
+        /// </summary>
+        Failed = 2,
     }
 
     [ExcludeFromCodeCoverage]
