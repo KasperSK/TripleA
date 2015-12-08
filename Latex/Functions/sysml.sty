@@ -1,5 +1,13 @@
-
 \usepackage{etoolbox}
+
+\newcommand{\logicalview}[4]{
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=#1\textwidth]{N+1/LogicalView/#3/Diagrammer/#2.png}
+	\caption{\sysmldesc{#2} af #4}
+	\label{fig:#3_#2}
+\end{figure}
+}
 
 \newcommand{\sysml}[4]{
 \begin{figure}[H]
