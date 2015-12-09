@@ -14,5 +14,89 @@ Dette kapitel beskriver systemets opdeling i delsystemer. Her ser vi på de funk
 
 \subsection{Use Case realiseringer	}
 \subsubsection{ Use Case 1. realisering	}
+\textbf{De moduler der realiserer Use Case 1 : Kontant salg}
+
+\begin{enumerate}
+	\item GUI
+	\item SalesController
+	\item OrderController
+	\item OrderDao
+	\item DalFascade
+	\item UnitOfWork
+\end{enumerate}
+
+Use Case 1 bliver realiseret først og fremmest af GUI'en hvor bartenderen klikker på produkterne der skal sælges. GUI'en bruger så SalesControlleren Som bruger en orderController der tilføjer produkter i ordren. Når der skal betales bruges GUI'en SalesController som så kalder OrderControlleren som så kalder OrderDao som via DalFascade og unitOfWork tilgår databasen.  
+
+
 \subsubsection{ Use Case 2. realisering	}
+\textbf{De moduler der realiserer Use Case 2 : Udskriv kundebon}
+
+\begin{enumerate}
+	\item GUI
+	\item SalesController
+	\item ReceitController
+	\item Receit
+	\item ReceitPrinter
+\end{enumerate}
+
+Use Case 2 bliver realiseret først og fremmest af GUI'en hvor der efter et salg kan vælges at udskrive en bon over salget. Gui'en bruger SalesControlleren der kalder ReceitControlleren og laver en ny Receit som den udskriver via ReceitPrinter. 
+
+\subsubsection{ Use Case 3. realisering}
+\textbf{De moduler der realiserer Use Case 3 : Kasseafstemning}
+
+\begin{enumerate}
+	\item SalesController
+	\item PaymentController
+	\item GUI
+\end{enumerate}
+
+Use Case 3 bliver realiseret først om fremmest gennem SalesControlleren der via paymenControlleren får hentet hvor mange kontanter der er i kassen, og hvor meget der er blevet solgt med hver slags betalingstype, her vises det så på GUI'en. 
+
+
+\subsubsection{Use Case 9. realisering}
+\textbf{De moduler der realiserer Use Case 9: Tilføj varer til kasseapparat}
+
+\begin{enumerate}
+	\item Web API
+	\item Database
+	\item GUI
+\end{enumerate}
+
+Use Case 9 bliver realiseret primært gennem Web API'et som her bruger Database Controllere til at tilgå databasen. I Web API'et kan der indsættes nye produkter og det er samme database som den Business logikken henter i, hvortil der vises på GUI.
+
+
+\subsubsection{Use Case 10. realisering}
+\textbf{De Moduler der realiserer Use Case 10: Rediger varer i kasseapparat}
+
+\begin{enumerate}
+	\item Web API
+	\item Database
+	\item GUI
+\end{enumerate}
+
+Use Case 10 bliver realiseret primært gennem Wep API'et som her bruger Database Controllere til at tilgå databasen. I Wep API'et kan der redigeres i et allerede eksisterende produkt. Når et produkt er ændret som det ønskes, gemmes det i databasen, of da det er den samme database som business logikken henter fra, kan GUI'en vise det.
+
+\subsubsection{Use Case 11. realisering}
+\textbf{De Moduler der realiserer Use Case 11: Fjern varer fra kasseapparat}
+
+\begin{enumerate}
+	\item Web API
+	\item Database
+	\item GUI
+\end{enumerate}
+	
+Use Case 11 bliver realiseret primært gennem Wep API'et som her bruger Database Controllere til at tilgå databasen. I Web API'et kan der fjernes allerede eksisterende produkter fra databasen. Når et produkt er fjernet opdateres databasen, og da det er den samme database som den business logikken henter fra, vil produktet ikke længere vises på GUI. 
+
+\subsubsection{Use Case 12. realisering}
+\textbf{De moduler der realiserer Use Cas 12: Vis statistik over salg}
+
+\begin{enumerate}
+	\item Web API
+	\item Database
+	\item GUI
+\end{enumerate}
+
+Use Case 12 bliver realiseret primært gennem Wep API'et som her tilgår Databasen via database Controllere. I Web API'et kan man vælger at se en statistik over de salg der foretaget. Disse kan være created, complete eller cancelled. For at der skal være noget at se statistik over, er det vigtig at man fra GUI'en har skabt en ordre. 
+
+
 
