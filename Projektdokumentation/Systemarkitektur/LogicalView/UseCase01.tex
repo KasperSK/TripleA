@@ -1,0 +1,13 @@
+\subsubsection{ Use Case 1. realisering	}
+\textbf{De moduler der realiserer Use Case 1 : Kontant salg}
+
+\begin{enumerate}
+	\item GUI
+	\item SalesController
+	\item OrderController
+	\item OrderDao
+	\item DalFascade
+	\item UnitOfWork
+\end{enumerate}
+
+Use Case 1 bliver realiseret først og fremmest af GUI'en hvor bartenderen klikker på produkterne der skal sælges. GUI'en bruger så SalesControlleren Som bruger en orderController der tilføjer produkter i ordren. Når der skal betales bruges GUI'en SalesController som så kalder OrderControlleren som så kalder OrderDao som via DalFascade og unitOfWork tilgår databasen.
