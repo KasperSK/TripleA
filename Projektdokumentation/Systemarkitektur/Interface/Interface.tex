@@ -1,0 +1,25 @@
+\section{Systemets grænseflader}
+Dette afsnit vil beskrive systemet grænseflader.
+
+\subsection{Grænseflader til person aktører}
+Systemet har to person grænseflader: Bartender og Admin.
+\newline\newline
+Bartender kan vha. brugergrænsefladen:
+\begin{itemize}
+	\item Udføre salg
+	\item Tage imod betaling
+\end{itemize}
+
+Admin kan vha. WebAPI'et:
+\begin{itemize}
+	\item Oprette, redigere og slette produkter.
+\end{itemize}
+
+\subsection{Grænseflader til eksterne system aktører}
+Systemet har tre eksterne system aktører: Nets, MobilePay og Swipp. Nets -- altså Dankort -- har været første prioritet i forhold til betalingsudbydere. Da systemet stadig i udviklingsfasen, hvor Dankort skal implementeres vil Nets kun blive beskrevet i dette afsnit.
+\newline\newline
+Nets er udbyderen af Dankort systemet. Systemet skal interagere med den API, som er stillet til rådighed fra Nets. Selve API'en og interaktionen med systemet er ikke undersøgt nærmere. 
+
+%\subsection{Grænseflader til hardware aktører}
+
+%\subsection{Grænseflader til eksterne software aktører}

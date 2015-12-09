@@ -1,4 +1,7 @@
-\section{Domænemodel}
+\section{Domain View}
+I dette view vil de indledende tanker i forhold til arkitekturen af systemet blive beskrevet. Tankerne vil blive dokumenteret med domæne modeller.
+
+\subsection{Overvejelser}
 Ud fra de definerede use-cases i kravspecifikationen er følgende klasser og interfaces blevet udledt. Klassediagrammet i figur~\ref{fig:CashRegister_DOMAIN} tager udgangspunkt i \texttt{ICashRegister}. Denne har forbindelse til \texttt{GUI}, som er en \textit{boundry} klasse dvs. en klasse, som er udefrakommendes vej til brug af systemet. Klassen \texttt{CashRegister} skal varetage systemets funktionalitet såsom opsætning af salg, gennemførelse af transaktion, udprintning af bon osv.
 
 \sysml{0.9}{DOMAIN}{CashRegister}{ICashRegister}
