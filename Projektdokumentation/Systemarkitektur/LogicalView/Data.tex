@@ -1,3 +1,7 @@
 \logicalview{0.85}{CLASS}{Models}{pakken Models}
 
 \logicalview{0.85}{CLASS}{Database}{pakken Database}
+
+\logicalview{0.85}{CLASS}{Dal}{Data acces laget}
+
+Data access layer, er lavet for at afkoble hvilken database der bliver brugt fra programmet. Således er det kun data access layer der skal laves om hvis der skiftes database. Der stilles alle de funktioner der er nødvendige for at indsætte, slette, opdatere og oprette elementer i database til rådighed. Disse kommer alle fra Repository klassen og kan tilgås igenenm UnitOfWork som eksistere for at sikre at vi gemmer alle ændringerne i databasen på en gang. Til sidst er der en facade som sørger for at der kun kan eksistere et UnitOfWork ad gangen. I figur \ref{fig:Dal_CLASS} kan sammenhængen ses.
