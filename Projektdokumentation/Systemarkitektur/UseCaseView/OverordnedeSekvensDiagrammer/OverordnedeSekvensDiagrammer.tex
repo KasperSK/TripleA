@@ -24,10 +24,39 @@ For at se hvordan man skifter Bon papiret skal man se under Use Case 2 - Extensi
 
 
 \subsubsection{Overordnet sekvensdiagram for Use Case 3 ''Kasseafstemning''}
-Diagrammet viser interaktion mellem Bartender og system for Use Case 2, ''Kasseafstemning'' 
+Diagrammet viser interaktion mellem Bartender og system for Use Case 3, ''Kasseafstemning'' 
 
 \sysml{0.6}{SEQ}{UseCase3}{Use Case 3}
 
 Når Bartender skal afstemme kassen afslutter han Use Casen med udskiver en udskrive en bon over afstemningen, men i tilfælde af at der ikke er mere papir vil systemmet melde en besked om at der ikke er mere papir.
 \newline\newline
 For at se hvordan man skifter Bon papiret skal man se under Use Case 3 - Extension 3.2.
+
+
+\subsubsection{OverOrdnet sekvensdiagram for Use Case 9 ''Tilføj varer til kasseapparat''}
+Diagrammet viser interaktionen mellem Admin system for Use Case 9, ''Tilføj varer til kasseapparat''.
+
+\sysml{1.0}{SEQ}{UseCase9}{Use Case 9}
+
+Når Admin skal tilføje en vare starter han Web API'et op og indskriver varen dér. Når han er færdig vil varen kunne vises på Systemet GUI. 
+
+\subsubsection{Overordnet sekvensdiagram for Use Case 10 ''Rediger varer i kasseapparat''}
+Diagrammet viser interaktionen mellem Admin og system for Use Case 10, ''Rediger varer i kasseapparat''.
+
+\sysml{1.0}{SEQ}{UseCase10}{Use Case 10}
+
+Når Admin skal redigere et produkt starter han Web API'et op og vælger det produkt han vil ændrer. Når han er færdig, kan det opdaterede produkt ses på systemets GUI.
+
+\subsubsection{Overordnet sekvensdiagram for Use Case 11 ''Fjern varer fra kasseapparat''}
+Diagrammet viser interaktionen mellem Admin og system for Use Case 11, ''Fjern varer i kasseapparat''.
+
+\sysml{1.0}{SEQ}{UseCase11}{Use Case 11}
+
+Når Admin skal fjerne et produkt, starter han Web API'et op og vælger det produkt der ønskes fjernet. Når han er færdig, vil det fjernede produkt ikke vises på systemets GUI.
+
+\subsubsection{Overordnet sekvensdiagram for Use Case 12 ''Vis statistik over salg''}
+Diagrammet viser interaktionen mellem Admin og system for Use Case 12 ''Vis statistik over salg''.
+
+\sysml{1.0}{SEQ}{UseCase12}{Use Case 12}
+
+Når Admin skal se statistik over salg, starter han Web API'et op og vælger siden der viser statistikken over salg.  
