@@ -1,1 +1,22 @@
-\section{Implementation View}
+\section{Deployment View}
+Systemet er bygget til at kunne køre på flere hosts, dog kan det hele også afvikles på en enkelt host. 
+I deployment diagrammet på figur \ref{fig:System_DEPLOY} kan det ses hvordan systemet ville kunne køre på flere hosts
+
+\Diagram{0.80}{DEPLOY}{System}{deployment mulighed for kasseapparatet}{DeploymentView}
+
+\subsection{Node beskrivelser}
+Her følger en kort beskrivelse af de forkellige noder der er i systemet og eventuelle krav til disse.
+
+\subsubsection{Database Server}
+Databasen er lavet ved hjælp af Entity Framework Code First, derfor burde det være muligt at deploye database til forskellige database providers så længe de er understøttet af ADO.NET.
+Vi har valgt at bruge MSSQL Server da vi har udviklet og testet imod denne.
+
+\subsubsection{Web Server}
+WebApi'en er udviklet i ASP.NET og testet på en Microsoft Internet Information Services server. 
+Derfor bør WebApi deployes til en IIS Server.
+
+\subsubsection{Cashregister PC}
+Dette er selv kasse apparatet computeren der afviklet programmet skal supportere .NET framework 4.6 eller højere.
+
+\subsubsection{Administrations PC}
+Denne pc skal blot kunne afvikle en moderne webbroswer, administrationssiden er testet i Mozilla Firefox og Google chorme
