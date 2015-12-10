@@ -1,5 +1,14 @@
 \usepackage{etoolbox}
 
+\newcommand{\Diagram}[5]{
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=#1\textwidth]{N+1/#5/#3/Diagrammer/#2.png}
+	\caption{\sysmldesc{#2} af #4}
+	\label{fig:#3_#2}
+\end{figure}
+}
+
 \newcommand{\logicalview}[4]{
 \begin{figure}[H]
 	\centering
@@ -27,4 +36,5 @@
 	\ifstrequal{#1}{ALLOC}{Allocation Diagram}{}%
 	\ifstrequal{#1}{PKG}{Package Diagram}{}%
 	\ifstrequal{#1}{CLASS}{Class Diagram}{}%
+	\ifstrequal{#1}{DEPLOY}{Deployment Diagram}{}%
 }
