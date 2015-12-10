@@ -1,9 +1,15 @@
-\textbf{De moduler der realiserer Use Cas 12: Vis statistik over salg}
-
+\subsubsection{Use Case 12: Vis statistik over salg}
+Modulerne der realiserer UC12:
 \begin{enumerate}
-	\item Web API
-	\item Database
-	\item GUI
+	\item CashRegisterConfig
+	\item App.js
+	\item HomeController
+	\item SalesOrderController
+	\item TransactionsController
+	\item OrderLinesController
+	\item CashRegisterContext
 \end{enumerate}
 
-Use Case 12 bliver realiseret primært gennem Wep API'et som her tilgår Databasen via database Controllere. I Web API'et kan man vælger at se en statistik over de salg der foretaget. Disse kan være created, complete eller cancelled. For at der skal være noget at se statistik over, er det vigtig at man fra GUI'en har skabt en ordre. 
+Use Case 12 realiseres primært gennem Web API'en. SalesOrders, Transactions og OrderLines indlæses i \texttt{App.js}. Derefter kan SalesOrders ses i en liste, hvor der kan trykkes \textit{Details}. Når der trykkes \textit{Details} kan OrderLines og Transactions for den pågældende SalesOrder ses. Forløbet kan ses i Figur~\ref{fig:UC12_SEQ}.
+
+\Diagram{1.0}{SEQ}{UC12}{Use Case 12}{LogicalView}

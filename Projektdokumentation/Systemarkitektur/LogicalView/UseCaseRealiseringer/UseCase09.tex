@@ -1,9 +1,16 @@
-\textbf{De moduler der realiserer Use Case 9: Tilføj varer til kasseapparat}
-
+\subsubsection{Use Case 9: Tilføj varer til kasseapperat}
+Modulerne der realiserer UC9:
 \begin{enumerate}
-	\item Web API
-	\item Database
-	\item GUI
+	\item CashRegisterConfig
+	\item App.js
+	\item HomeController
+	\item ProductsController
+	\item ProductTabController
+	\item ProductTypesController
+	\item ProductGroupController
+	\item CashRegisterContext
 \end{enumerate}
 
-Use Case 9 bliver realiseret primært gennem Web API'et som her bruger Database Controllere til at tilgå databasen. I Web API'et kan der indsættes nye produkter og det er samme database som den Business logikken henter i, hvortil der vises på GUI.
+UC9 bliver realiseret primært i Web API'et gennem et \textit{Settings View}. \textit{Settings View} er en side, hvor alle kassesystemets produkter udstilles. Alle produkterne bliver hentet af \texttt{App.js}. Efter alle informationerne er hentet er det mulig at tilføje et produkt. Når man har indtastet de nødvendige informationer kan der trykkes på en knap, som tilføjer produktet til databasen. Implementeringen snakker lige nu direkte med databasen. I fremtiden vil der blive implementeret et lag mellem API'et og databasen. Forløbet vises på Figur~\ref{fig:UC9_SEQ}.
+
+\Diagram{1}{SEQ}{UC9}{Use Case 9}{LogicalView}

@@ -1,9 +1,16 @@
-\textbf{De Moduler der realiserer Use Case 11: Fjern varer fra kasseapparat}
-
+\subsubsection{Use Case 11: Fjern varer fra kasseapparat}
+Modulerne der realiserer UC11:
 \begin{enumerate}
-	\item Web API
-	\item Database
-	\item GUI
+	\item CashRegisterConfig
+	\item App.js
+	\item HomeController
+	\item ProductsController
+	\item ProductTabController
+	\item ProductTypesController
+	\item ProductGroupController
+	\item CashRegisterContext
 \end{enumerate}
 	
-Use Case 11 bliver realiseret primært gennem Wep API'et som her bruger Database Controllere til at tilgå databasen. I Web API'et kan der fjernes allerede eksisterende produkter fra databasen. Når et produkt er fjernet opdateres databasen, og da det er den samme database som den business logikken henter fra, vil produktet ikke længere vises på GUI. 
+UC11 realiseres primært gennem Web API'en. Ligesom i UC9 og UC10 indlæses produkterne i \texttt{App.js}. Herefter kan der trykkes \textit{Delete} på produktet, som ønskes slettet. Dette laver et opslag på produktet i \texttt{App.js}, som sender en forespørgelse til sletning videre til \texttt{ProductsController}. \texttt{ProductsController} vil efterfølgende forespørge en sletning i \texttt{CashRegisterContext}. \texttt{CashRegisterContext} sletter produktet i databasen. Forløbet kan ses i Figur~\ref{fig:UC11_SEQ}.
+
+\Diagram{1.0}{SEQ}{UC11}{Use Case 11}{LogicalView}

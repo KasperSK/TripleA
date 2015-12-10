@@ -1,12 +1,16 @@
-\textbf{De moduler der realiserer Use Case 1 : Kontant salg}
-
+\subsubsection{Use Case 1: Kontant Salg}
+Modulerne der realiserer UC1:
 \begin{enumerate}
-	\item GUI
+	\item Brugergrænsefladen
 	\item SalesController
 	\item OrderController
 	\item OrderDao
-	\item DalFascade
+	\item PaymentController
+	\item PaymentDao
+	\item DalFacade
 	\item UnitOfWork
 \end{enumerate}
 
-Use Case 1 bliver realiseret først og fremmest af GUI'en hvor bartenderen klikker på produkterne der skal sælges. GUI'en bruger så SalesControlleren Som bruger en orderController der tilføjer produkter i ordren. Når der skal betales bruges GUI'en SalesController som så kalder OrderControlleren som så kalder OrderDao som via DalFascade og unitOfWork tilgår databasen.
+UC1 bliver realiseret af brugergrænsefladen, hvor bartenderen trykker på et af produkterne, der skal sælges. Brugergrænsefladen kalder ned i \texttt{SalesController}. Kaldet sendes videre til \texttt{OrderController}, der tilføjer produkter i ordren. Når ordren skal betales kalder brugergrænsefladen \texttt{SalesController} igen. \texttt{SalesController} sætter en transaktion op og sender den videre til \texttt{PaymentController}, som tilføjer en transaktion til ordren. Forløbet er dokumenteret med et sekvensdiagram, som kan ses i \ref{fig:UC1_SEQ}. 
+
+\Diagram{1}{SEQ}{UC1}{Use Case 1}{LogicalView}

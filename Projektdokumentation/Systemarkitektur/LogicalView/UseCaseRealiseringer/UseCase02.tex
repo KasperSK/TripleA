@@ -1,11 +1,14 @@
-\textbf{De moduler der realiserer Use Case 2 : Udskriv kundebon}
+\subsubsection{Use Case 2: Udskriv kundebon}
 
+Modulerne der realiserer UC2:
 \begin{enumerate}
-	\item GUI
+	\item Brugergrænsefladen
 	\item SalesController
-	\item ReceitController
-	\item Receit
-	\item ReceitPrinter
+	\item ReceiptController
+	\item Receipt
+	\item ReceiptPrinter
 \end{enumerate}
 
-Use Case 2 bliver realiseret først og fremmest af GUI'en hvor der efter et salg kan vælges at udskrive en bon over salget. Gui'en bruger SalesControlleren der kalder ReceitControlleren og laver en ny Receit som den udskriver via ReceitPrinter. 
+UC2 bliver realiseret af brugergrænsefladen, hvor der efter et salg, kan vælges om der skal udskrives en bon over salget. Dette er ikke muligt i den nuværende implementering af systemet. I stedet printes bonen direkte efter, at salget er betalt. Ændringen til det originale forløb kræver at der tilføjes en knap til brugergrænsefladen og at ordren persiteres i et tidsinterval efter salget. Forløbet er nu at brugergrænsefladen bruger \texttt{SalesController}. \texttt{SalesController} kalder \texttt{ReceiptController}, når der et slag er betalt. \texttt{ReceiptController} laver en ny \texttt{Receipt} og udskriver den via \texttt{ReceiptPrinter}. Forløbet kan ses i \ref{fig:UC2_SEQ}.
+
+\Diagram{1}{SEQ}{UC2}{Use Case 2}{LogicalView}
