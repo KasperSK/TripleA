@@ -20,7 +20,7 @@ På figur \ref{fig:Mapping_TS} ses koblingen af tabellen Transaction\fxnote{glos
     \label{fig:Mapping_TS}
 \end{figure}
 
-Her kan det ses at attributterne i klasse modellen er minder meget om kolonerne i tabellerne, med nogle få forskelle. En lille ting man kan ligge mærke til er at PaymentType\fxnote{glossery} og Status\fxnote{glossery} er gemt som integer, da navne på dem er gemt i nogle enums inde i C\# koden. 
+Her kan det ses at attributterne i klasse modellen minder meget om kolonerne i tabellerne, med nogle få forskelle. En lille ting man kan ligge mærke til er at PaymentType\fxnote{glossery} og Status\fxnote{glossery} er gemt som integer, da navne på dem er gemt i nogle enums inde i C\# koden. 
 \newline\newline
 Hvis man ser på den fysiske data model, kan det ses at Sales order har en one-to-many forhold, da det skal være muligt for kunden at betale med flere betalingsformer under et salg. For at oversætte denne til klasse modelen har SalesOrder en ICollection af Transactions, så man ud fra sales kan tilgå alle de Transactioner der har været brugt. 
 

@@ -1,5 +1,5 @@
 \subsection{Dataflows}
-I følgende afsnit beskrives data flow fra en handling til den næste, ud fra nogle udvalgte use cases, så der kan kommer et indblik på hvornår der bliver hentet, gemt og oprettet data. Her er data flow beskrevet med aktivitetsdiagrammer, hvor det data der går gennem diagrammet er beskrevet med med objektnoder. Handlinger er firkanterne med runde hjørner og objektnoderne er firkanterne med skarpe hjørner.   
+I følgende afsnit beskrives data flow fra én handling til den næste, ud fra nogle udvalgte use cases, så der kan kommer et indblik på hvornår der bliver hentet, gemt og oprettet data. Her er data flow beskrevet med aktivitetsdiagrammer, hvor det data der går gennem diagrammet er beskrevet med objektnoder. Handlinger er firkanterne med runde hjørner og objektnoderne er firkanterne med skarpe hjørner.   
 
 \subsubsection{UC1 - Kontant salg}
 Et kontant salg skal både vise alle de produkter der kan købes, men også gemme salget og transaktionen efter købet er afsluttet. Dette er illustreret på \ref{fig:AD_UC1}
@@ -11,7 +11,7 @@ Et kontant salg skal både vise alle de produkter der kan købes, men også gemm
     \label{fig:AD_UC1}
 \end{figure}    
 
-Vare, som hedder Product i databasen bliver hentet ud så de alle kan ses på GUI'en, derefter kan man trykke på den vare man ønsker, løbende bliver de valgt vare tilføjet til salget, som er SaleOrder der kan ses under Model pakken \fxnote{ref til model pakken}. Når alle de ønskede vare er valgt bliver alle betalingsmuligheder vist og når kontant betaling er trykket, bliver salget og transaktionen gemt i databasen. 
+Vare, som hedder Product i databasen bliver hentet ud så de alle kan ses på GUI'en. Derefter kan man trykke på den vare man ønsker, løbende bliver de valgt vare tilføjet til salget, som er SaleOrder der kan ses under Model pakken \fxnote{ref til model pakken}. Når alle de ønskede vare er valgt bliver alle betalingsmuligheder vist og når kontant betaling er trykket, bliver salget og transaktionen gemt i databasen. 
 
 \subsubsection{UC9 - Tilføj varer til kasseapparat}
 For at tilføje vare skal det være muligt at kunne se de allerede eksisterende vare og derefter gemme den vare man ønsker i databasen. Dette er illustreret på \ref{fig:AD_UC9}
@@ -23,7 +23,7 @@ For at tilføje vare skal det være muligt at kunne se de allerede eksisterende 
     \label{fig:AD_UC9}
 \end{figure}    
 
-Varer er gemt som Products, de bliver hentet ud så det er muligt at se hvilke varer der allerede eksistere. I feltet hvor man kan tilføje vare udfylder man alle dens værdier, hvis værdierne så er gyldige bliver de gemt i databasen. 
+Varer er gemt som Products, de bliver hentet ud så det er muligt at se hvilke varer der allerede eksisterer. I feltet hvor man kan tilføje vare udfylder man alle dens værdier, hvis værdierne så er gyldige bliver de gemt i databasen. 
 
 \subsection{UC12 - Vis statistik over salg}
 Det skal være muligt at se de salg der har været. Alle salg bliver løbende gemt i databasen, hvor de derefter kan ses under statestic i Web Api. Dette er illustreret på \ref{fig:AD_UC12}
