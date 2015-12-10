@@ -1,1 +1,36 @@
 \section{Generelle Designbeslutninger}
+
+\subsection{Databasestrukturen}
+Den centrale database, der kan placeres lokalt på en computer eller på en central server, er designet ud fra at kunne tilføje nye produkter, produkttyper og produktfaner samt udnytte at produktgrupper er en samling af produkter, så en produktgruppe både kan bestemme hvilken type produkterne hører til og hvilken discount de skal kunne bruges sammen med.
+
+\subsection{Implementeringsværktøjer}
+\begin{description}
+  \item[Microsoft Visual Studio 2015] \hfill \\
+  Er brugt til at udvikle core biblioteket, samt websiden og selve gui\'en
+  \item[ReSharper from JetBrains] \hfill \\
+  Til at hjælp med kode analyse, find mulige runtime fejl, og hjælpe med sanity tjek af variabler.
+  \item[NUnit] \hfill \\
+  Bruges til Unit og Integrationstest. De blev valgt på baggrund af deres lette framework op mod C\#.
+  \item[Github] \hfill \\
+  Revisionsprogram der er brugt for at sikre kodereview via Pull-Requests. Når en person har lavet en ønsket ændring, lægges denne op på github, hvor en anden person kigger ændringen igennem inden den merges ind med vores master \citeauthor{gh:pullrequests}. Github er også sat op til at samarbejde med TeamCity (se nedenunder)
+  \item[TeamCity] \hfill \\
+  TeamCity er blev brugt som build server og test server. Vi har sat vores egen TeamCity server op, som kommunikerede med Github for at sikre at Pull-Requests kunne bygge.
+  \item[DDS-Lite] \hfill \\
+  Er brugt til at designe database layoutet.
+\end{description}
+
+\subsection{Dokumentationsværktøjer}
+\begin{description}
+  \item[Texmaker] \hfill \\
+  Vores rapport og dokumentation er hovedsageligt skrevet i Latex, og vi har brugt Texmaker til dette.
+  \item[Visio] \hfill \\
+  Brugt til diverse diagrammer.
+  \item[Dockerized pdflatex] \hfill \\
+  Brugt til automatisk bygning af dokumentation og rapport. Dette er et selvbygget program der henter den nyeste version fra Github, kompilerere rapporten og dokumentationen, og udgiver den til en webserver.
+  \item[Dockerized Doxygen] \hfill \\
+  Brugt til automatisk bygning af dokumentation af C\# koden. Er også lavet til at hente den nyeste master, kompilere dokumentationen for CashRegister og CashRegister.WebApi, og udgive den på en webserver.
+\end{description}
+
+\subsection{Arbejdsgang}
+
+\sysml{0.9}{SEQ}{ChangeManagement}{Change Management}
