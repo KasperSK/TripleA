@@ -1,0 +1,66 @@
+\subsection{Kobling fra database til objekt}
+For at mappe databasen til objekter anvendes property mapping, som simpelt er at tablerne koblet til model klasserne og kolonerne er koblet til attributterne. Via et Data Structure Diagram illustreres den fysiske data model, her kan hele diagrammet ses på figur \ref{fig:DSD}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{N+1/DataView/DabDSD}
+    \caption{fysisk data model}
+    \label{fig:DSD}
+\end{figure}
+
+For at gøre det mere overskueligt vil koblingen af den fysiske data model og klasse modellerne blive delt op i flere diagrammer, hvor der vil være lidt forklaringer på hvorfor databasen er blevet sat om som den er og hvordan det er løst med model klasserne. Her kan hele pakken for model klasserne ses på figur \fxnote{reference til model pakken}.
+
+\subsubsection{Transaction og SalesOrder}
+På figur \ref{fig:Mapping_TS} ses koblingen af tabellen Transaction\fxnote{glossery} og SalesOrder\fxnote{glossery} tabellerne
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{N+1/DataView/mapping/Mapping1}
+    \caption{kobling af Transaction og SalesOrder}
+    \label{fig:Mapping_TS}
+\end{figure}
+
+Her kan det ses at attributterne i klasse modellen minder meget om kolonerne i tabellerne, med nogle få forskelle. En lille ting man kan ligge mærke til er at PaymentType\fxnote{glossery} og Status\fxnote{glossery} er gemt som integer, da navne på dem er gemt i nogle enums inde i C\# koden. 
+\newline\newline
+Hvis man ser på den fysiske data model, kan det ses at Sales order har en one-to-many forhold, da det skal være muligt for kunden at betale med flere betalingsformer under et salg. For at oversætte denne til klasse modelen har SalesOrder en ICollection af Transactions, så man ud fra sales kan tilgå alle de Transactioner der har været brugt. 
+
+\subsubsection{OrderLine}
+På figur \ref{fig:Mapping_Orderline} ses kobling af OrderLine, Product, Discount og SalesOrder\fxnote{glossery}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{N+1/DataView/mapping/Mapping2}
+    \caption{Kobling af Orderline}
+    \label{fig:Mapping_Orderline}
+\end{figure}
+
+OrderLine er sat op så det skal fremstå som køb af en vare. Da Discounts kan anvendes flere gange og der selvfølgeligt kan blive købt mere af det samme Product, skal det være muligt for Discount og Product at være indeholdt i flere OrderLines, derfor er der lavet et one-to-many forhold mellem OrderLine og Product/Disccount, da det er løst med en fremmednøgle i den fysiske database har klasse modelen bare fået en attribut med typen Product og Discount. 
+\newline\newline
+SalesOrder indholder alle de OrdeLines der er lavet til et køb, derfor er de sat op som en one-to-many tabel, så OrderLine har en fremmednøgle til SalesOrder og SalesOrder har en ICollection af OrderLines så de direkte kan tilgåes ud fra den. 
+
+\subsubsection{ProductGroup}
+På figur \ref{fig:Mapping_ProductGroup} ses kobling af Product, Discount og ProductGroup
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{N+1/DataView/mapping/Mapping3}
+    \caption{Kobling af ProductGroup}
+    \label{fig:Mapping_ProductGroup}
+\end{figure}
+
+På den fysiske data model kan det ses at Product og Discount har et many-to-many forhold med ProductGroup, da der både kan være flere Producter i en Productgrouppe, men et Product kan også være indeholdt i flere ProductGrouper og det samme gælder på Discount. Dette er løst i klassemodellen ved at give en ICollection af ProductGroups til Discount og Product. 
+
+\subsection{ProductType og ProductTap}
+
+På figur \ref{fig:Mapping_ProductTap_Type} ses kobling af ProductTap, ProductType og ProductGroup
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{N+1/DataView/mapping/Mapping4}
+    \caption{Kobling af ProductTap og ProductType}
+    \label{fig:Mapping_ProductTap_Type}
+\end{figure}
+
+ProductGroup og productType minder meget om hinanden, men ProductGroup kan fungere som undergrupper til ProductType, hvor det skal være muligt at være flere productGrouper under en ProductType, men en ProductGroupe skal også kunne være indeholdt i flere ProductTypes derfor giver det en many-to-many tabel.
+\newline
+\newline
+På GUI'en knapper øverst til højre der har deres information fra ProductTaps i database, ProductTap har et many-to-many forhold med ProductTypes, som er løst i klassemodellen ved at have en ICollection af den anden. 
