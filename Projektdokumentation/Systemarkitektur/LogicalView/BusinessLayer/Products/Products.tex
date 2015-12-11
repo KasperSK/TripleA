@@ -1,1 +1,8 @@
+\textbf{Product Pakken}\newline
+I Product pakken findes der to interfaces og to implementeringer.\newline
+Det første interface hedder \texttt{IProductController} og er det interface som \textbf{SalesController} bruger for at få adgang til de produkter der ligger i databasen. \newline
+\texttt{ProductController} er den klasse som implementerer \texttt{IProductController}. Denne skal bruges til at administrere de produkter som databasen opbevarer, være det oprettelse, redigering eller nedlæggelse.
+Det andet interface er \textbf{IProductDAO} som er det interface som \textbf{ProductController} kender til. 
+\texttt{ProductDAO} er den klasse som implementerer \texttt{IProductDAO}. Denne skal bruges til at få adgang til de Produkter som ligger gemt i databasen.    
+
 \logicalview{0.85}{CLASS}{Products}{pakken Products}
