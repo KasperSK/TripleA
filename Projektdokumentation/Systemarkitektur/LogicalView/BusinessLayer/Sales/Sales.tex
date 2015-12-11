@@ -1,7 +1,7 @@
 \logicalview{0.85}{CLASS}{Sales}{pakken Sales}
 
 \newpage Pakken Sales, indeholder et interface og to klasser. Interfacet hedder \texttt{ISalesController} og er det interface som GUI'en bruger til at kommunikere med business logikken.
-Den første klasse, \texttt{SalesController} implementerer \texttt{iSalesController}. Denne er den overordnede klasse som holder styr på businesslogikken. Denne bruges til at starte salg og hente produkter fra databasen som i sidste ende både udformer GUI'en og skaber et godt link mellem bruger og system. Tanken bag \texttt{SalesControlleren} er at den skal indeholde lav niveau moduler som den uddeligere opgaver til og derved skabe et løst forhold til de egentlige opgaver der bliver udført i systemet. På figur \ref{fig:Sales_CLASS} kan følgende klasse ses:
+Den første klasse, \texttt{SalesController} implementerer \texttt{iSalesController}. Denne er den overordnede klasse som holder styr på businesslogikken. Denne bruges til at starte salg og hente produkter fra databasen som i sidste ende både udformer GUI'en og skaber et godt link mellem bruger og system. Tanken bag \texttt{SalesControlleren} er at den skal bruge abstraktioner som lav niveau moduler implementerer. Disse uddeligerer den så opgaver til og derved skabes der et løst forhold til de egentlige opgaver der bliver udført i systemet. På figur \ref{fig:Sales_CLASS} kan følgende klasse ses:
 
 \begin{itemize}
 	\item \texttt{SalesController: } skal håndtere salg
