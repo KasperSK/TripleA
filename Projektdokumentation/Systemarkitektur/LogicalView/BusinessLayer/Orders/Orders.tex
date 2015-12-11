@@ -1,1 +1,9 @@
+\textbf{Order pakken}\newline
+Order pakken er lavet for at holde styr på den nuværende ordre der er igang samt ordre der er lagt til side til senere.
+Pakken stiller et interface \texttt{IOrderController} som definere det der skal til for at styre en ordre. 
+Klassen \texttt{OrderController} implementere \texttt{IOrderController} og bruger \texttt{IOrderDao} til at tilgå databasen.
+Når der skal tilføjes et product til en order kan \texttt{AddProduct} kaldes denne gemmer så Produktet i en OrderLinje og tilknytter denne til den igang værende ordre.
+I figur \ref{fig:Orders_CLASS} ses det også at \texttt{OrderController} implementere interfacet \texttt{INotifyPropertyChanged} det er implementeret for at have muligheden for callbacks.
+Klassen \texttt{OrderDao} er et "data access obejct" og det eneste det foretager sig er at kalde databasen. 
+
 \logicalview{0.85}{CLASS}{Orders}{pakken Orders}
