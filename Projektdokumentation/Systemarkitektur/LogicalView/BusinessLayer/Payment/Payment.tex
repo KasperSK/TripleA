@@ -1,8 +1,11 @@
 \textbf{Payment pakken}
 \newline
-Payment pakken som ses på figur \ref{fig:Payment_CLASS}, er lavet for at kontrollere betalingen. For at have beskrivelser til betalingsmetoderne  er lavet et interface \texttt{IPaymentProviderDescriptor}. \texttt{IPaymentProvider} arver fra \texttt{IPaymentProviderDescriptor}, det er en klasse som indeholder de metoder, som alle betalingsmetoder kommer igennem. \texttt{Payment} er lavet så alle betalingstyper, \texttt{CashPayment}, \texttt{Nets} og \texttt{MobilePay} arver fra den abstrakte klasse \texttt{PaymentProvider} hvor deres metoder så er implementeret så de passer til betalingstypen. 
+\texttt{Payment} pakken som ses på figur \ref{fig:Payment_CLASS}, er lavet for at kontrollere betalingen. For at have beskrivelser til betalingsmetoderne  er lavet et interface \texttt{IPaymentProviderDescriptor}. \texttt{IPaymentProvider} arver fra \texttt{IPaymentProviderDescriptor}, det er en klasse som indeholder de metoder, som alle betalingsmetoder kommer igennem. \texttt{Payment} er lavet så alle betalingstyper, \texttt{CashPayment}, \texttt{Nets} og \texttt{MobilePay} arver fra den abstrakte klasse \texttt{PaymentProvider} hvor de forskellige PaymentProviders metoder så er implementeret så de passer til betalingstypen. 
 \newline
 \newline
-\texttt{PaymentController} har til opgave at udfører transaktionen, gemme det i databasen og holde styr på opgørelsen. kontrolleren har en liste af \texttt{IPaymentProvider}, så når den skal udfører transaktionen, kan den se på PaymentType i Transaktionen den får med, hvilken PaymentProvider den skal anvende. Når transaktionen så er gennemført, bliver detaljerne om den gemt i databasen via PaymentDao. 
+Alle betalingstyperne er lavet med en metode der initialisere dem, så der ikke kommer til at stå for meget i konstruktoren. Betalingstyperne har en metode der overføre pengene og tilføjer det til det totale beløb i kassen og en der returnere status for transaktionen. Til sidst har den også en restart og en shutdown metode. Det er kun CashPayment der har en funktionalitet, Nets og MobilePay er kun implimenteret så det skriver til \texttt{Log}.  
+\newline
+\newline
+\texttt{PaymentController} har opgaven at udfører transaktionen, gemme det info om den i databasen og holde styr på opgørelsen. kontrolleren har en liste af \texttt{IPaymentProvider}, når den skal udfører transaktionen, kan den se på den \texttt{Transaktion} som den får med som parametet, hvilken \texttt{PaymentType} den har, ud fra det bliver det så afgjort hvilken PaymentProvider den skal anvende. Når transaktionen så er gennemført, bliver detaljerne om den gemt i databasen via PaymentDao. 
 
 \logicalview{1}{CLASS}{Payment}{pakken Payment}
