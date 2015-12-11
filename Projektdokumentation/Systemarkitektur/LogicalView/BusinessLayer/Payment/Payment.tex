@@ -1,1 +1,10 @@
-\logicalview{0.85}{CLASS}{Payment}{pakken Payment}
+\logicalview{1}{CLASS}{Payment}{pakken Payment}
+\textbf{Payment pakken}
+\newline
+Payment pakken som ses på figur \ref{fig:Payment_CLASS}, er lavet for at kontrollere betalingen. Derfor er der lavet et interface \texttt{IPaymentProviderDescriptor} med beskrivelser. Fra den arver \texttt{IPaymentProvider}, som indeholder alle de forskellige metoder alle former for betaling typisk kommer igennem, som de forskellige betalingsformer, \texttt{CashPayment}, \texttt{Nets} og \texttt{MobilePay} er implementeret med. 
+\newline
+\newline
+\texttt{PaymentController} har en liste af \texttt{IPaymentProvider}, hvor den så kan bruge deres metoder. På den måde har det kun være nødvendigt at lave en \texttt{PaymentControlleren} til alle slags PaymentProviders og ydermere er det forholdsvis simpelt at tilføje en ekstra form for betalingstype.
+\newline
+\newline
+\texttt{PaymentControlleren} har til opgave at eksekvere transaktionen, gemme det i databasen og holde styr på opgørelsen. 
