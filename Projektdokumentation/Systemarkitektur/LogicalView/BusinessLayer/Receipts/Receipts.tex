@@ -1,10 +1,8 @@
 \textbf{Receipts pakken}
 \newline
 Denne pakke er lavet til at generere en kvittering udfra en salgsordre eller en transaktion.
-Til dette udstiller pakken interfacet \texttt{IReceiptController} hvor der er erklæret to funktioner en til salgsordre og en til transaktioner som det kan ses i \ref{fig:Receipts_CLASS}.
-Klassen \texttt{ReceiptController} står for at formattere den salgsordre eller transaktion den er blevet kaldt med den gemmer alt informationen i en instans af \texttt{Receipt} klassen.
-Som det kan ses \ref{fig:Receipts_CLASS} har \texttt{IReceiptController} en \texttt{print funktion} det betyder at \texttt{IReceiptController} også printer efter den har lavet bonnen.
-
+Til dette udstiller pakken interfacet \texttt{IReceiptController} hvor der er erklæret to funktioner: en til salgsordre og en til transaktioner, som det kan ses i Figur~\ref{fig:Receipts_CLASS}.
+Klassen \texttt{ReceiptController} står for at formattere salgsordren eller transaktionen. Når den bliver kaldt gemmer den alt informationen i et \texttt{Receipt} objekt.
+Som det kan ses Figur~\ref{fig:Receipts_CLASS} har \texttt{IReceiptController} en \texttt{Print()}, som er \textit{private}. Denne metode bruges til at printe kvitteringen efter formateringen.
 
 \logicalview{0.85}{CLASS}{Receipts}{pakken Receipts}
-

@@ -1,27 +1,28 @@
-Data pakken er lavet for at facilitere tilgang til databasen, den er opdelt i tre pakker. En pakke der har alle de klasser der er nødvendige for at have data i hukommelsen det er models pakken. Den næste pakke er database pakken som står for tilgang og opsætning af databasen. Den sidste pakke er Data access laget som giver programmet mulighed for at tilgå databasen igennem pakken.
-\newline
+Data pakken er lavet for at facilitere tilgang til databasen. Den er opdelt i tre pakker. En pakke, Models pakken, der har alle de klasser, som er nødvendige for at have data i hukommelsen. Den næste pakke er Database pakken, som står for tilgang og opsætning af databasen. Den sidste pakke er \gls{DAL}, som giver programmet mulighed for at tilgå databasen igennem pakken.
+\newline\newline
 
 \textbf{Models}\newline
-Models pakken bliver brugt som model for den data der gemmes i database det er således vores objekt repræsentation af data'en som vi persistere. Det er ikke en 1:1 repræsentation i det at EF kan aflede en masse ud fra modellen. Desuden bruger vi Fluent API'en til at diktere forhold og nøgler i databasen.
+Models pakken bliver brugt som model for den data der gemmes i databasen. Pakken indeholder en objekt repræsentation af data'en, der skal persisteres. Det er ikke en 1:1 repræsentation fordi \gls{EF} kan aflede en masse ud fra modellen. Desuden bruger vi \gls{FluentAPI}'en til at diktere forhold og nøgler i databasen.
 
 \logicalview{0.85}{CLASS}{Models}{pakken Models}
 
-I figur \ref{fig:Models_CLASS} ses alle klasserne i modellen, det vigtigste er faktisk at relationerne fremstår mellem alle klasserne tydeligt. Der kan ses en større sammenhæng i dataview sektionen.
+I Figur~\ref{fig:Models_CLASS} ses alle klasserne i modellen, det vigtigste er at relationerne fremstår tydeligt mellem alle klasserne. Der kan ses en større sammenhæng i dataview sektionen\fxnote{reference}.
 \newline
 
 \textbf{Database}\newline
-Database pakken indeholder selve logikken der tilgår databasen. Kort fortalt er det her vi implementere den anden del af det vi skal bruge i forhold til EF, nemlig database-konteksten. 
-Den er vist i figur \ref{fig:Database_CLASS} i denne pakke ligger instruktionerne om hvordan databasen hænger sammen også de ligger i entityconfiguration klassen som der er mange af derfor er de vist som en generisk klasse.
-De bliver kaldt når \texttt{CashRegisterContext} kalder OnModelCreating. Configurationen består af nøgler, om en værdi er påkrævet og hvilke forhold der er imellem entiteterne. 
+Database pakken indeholder selve logikken, der tilgår databasen. Kort fortalt er det her, vi implementerer den anden del af det, vi skal bruge i forhold til \gls{EF}, nemlig database konteksten. 
+Den er vist i Figur~\ref{fig:Database_CLASS}, at der i denne pakke ligger instruktioner om, hvordan databasen hænger sammen. De ligger i \texttt{EntityConfiguration} klassen, som der er mange af. Derfor er de vist som en generisk klasse.
+Klasserne bliver kaldt, når \texttt{CashRegisterContext} kalder \texttt{OnModelCreating()}. Konfigurationen fortæller om hvordan objekterne skal mappes til entiteterne i databasen f.eks. hvilken property som skal være primær nøgle, hvilke properties er påkrævet eller hvilke relationer objekterne har til hinanden. 
 
 \logicalview{0.85}{CLASS}{Database}{pakken Database}
-\textbf{Data access layer}\newline
-Data access layer pakken, er lavet for at afkoble hvilken database der bliver brugt fra programmet. 
-Således er det kun data access layer der skal laves om, hvis der skiftes database. 
-Der stilles alle de funktioner der er nødvendige for at indsætte, slette, opdatere og oprette elementer i database til rådighed. 
-Disse kommer alle fra \texttt{Repository} klassen og kan tilgås igenenm \texttt{UnitOfWork} klassen som eksistere for at sikre at vi gemmer alle ændringerne i databasen på en gang. Til sidst er der en facade som sørger for at der kun kan eksistere et \texttt{UnitOfWork} ad gangen. 
+\textbf{Data Access Layer}\newline
+\gls{DAL} pakken er lavet for at afkoble databasen fra programmet. 
+Således at det kun er \gls{DAL}, der skal laves om, hvis database skiftes ud. 
+I \gls{DAL} stilles alle de funktioner, der er nødvendige for at indsætte, slette, opdatere og oprette elementer i databasen til rådighed. 
+Funktionerne kommer fra \texttt{Repository} klassen, som tilgås igennem \texttt{UnitOfWork} klassen.
+\texttt{UnitOfWork} eksiterer for at sikre, at vi gemmer alle ændringerne i databasen på en gang.
+Til sidst er der klassen \texttt{DALFacade}, som er en facade, der sørger for, at der kun kan eksistere et \texttt{UnitOfWork} ad gangen. 
 
-\logicalview{0.85}{CLASS}{Dal}{Data acces laget}
+\logicalview{0.85}{CLASS}{Dal}{Data Access Layer}
 
-I figur \ref{fig:Dal_CLASS} kan sammenhængen ses. 
-Her ses det at \texttt{DalFacade} er det som vi udstiller til resten af programmet og denne sørger for at give et \texttt{UnitOfWork} til dem der har behov for at tilgå data.
+I Figur~\ref{fig:Dal_CLASS} kan sammenhængen ses. Her ses det, at \texttt{DalFacade} klassen er det, som vi udstiller til resten af programmet. Denne sørger for at give et \texttt{UnitOfWork} til dem, der har behov for at tilgå databasen.
