@@ -4,30 +4,30 @@ I dette view vil de indledende tanker i forhold til arkitekturen af systemet bli
 \subsection{Overvejelser}
 Ud fra de definerede use-cases i kravspecifikationen er følgende klasser og interfaces blevet udledt. Klassediagrammet i Figur~\ref{fig:CashRegister_DOMAIN} tager udgangspunkt i \texttt{ICashRegister}. Denne har forbindelse til \texttt{GUI}, som er en \textit{boundry} klasse dvs. en klasse, som er udefrakommendes vej til brug af systemet. Klassen \texttt{CashRegister} skal varetage systemets funktionalitet såsom opsætning af salg, gennemførelse af transaktion, udprintning af bon osv.
 
-\sysml{0.9}{DOMAIN}{CashRegister}{ICashRegister}
+\Diagram{0.9}{DOMAIN}{CashRegister}{ICashRegister}{DomainView}
 
 I figur~\ref{fig:PaymentController_DOMAIN} ses \texttt{PaymentController} klassen. Denne skal håndtere hvilke betalingsmetoder, som skal bruges under en transaktion. Klassen har forbindelse til \texttt{IPrint}, som skal printe en bon og \texttt{IDrawer}, der skal kunne åbne skuffen.
 
-\sysml{0.75}{DOMAIN}{PaymentController}{IPaymentController}
+\Diagram{0.75}{DOMAIN}{PaymentController}{IPaymentController}{DomainView}
 %http://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm
 I Figur~\ref{fig:ProductController_DOMAIN} ses klassen \texttt{ProductController}. Klassen står for håndteringen af \texttt{Product}'s (varer) i systemet. Klassen skal kunne tilføje, slette og ændre i systemets varekartotek. Disse ændringer skal derefter videreformidles til databasen gennem \texttt{IProductDao} -- en såkaldt \textit{Dao} (Data Access Object Pattern) implementation. Implementeringen \texttt{ProductDaoImpl} omsætter systemet \texttt{Product}'s til database information, som derefter kan skubbes ind i databasen gennem interfacet \texttt{IDatabase}.
 
-\sysml{0.75}{DOMAIN}{ProductController}{IProductController}
+\Diagram{0.75}{DOMAIN}{ProductController}{IProductController}{DomainView}
 
 I Figur~\ref{fig:ProductGroupController_DOMAIN} ses klassen \texttt{ProductGroupController}. Klassen står for behandle de forskellige \texttt{Product}'s i deres respektive \texttt{ProductGroup}'s (varegrupper). Denne bruger ligeledes \textit{Dao} implementationen til kommunikationen mellem systemet og databasen.
 
-\sysml{0.8}{DOMAIN}{ProductGroupController}{IProductGroupController}
+\Diagram{0.8}{DOMAIN}{ProductGroupController}{IProductGroupController}{DomainView}
 
 I Figur~\ref{fig:DiscountController_DOMAIN} ses klassen \texttt{DiscountController}. Klassen skal holde styr på de rabat, som kan gives på varerne. Der gøres heri ligeledes brug af \textit{Dao}.
 
-\sysml{0.65}{DOMAIN}{DiscountController}{IDiscountController} 
+\Diagram{0.65}{DOMAIN}{DiscountController}{IDiscountController}{DomainView} 
 
 I Figur~\ref{fig:ReceiptController_DOMAIN} ses klassen \texttt{ReceiptController}. Klassen skal opbevare de salg, som er foretaget i løbet af en salgsdag. Salgene bliver skrevet ind i databasen, hvilket kan tages ud igen, når der skal dannes en dagssalgs kvittering.
 
-\sysml{0.65}{DOMAIN}{ReceiptController}{IReceiptController}
+\Diagram{0.65}{DOMAIN}{ReceiptController}{IReceiptController}{DomainView}
 
 I Figur~\ref{fig:Log_DOMAIN} ses klasserne \texttt{Log}, \texttt{Printer} og \texttt{FilePrinter}. \texttt{Log} står for at logge hændelser i programmet, som har værdi. Hændelserne bliver sendt videre til et interface \texttt{IPrinter} hovedsageligt klassen \texttt{FilePrinter}, som udskriver til en bestemt fil, hvor alle de loggede hændelser står. Klassen \texttt{Printer} er en implementering til bonprinteren, der skal udskrive bon, dagssalg osv.
 
-\sysml{0.65}{DOMAIN}{Log}{ILog og IPrinter}
+\Diagram{0.65}{DOMAIN}{Log}{ILog og IPrinter}{DomainView}
 
 Det fleste af systemets klasser har kendskab til \texttt{ILog}. Dette er dog ikke tegnet på diagrammerne. Hændelser gennem klassehierakiet kan derved logges.
