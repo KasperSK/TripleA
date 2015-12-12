@@ -27,7 +27,7 @@
 \usepackage{ifthen}					% If then
 \usepackage{hyperref}
 \usepackage{textcomp,gensymb}				% symboler til latex
-
+\usepackage{enumitem}				% Muligheder for ref til item
 
 % ?? Using
 %\usepackage[bottom]{footmisc} %fodnoter i bunden af arket
@@ -226,6 +226,24 @@
 \usepackage{listings}
 \definecolor{commentGreen}{RGB}{34,139,24}
 \definecolor{stringPurple}{RGB}{208,76,239}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstset{escapechar=@,style=customc}
+
+
 % skriv:
 % %\lstinputlisting[language=c]{main.c}  	language: om det er c, vhdl ect.
 %											filen: filen koden er i.
