@@ -85,18 +85,39 @@ namespace CashRegister.WebApi.Models
         public TransactionStatus Status { get; set; }
     }
 
+    /// <summary>
+    /// Transaction data transfer object 
+    /// </summary>
     public class TransactionDto
     {
+        /// <summary>
+        /// Id of the transaction
+        /// </summary>
         public long Id { get; set; }
 
+        /// <summary>
+        /// Description of the transaction
+        /// </summary>
         public string Description { get; set; }
 
+        /// <summary>
+        /// Date of the transaction
+        /// </summary>
         public DateTime Date { get; set; }
 
+        /// <summary>
+        /// Price of the transaction
+        /// </summary>
         public int Price { get; set; }
 
+        /// <summary>
+        /// Which type of payment was used
+        /// </summary>
         public PaymentType PaymentType { get; set; }
 
+        /// <summary>
+        /// Status of the transaction
+        /// </summary>
         public TransactionStatus Status { get; set; }
     }
 }

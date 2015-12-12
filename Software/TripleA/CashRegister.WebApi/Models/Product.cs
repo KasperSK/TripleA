@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace CashRegister.WebApi.Models
 {
     /// <summary>
-    /// Model for ´Product in Entity Framework
+    /// Model for Product in Entity Framework
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Product

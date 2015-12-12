@@ -53,16 +53,34 @@ namespace CashRegister.WebApi.Models
 
     }
 
+    /// <summary>
+    /// Data transfer object for orderlines
+    /// </summary>
     public class OrderlineDto
     {
+        /// <summary>
+        /// Id of the order line
+        /// </summary>
         public long Id { get; set; }
 
+        /// <summary>
+        /// What was the quantity sold for the orderline
+        /// </summary>
         public int Quantity { get; set; }
 
+        /// <summary>
+        /// Name of the product on the orderline
+        /// </summary>
         public string ProductName { get; set; }
 
+        /// <summary>
+        /// Price of a single unit on the orderline
+        /// </summary>
         public int UnitPrice { get; set; }
 
+        /// <summary>
+        /// Discount applied to the orderline
+        /// </summary>
         public int Discount { get; set; }
     }
 }

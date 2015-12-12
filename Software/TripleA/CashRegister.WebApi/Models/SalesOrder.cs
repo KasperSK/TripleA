@@ -71,29 +71,65 @@ namespace CashRegister.WebApi.Models
         public virtual ICollection<OrderLine> Lines { get; }
     }
 
+    /// <summary>
+    /// Simple data transfer object for salesorder
+    /// </summary>
     public class SalesOrderDto
     {
+        /// <summary>
+        /// Id of the salesorder
+        /// </summary>
         public long Id { get; set; }
 
+        /// <summary>
+        /// Date and time of the salesorder
+        /// </summary>
         public DateTime Date { get; set; }
 
+        /// <summary>
+        /// The total amounth paid
+        /// </summary>
         public int Total { get; set; }
 
+        /// <summary>
+        /// Status of the order
+        /// </summary>
         public OrderStatus Status { get; set; }
     }
 
+    /// <summary>
+    /// Detailed data transfer obect for the sales order
+    /// </summary>
     public class SalesOrderDetailsDto
     {
+        /// <summary>
+        /// Id of the salesorder
+        /// </summary>
         public long Id { get; set; }
 
+        /// <summary>
+        /// Date and time of the salesorder
+        /// </summary>
         public DateTime Date { get; set; }
 
+        /// <summary>
+        /// The total amounth paid
+        /// </summary>
         public int Total { get; set; }
 
+        /// <summary>
+        /// Status of the order
+        /// </summary>
         public OrderStatus Status { get; set; }
 
+        /// <summary>
+        /// List of transaction ids coupled to the order
+        /// </summary>
         public List<long> Transactions { get; set; }
 
+        /// <summary>
+        /// List of orderlines ids coupled to the order
+        /// </summary>
         public List<long> Lines { get; set; }
     }
 }
