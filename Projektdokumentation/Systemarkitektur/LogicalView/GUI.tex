@@ -7,7 +7,7 @@ Brugergrænsefladen er opbygget efter designmønstret \gls{MVVM}. \gls{MVVM}-mø
 \label{fig:MVVM}
 \end{figure}
 
-Forbindelsen mellem Views og ViewModel eksisterer via DataBinding. Dvs. at Views kan forbindes en \textit{property} i vores ViewModel. Dette gør det muligt at deklarere et layout i \gls{XAML}, men at holde alt programlogikken i ViewModel's.
+Forbindelsen mellem Views og ViewModel eksisterer via DataBinding. Dvs. at Views kan forbindes via en \textit{property} i vores ViewModel. Dette gør det muligt at deklarere et layout i \gls{XAML}, men at holde alt programlogikken i ViewModel's.
 
 \logicalview{0.85}{CLASS}{GUI}{pakken GUI}
 
@@ -25,6 +25,10 @@ På figur~\ref{fig:ViewModels_CLASS} kan der ses et klassediagram over de ViewMo
 	\item \texttt{TabViewModel}: Skal håndtere produktgrupperne, hvor varene i de valgte gruppe bliver vist, som knapper på brugergrænsefladen.
 	\item \texttt{NumpadViewModel}: Skal håndtere de nummererede taster eller det numpad, som findes på brugergrænsefladen.
 \end{itemize}
+
+En anden fordel ved at have brugt MVVM er at mange af elementerene i GUI'en er dynamisk oprettede. I \texttt{TabView} er alle knapper dynamisk oprettede både "Tabs" og "Produkt" knapper. 
+Det er her \texttt{TabViewModel} er ansvarlig for at indhente den data der skal bruges for at lave \texttt{TabView}. Det eneste der er i \texttt{XAML} for \texttt{TabView} er hvordan opsætningen skal være.
+I forhold til \texttt{SalesView} er den liste af produkter der er ved at bliver solgt også lavet dynamisk og blive løbende opdateret.
 
 \logicalview{0.85}{CLASS}{Dialogs}{pakken Dialogs i GUI}
 
