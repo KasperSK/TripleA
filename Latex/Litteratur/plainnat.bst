@@ -1,7 +1,7 @@
 %% File: `plainnat.bst'
 %% A modification of `plain.bst' for use with natbib package 
 %%
-%% Copyright 1993-2005 Patrick W Daly
+%% Copyright 1993-2007 Patrick W Daly
 %% Max-Planck-Institut f\"ur Sonnensystemforschung
 %% Max-Planck-Str. 2
 %% D-37191 Katlenburg-Lindau
@@ -14,7 +14,7 @@
 %% version 1 of the License, or any later version.
 %%
  % Version and source file information:
- % \ProvidesFile{natbst.mbs}[2005/01/07 1.8 (PWD)]
+ % \ProvidesFile{natbst.mbs}[2007/11/26 1.93 (PWD)]
  %
  % BibTeX `plainnat' family
  %   version 0.99b for BibTeX versions 0.99a or later,
@@ -207,14 +207,7 @@ FUNCTION {field.or.null}
 FUNCTION {emphasize}
 { duplicate$ empty$
     { pop$ "" }
-    { "\textit{" swap$ * "}" * }
-  if$
-}
-
-FUNCTION {fed}
-{ duplicate$ empty$
-    { pop$ "" }
-    { "\textbf{" swap$ * "}" * }
+    { "\emph{" swap$ * "}" * }
   if$
 }
 
@@ -231,12 +224,12 @@ FUNCTION {format.names}
         { namesleft #1 >
             { ", " * t * }
             { numnames #2 >
-                { " " * }
+                { "," * }
                 'skip$
               if$
               t "others" =
                 { " et~al." * }
-                { " og " * t * }
+                { " and " * t * }
               if$
             }
           if$
@@ -247,24 +240,6 @@ FUNCTION {format.names}
       namesleft #1 - 'namesleft :=
     }
   while$
-}
-
-FUNCTION {format.jaer}
-{ 's :=
-  s #1 "{vv~}{ll}" format.name$
-  s num.names$ duplicate$
-  #2 >
-    { pop$ " et~al." * }
-    { #2 <
-        'skip$
-        { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
-            { " et~al." * }
-            { " og " * s #2 "{vv~}{ll}" format.name$ * }
-          if$
-        }
-      if$
-    }
-  if$
 }
 
 FUNCTION {format.key}
@@ -281,18 +256,11 @@ FUNCTION {format.authors}
   if$
 }
 
-FUNCTION {format.efternavn}
-{ author empty$
-    { "" }
-    { author format.jaer }
-  if$
-}
-
 FUNCTION {format.editors}
 { editor empty$
     { "" }
     { editor format.names
-      editor num.names$ #2 >
+      editor num.names$ #1 >
         { ", editors" * }
         { ", editor" * }
       if$
@@ -317,7 +285,7 @@ FUNCTION {format.issn}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { new.block URL: "URL \url{" url * "}" * }
+    { new.block "URL \url{" url * "}" * }
   if$
 }
 
@@ -331,7 +299,7 @@ FUNCTION {format.doi}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title }
+    { title "t" change.case$ }
   if$
 }
 
@@ -354,7 +322,7 @@ FUNCTION {format.full.names}
               if$
               t "others" =
                 { " et~al." * }
-                { " og " * t * }
+                { " and " * t * }
               if$
             }
           if$
@@ -461,18 +429,8 @@ FUNCTION {format.date}
   extra.label *
 }
 
-FUNCTION {format.year}
-{ year duplicate$ empty$
-    { "empty year in " cite$ * warning$
-       pop$ "" }
-    'skip$
-  if$
-  month empty$
-	extra.label *
-}
-
 FUNCTION {format.btitle}
-{ title
+{ title emphasize
 }
 
 FUNCTION {tie.or.space.connect}
@@ -509,12 +467,12 @@ FUNCTION {format.number.series}
         { series field.or.null }
         { output.state mid.sentence =
             { "number" }
-            { "" }
+            { "Number" }
           if$
           number tie.or.space.connect
           series empty$
             { "there's a number but no series in " cite$ * warning$ }
-            { ", " * series * }
+            { " in " * series * }
           if$
         }
       if$
@@ -589,7 +547,7 @@ FUNCTION {format.vol.num.pages}
     'skip$
     { duplicate$ empty$
         { pop$ format.pages }
-        { ", \penalty0 " * pages n.dashify * }
+        { ":\penalty0 " * pages n.dashify * }
       if$
     }
   if$
@@ -683,9 +641,9 @@ FUNCTION {format.article.crossref}
         { "In \emph{" journal * "}" * }
       if$
     }
-    { "In " key * }
+    { "In " }
   if$
-  " \citep{" * crossref * "}" *
+  " \citet{" * crossref * "}" *
 }
 
 FUNCTION {format.book.crossref}
@@ -709,12 +667,12 @@ FUNCTION {format.book.crossref}
             { "\emph{" * series * "}" * }
           if$
         }
-        { key * }
+        'skip$
       if$
     }
     'skip$
   if$
-  ", \citet{" * crossref * "}" *
+  " \citet{" * crossref * "}" *
 }
 
 FUNCTION {format.incoll.inproc.crossref}
@@ -730,7 +688,7 @@ FUNCTION {format.incoll.inproc.crossref}
             { "In \emph{" booktitle * "}" * }
           if$
         }
-        { "In " key * }
+        { "In " }
       if$
     }
     { "In " }
@@ -740,21 +698,18 @@ FUNCTION {format.incoll.inproc.crossref}
 
 FUNCTION {article}
 { output.bibitem
-	format.efternavn output.nonnull fed
-	format.date "year" output.check fed
-	new.block
   format.authors "author" output.check
   author format.key output
   new.block
-  format.title "title" output.check emphasize
+  format.title "title" output.check
   new.block
   crossref missing$
-    { journal "journal" output.check
+    { journal emphasize "journal" output.check
       eid empty$
         { format.vol.num.pages output }
         { format.vol.num.eid output }
       if$
-      format.year output.check
+      format.date "year" output.check
     }
     { format.article.crossref output.nonnull
       eid empty$
@@ -777,8 +732,7 @@ FUNCTION {book}
     { format.editors "author and editor" output.check
       editor format.key output
     }
-    { format.efternavn output.nonnull fed
-    format.date "year" output.check fed
+    { format.authors output.nonnull
       crossref missing$
         { "author and editor" editor either.or.check }
         'skip$
@@ -786,9 +740,7 @@ FUNCTION {book}
     }
   if$
   new.block
-  format.authors output.nonnull
-  new.block
-  format.btitle "title" output.check emphasize
+  format.btitle "title" output.check
   crossref missing$
     { format.bvolume output
       new.block
@@ -802,7 +754,7 @@ FUNCTION {book}
     }
   if$
   format.edition output
-  format.year output.check
+  format.date "year" output.check
   format.isbn output
   format.doi output
   format.url output
@@ -900,9 +852,6 @@ FUNCTION {incollection}
 
 FUNCTION {inproceedings}
 { output.bibitem
-	format.authors "author" output.check emphasize
-	format.date "year" output.check emphasize
-	new.block
   format.authors "author" output.check
   author format.key output
   new.block
@@ -943,18 +892,15 @@ FUNCTION {conference} { inproceedings }
 
 FUNCTION {manual}
 { output.bibitem
-	format.efternavn output.nonnull fed
-	format.date "year" output.check fed
-	new.block
   format.authors output
   author format.key output
   new.block
-  format.btitle "title" output.check emphasize
+  format.btitle "title" output.check
   organization address new.block.checkb
   organization output
   address output
   format.edition output
-  format.year output.check
+  format.date output
   format.url output
   new.block
   note output
@@ -980,16 +926,13 @@ FUNCTION {mastersthesis}
 
 FUNCTION {misc}
 { output.bibitem
-	format.efternavn output.nonnull fed
-	format.date output fed
-	new.block
   format.authors output
   author format.key output
   title howpublished new.block.checkb
-  format.title output emphasize
+  format.title output
   howpublished new.block.checka
   howpublished output
-  format.year output.check
+  format.date output
   format.issn output
   format.url output
   new.block
@@ -1038,15 +981,12 @@ FUNCTION {proceedings}
 
 FUNCTION {techreport}
 { output.bibitem
-  format.efternavn output.nonnull fed
-  format.date "year" output.check fed
-  new.block
   format.authors "author" output.check
   author format.key output
   new.block
-  format.title "title" output.check emphasize
-  %new.block
-  %format.tr.number output.nonnull
+  format.title "title" output.check
+  new.block
+  format.tr.number output.nonnull
   institution "institution" output.check
   address output
   format.date "year" output.check
@@ -1062,10 +1002,10 @@ FUNCTION {unpublished}
   author format.key output
   new.block
   format.title "title" output.check
-  format.url output
   new.block
   note "note" output.check
   format.date output
+  format.url output
   fin.entry
 }
 
@@ -1168,7 +1108,7 @@ FUNCTION {format.lab.names}
         'skip$
         { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
             { " et~al." * }
-            { " og " * s #2 "{vv~}{ll}" format.name$ * }
+            { " and " * s #2 "{vv~}{ll}" format.name$ * }
           if$
         }
       if$
@@ -1389,6 +1329,10 @@ FUNCTION {presort}
       if$
     }
   if$
+  "    "
+  *
+  year field.or.null sortify
+  *
   "    "
   *
   cite$
