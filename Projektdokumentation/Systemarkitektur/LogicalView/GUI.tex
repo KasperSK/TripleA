@@ -1,4 +1,4 @@
-Brugergrænsefladen er opbygget efter designmønstret \gls{MVVM}. MVVM-mønsteret adskiller Views fra systemets Model ved at tilføje en ViewModel i mellem de to. Dette gør, at Views kan operere uafhængigt af den Model som bruges. Det gør også, at dele af brugergrænsefladen kan testes nemlig ViewModel'en. En overfladisk afbildning af MVVM-mønsteret kan ses i figur~\ref{fig:MVVM}\footnote{Billede taget fra: https://en.wikipedia.org/wiki/Model–view–viewmodel}. Da systemet bruger WPF og med de førnævte fordele var valget på mønstret faldet på MVVM.
+Brugergrænsefladen er opbygget efter designmønstret \gls{MVVM}. \gls{MVVM}-mønsteret adskiller Views fra systemets Model ved at tilføje en ViewModel i mellem de to. Dette gør, at Views kan operere uafhængigt af den Model som bruges. Det gør også, at dele af brugergrænsefladen kan testes nemlig ViewModel'en. En overfladisk afbildning af \gls{MVVM}-mønsteret kan ses i figur~\ref{fig:MVVM}\footnote{Billede taget fra: https://en.wikipedia.org/wiki/Model–view–viewmodel}. Da systemet bruger \gls{WPF} og med de førnævte fordele var valget på mønstret faldet på \gls{MVVM}.
 
 \begin{figure}[H]
 \centering
@@ -7,15 +7,15 @@ Brugergrænsefladen er opbygget efter designmønstret \gls{MVVM}. MVVM-mønstere
 \label{fig:MVVM}
 \end{figure}
 
-Forbindelsen mellem Views og ViewModel eksisterer via DataBinding. Dvs. at Views kan forbindes en \textit{property} i vores ViewModel. Dette gør det muligt at deklarere et layout i XAML, men at holde alt programlogikken i ViewModel's.
+Forbindelsen mellem Views og ViewModel eksisterer via DataBinding. Dvs. at Views kan forbindes en \textit{property} i vores ViewModel. Dette gør det muligt at deklarere et layout i \gls{XAML}, men at holde alt programlogikken i ViewModel's.
 
 \logicalview{0.85}{CLASS}{GUI}{pakken GUI}
 
-Når applikationen starter vil der blive oprettet et \texttt{MainWindow}, som har en DataContext, der peger på \texttt{MainViewModel}. Dette illustreres i \ref{fig:GUI_CLASS} med et klassediagram. I \texttt{MainWindow}'s XAML kode er de ViewModel's, som oprettes i \texttt{MainViewModel}, deklareret. Det gør at de Views, som er bundet til de deklarerede ViewModels i \texttt{App.xaml}, vil blive vist i vinduet.
+Når applikationen starter vil der blive oprettet et \texttt{MainWindow}, som har en DataContext, der peger på \texttt{MainViewModel}. Dette illustreres i \ref{fig:GUI_CLASS} med et klassediagram. I \texttt{MainWindow}'s \gls{XAML} kode er de ViewModel's, som oprettes i \texttt{MainViewModel}, deklareret. Det gør at de Views, som er bundet til de deklarerede ViewModels i \texttt{App.xaml}, vil blive vist i vinduet.
 
 \logicalview{0.85}{CLASS}{Views}{pakken Views i GUI}
 
-På figur~\ref{fig:Views_CLASS} kan bindingerne mellem View og ViewModel ses. Det vil sige at de bindinger eller \textit{Bindings}, som sker i XAML koden binder ned i den pågældende model. Mønsteret gør, at man ikke behøves at have meget \textit{Code Behind}. Ansvaret kan i stedet gives videre til ViewModel's.
+På figur~\ref{fig:Views_CLASS} kan bindingerne mellem View og ViewModel ses. Det vil sige at de bindinger eller \textit{Bindings}, som sker i \gls{XAML} koden binder ned i den pågældende model. Mønsteret gør, at man ikke behøves at have meget \textit{Code Behind}. Ansvaret kan i stedet gives videre til ViewModel's.
 
 \logicalview{0.85}{CLASS}{ViewModels}{pakken ViewModels i GUI}
 
