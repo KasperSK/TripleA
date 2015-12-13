@@ -11,10 +11,10 @@ Et kontant salg skal både vise alle de produkter der kan købes, men også gemm
     \label{fig:AD_UC1}
 \end{figure}    
 
-Vare, som hedder Product i databasen bliver hentet ud så de alle kan ses på GUI'en. Derefter kan man trykke på den vare man ønsker, løbende bliver de valgt vare tilføjet til salget, som er SaleOrder der kan ses under Model pakken \fxnote{ref til model pakken}. Når alle de ønskede vare er valgt bliver alle betalingsmuligheder vist og når kontant betaling er trykket, bliver salget og transaktionen gemt i databasen. 
+Varerne, som hedder Product i databasen, bliver hentet ud så de alle kan ses på GUI'en. Derefter kan man trykke på den vare man ønsker. De valgte varer bliver løbende tilføjet til salget, som i systemet er klassen \texttt{SaleOrder} der kan ses under Model pakken \ref{fig:Models_CLASS}. Når alle de ønskede varer er valgt bliver alle betalingsmuligheder vist og når kontant betaling er trykket, bliver salget og transaktionen gemt i databasen. 
 
 \subsubsection{UC9 - Tilføj varer til kasseapparat}
-For at tilføje vare skal det være muligt at kunne se de allerede eksisterende vare og derefter gemme den vare man ønsker i databasen. Dette er illustreret på \ref{fig:AD_UC9}
+For at tilføje varer, skal det være muligt at kunne se de allerede eksisterende varer og derefter gemme den vare man ønsker i databasen. Dette er illustreret på \ref{fig:AD_UC9}
 
 \begin{figure}[H]
     \centering
@@ -23,10 +23,10 @@ For at tilføje vare skal det være muligt at kunne se de allerede eksisterende 
     \label{fig:AD_UC9}
 \end{figure}    
 
-Varer er gemt som Products, de bliver hentet ud så det er muligt at se hvilke varer der allerede eksisterer. I feltet hvor man kan tilføje vare udfylder man alle dens værdier, hvis værdierne så er gyldige bliver de gemt i databasen. 
+Varer er gemt som Products, de bliver hentet ud så det er muligt at se hvilke varer der allerede eksisterer i systemet. I feltet hvor man kan tilføje vare udfylder man alle dens værdier, hvis værdierne er gyldige bliver de gemt i databasen. 
 
 \subsection{UC12 - Vis statistik over salg}
-Det skal være muligt at se de salg der har været. Alle salg bliver løbende gemt i databasen, hvor de derefter kan ses under statestic i Web Api. Dette er illustreret på \ref{fig:AD_UC12}
+Det skal være muligt at se de salg der har været foretaget tidligere i systemet. Alle salg bliver løbende gemt i databasen, hvor de derefter kan ses under statestic i Web Api'et. Dette er illustreret på \ref{fig:AD_UC12}
 
 \begin{figure}[H]
     \centering
@@ -35,4 +35,4 @@ Det skal være muligt at se de salg der har været. Alle salg bliver løbende ge
     \label{fig:AD_UC12}
 \end{figure} 
 
-Statistic viser en side over alle salg, som hedder SalesOrder i databasen, der har været, her kan man gå ind under alle salg og se detaljer om de vare der er købt og hvordan transaktionerne forløb. 
+Statistic viser en side over alle salg de salg der har været. I databasen hedder disse salg, \texttt{SalesOrder}. Her kan man gå ind under alle salg og se detaljer om de varer der er købt og hvordan transaktionerne forløb. 
