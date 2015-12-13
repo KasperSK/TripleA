@@ -40,7 +40,7 @@
 }
 \newglossaryentry{gls-GUI}{
 	name=Graphical User Interface,
-	description={Se \gls{brugergraenseflade}}
+	description={Se \Gls{brugergraenseflade}}
 }
 \newacronym{GUI}{GUI}{Graphical User Interface\glsadd{gls-GUI}}
 
@@ -74,7 +74,7 @@
 }
 \newglossaryentry{gls-BLL}{
 	name=Business Logic Layer,
-	description={Se \gls{forretningslogik}}
+	description={Se \Gls{forretningslogik}}
 }
 \newacronym{BLL}{BLL}{Business Logic Layer\glsadd{gls-BLL}}
 
@@ -90,7 +90,7 @@
 
 \newglossaryentry{Model}{
 	name=Model,
-	description={Forretningslogik}
+	description={Se \Gls{forretningslogik}}
 }
 
 \newglossaryentry{FluentAPI}{
@@ -119,4 +119,25 @@
 \newglossaryentry{ASPNET}{
 	name=ASP.NET,
 	description={Et web applikations framework}
+}
+
+\newglossaryentry{gls-Dao}{
+	name=Data Access Object,
+	description={En klasse som abstrahere \gls{DAL} i forhold til det emne, der omhandles}
+}
+\newacronym{Dao}{Dao}{Data Access Object\glsadd{gls-Dao}}
+
+\newglossaryentry{controller}{
+	name=controller,
+	description={En klasse der styrer logikken for det emne, der omhandles}
+}
+
+\newglossaryentry{RESTful}{
+	name=RESTful,
+	description={Et API som opfylder \gls{REST} mønsteret}
+}
+
+\newglossaryentry{WebAPI}{
+	name=WebAPI,
+	description={En implementering af et \gls{RESTful} API}
 }
