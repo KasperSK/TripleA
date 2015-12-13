@@ -1,12 +1,12 @@
 %!TEX root = ../../main.tex
 
-\subsection*{Use Case 3}
+\subsection{Use Case 3}
 Denne Use Case beskriver hvordan der udskrives afstemning af kassen forløber ved udprintning af bon med alt der er solgt i løbet af aftenen.
 \begin{usecase}{3}
 
 \title{ Kasseafstemning } 
 
-\field{Mål:}{ At Bartenderen har en bon med samlede salg og dato udskrevet }
+\field{Mål:}{ Bartenderen har en bon med dagens samlede salg }
 
 \field{Initieret af:}{ Bartender }
 
@@ -18,34 +18,28 @@ Denne Use Case beskriver hvordan der udskrives afstemning af kassen forløber ve
 \field{Prækondition:}{System skal være tændt og klar}
 
 %Postconditions: What must be true on successful completion and worth telling the reader
-\field{Postkondition:}{ At bonen med det samlede salg er udskrevet }
+\field{Postkondition:}{ Bonen med dagens samlede salg er udskrevet }
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
-	\item Bartender vælger Indstillinger knappen
-	\item System viser Indstillinger menu
-	\item Bartender trykker på Afstem knappen
-	\item System viser Afstem popup \newline
-	[Extension 3.1: Bartender trykker på tilbage knappen]
-	\item Bartender trykker på Godkend knappen 
-	\item Systemets printer udskriver bonen \newline
+	\item Bartender vælger afstem knappen
+	\item System viser balanceDialog
+	\item Bartender trykker på print knappen\newline
+	[Extension 3.1: Bartender lukker dialogboksen]
+	\item System printer kasseafstemning \newline
 	[Extension 3.2: Der er ikke mere papir]
-	\item System viser Hovedmenuen
 }
 
 %Extensions: Alternate scenarios of success or failure.
 \scenario{}{
-	\item Extension 3.1: Bartender trykker på tilbage knappen
+	\item Extension 3.1: Bartender lukker dialogboksen
 		\begin{enumerate}
-			\item[1.] Systemet går tilbage til punkt 2
+			\item[1.] Systemet viser hovedmenu
 		\end{enumerate}
 	\item Extension 3.2: Der er ikke mere papir
 		\begin{enumerate}
-		\item[1.] Systemets printer stopper. Dialogboks popper op med en besked om at skifte bonrulle.
-		\item[2.] Bartender skifter bon i printer.
-		\item[3.] Bartenderen trykker på OK knappen og use casen forsættes fra punkt 4
+		\item[1.] Systemet printer ikke bon 
+		\item[2.] Systemet viser hovedmenu
 		\end{enumerate}
 }
-
-
 \end{usecase}
