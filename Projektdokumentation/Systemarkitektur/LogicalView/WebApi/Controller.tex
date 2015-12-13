@@ -1,12 +1,12 @@
-For at kunne tilgå data fra databasen i vores web interface har vi implementeret et REST api. Til dette har vi brugt en ASP.NETs indbyggede facilitteter \texttt{ApiController} ved at nedarve denne skal vi blot implementere \texttt{Get}, \texttt{Put}, \texttt{Post} og \texttt{Delete} funktionere i vores controllere.
+For at kunne tilgå data fra databasen i vores web interface, har vi implementeret et \gls{REST} \gls{API}. Til dette har vi brugt en \gls{ASPNET}'s indbyggede facilitteter \texttt{ApiController} ved at nedarve denne skal vi blot implementere \texttt{Get}, \texttt{Put}, \texttt{Post} og \texttt{Delete} funktionere i vores controllere.
 
 \Diagram{0.85}{CLASS}{WebApi/Controllers}{Web controllers}{LogicalView}
 
-Som det kan ses i figur \ref{fig:WebApi/Controllers_CLASS} er der mange controllere der er faktisk en til alle de typer data vi ønsker at kunne hente ud fra databasen. Desuden bruger alle Controllerne noget kaldt et \texttt{DTO} som står for \texttt{Data transfer object}, disse bliver brugt for at afkoble database fra brugeren af data.
+Som det kan ses i figur \ref{fig:WebApi/Controllers_CLASS} er der mange controllere der er faktisk en til alle de typer data vi ønsker at kunne hente ud fra databasen. Desuden bruger alle Controllerne noget kaldt et \gls{DTO}. Disse bliver brugt for at afkoble database fra brugeren af data.
 \newline
 
 \textbf{Models}
 
-I figur \ref{fig:WebApi/Controllers_MODEL} ses \texttt{DTO'erne} disse er blot klasser der kun indeholder data.
+I figur \ref{fig:WebApi/Controllers_MODEL} ses \gls{DTO}'erne. Disse er blot klasser, der indeholder data.
 
 \Diagram{0.75}{MODEL}{WebApi/Controllers}{Web controllers}{LogicalView}
