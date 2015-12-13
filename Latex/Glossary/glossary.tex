@@ -34,11 +34,15 @@
 }
 \newacronym{MVVM}{MVVM}{Model-View-ViewModel\glsadd{gls-MVVM}}
 
-\newglossaryentry{gls-GUI}{
-	name=Brugergrænseflade,
-	description={Grænseflade mellem systemet og brugeren}
+\newglossaryentry{brugergraenseflade}{
+	name=brugergrænseflade,
+	description={Grænseflade mellem bruger og system}
 }
-\newacronym{GUI}{GUI}{Graphical User Interface\glsadd{gls-GUI}. Se Brugergrænseflade}
+\newglossaryentry{gls-GUI}{
+	name=Graphical User Interface,
+	description={Se \gls{brugergraenseflade}}
+}
+\newacronym{GUI}{GUI}{Graphical User Interface\glsadd{gls-GUI}}
 
 \newglossaryentry{gls-WPF}{
 	name=Windows Presentation Framework,
@@ -64,7 +68,55 @@
 }
 \newacronym{DAL}{DAL}{Data Access Layer\glsadd{gls-DAL}}
 
+\newglossaryentry{forretningslogik}{
+	name=forretningslogik,
+	description={Et reglsæt for systemets behandling af data}
+}
+\newglossaryentry{gls-BLL}{
+	name=Business Logic Layer,
+	description={Se \gls{forretningslogik}}
+}
+\newacronym{BLL}{BLL}{Business Logic Layer\glsadd{gls-BLL}}
+
+\newglossaryentry{View}{
+	name=View,
+	description={En grafisk brugergrænseflade}
+}
+
+\newglossaryentry{ViewModel}{
+	name=ViewModel,
+	description={En abstraktion mellem forretningslogikken og den grafiske brugergrænseflade}
+}
+
+\newglossaryentry{Model}{
+	name=Model,
+	description={Forretningslogik}
+}
+
 \newglossaryentry{FluentAPI}{
 	name=Fluent API,
 	description={En API som i forhold til databasen binder objekt relationer til entity relationer}
+}
+
+\newglossaryentry{gls-API}{
+	name=Application Programming Interface,
+	description={En dokumenteret grænseflade til software komponenter}
+}
+\newacronym{API}{API}{Application Programming Interface\glsadd{gls-API}}
+
+\newglossaryentry{gls-DTO}{
+	name=Data Transfer Object,
+	description={En datamæssig afkobling af system og database, hvor ens databasemodel overføres til et system objekt}
+}
+\newacronym{DTO}{DTO}{Data Transfer Object\glsadd{gls-DTO}}
+
+\newglossaryentry{gls-REST}{
+	name=Representational State Transfer,
+	description={Et arkitekturmønster til at designe netværksapplikationer}
+}
+\newacronym{REST}{REST}{Representational State Transfer\glsadd{gls-REST}}
+
+\newglossaryentry{ASPNET}{
+	name=ASP.NET,
+	description={Et web applikations framework}
 }
