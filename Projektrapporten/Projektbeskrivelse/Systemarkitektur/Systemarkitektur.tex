@@ -22,7 +22,72 @@ På figur \ref{ArkiDia} kan man se en overodnet opbygning af systemet. \textbf{G
 I dette view kan der ses hvordan de forskellige Use Cases bruger og omhandler systemet. Der er i dokumentationen indsat overordnede diagammer der beskriver handlindsforløbet for hver Use Case. Ydermere er der også lavet detaljerede sekvensdiagrammer der viser kommunikationen inde i systemet. \newline
 
 \subsubsection{Logical View}
-I Logical view kan der ses en oversigt over hvordan programmet er bygget op.
+I Logical view kan der ses en oversigt over hvordan programmet er bygget op. Logical view viser her hvordan det er valgt at dele systemet op i lag for at give mere overskuelighed. Her er der tale om:\newline
+\begin{itemize}
+	\item Presentation layer
+	\item Business layer
+	\item Data layer
+	\item Web API
+\end{itemize}
  
+\textbf{Presentation layer} indeholder alt omkring GUI og hvordan den er bygget op ved hjælp af MVVM. Her introduceres de forskellige views; SalesView, NumpadView, TabView, SettingsView. Disse bliver alle modelleret af en tilhørende Viewmodel således at de forskellige views intet kendskab til business layer har. \textbf{Business layer} indeholder alt omkring oprettelse af salg, ordre og produkter. Dette lag kommunikere med Presentation layer og ligeledes med Data layer. Det er Business layer der sørger for at hente gemte data i Data layer og ligeledes give data til Presentation layer.\newline
+\textbf{Data layer} står for al persistering af data. Her bliver data gemt i en database og ligeledes hentet derfra. Data kan kun blive tilgået via \texttt{DAL}, data access layer.\newline
+\textbf{Web API} sørger for at det er muligt at oprette, redgiere og fjerne produkter fra databasen. Her er det også muligt at få vist statistik over igangværende og forhenværende salg i systemet. 
 
+\subsubsection{Domain View}
+Domain View indeholder tankerne bag arkitekturen af systemet. Ud fra de definerede Use Cases blev der udtænkt nogle forskellige domæner der hver især har nogle ansvarsområder.\newline
+De forskellige domæner i systemet er:\newline
+\begin{itemize}
+	\item IPaymentController
+	\item IProductController
+	\item IProductGroupController
+	\item IDiscountController
+	\item IReceiptController
+	\item ILog, IPrinter
+\end{itemize}	
+
+\texttt{IPaymentController} har ansvar for de forskellige betalingsmetoder under en transaktion. \texttt{IProductController} har ansvar for de products der er i systemet, hvortil der kan oprettes, redigeres og fjernes. 
+\texttt{IProductGroupController} har ansvar for at håndtere de forskellige Produkter i deres tilhørende produktgruppe.
+\texttt{IDiscountController} har ansvar for at særge for at den rigtige rabat bliver givet til de forskellige salg.
+\texttt{IReceiptController} har ansvar for at gemme de salg der er foretaget i løbet af en salgsdag.
+\texttt{ILog, IPrinter} er et specielt domæne der omhandler- og har ansvar for at Logge hændelser i systemet hvilket bliver skrevet til en fil. Her ligger ansvaret for at udskrive en kundebon også.
+
+
+\subsubsection{Deployment View}
+I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen kunne sættes op på en server computer, og alt andet, GUI og business logik, kunne køre på en eller flere computer som så kunne koble op til  serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{/N+1/DeploymentView/System/Diagrammer/DEPLOY}
+	\caption{Diagram over deployment af system}
+	\label{fig:DeplayDia}
+\end{figure}
+Som det ses af figur \ref{fig:DeplayDia} kunne man sætte en administrations PC op som ville koble op til en Web Server som ville hoste Web API'et. Web API'et ville så tilkoble sig Database serveren so  ville køre på en seperat server. Hertil ville CashRegister programmet så køre på en seperat PC som bartenderen ville have adgang til. Dette betyder at man kunne opsætte flere kasseapparater som kunne koble op til samme database.  
+
+\subsubsection{Data View}
+I data view beskrives overgangen fra objekter i systemet til databasen. Her bliver der gennemgået Mapping til databasen sker.\newline\newline
+I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet til databasen. Her bliver der gennemgået hvorfor tabellerne er sat op som de er, og hvordan deres forhold til hinanden er.\newline Her er klasse modeller og de fysiske modeller sat op  over for hinanden så man hurtig kan se forskelle og ligheder.\newline 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{/N+1/DataView/mapping/Mapping1}
+	\caption{Diagram over objekt mapping}
+	\label{MapDia}
+\end{figure}	
+
+På figur \ref{MapDia} ses det hvordan kobling af SalesOrder sker til Databasen. Her kan det ses at der mellem SalesOrder og Transaction er et one-to-many forhold og at Transaction har en fremmednøgle til SalesOrder.\newline\newline
+Ydermere kan der i Data View ses hvordan dataflows fra én handling til den næste sker. Hertil er der lavet nogle aktivitetsdiagrammer ud fra de definerede Use Cases. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{/N+1/DataView/DataFlow/UC1}
+	\caption{Aktivitetsdiagram over Use Case 1}
+	\label{AktDia}
+\end{figure}
+
+På figur \ref{AktDia} kan der ses hvordan Use Cases udbreder sig med valg og aktiviteter. Aktiviteterte i nogle tilfælde gentages og gå i loops, og når det kan også ses hvornår Use casen er færdig på den ene eller den anden måde. Alt dette står mere detaljeret beskrevet i dokumentationen. 
+
+ 
+ 
+  
 
