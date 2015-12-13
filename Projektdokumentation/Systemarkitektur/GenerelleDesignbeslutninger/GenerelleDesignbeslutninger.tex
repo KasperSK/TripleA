@@ -3,6 +3,20 @@
 \subsection{Databasestrukturen}
 Den centrale database, der kan placeres lokalt på en computer eller på en central server, er designet ud fra at kunne tilføje nye produkter, produkttyper og produktfaner samt udnytte at produktgrupper er en samling af produkter, så en produktgruppe både kan bestemme hvilken type produkterne hører til og hvilken discount de skal kunne bruges sammen med.
 
+\subsection{Programmeringsprog}
+C\# blev valgt på baggrund af Entity Frameworket til at forbinde til databasen og WPF til selve GUI'en. Desuden er 4 semesters undervisning i Database, Softwaretest og GUI centreret omkring C\#. Til webapi blev der brugt ASP.NET, da denne også kan benytte sig af Entity Frameworket.
+
+\subsection{Testing}
+NUnit, NSubstitute, dotCover og FxCop blev anvendt til dette job eftersom vi allerede brugte C\# som programmeringssprog, og disse tests er lette at automatisere.
+
+\subsection{Dokumentation}
+LaTeX blev valgt grundet dets egenskab til at flere kan let arbejde på samme dokument, samt revisionering er utrolig let. Doxygen blev brugt til at lave dokumentation af selve softwaren.
+
+\subsection{Automatisering}
+TeamCity blev valgt til automatisere unit og integrationstests. Dette blev koblet sammen med Github til at trikke hver gang et Pull Request blev lavet se mere under Change Management.
+En kombination af Docker, Doxygen, TexLive og bashscript, sørgede for at bygge dokumentationen hver gang der kom en update til masteren. Dette blev published til en webserver, derved er der altid adgang til nyeste dokumentation.
+
+
 \subsection{Implementeringsværktøjer}
 \begin{description}
   \item[Microsoft Visual Studio 2015] \hfill \\
@@ -31,6 +45,49 @@ Den centrale database, der kan placeres lokalt på en computer eller på en cent
   Brugt til automatisk bygning af dokumentation af C\# koden. Er også lavet til at hente den nyeste master, kompilere dokumentationen for CashRegister og CashRegister.WebApi, og udgive den på en webserver.
 \end{description}
 
-\subsection{Arbejdsgang}
+\subsection{Change Management}
+Der blev brugt en Change Management metode for at sikre, at der ikke kom utilsigtigede ændringer ind. Processen er groft tegnet i \ref{fig:ChangeManagement_SEQ}. Flowet kan bedst beskrives som følgende
+\begin{enumerate}[label=\arabic{enumi}.,ref=\arabic{enumi}]
+  \item \label{editorstart} En Editor laver nogle ændringer og laver et Pull Request
+  \item Github tager fat i TeamCity serveren, og informerer at der er kommet et nyt Pull Request
+  \item TeamCity serveren bygger og kører unit, integration og fxcop tests. Dette meldes tilbage til Github, samt kan man fra Github gå direkte til build processen på TeamCity serveren.
+  \item Hvis der er fejl lukkes Pull Requesten af Reviewer og Editor begynder fra \ref{editorstart}.
+  \item Hvis alle tests går godt kigger Reviewer ændringerne igennem for at gribe fejl der ikke umiddelbart kan testes for. Dette kunne være unødvendige filer, giberish der er glemt at blive rettet, ændringer der designmæssigt er forkerte mm.
+  \item Hvis ovenstående bliver godkendt af Reviewer, merger Reviewer Pull Requesten og denne lukkes.
+  \item Hvis ændringer ikke kan godkendes begynder Reviewer fra \ref{editorstart}.
+\end{enumerate}
 
+Et sekundært afkast er at dette hjælper med at mindske, at merge konflikter kommer ind i masteren. Et eksempel kunne være følgende stykke kode.
+\begin{lstlisting}
+// Vis vores Item paa skaermen
+public void ShowItem(Item item, string prefix)
+{
+    Console.Write(item);
+}
+\end{lstlisting}
+Det kan tydeligt ses at variablen prefix ikke bliver brugt. Person A og B begynder nu begge at ændre på denne fil. Person A fjerner prefix variablen da denne jo ikke er i brug.
+\begin{lstlisting}
+// Vis vores Item paa skaermen
+public void ShowItem(Item item)
+{
+    Console.Write(item);
+}
+\end{lstlisting}
+Person B derimod har opdaget at han har glemt at bruge prefix, og retter sin fejl.
+\begin{lstlisting}
+// Vis vores Item paa skaermen
+public void ShowItem(Item item, string prefix)
+{
+    Console.Write(prefix + " " + item);
+}
+\end{lstlisting}
+Begge disse ændringer ville let kunne merges rent teknisk, da ændringerne er langt nok fra hinanden.
+\begin{lstlisting}
+// Vis vores Item paa skaermen
+public void ShowItem(Item item)
+{
+    Console.Write(prefix + " " + item);
+}
+\end{lstlisting}
+Dog kan filen nu ikke kompileres længere! Dette løses med ovenstående Change Management, da nummer 2 Pull Request ville blive afvist af TeamCity. 
 \sysml{0.9}{SEQ}{ChangeManagement}{Change Management}
