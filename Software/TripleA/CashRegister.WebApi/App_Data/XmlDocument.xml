@@ -1428,9 +1428,39 @@
             Witch salesorder does this line belong to?
             </summary>
         </member>
+        <member name="T:CashRegister.WebApi.Models.OrderlineDto">
+            <summary>
+            Data transfer object for orderlines
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderlineDto.Id">
+            <summary>
+            Id of the order line
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderlineDto.Quantity">
+            <summary>
+            What was the quantity sold for the orderline
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderlineDto.ProductName">
+            <summary>
+            Name of the product on the orderline
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderlineDto.UnitPrice">
+            <summary>
+            Price of a single unit on the orderline
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.OrderlineDto.Discount">
+            <summary>
+            Discount applied to the orderline
+            </summary>
+        </member>
         <member name="T:CashRegister.WebApi.Models.Product">
             <summary>
-            Model for ´Product in Entity Framework
+            Model for Product in Entity Framework
             </summary>
         </member>
         <member name="M:CashRegister.WebApi.Models.Product.#ctor">
@@ -1811,6 +1841,66 @@
             List of orderlines for the order
             </summary>
         </member>
+        <member name="T:CashRegister.WebApi.Models.SalesOrderDto">
+            <summary>
+            Simple data transfer object for salesorder
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDto.Id">
+            <summary>
+            Id of the salesorder
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDto.Date">
+            <summary>
+            Date and time of the salesorder
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDto.Total">
+            <summary>
+            The total amounth paid
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDto.Status">
+            <summary>
+            Status of the order
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.SalesOrderDetailsDto">
+            <summary>
+            Detailed data transfer obect for the sales order
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDetailsDto.Id">
+            <summary>
+            Id of the salesorder
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDetailsDto.Date">
+            <summary>
+            Date and time of the salesorder
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDetailsDto.Total">
+            <summary>
+            The total amounth paid
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDetailsDto.Status">
+            <summary>
+            Status of the order
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDetailsDto.Transactions">
+            <summary>
+            List of transaction ids coupled to the order
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.SalesOrderDetailsDto.Lines">
+            <summary>
+            List of orderlines ids coupled to the order
+            </summary>
+        </member>
         <member name="T:CashRegister.WebApi.Models.TransactionStatus">
             <summary>
             Enumeration of the transaction status weather it has been completed or it has failed
@@ -1894,6 +1984,41 @@
         <member name="P:CashRegister.WebApi.Models.Transaction.Status">
             <summary>
             The status of the transaction
+            </summary>
+        </member>
+        <member name="T:CashRegister.WebApi.Models.TransactionDto">
+            <summary>
+            Transaction data transfer object 
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.TransactionDto.Id">
+            <summary>
+            Id of the transaction
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.TransactionDto.Description">
+            <summary>
+            Description of the transaction
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.TransactionDto.Date">
+            <summary>
+            Date of the transaction
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.TransactionDto.Price">
+            <summary>
+            Price of the transaction
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.TransactionDto.PaymentType">
+            <summary>
+            Which type of payment was used
+            </summary>
+        </member>
+        <member name="P:CashRegister.WebApi.Models.TransactionDto.Status">
+            <summary>
+            Status of the transaction
             </summary>
         </member>
     </members>
