@@ -62,7 +62,7 @@
     <Compile Include="SalesOrderControllerOrderControllerPaymentController.cs" />
     <Compile Include="SalesOrderControllerOrderControllerPaymentControllerProductController.cs" />
     <Compile Include="SalesOrderControllerOrderControllerPaymentControllerProductControllerReceiptController.cs" />
-    <Compile Include="SalesOrderControllerOrderControllerPaymentControllerReceiptControllerReceiptControllerDao.cs" />
+    <Compile Include="SalesOrderControllerOrderControllerPaymentControllerProductControllerReceiptControllerDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@ using NSubstitute;
 namespace CashRegister.Test.Integration
 {
     [TestFixture]
-    public class SalesOrderControllerOrderControllerPaymentControllerReceiptControllerReceiptControllerDao
+    public class SalesOrderControllerOrderControllerPaymentControllerProductControllerReceiptControllerDao
     {
         private int _raisedEvent;
         private Product _product;
