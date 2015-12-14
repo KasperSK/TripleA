@@ -1,18 +1,18 @@
 \chapter{Systembeskrivelse}
-Ud fra systemet beskrevet i opgaveformuleringen er det besluttet at det endelige system består af en database, business logik, \gls{GUI}, \gls{WebAPI} og et kasseapparat. 
+Ud fra opgaveformuleringen er det besluttet at det endelige system består af en database, business logik, \gls{GUI}, \gls{WebAPI} og et kasseapparat. 
 \newline
 \newline
-En bartender kan betjene kasseapparatet via en GUI, som går gennem en server, der henter information fra en database og gemmer detaljer om salg i samme.
-Når en kunde ønsker at betale skal det kunne foregå via flere betalingsmåder, heriblandt f.eks. kontant, Dankort, mobilepay, m.m.
+En bartender kan betjene det digitale kasseapparat via en \gls{GUI}. \gls{GUI}'en tager fat i business logikken, business logikken tager så fat i database logikken, der tilgår databasen. I databasen gemmes data, som for eksempel produkter, transaktioner, salg m.m.
+Når en kunde ønsker at betale skal det kunne foregå via flere betalingsmåder, heriblandt f.eks. kontant, betalingskort, Mobilepay, m.m.
 \newline
 \newline
-Hvis baren skal have nye varer kan Admin tilføje/redigere/slette dem gennem et \gls{WebAPI}. Ydermere skal der også være muligt for Admin at se statistik over salg og detaljer om de vare der er solgt ved de forskellige salg. 
+Hvis baren ønsker at ændre i eller tilføje data i databasen skal det være muligt for Administratoren at tilføje, redigere og slette disse gennem et Web Api. Ydermere skal der også være muligt for Administratoren at se statistik over alle salg, samt detaljeret statistisk over et enkelt salg. 
 \newline
 \newline
-\gls{GUI}'en er opstillet således at det skal være så brugervenligt for bartenderen som muligt og så Bartenderen kan gennemføre et køb på så få klik som muligt. Bartenderen taster de varer ind som kunne skal købe og går derefter til den betalingstype, der skal betales med. Efter købet er gennemført bliver det gemt i databasen, så de senere kan tilgås. 
+GUI'en skal designes således at den skal være så brugervenlig for Bartenderen som muligt. Bartenderen skal kunne gennemføre et køb på få klik. Bartenderen vælger de varer ind som ønskes og vælger derefter til den betalingstype, der skal betales med. Når et køb er gennemført skal dette gemmes i databasen, så statisk over salg kan vises og så de senere skal kunne tilgås. 
 \newline
 \newline
-Kasseapparatet skal udadtil have en brugergrænseflade, i form af en touchskærm, der håndterer salg, mens settings og statistic fra \gls{WebAPI} skal kunne tilgås via en browser. 
+Kasseapparatets salgsfunktioner skal kunne tilgås via \gls{GUI}'en i form af en touchskærm. Det skal være muligt at tilgå indstillinger og statistik via et web interface, som bruger Web Api'en til at tilgå databasen, web interfacet tilgås via en browser. 
                   
 \begin{figure}[h]
     \centering
