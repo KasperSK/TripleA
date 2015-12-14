@@ -29,4 +29,4 @@ Når en \textit{Transaction} er udført skrives den til databasen via \gls{Dao}.
 \subsubsection{Sales}
 \textit{Sales} står for at samle hele kassesystemet. Det er her, hvor funktionaliteten fra \texttt{Orders} og \texttt{Payment} sammenfattes og bruges til at skabe en større mening. \textit{Sales} står for at sende den rette information videre til de respektive pakker. F.eks. når der tilføjes et produkt til en \textit{Order}, skal dette videreformidles til \texttt{Order} pakken. Eller f.eks. hvis en \textit{Order} skal betales, skal betalingen videreformidles til \texttt{Payment} pakken.
 \newline\newline
-Ved at samle hele systemets funktionalitet i \texttt{Sales} betyder at vores \gls{brugergraenseflade} kun skal ''snakke'' med \texttt{Sales}. \Gls{brugergraenseflade}n behøves ikke at kende til al det underliggende og det behøver \texttt{Sales} heller ikke for den sags skyld.
+Ved at samle hele systemets funktionalitet i \texttt{Sales} betyder at vores \gls{brugergraenseflade} kun skal ''snakke'' med \texttt{Sales}. \Gls{brugergraenseflade}n behøves ikke at kende til al det underliggende og det behøver \texttt{Sales} i den forstand heller ikke.
