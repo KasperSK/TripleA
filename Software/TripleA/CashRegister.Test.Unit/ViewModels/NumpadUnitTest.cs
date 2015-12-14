@@ -80,13 +80,14 @@ namespace CashRegister.Test.Unit.ViewModels
             _fakeNotifyTest.Received().TestINotify(Arg.Any<object>(), Arg.Any<PropertyChangedEventArgs>());
         }
 
+        /// Input has sanitycheck, therefor we test assignment
         [Test]
         public void Input_InputSetTo7Twice_InputIs7()
         {
             _uut.Input = "7";
-            var temp = _uut.Input = "7";
+            _uut.Input = "7";
 
-            Assert.That(temp, Is.EqualTo("7"));
+            Assert.That(_uut.Input, Is.EqualTo("7"));
         }
 
         [Test]
