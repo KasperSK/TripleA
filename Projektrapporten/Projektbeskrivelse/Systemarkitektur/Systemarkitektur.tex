@@ -59,7 +59,7 @@ De forskellige domæner i systemet er:\newline
 
 
 \subsubsection{Deployment View}
-I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen og \gls{Web API}'en kunne sættes op på deres egne seperate computere fungerende som server, og GUI'en og business logikken, kunne køre på en anden computer som så kunne kobles op til serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
+I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen og \gls{WebAPI}'et kunne sættes op på deres egne seperate computere fungerende som server, og GUI'en og business logikken, kunne køre på en anden computer som så kunne kobles op til serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{/N+1/DeploymentView/System/Diagrammer/DEPLOY}
@@ -70,7 +70,7 @@ Som det ses af figur \ref{fig:DeplayDia} kunne man sætte en administrations PC 
 
 \subsubsection{Data View}
 I data view beskrives overgangen fra objekter i systemet til databasen. Her bliver der gennemgået Mapping til databasen sker.\newline\newline
-I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet til databasen. Her bliver der gennemgået hvorfor tabellerne er sat op som de er, og hvordan deres forhold til hinanden er. Her er klasse modeller og de fysiske modeller sat op  over for hinanden så man hurtig kan se forskelle og ligheder.
+I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet til databasen. Her bliver der gennemgået hvorfor tabellerne er sat op som de er, og hvordan deres forhold til hinanden er. Her er klasse modeller og de fysiske modeller sat op over for hinanden så man hurtig kan se forskelle og ligheder.
 
 \begin{figure}[H]
 	\centering
@@ -80,17 +80,17 @@ I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet 
 \end{figure}	
 
 På figur \ref{MapDia} ses det hvordan kobling af SalesOrder sker til Databasen. Her kan det ses at der mellem SalesOrder og Transaction er et one-to-many forhold og at Transaction har en fremmednøgle til SalesOrder.\newline\newline
-Ydermere kan der i Data View ses hvordan dataflows fra én handling til den næste sker. Hertil er der lavet nogle aktivitetsdiagrammer ud fra de definerede Use Cases. 
+Ydermere kan der i Data View ses hvordan dataflows sker fra én handling til den næste sker. Hertil er der lavet nogle aktivitetsdiagrammer ud fra de definerede Use Cases. 
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{/N+1/DataView/DataFlow/UC1}
-	\caption{Aktivitetsdiagram over Use Case 1}
+	\caption{Aktivitetsdiagram over Use Case 1}	
 	\label{AktDia}
 \end{figure}
 
-På figur \ref{AktDia} er dataflowet i forhold til Use case 1 illustreret via et aktivitetsdiagram. Aktiviteterne i nogle tilfælde gentages og går i loops, og det kan også ses hvornår Use casen hvordan use casen afslutter. Alt dette står mere detaljeret beskrevet i dokumentationen. 
+På figur \ref{AktDia} er dataflowet i forhold til Use Case 1 illustreret via et aktivitetsdiagram. Aktiviteterne gentages i nogle tilfælde og kører derfor i en løkke, og det kan også ses hvornår Use Casen og hvordan Use Casen afsluttes. Alt dette står mere detaljeret beskrevet i dokumentationen. 
 
  
  
