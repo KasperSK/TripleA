@@ -60,14 +60,14 @@ namespace CashRegister.Test.Unit.ViewModels
         }
 
         [Test]
-        public void NumpadClicked__numIs7and7_InputIs77()
+        public void NumpadClicked__numIs6and7_InputIs67()
         {
             var NumpadClicked = _uut.NumpadClicked;
 
-            NumpadClicked.Execute("7");
+            NumpadClicked.Execute("6");
             NumpadClicked.Execute("7");
 
-            Assert.That(_uut.Input, Is.EqualTo("77"));
+            Assert.That(_uut.Input, Is.EqualTo("67"));
         }
 
         [Test]
