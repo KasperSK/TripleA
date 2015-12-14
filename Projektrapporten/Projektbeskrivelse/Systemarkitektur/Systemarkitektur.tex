@@ -1,40 +1,43 @@
+\newpage
 %!TEX root = ../../main.tex
 \section{Systemarkitektur}
 
-I det følgende beskrives arkitekturen for systemet. Denne fungerer som vejledning og afgrænsning for udviklere på dette projekt. Hvis man vil videreudvikle på systemet er her et godt sted at starte med at få en basiside om projektets opbygning. Her beskrives systemets moduler i forskellige former for diagrammer. 
+I det følgende afsnit beskrives arkitekturen for systemet. Afsnittet fungerer som en vejledning og afgrænsning for udviklere på dette projekt. Hvis man vil videreudvikle på systemet er her et godt sted at starte med at få en grundlæggende idé om projektets opbygning. Her beskrives systemets moduler i forskellige former for diagrammer. På figur \ref{ArkiDia} kan man se en overordnet opbygning af systemet.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1.0]{Rapport/ArkitekturDiagram}
+	\includegraphics[scale=0.3]{Rapport/ArkitekturDiagram2}
 	\caption{Overordnet arkitekturdiagram}
 	\label{ArkiDia}
 \end{figure}
 
-På figur \ref{ArkiDia} kan man se en overordnet opbygning af systemet. \textbf{GUI} er ansvarlig for interaktion med brugeren af systemet. Det er det som bartenderen ser ud ad til da han intet ved om systemets indre funktionalitet.
+\textbf{GUI} er ansvarlig for interaktion mellem Bartenderen og systemet. \gls{GUI}'en er det eneste som Bartenderen ser, han ved intet om systemets indre funktionalitet.
 \newline\newline
-\textbf{Business logikken} er al funktionaliteten i systemet. Her sker oprettelse af bestillinger, salg, transaktion og alt kommunikation med databasen. 
+\textbf{Business logikken} er al funktionaliteten i systemet. Her sker oprettelse af ordrer og transaktioner.
 \newline\newline
-\textbf{Database} indeholder alt information lige fra data om produkter og produktgrupper til salg og forskellige bestillinger.
+\textbf{Databasen logikken} står for alt kommunikation med databasen. 
 \newline\newline
-\textbf{Web API} er fronten til at oprette, redigere og fjerne produkter. Her kan der også ses statistik over salg. Det er denne som Admin bruger til at tilgå systemet. 
+\textbf{Database} indeholder alt information lige fra data om produkter og produktgrupper til ordrer og transaktioner.
+\newline\newline
+\textbf{Web API} bruges af web interfacet som er fronten til at oprette, redigere og fjerne produkter. Her kan der også ses statistik over salg. Det er denne som Administrator bruger til at tilgå systemet. 
 
 \subsection{N+1 view}
 
 \subsubsection{Use Case View}
-I dette view kan der ses hvordan de forskellige Use Cases bruger og omhandler systemet. Der er i dokumentationen indsat overordnede diagrammer der beskriver handlingsforløbet for hver Use Case. Ydermere er der også lavet detaljerede sekvensdiagrammer der viser kommunikationen inde i systemet. 
+I Use Case Viewet kan der ses hvordan de forskellige Use Cases beskriver systemet. Der er i dokumentationen indsat overordnede diagrammer der beskriver handlingsforløbet for hver af de fully dressed Use Cases.
 
 \subsubsection{Logical View}
-I Logical view kan der ses en oversigt over hvordan programmet er bygget op. Logical view viser her hvordan det er valgt at dele systemet op i lag for at give mere overskuelighed. Her er der tale om:
+Logical View er en oversigt over hvordan programmet er bygget op. Logical View viser her hvordan det er valgt at dele systemet op i lag for at give mere overskuelighed. Her er der tale om:
 \begin{itemize}
-	\item Presentation layer
-	\item Business layer
-	\item Data layer
+	\item Presentation Layer
+	\item Business Layer
+	\item Data Layer
 	\item Web API
 \end{itemize}
  
-\textbf{Presentation layer} indeholder alt omkring GUI og hvordan den er bygget op ved hjælp af MVVM. Her introduceres de forskellige views; SalesView, NumpadView, TabView, SettingsView. Disse bliver alle modelleret af en tilhørende Viewmodel således at de forskellige views intet kendskab til business layer har. \textbf{Business layer} indeholder alt omkring oprettelse af salg, ordre og produkter. Dette lag kommunikere med Presentation layer og ligeledes med Data layer. Det er Business layer der sørger for at hente gemte data i Data layer og ligeledes give data til Presentation layer.\newline
-\textbf{Data layer} står for al persistering af data. Her bliver data gemt i en database og ligeledes hentet derfra. Data kan kun blive tilgået via \texttt{DAL}, data access layer.\newline
-\textbf{Web API} sørger for at det er muligt at oprette, redgiere og fjerne produkter fra databasen. Her er det også muligt at få vist statistik over igangværende og forhenværende salg i systemet. 
+\textbf{Presentation Layer} indeholder alt omkring GUI og hvordan den er bygget op ved hjælp af MVVM. Her introduceres de forskellige views; SalesView, NumpadView, TabView, SettingsView. Disse bliver alle modelleret af en tilhørende Viewmodel således at de forskellige views intet kendskab har til Business Layer. \textbf{Business Layer} indeholder alt omkring oprettelse af ordrer og transaktioner. Dette lag kommunikerer med Presentation Layer og ligeledes med Data Layer. Det er Business Layer der sørger for at hente gemte data i Data Layer og ligeledes give data til Presentation Layer.\newline
+\textbf{Data Layer} står for al persistering af data. Her bliver data gemt i en database og ligeledes hentet derfra. Data kan kun blive tilgået via \texttt{DAL}, Data Access Layer.\newline
+\textbf{Web API} sørger for at det er muligt at oprette, redigere og fjerne produkter fra databasen. Her er det også muligt at få vist statistik over igangværende og forhenværende salg i systemet. 
 
 \subsubsection{Domain View}
 Domain View indeholder tankerne bag arkitekturen af systemet. Ud fra de definerede Use Cases blev der udtænkt nogle forskellige domæner der hver især har nogle ansvarsområder.\newline
@@ -50,13 +53,13 @@ De forskellige domæner i systemet er:\newline
 
 \texttt{IPaymentController} har ansvar for de forskellige betalingsmetoder under en transaktion. \texttt{IProductController} har ansvar for de products der er i systemet, hvortil der kan oprettes, redigeres og fjernes. 
 \texttt{IProductGroupController} har ansvar for at håndtere de forskellige Produkter i deres tilhørende produktgruppe.
-\texttt{IDiscountController} har ansvar for at særge for at den rigtige rabat bliver givet til de forskellige salg.
-\texttt{IReceiptController} har ansvar for at gemme de salg der er foretaget i løbet af en salgsdag.
-\texttt{ILog, IPrinter} er et specielt domæne der omhandler- og har ansvar for at Logge hændelser i systemet hvilket bliver skrevet til en fil. Her ligger ansvaret for at udskrive en kundebon også.
+\texttt{IDiscountController} har ansvar for at sørge for at den rigtige rabat bliver givet til de forskellige products.
+\texttt{IReceiptController} har ansvar for at gemme de ordrer der er foretaget i løbet af en dag.
+\texttt{ILog, IPrinter} er et specielt domæne der omhandler og har ansvar for at logge hændelser i systemet hvilket bliver skrevet til en fil. Her ligger ansvaret for at udskrive en kundebon også.
 
 
 \subsubsection{Deployment View}
-I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen kunne sættes op på en server computer, og alt andet, GUI og business logik, kunne køre på en eller flere computer som så kunne koble op til  serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
+I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen og \gls{Web API}'en kunne sættes op på deres egne seperate computere fungerende som server, og GUI'en og business logikken, kunne køre på en anden computer som så kunne kobles op til serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{/N+1/DeploymentView/System/Diagrammer/DEPLOY}
