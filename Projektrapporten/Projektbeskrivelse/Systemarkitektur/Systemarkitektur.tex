@@ -1,8 +1,7 @@
 %!TEX root = ../../main.tex
 \section{Systemarkitektur}
 
-I det følgende beskrives arkitekturen for systemet. Denne fungerer som vejledning og afgrænsning for udviklere på dette projekt. Hvis man vil viderudvikler på systemet er her et godt sted at starte med at få en basiside om projektets opbygning.\newline
-Her beskrives systemets moduler i forskellige former for diagrammer. 
+I det følgende beskrives arkitekturen for systemet. Denne fungerer som vejledning og afgrænsning for udviklere på dette projekt. Hvis man vil videreudvikle på systemet er her et godt sted at starte med at få en basiside om projektets opbygning. Her beskrives systemets moduler i forskellige former for diagrammer. 
 
 \begin{figure}[H]
 	\centering
@@ -11,18 +10,21 @@ Her beskrives systemets moduler i forskellige former for diagrammer.
 	\label{ArkiDia}
 \end{figure}
 
-På figur \ref{ArkiDia} kan man se en overodnet opbygning af systemet. \textbf{GUI} er ansvarlig for interaktion med brugeren af systemet. Det er det som bartenderen ser ud ad til da han intet ved om systemets indre funktionalitet.\newline
-\textbf{Business logikken} er al funktionaliteten i systemet. Her sker oprettelse af produkterm, salg og alt kommunikation med databasen. 
-\textbf{Database} sørger for at gemme alt lige fra produkter og produktgrupper til salg og forskellige ordrer.\newline
-\textbf{Web API} er frontend til at oprette, redigere og fjerne produkter. Her kan der også ses statistik over salg. Det er denne som admin bruger til at tilgå systemet. 
+På figur \ref{ArkiDia} kan man se en overordnet opbygning af systemet. \textbf{GUI} er ansvarlig for interaktion med brugeren af systemet. Det er det som bartenderen ser ud ad til da han intet ved om systemets indre funktionalitet.
+\newline\newline
+\textbf{Business logikken} er al funktionaliteten i systemet. Her sker oprettelse af bestillinger, salg, transaktion og alt kommunikation med databasen. 
+\newline\newline
+\textbf{Database} indeholder alt information lige fra data om produkter og produktgrupper til salg og forskellige bestillinger.
+\newline\newline
+\textbf{Web API} er fronten til at oprette, redigere og fjerne produkter. Her kan der også ses statistik over salg. Det er denne som Admin bruger til at tilgå systemet. 
 
 \subsection{N+1 view}
 
 \subsubsection{Use Case View}
-I dette view kan der ses hvordan de forskellige Use Cases bruger og omhandler systemet. Der er i dokumentationen indsat overordnede diagammer der beskriver handlindsforløbet for hver Use Case. Ydermere er der også lavet detaljerede sekvensdiagrammer der viser kommunikationen inde i systemet. \newline
+I dette view kan der ses hvordan de forskellige Use Cases bruger og omhandler systemet. Der er i dokumentationen indsat overordnede diagrammer der beskriver handlingsforløbet for hver Use Case. Ydermere er der også lavet detaljerede sekvensdiagrammer der viser kommunikationen inde i systemet. 
 
 \subsubsection{Logical View}
-I Logical view kan der ses en oversigt over hvordan programmet er bygget op. Logical view viser her hvordan det er valgt at dele systemet op i lag for at give mere overskuelighed. Her er der tale om:\newline
+I Logical view kan der ses en oversigt over hvordan programmet er bygget op. Logical view viser her hvordan det er valgt at dele systemet op i lag for at give mere overskuelighed. Her er der tale om:
 \begin{itemize}
 	\item Presentation layer
 	\item Business layer
@@ -65,7 +67,7 @@ Som det ses af figur \ref{fig:DeplayDia} kunne man sætte en administrations PC 
 
 \subsubsection{Data View}
 I data view beskrives overgangen fra objekter i systemet til databasen. Her bliver der gennemgået Mapping til databasen sker.\newline\newline
-I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet til databasen. Her bliver der gennemgået hvorfor tabellerne er sat op som de er, og hvordan deres forhold til hinanden er.\newline Her er klasse modeller og de fysiske modeller sat op  over for hinanden så man hurtig kan se forskelle og ligheder.\newline 
+I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet til databasen. Her bliver der gennemgået hvorfor tabellerne er sat op som de er, og hvordan deres forhold til hinanden er. Her er klasse modeller og de fysiske modeller sat op  over for hinanden så man hurtig kan se forskelle og ligheder.
 
 \begin{figure}[H]
 	\centering
@@ -85,7 +87,7 @@ Ydermere kan der i Data View ses hvordan dataflows fra én handling til den næs
 	\label{AktDia}
 \end{figure}
 
-På figur \ref{AktDia} kan der ses hvordan Use Cases udbreder sig med valg og aktiviteter. Aktiviteterte i nogle tilfælde gentages og gå i loops, og når det kan også ses hvornår Use casen er færdig på den ene eller den anden måde. Alt dette står mere detaljeret beskrevet i dokumentationen. 
+På figur \ref{AktDia} er dataflowet i forhold til Use case 1 illustreret via et aktivitetsdiagram. Aktiviteterne i nogle tilfælde gentages og går i loops, og det kan også ses hvornår Use casen hvordan use casen afslutter. Alt dette står mere detaljeret beskrevet i dokumentationen. 
 
  
  
