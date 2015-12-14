@@ -1,2 +1,25 @@
 %!TEX root = ../../main.tex
 \section{Resultater og Diskussion}
+Resultatet er endt ud med et produkt der kan administrere salg og gemme dem i en database. Der er blevet opsat en \gls{GUI} der kan kommunikere med databasen og der er blevet lavet et \gls{WebAPI} hvori der kan redigeres produkter. 
+
+\begin{itemize}
+	\item Grafisk brugergrænseflade $\surd$
+	\item Database $\surd$
+	\item \gls{WebAPI} $\surd$
+	\item Dankortterminal
+	\item Print
+\end{itemize}  
+
+Hvis der kigges på ovenstående punkter kan det ses at der er blevet implementeret de fleste mål. Dette giver også godt udgangspunkt for videreudvikling. 
+\gls{GUI}'en en god del af systemet at få implementeret, da uden denne er der mange Use Cases der ville falde til jorden, da denne er bartenderens primære kommunikation med systemet. Især det at mange af \gls{GUI}'ens knapper er dynamisk oprettet i forhold til data i databasen er vigtigt for en god abstrahering.\newline 
+Hvis ikke databasen var blevet implementeret ville det ikke være muligt at gemme og hente salg, ordre og produkter noget sted fra. Dette kunne måske været blevet lavet med interne klasser i systemet, men her ville der være snak om massiv hukommelsesallokering. Desuden er det hurtigere at hente fra, organisere og søge efter data i en database end hvis data skulle persisteres ved hjælp af serializers.  
+\newline
+\newline
+At \gls{WebAPI}'et blev implementeret har sørget for at administratoren har et sted hvor der kan oprettes/fjernes og redigeres produkter. Dette sørger for at mange Use Cases går igennem, da mange af dem omhandler oprettelse, fjernelse og redigering af produkter.  
+\newline
+\newline
+Dankortterminalen blev ikke implementeret, selvom designet var lavet klar til at implementere flere betalingsformer. Men vi undervurderet opgavens omfang i at sætte en dankortterminal op og derfor måtte vi undvære det i projektet. 
+\newline
+\newline
+Print af bonner og afstemning var opsat i alt det bagvedliggende logik, men der blev aldrig opsat en knap på \gls{GUI} hvor der kunne printes kundebonner. Dette kunne hurtigt løses med en simpel knap der går ned i logikken og får printet. Der blev opsat en knap der kunne printe afstemning, men det blev aldrig implementeret i business logikken. Dette kunne også hurtigt sættes op med en print funktion der printer afstemningen fra sidste salg.  
+ 
