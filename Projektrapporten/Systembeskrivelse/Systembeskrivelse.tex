@@ -1,18 +1,18 @@
 \chapter{Systembeskrivelse}
-Ud fra systemmet beskrevet i opgaveformuleringen er det besluttet at det endelige system består af en database, business logik, GUI, Web Api og et kasseapparat. 
+Ud fra systemet beskrevet i opgaveformuleringen er det besluttet at det endelige system består af en database, business logik, \gls{GUI}, \gls{WebApi} og et kasseapparat. 
 \newline
 \newline
-En bartender kan betjene kasseapparatet via en GUI, som går gennem en server, der henter fra information og gemmer detaljer om salg, i en database.
+En bartender kan betjene kasseapparatet via en GUI, som går gennem en server, der henter information fra en database og gemmer detaljer om salg i samme.
 Når en kunde ønsker at betale skal det kunne foregå via flere betalingsmåder, heriblandt f.eks. kontant, Dankort, mobilepay, m.m.
 \newline
 \newline
-Hvis baren skal have flere vare kan Admin tilføje/redigere/slette dem gennem et Web Api. Ydermere skal der også være muligt for Admin at se statistik over salg og detaljer om de vare der er solgt ved de forskellige salg. 
+Hvis baren skal have nye varer kan Admin tilføje/redigere/slette dem gennem et \gls{WebApi}. Ydermere skal der også være muligt for Admin at se statistik over salg og detaljer om de vare der er solgt ved de forskellige salg. 
 \newline
 \newline
-GUI'en er opstillet således at det skal være så brugervenligt for bartenderen som muligt og så Bartenderen kan gennemføre et køb på så få klik som muligt. Bartenderen taster de vare ind som kunne skal købe og går derefter til den betalingstype, der skal betales med. Efter købet er gennemført bliver det gemt i databasen, så de senere kan tilgås. 
+\gls{GUI}'en er opstillet således at det skal være så brugervenligt for bartenderen som muligt og så Bartenderen kan gennemføre et køb på så få klik som muligt. Bartenderen taster de varer ind som kunne skal købe og går derefter til den betalingstype, der skal betales med. Efter købet er gennemført bliver det gemt i databasen, så de senere kan tilgås. 
 \newline
 \newline
-Kasseapparatet skal udadtil have en brugergrænseflade i form af en touchskærm, mens settings og statistic fra Web Api skal kunne tilgås via en browser. 
+Kasseapparatet skal udadtil have en brugergrænseflade, i form af en touchskærm, der håndterer salg, mens settings og statistic fra \gls{WebApi} skal kunne tilgås via en browser. 
                   
 \begin{figure}[h]
     \centering
