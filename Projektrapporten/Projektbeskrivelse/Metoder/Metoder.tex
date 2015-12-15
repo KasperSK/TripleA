@@ -22,20 +22,20 @@ Den første udviklingsfase er udarbejdelse af kravspecifikationen. Her udvikles 
 I denne fase udvikles test af integrationen mellem implementerede moduler. Under design og implementering som udgør den sidste fase i udviklingen, udføres der løbende unit test af de implementerede moduler.
 
 \subsection{SCRUM}
-Udviklingsmetoden har være Scrum inspireret, da processen ikke har været fuld ud tilrettelagt, er det ikke ren Scrum. En af grundene har været at processen bliver uforudsigelig, når der bruges nye værktøjer og derfor har der været behov for fleksible tidsplaner og hyppig gennemgange. 
+Udviklingsmetoden har være Scrum-inspireret, men da processen ikke har været fuld ud tilrettelagt, er det ikke ren Scrum. En af grundene har været at processen bliver uforudsigelig, når der bruges nye værktøjer og derfor har der været behov for fleksible tidsplaner og hyppig gennemgange. 
 \newline
 \newline
-I dette projekt er det blevet anvendt til at dele større opgaver op i små dele til de forskellige sprints, samt til at holde daglige møder om arbejdet og opgaverne. 
+I dette projekt er metoden blevet anvendt til at dele større opgaver op i små dele til de forskellige sprints, samt til at holde daglige møder om arbejdet og opgaverne. 
 
 
 \subsection{Change Management}
-Der blev brugt en Change Management metode for at sikre, at der ikke kom utilsigtigede ændringer ind. Processen er groft tegnet i \ref{fig:ChangeManagement_SEQ}. Flowet kan bedst beskrives som følgende
+Der blev brugt en Change Management metode for at sikre, at der ikke kom utilsigtigede ændringer ind. Processen er groft tegnet i \ref{fig:ChangeManagement_SEQ}. Flowet kan bedst beskrives som følger:
 \begin{enumerate}[label=\arabic{enumi}.,ref=\arabic{enumi}]
   \item \label{editorstart} En Editor (person der ønsker at lave en ændring) laver nogle ændringer og laver et Pull Request
   \item Github (Se \ref{developmentstool}) tager fat i TeamCity serveren(Se \ref{developmentstool}), og informerer at der er kommet et nyt Pull Request
   \item TeamCity serveren bygger og kører unit, integration og fxcop tests. Dette meldes tilbage til Github, samt kan man fra Github gå direkte til build processen på TeamCity serveren.
   \item Hvis der er fejl lukkes Pull Requesten af Reviewer (person der godkender ændringer) og Editor begynder fra \ref{editorstart}.
-  \item Hvis alle tests går godt kigger Reviewer ændringerne igennem for at gribe fejl der ikke umiddelbart kan testes for. Dette kunne være unødvendige filer, giberish der er glemt at blive rettet, ændringer der designmæssigt er forkerte mm.
+  \item Hvis alle tests går godt kigger Reviewer ændringerne igennem for at gribe fejl der ikke umiddelbart kan testes for. Dette kunne være unødvendige filer, volapyk der er glemt at blive rettet, ændringer der designmæssigt er forkerte mm.
   \item Hvis ovenstående bliver godkendt af Reviewer, merger Reviewer Pull Requesten og denne lukkes.
   \item Hvis ændringer ikke kan godkendes begynder Reviewer fra \ref{editorstart}.
 \end{enumerate}

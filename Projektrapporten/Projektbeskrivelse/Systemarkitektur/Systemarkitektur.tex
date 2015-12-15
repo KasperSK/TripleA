@@ -1,13 +1,13 @@
 \newpage
 %!TEX root = ../../main.tex
 \section{Systemarkitektur}
-I det følgende afsnit beskrives arkitekturen for systemet. Afsnittet fungerer som en vejledning og afgrænsning for udviklere på projektet. Afsnittet skal give et grundlæggende overblik over systemets overbygning. På Figur~\ref{fig:ArkiDia} kan man se en overordnet opbygning af systemet.
+I det følgende afsnit beskrives arkitekturen for systemet. Afsnittet fungerer som en vejledning og afgrænsning for udviklere på projektet. Afsnittet skal give et grundlæggende overblik over systemets overbygning. På figur~\ref{fig:ArkiDia} kan man se en overordnet opbygning af systemet.
 	
 \begin{itemize}
 	\item \textbf{\gls{GUI}} er ansvarlig for interaktion mellem \Gls{bartender} og \Gls{system}. \gls{GUI}'en er det eneste som \Gls{bartender}en ser, han ved intet om \gls{system}ets indre funktionalitet.
 	\item \textbf{\gls{BLL}} er, hvor kasseapparatets funktionalitet er pakket ind. Her sker bl.a. oprettelse af ordrer og transaktioner.
 	\item \textbf{\gls{DAL}} står for alt kommunikation med databasen.
-	\item \textbf{Database} indeholder alt information lige fra data om produkter og produktgrupper til ordrer og transaktioner.
+	\item \textbf{Database} indeholder al information lige fra data om produkter og produktgrupper til ordrer og transaktioner.
 	\item \textbf{\gls{WebAPI}}'en bruges af web interfacet, som bruges til at oprette, redigere og fjerne produkter. Her kan der også ses statistik over salg. Det er dette interface, som \Gls{administrator}en bruger til at tilgå \gls{system}et.
 \end{itemize}
 
@@ -19,7 +19,7 @@ I det følgende afsnit beskrives arkitekturen for systemet. Afsnittet fungerer s
 \end{figure}
 
 \subsection{N+1 view}
-Arkitekturen er beskrevet med N+1, som er en specialisering af 4+1, der beskrevet i artiklen af \cite{4plus1}. Specialiseringen gør det muligt at tilføje og fjerne de Views, som giver eller ikke giver mening for beskrivelsen af \gls{system}et. I systemarkitekturen er følgende Views indkluderet:
+Arkitekturen er beskrevet med N+1, som er en specialisering af 4+1, der er beskrevet i artiklen af \cite{4plus1}. Specialiseringen gør det muligt at tilføje og fjerne de Views, som giver eller ikke giver mening for beskrivelsen af \gls{system}et. I systemarkitekturen er følgende Views indkluderet:
 \begin{itemize}
 	\item Domain View
 	\item Use Case View
