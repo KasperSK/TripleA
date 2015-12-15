@@ -1,7 +1,6 @@
 %!TEX root = ../../main.tex
 \section{Opnåede Erfaringer}
 Gennem projektarbejdet er der arbejdet ud fra en iterativ udviklingsproces. Til processen er der lånt elementer fra SCRUM, som f.eks. sprint møder, sprint retrospektiv og kanban board. Over projektperioden har der været syv sprint, hvor de iterative elementer har indgået. En problemstilling som opstod under de første sprints var opgavens størrelsen. Dette blev løst efterfølgende ved planlægning af det næste sprint, hvor opgavemængden blev reduceret.
-
 \newline\newline
 I de indledende sprints blev systemet designet efter nogle af de software design principper, som er erfaret gennem kurset Software Design. Her blev det besluttet, at systemet skulle være lagdelt efter 3-lags modellen, som skiller softwaren i: \textit{Presentation Layer}, \textit{Business Layer} og \textit{Data Layer}. Lagene blev uddelt i forskellige pakker. Dette sikrer at koblingen mellem delene er lavere, hvilket gør testbarheden af de enkelte dele større, da delene kan agere enkeltvis.
 \newline\newline
@@ -10,7 +9,6 @@ Systemarkitekturen er skrevet ud fra N+1 modellen. N+1 modellen er en blanding a
 Til klasseimplementeringen blev der implementeret en testsuite, som skulle sørge for at klassen metoder opfyldte dens kontrakter. Dette hjalp med at udradere nogle slåfejl, som ved integrering kunne have fået en test til at fejle og i sidste ende applikationen.
 \newline\newline
 Under alt udvikling blev der ført versionshistorik gennem Github. Dvs. at alle projektets ændringer i forhold til softwaren samt dokumentationen og rapporten blev fulgt. I forbindelse med vores repository var der sat en TeamCity CI server op, som sørgede for at de pull requests, som blev lavede, ikke fik tests til at fejle før at de kunne tilføjes til masteren.
-
 \newline\newline
 Systemet havde en database til at gemme data. Data er f.eks. ordre, transaktioner og produkter. I første omgang blev databasen lavet ud fra Model First. Det viste sig, at det var nemmere at lave om i databasen vha. EF, hvilket betød at databasen blev bygget med Code First i stedet.
 \newline\newline
