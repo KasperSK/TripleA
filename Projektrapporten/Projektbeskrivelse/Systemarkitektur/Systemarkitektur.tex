@@ -30,15 +30,15 @@ Arkitekturen er beskrevet med N+1, som er en specialisering af 4+1, der er beskr
 To af de listet Views: Domain View og Use Case View, er allerede beskrevet i Afsnit~\ref{sec:specandanal}. Derfor vil følgende beskrivelser af disse kun være et sammendrag.
 
 \subsubsection{Domain View}
-Domain View bruger de fully dressed \gls{usecase}s til at give et overblik over de ansvarsdomæner, som findes i systemet.
+Domain View bruger de fully-dressed \gls{usecase}s til at give et overblik over de ansvarsdomæner, som findes i systemet.
 
 \subsubsection{Use Case View}
 Use Case View er med til at skabe en overblik over, hvordan \gls{system}et skal interagere med brugeren.
 
 \subsubsection{Logical View}
-Logical View er en beskrivelse af, hvordan systemet er bygget op. Systemet består af to applikationer: et kasseapparatet og et web interface til administration. Begge applikationer er til dels lag-delt i 3 lag: et Presentation Layer, et Business Layer og et Data Layer. Dette kan ses i Figur~\ref{fig:ArkiDia}. De to applikationer er yderligere beskrevet i systemarkituren under afsnittet Logical View. 
+Logical View er en beskrivelse af, hvordan systemet er bygget op. Systemet består af to applikationer: et kasseapparatet og et web interface til administration. Begge applikationer er til dels lag-delt i tre lag: et Presentation Layer, et Business Layer og et Data Layer. Dette kan ses i figur~\ref{fig:ArkiDia}. De to applikationer er yderligere beskrevet i systemarkituren under afsnittet Logical View. 
 \newline\newline
-\textbf{Presentation Layer} er laget, som er tættest på brugeren. Det er her, hvor \gls{GUI} er placeret. \gls{GUI}. \gls{GUI} hjælpe brugeren igennem de funktionalitet, som systemtet har, på den letteste måde.
+\textbf{Presentation Layer} er laget, som er tættest på brugeren. Det er her, hvor \gls{GUI} er placeret. \gls{GUI}. \gls{GUI} hjælpe brugeren igennem de funktionaliteter, som systemtet har, på den letteste måde.
 %I dette lag bliver der introduceret begreber som \gls{View}, \gls{ViewModel} og \gls{Model} pga. \gls{MVVM}. \gls{MVVM} er et mønster, som adskiller funktionalitet og udseende. Dette gør at dele af brugergrænsefladen er testbar altså \gls{ViewModel}'s.
 \newline\newline
 \textbf{Business Layer} er laget, som indeholder \gls{BLL}. \gls{BLL} er hvor kasseapparatets funktionalitet kan findes. Det er dette lag, som f.eks. sørger for at ordre og transaktioner bliver behandlet.
@@ -48,18 +48,18 @@ Logical View er en beskrivelse af, hvordan systemet er bygget op. Systemet best�
 \textbf{Web Interface og WebAPI} er en applikation for sig selv. Applikationen sørger for at det er muligt at oprette, redigere og fjerne produkter fra kasseapparatet. Applikationen kan også vise statistik over salg i systemet. 
 
 \subsubsection{Deployment View}
-I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen og \gls{WebAPI}'et kunne sættes op på deres egne seperate computere fungerende som server, og GUI'en og business logikken, kunne køre på en anden computer som så kunne kobles op til serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
+I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen og \gls{WebAPI}'et kunne sættes op på deres egne separate computere fungerende som server, og GUI'en og business logikken, kunne køre på en anden computer som så kunne kobles op til serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{/N+1/DeploymentView/System/Diagrammer/DEPLOY}
 	\caption{Diagram over deployment af system}
 	\label{fig:DeplayDia}
 \end{figure}
-Som det ses af figur \ref{fig:DeplayDia} kunne man sætte en administrations PC op som ville koble op til en Web Server som ville hoste Web API'et. Web API'et ville så tilkoble sig Database serveren so  ville køre på en seperat server. Hertil ville CashRegister programmet så køre på en seperat PC som bartenderen ville have adgang til. Dette betyder at man kunne opsætte flere kasseapparater som kunne koble op til samme database.  
+Som det ses af figur \ref{fig:DeplayDia} kunne man sætte en administrations PC op som ville koble op til en Web Server som ville hoste Web API'et. Web API'et ville så tilkoble sig Database serveren som ville køre på en separat server. Hertil ville CashRegister programmet så køre på en separat PC som bartenderen ville have adgang til. Dette betyder at man kunne opsætte flere kasseapparater som kunne koble op til samme database.  
 
 \subsubsection{Data View}
 I Data View beskrives overgangen fra objekter i systemet til databasen. Her bliver en Mapping til databasen.\newline\newline
-I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet til databasen. Her bliver der gennemgået hvorfor tabellerne er sat op som de er, og hvordan deres forhold til hinanden er. Her er klasse modeller og de fysiske modeller sat op over for hinanden så man hurtig kan se forskelle og ligheder.
+I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet til databasen. Her bliver der gennemgået hvorfor tabellerne er sat op som de er, og hvordan deres forhold til hinanden er. Her er klassemodeller og de fysiske modeller sat op over for hinanden så man hurtig kan se forskelle og ligheder.
 
 \begin{figure}[H]
 	\centering
@@ -69,7 +69,7 @@ I dokumentationen er der beskrevet hvor de forskellige klasser er blevet mappet 
 \end{figure}	
 
 På figur \ref{MapDia} ses det hvordan kobling af SalesOrder sker til Databasen. Her kan det ses at der mellem SalesOrder og Transaction er et one-to-many forhold og at Transaction har en fremmednøgle til SalesOrder.\newline\newline
-Ydermere kan der i Data View ses hvordan dataflows sker fra én handling til den næste sker. Hertil er der lavet nogle aktivitetsdiagrammer ud fra de definerede Use Cases. 
+Ydermere kan der i Data View ses hvordan dataflows sker fra én handling til den næste. Hertil er der lavet nogle aktivitetsdiagrammer ud fra de definerede Use Cases. 
 
 \begin{figure}[H]
 	\centering

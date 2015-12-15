@@ -2,7 +2,7 @@ Database designet er en to delt affære. Delingen er mellem selve strukturen af 
 Disse beskrives begge i følgende afsnit.
 
 \subsubsection{Database Opbygning}
-Opbygningen af den fysiske database er sket ved at opstille designet via et \gls{DSD}. Systemets \gls{DSD}  kan ses på Figur~\ref{fig:DSD}. Ud fra diagrammet er det muligt at eksportere SQL kode vha. \gls{DDS-Lite} og derved realisere designet. Koden kan derefter bruges til at opsætte et ''SQL Server Database Project'' i Visual Studio. 
+Opbygningen af den fysiske database er sket ved at opstille designet via et \gls{DSD}. Systemets \gls{DSD}  kan ses på figur~\ref{fig:DSD}. Ud fra diagrammet er det muligt at eksportere SQL kode vha. \gls{DDS-Lite} og derved realisere designet. Koden kan derefter bruges til at opsætte et ''SQL Server Database Project'' i Visual Studio. 
 
 \begin{figure}[H]
     \centering
@@ -20,11 +20,11 @@ I databasen indeholder tabellen \textit{SalesOrder} alle salg, \textit{OrderLine
 \newline\newline
 \textit{OrderLines} bruges til at definere, hvor meget af et \textit{Product}, som er blevet solgt, og hvor meget produktet er solgt til. Hvis der er givet en \textit{Discount} angives denne også, med hvor meget rabat som er givet på det enkelte produkt. \textit{Discount} kan være tom, hvis der ikke er givet nogen rabat.
 \newline\newline
-Figur~\ref{fig:DSD} udstiller også \textit{ProductGroups}, \textit{ProductTypes} og \textit{ProductTabs}. \textit{ProductGroups} bruges til at gruppere produkter i grupper som f.eks. sodavand og drinks. Denne har et \textit{Many-to-Many} forhold til \textit{Product} og \textit{Discount}, fordi et \textit{Product} kan have flere \textit{ProductGroups} og en \textit{Discount} kan tilhører flere \textit{ProductGroups}. \textit{ProductTypes} bruges til at gruppere \textit{ProductGroups} i samme priskategori og derved give dem en ens farve på \gls{brugergraenseflade}n. \textit{ProductTabs} bruges til at definere hvilke tabs, som kan ses på \gls{brugergraenseflade}n. \textit{ProductTabs} kan indeholde mange \textit{ProductTypes}.
+figur~\ref{fig:DSD} udstiller også \textit{ProductGroups}, \textit{ProductTypes} og \textit{ProductTabs}. \textit{ProductGroups} bruges til at gruppere produkter i grupper som f.eks. sodavand og drinks. Denne har et \textit{Many-to-Many} forhold til \textit{Product} og \textit{Discount}, fordi et \textit{Product} kan have flere \textit{ProductGroups} og en \textit{Discount} kan tilhører flere \textit{ProductGroups}. \textit{ProductTypes} bruges til at gruppere \textit{ProductGroups} i samme priskategori og derved give dem en ens farve på \gls{brugergraenseflade}n. \textit{ProductTabs} bruges til at definere hvilke tabs, som kan ses på \gls{brugergraenseflade}n. \textit{ProductTabs} kan indeholde mange \textit{ProductTypes}.
 
 \subsubsection{Database kode}
 For at kunne tilgå databasen fra systemet blev der brugt \gls{EF}. 
-Der blev brugt ''Code First from Existing Database'' i Visual Studio til at danne \gls{EF} modeller, da designet af databasen var lavet i forvejen. Derved afspejler objekterne den allerede designet model, som det kan ses i Figur~\ref{fig:CodeFirstFromDB}. Denne metode virkede til første iteration af databasen, men det viste sig herefter at være lettere at få \gls{EF} til at bygge databasen udfra koden, hvis der blev foretaget ændringer.
+Der blev brugt ''Code First from Existing Database'' i Visual Studio til at danne \gls{EF} modeller, da designet af databasen var lavet i forvejen. Derved afspejler objekterne den allerede designede model, som det kan ses i figur~\ref{fig:CodeFirstFromDB}. Denne metode virkede til første iteration af databasen, men det viste sig herefter at være lettere at få \gls{EF} til at bygge databasen udfra koden, hvis der blev foretaget ændringer.
 
 \begin{figure}[H]
     \centering
@@ -33,7 +33,7 @@ Der blev brugt ''Code First from Existing Database'' i Visual Studio til at dann
 	\label{fig:CodeFirstFromDB}
 \end{figure} 
 
-I systemet blev \gls{EF} pakket ind i \gls{DAL}. Dette blev brugt til adskille framework koden fra systemet. Denne designmæssige beslutning betyder, hvis systemet skal skifte \gls{EF} ud, er \gls{DAL} det eneste lag, som skal ændres.
+I systemet blev \gls{EF} pakket ind i \gls{DAL}. Dette blev brugt til at adskille framework koden fra systemet. Denne designmæssige beslutning betyder, hvis systemet skal skifte \gls{EF} ud, er \gls{DAL} det eneste lag, som skal ændres.
 \newline\newline
 \gls{DAL} består af tre klasser: en \texttt{DALFacade}, et \texttt{UnitOfWork} og et \texttt{Repository}. 
 \texttt{DALFacade} bruges til at sørge for, at der kun findes et \texttt{UnitOfWork} ad gangen.
