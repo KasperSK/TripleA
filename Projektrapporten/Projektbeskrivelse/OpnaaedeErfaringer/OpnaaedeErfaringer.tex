@@ -1,2 +1,23 @@
 %!TEX root = ../../main.tex
 \section{Opnåede Erfaringer}
+I forbindelse med programmeringen af den grafisk grænseflade er der gjort nogle erfaringer omkring dynamisk opsætning.
+HEr skulle der alt efter hvilke data der lå i databasen sættes et view op. Hertil kom der udfordringer lå i hvordan
+man fik omsat denne til data til forskellige attributter i de forskellige controls. Ydermere opstod der et problem 
+hvor skriftstørrelsen på knapper ikke ville ændre sig i takt med at hoved vinduet blev større. Dette blev løst med
+i code behind med et event der blev kaldt når størrelsen på vinduet ændrede sig og derved satte skriftstørrelsen relativt 
+til dette.
+
+I forbindelse med arbejdsprocessen er der gjort en erfaring omkring det at arbejde iterativt. Hertil har det være svært at vurdere
+opgavens omfang og her burde det omfanget være designet løbende i den iterative proces. 
+
+I forbindelse med test af software er der gjort store erfaringer, da det er teste et så stort så system ofte belyser mange fejl
+som man derved kan forebygge. Hertil har det været smart at bruge Continous Integration til udvikling af disse test, da sammen
+med den iterative arbejdsproces har Continous integration gjort det muligt at bruge værktøjer fra faget software test løbende. 
+
+Designet af systemet kunne gøres på mange måde men også her er der gjort en erfaring af hvad der i nogle tilfælde kunne være smart. 
+Her er det erfaret at opdele i systemet i flere lag giver en større abstraktion og en lavere kobling og derved opnåes der en større 
+testbarhed af systemet da hvert lag kan testes for sig. 
+
+Til systemet skulle der også opsættes en database. Dette kunne gøres manuelt i SQL eller man kunne bruge Entity Framework til at skrive 
+C# kode og opsætte databasen automatisk. Her er der nået en konklussion og gjort den erfaring at Entity Framwork gr arbejdet lettere, samtidig med
+at det giver en stor overskuelighed omkring databasen. 
