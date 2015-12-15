@@ -3,7 +3,8 @@
 Der er brugt NUnit frameworket til at unitteste og integrationsteste. 
 
 \subsection{Integrationstests}
-Til integrationstestene er dependencymodellen i~\ref{fig:Dependency_DEP} brugt. Det er topdown format der er delt op i 4 steps. 
+Til integrationstestene er dependencymodellen i~\ref{fig:Dependency_DEP} brugt. Det er topdown format der er delt op i 4 steps. Efter en del overvejelser valgte vi at lave Top-Down integration på vores projekt. Først overvejede vi at lave Collaboration Integration fordi dette er godt at bruge når man tester høj niveau software og ud fra Use Cases. Men efter en del diskussioner besluttede vi os for at lave Top-Down Integration både fordi vores SalesController klasse er bindeledet mellem vores GUI og resten af koden og fordi vores Use Cases mest af alt beskrev vores GUI interaktion med Bartenderen. Derfor valgte vi at lave Top-Down med vores SalesController klasse som vores eneste Driver. Dette gjorde vi fordi det giver god og tidligt feedback fra vores controller komponenter og dette var let at overskue.
+
 \sysml{0.9}{DEP}{Dependency}{CashRegister}
 
 \subsection{Unittests}
