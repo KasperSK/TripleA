@@ -4,7 +4,7 @@
 Den centrale database, der kan placeres lokalt på en computer eller på en central server, er designet ud fra at kunne tilføje nye produkter, produkttyper og produktfaner samt udnytte at produktgrupper er en samling af produkter, så en produktgruppe både kan bestemme hvilken type produkterne hører til og hvilken discount de skal kunne bruges sammen med.
 
 \subsection{Programmeringsprog}
-C\# blev valgt på baggrund af Entity Frameworket til at forbinde til databasen og WPF til selve GUI'en. Desuden er 4 semesters undervisning i Database, Softwaretest og GUI centreret omkring C\#. Til webapi blev der brugt ASP.NET, da denne også kan benytte sig af Entity Frameworket.
+C\# blev valgt på baggrund af Entity Frameworket\citep{gh:entityframeworktutorial} til at forbinde til databasen og WPF\cite{gh:WPF} til selve GUI'en. Desuden er 4 semesters undervisning i Database, Softwaretest og GUI centreret omkring C\#. Til webapi\citep{gh:aspnet} blev der brugt ASP.NET, da denne også kan benytte sig af Entity Frameworket.
 
 \subsection{Testing}
 NUnit, NSubstitute, dotCover og FxCop blev anvendt til dette job eftersom vi allerede brugte C\# som programmeringssprog, og disse tests er lette at automatisere.
@@ -13,7 +13,7 @@ NUnit, NSubstitute, dotCover og FxCop blev anvendt til dette job eftersom vi all
 LaTeX blev valgt grundet dets egenskab til at flere kan let arbejde på samme dokument, samt revisionering er utrolig let. Doxygen blev brugt til at lave dokumentation af selve softwaren.
 
 \subsection{Automatisering}
-TeamCity blev valgt til automatisere unit og integrationstests. Dette blev koblet sammen med Github til at trikke hver gang et Pull Request blev lavet se mere under Change Management.
+TeamCity blev valgt til automatisere unit og integrationstests. Dette blev koblet sammen med Github til at trikke hver gang et Pull Request\cite{gh:pullrequests} blev lavet se mere under Change Management.
 En kombination af Docker, Doxygen, TexLive og bashscript, sørgede for at bygge dokumentationen hver gang der kom en update til masteren. Dette blev published til en webserver, derved er der altid adgang til nyeste dokumentation.
 
 
@@ -26,7 +26,7 @@ En kombination af Docker, Doxygen, TexLive og bashscript, sørgede for at bygge 
   \item[NUnit] \hfill \\
   Bruges til Unit og Integrationstest. De blev valgt på baggrund af deres lette framework op mod C\#.
   \item[Github] \hfill \\
-  Revisionsprogram der er brugt for at sikre kodereview via Pull-Requests. Når en person har lavet en ønsket ændring, lægges denne op på github, hvor en anden person kigger ændringen igennem inden den merges ind med vores master \citeauthor{gh:pullrequests}. Github er også sat op til at samarbejde med TeamCity (se nedenunder)
+  Revisionsprogram der er brugt for at sikre kodereview via Pull-Requests\cite{gh:pullrequests}. Når en person har lavet en ønsket ændring, lægges denne op på github, hvor en anden person kigger ændringen igennem inden den merges ind med vores master \citeauthor{gh:pullrequests}. Github er også sat op til at samarbejde med TeamCity (se nedenunder)
   \item[TeamCity] \hfill \\
   TeamCity er blev brugt som build server og test server. Vi har sat vores egen TeamCity server op, som kommunikerede med Github for at sikre at Pull-Requests kunne bygge.
   \item[DDS-Lite] \hfill \\
@@ -42,7 +42,7 @@ En kombination af Docker, Doxygen, TexLive og bashscript, sørgede for at bygge 
   \item[Dockerized pdflatex] \hfill \\
   Brugt til automatisk bygning af dokumentation og rapport. Dette er et selvbygget program der henter den nyeste version fra Github, kompilerere rapporten og dokumentationen, og udgiver den til en webserver.
   \item[Dockerized Doxygen] \hfill \\
-  Brugt til automatisk bygning af dokumentation af C\# koden. Er også lavet til at hente den nyeste master, kompilere dokumentationen for CashRegister og CashRegister.WebApi, og udgive den på en webserver.
+  Brugt til automatisk bygning af dokumentation af C\# koden. Er også lavet til at hente den nyeste master, kompilere dokumentationen for CashRegister og CashRegister. WebApi\citep{gh:aspnet}, og udgive den på en webserver.
 \end{description}
 
 \subsection{Change Management}
