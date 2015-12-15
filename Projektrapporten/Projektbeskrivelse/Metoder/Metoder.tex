@@ -10,7 +10,7 @@ I dette projekt er der blevet brugt følgende arbejdsmetoder:
 
 \subsection{V-Modellen}
 
-V-Modellen, som er en udviklingsmodel, er blevet brugt til at lave løbende test i dette projekt. Da der laves test sideløbende sikres der, at systemet virker efter hensigten. På figur \ref{VModel} kan V-Modellen ses. V-Modellen er valgt at arbejde ud fra, da det at teste systemet er noget der er lært løbende på semestret og med V-Modellen sikres der at det lærte stof kan anvendes sideløbende med udviklingen af projektet. 
+V-Modellen, som er en udviklingsmodel, er blevet brugt til at lave løbende test i dette projekt. Da der laves test sideløbende, sikres der, at systemet virker efter hensigten. På figur \ref{VModel} kan V-Modellen ses. V-Modellen er valgt at arbejde ud fra, da det at teste systemet er noget, der er lært løbende på semestret, og med V-Modellen sikres der, at det lærte stof kan anvendes sideløbende med udviklingen af projektet. 
 
 \begin{figure}[H]
 	\centering
@@ -19,28 +19,28 @@ V-Modellen, som er en udviklingsmodel, er blevet brugt til at lave løbende test
 	\label{VModel}
 \end{figure} 
 Den første udviklingsfase er udarbejdelse af kravspecifikationen. Her udvikles der en tilhørende accepttest, der verificerer systemets overordnede funktionalitet. Den næste fase er systemarkitekturen.
-I denne fase udvikles test af integrationen mellem implementerede moduler. Under design og implementering som udgør den sidste fase i udviklingen, udføres der løbende unit test af de implementerede moduler.
+I denne fase udvikles test af integrationen mellem implementerede moduler. Under design og implementering, som udgør den sidste fase i udviklingen, udføres der løbende unit test af de implementerede moduler.
 
-\subsection{SCRUM}
-Udviklingsmetoden har være Scrum-inspireret, men da processen ikke har været fuld ud tilrettelagt, er det ikke ren Scrum. En af grundene har været at processen bliver uforudsigelig, når der bruges nye værktøjer og derfor har der været behov for fleksible tidsplaner og hyppig gennemgange. 
+\subsection{Scrum}
+Udviklingsmetoden har være Scrum-inspireret, men da processen ikke har været fuld ud tilrettelagt, er det ikke ren Scrum. En af grundene har været, at processen bliver uforudsigelig, når der bruges nye værktøjer og derfor har der været behov for fleksible tidsplaner og hyppig gennemgange. 
 \newline
 \newline
 I dette projekt er metoden blevet anvendt til at dele større opgaver op i små dele til de forskellige sprints, samt til at holde daglige møder om arbejdet og opgaverne. 
 
 
 \subsection{Change Management}
-Der blev brugt en Change Management metode for at sikre, at der ikke kom utilsigtigede ændringer ind. Processen er groft tegnet i \ref{fig:ChangeManagement_SEQ}. Flowet kan bedst beskrives som følger:
+Der blev brugt en Change Management metode for at sikre, at der ikke kom utilsigtede ændringer ind. Processen er groft tegnet i figur \ref{fig:ChangeManagement_SEQ}. Flowet kan bedst beskrives som følger:
 \begin{enumerate}[label=\arabic{enumi}.,ref=\arabic{enumi}]
   \item \label{editorstart} En Editor (person der ønsker at lave en ændring) laver nogle ændringer og laver et Pull Request
-  \item Github (Se \ref{developmentstool}) tager fat i TeamCity serveren(Se \ref{developmentstool}), og informerer at der er kommet et nyt Pull Request
+  \item Github (Se \ref{developmentstool}) tager fat i TeamCity serveren(Se \ref{developmentstool}) og informerer om, at der er kommet et nyt Pull Request
   \item TeamCity serveren bygger og kører unit, integration og fxcop tests. Dette meldes tilbage til Github, samt kan man fra Github gå direkte til build processen på TeamCity serveren.
-  \item Hvis der er fejl lukkes Pull Requesten af Reviewer (person der godkender ændringer) og Editor begynder fra \ref{editorstart}.
-  \item Hvis alle tests går godt kigger Reviewer ændringerne igennem for at gribe fejl der ikke umiddelbart kan testes for. Dette kunne være unødvendige filer, volapyk der er glemt at blive rettet, ændringer der designmæssigt er forkerte mm.
-  \item Hvis ovenstående bliver godkendt af Reviewer, merger Reviewer Pull Requesten og denne lukkes.
-  \item Hvis ændringer ikke kan godkendes begynder Reviewer fra \ref{editorstart}.
+  \item Hvis der er fejl, lukkes Pull Requesten af Reviewer (person der godkender ændringer), og Editor begynder fra \ref{editorstart}.
+  \item Hvis alle tests går godt, kigger Reviewer ændringerne igennem for at gribe fejl, der ikke umiddelbart kan testes for. Dette kunne være unødvendige filer, volapyk der er glemt at blive rettet eller ændringer der designmæssigt er forkerte m.m.
+  \item Hvis ovenstående bliver godkendt af Reviewer, merger Reviewer pull requesten, og denne lukkes.
+  \item Hvis ændringer ikke kan godkendes, begynder Reviewer fra \ref{editorstart}.
 \end{enumerate}
 
-Et sekundært afkast er at dette hjælper med at mindske, at merge konflikter kommer ind i masteren. Et eksempel kunne være følgende stykke kode.
+Et sekundært afkast er, at dette hjælper med at mindske, at merge konflikter kommer ind i masteren. Et eksempel kunne være følgende stykke kode.
 \begin{lstlisting}
 // Vis vores Item paa skaermen
 public void ShowItem(Item item, string prefix)
@@ -48,7 +48,7 @@ public void ShowItem(Item item, string prefix)
     Console.Write(item);
 }
 \end{lstlisting}
-Det kan tydeligt ses at variablen prefix ikke bliver brugt. Person A og B begynder nu begge at ændre på denne fil. Person A fjerner prefix variablen da denne jo ikke er i brug.
+Det kan tydeligt ses, at variablen prefix ikke bliver brugt. Person A og B begynder nu begge at ændre på denne fil. Person A fjerner prefix variablen, da denne jo ikke er i brug.
 \begin{lstlisting}
 // Vis vores Item paa skaermen
 public void ShowItem(Item item)
@@ -56,7 +56,7 @@ public void ShowItem(Item item)
     Console.Write(item);
 }
 \end{lstlisting}
-Person B derimod har opdaget at han har glemt at bruge prefix, og retter sin fejl.
+Person B derimod har opdaget, at han har glemt at bruge prefix, og retter sin fejl.
 \begin{lstlisting}
 // Vis vores Item paa skaermen
 public void ShowItem(Item item, string prefix)
@@ -72,5 +72,5 @@ public void ShowItem(Item item)
     Console.Write(prefix + " " + item);
 }
 \end{lstlisting}
-Dog kan filen nu ikke kompileres længere! Dette løses med ovenstående Change Management, da nummer 2 Pull Request ville blive afvist af TeamCity. 
+Dog kan filen nu ikke kompileres længere. Dette løses med ovenstående Change Management, da nummer 2 pull request ville blive afvist af TeamCity. 
 \sysml{0.9}{SEQ}{ChangeManagement}{Change Management}
