@@ -1,21 +1,21 @@
 %!TEX root = ../main.tex
 \chapter{Konklusion}
-Formålet med projektet var at lave et digitalt kasseapparat, som skulle lette bartenderens byrde. Dette blev ikke fuldt realiseret, da der ikke blev implementeret en betalingskortterminal. Dog er grundlæggende funktionalitet til stede, som kan udvides. Kasseapparatets funktionalitet inkluderer:
+Formålet med dette projekt var at lave et digitalt kasseapparat, som skulle lette Bartenderne i Katrines Kælders arbejdsbyrde. Dette mål blev ikke fuldt realiseret, da der ikke blev implementeret en betalingskortterminal. Dog er grundlæggende funktionalitet til stede, som kan udvides. Kasseapparatets funktionalitet inkluderer:
 \begin{itemize}
-	\item en \gls{GUI}, hvor der kan sælges vare mod kontantbetaling.
-	\item en database, hvor alle informationer om salg bliver gemt.
-	\item en browser, som kan tilgå information i databasen.
+	\item en \gls{GUI}, hvor der kan sælges varer mod kontant betaling.
+	\item en database, hvor alle informationer om salg og produkter bliver gemt.
+	\item en browser, som kan tilgå og ændre information i databasen.
 \end{itemize}
 På grund af disse funktionaliteter kan kasseapparatet siges at være en prototype med mulighed for viderearbejde. Viderearbejde kunne inkludere:
 \begin{itemize}
-	\item implementering af \gls{DTO}'er i forretningslogikken, da databasemodellerne skal adskilles fra systemmodellerne for at undgå problemer bl.a. med cirkulære referencer.
-	\item trådning af betalingsmekanismer, da man i Katrines Kælder i øjeblikket kun kan modtage betaling fra en person af gange, ville det være ideelt, hvis man kunne sætte en betaling i kø.
+	\item implementering af \gls{DTO}'er i forretningslogikken, da databasemodellerne skal adskilles fra systemmodellerne for at undgå problemer med bl.a. cirkulære referencer.
+	\item trådning af betalingsmekanismer, da man i Katrines Kælder i øjeblikket kun kan modtage betaling fra en person ad gange, ville det være ideelt, hvis man kunne sætte betalinger i kø.
 \end{itemize}
-Den \gls{GUI} er designet efter gode designprincipper, som betyder at den kan implementeres oven på et anden \gls{BLL}.
+Denne \gls{GUI} er designet efter gode designprincipper, som betyder, at den kan implementeres oven på et andet \gls{BLL}.
 \newline\newline
 \gls{WebAPI}'et virker efter hensigten, men kan forbedres, da det er tæt koblet med databasen. Desuden kunne der implementeres et login for at holde uvedkommende ude. Data fra \gls{WebAPI}'et tjekkes heller ikke for korrekthed.
 \newline\newline
-Gennem projektarbejde er alle læringsmål for projektet opfyldt. Projektarbejdet foregik iterativt med en afsluttende reflektion i hver iteration. Der blev inddraget elementer fra fagene:
+Gennem projektarbejdet er alle læringsmål for projektet opfyldt. Projektarbejdet foregik iterativt med en afsluttende reflektion i hver iteration. Der blev inddraget elementer fra fagene:
 \begin{itemize}
 	\item \textit{Software Design} i opbygningen af \gls{BLL}. 
 	\item \textit{GUI programmering} i opbygningen af \gls{GUI}.
