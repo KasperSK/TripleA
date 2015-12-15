@@ -9,7 +9,7 @@ I dens nuværende form har GUI'en ikke en knap der printer kundernes kviteringer
 \subsubsection{TabView og -Model}
 Noget helt andet der kunne forbedres i fremtiden, er det view og den ViewModel der hører til Tabs og produkter. Her er der i nuværende implementering ikke taget højde for hvis der er flere produkter af en type i databasen. I viewet kan der vises 25 produkter, men hvis der er flere går det ud over funktionaliteten. I fremtiden kunne man lave det sådan at hvis der er flere end 25 bliver den sidste knap en pil der bladrer til næste side i den følge produkttype. Således ville man have flere sider under samme produkttype.\newline
 \subsubsection{SettingsView og -Model}
-I fremtiden ville det være en fordel at sørge for at få implementeret et view kaldet SettingView. Dette var tiltænkt at være et view hvor man kunne styre opsætningen af selve programmet. F.eks. hvis nu brugeren af produktet såsom Katrines kælder skiftede navn, ville man her kunne ændre det, og så ville det have indflydelse på hvad der stod på en kvitering. Hvad mere er, at man kunne sætte op hvilken Database der skulle forbindes til. 
+I fremtiden ville det være en fordel at sørge for at få implementeret et view kaldet SettingView. Dette var tiltænkt at være et view hvor man kunne styre opsætningen af selve programmet. F.eks. hvis nu brugeren af produktet såsom Katrines kælder skiftede navn, ville man her kunne ændre det, og så ville det have indflydelse på hvad der stod på en kvitering. Hvad mere er, at man i dette view kunne sætte op hvilken Database der skulle forbindes til. 
 
 \subsection{Web}
 Web \gls{API} er blevet implementeret hurtigt derfor er er også meget der kan forbedres.
@@ -31,7 +31,7 @@ Her kunne klart implementeres Dankort og mobile pay/swip.
 Samt alt hvad der skal bruges til at understøtte dette bland andet betaling med penge tilbage til kunden.
 
 \subsubsection{Afstemning}
-Det skal være muligt at printe afstemningen ud istedet for blot at vise denne på gui. 
+Det skal være muligt at printe afstemningen ud i stedet for blot at vise denne på \gls{GUI}. 
 
 \subsection{Data lag}
 I data laget kunne der med fordel indføres \gls{DTO}'er. Om de skulle leve i data laget eller i \gls{DAO} klasserne i forretnings logikken er op til hvor hård opdelingen af de to skal være.
