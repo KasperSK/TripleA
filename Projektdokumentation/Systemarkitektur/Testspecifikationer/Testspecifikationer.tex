@@ -1,1 +1,66 @@
 \section{Testspecifikationer}
+
+Der er brugt NUnit frameworket til at unitteste og integrationsteste. 
+
+\subsection{Integrationstests}
+Til integrationstestene er dependencymodellen i~\ref{fig:Dependency_DEP} brugt. Det er topdown format der er delt op i 4 steps. 
+\sysml{0.9}{DEP}{Dependency}{CashRegister}
+
+\subsection{Unittests}
+
+Der er her fremhævet 3 unittests for at vise hvor svært det er at mestre testing generelt.
+
+\subsection{Dårlig test}
+Denne test er fremhævet af flere årsager. Den umiddelbare årsag er at det er ikke klart hvad testen egentlig tester for. Når man har kigget koden igennem, opdager man at den tester om IncompleteOrders er præcis den samme instans som StashedOrders i OrderControlleren. Dette er en test af hvordan den virker internt, hvilket ikke er noget er burde testes.
+\begin{lstlisting}
+[Test]
+public void SalesController_IncompleteOrders_IncompleteOrdersIsOrderControllerStashedOrders()
+{
+    Assert.That(_uut.IncompleteOrders == _orderctrl.StashedOrders);
+}
+\end{lstlisting}	
+
+
+\subsection{Bedre test}
+Denne test er lavet simpelt og tester meget specifikt at metoden Fatal skal kalde videre til backends Fatal, uden at rette i \_logline.
+
+\begin{lstlisting}
+[Test]
+public void Fatal_BackendFatels_GetsCalled()
+{
+    _uut.Fatal(_logline);
+    _fakeBackend.Received(1).Fatal(_logline);
+}
+\end{lstlisting}
+
+
+\subsection{Forbedring af test}
+Denne test er fremhævet for at vise hvor lidt der nogengange skal til for at gøre en test bedre. Denne test er for at teste Input variablen, der skal indeholde de tal der bliver trykket på. I testen bliver "7" trykket 2 gange og der testes for at "77" er i Input. Dette er en korrekt test, men kan let forbedres, da det ikke kan bestemmes om de to 7-taller er kommet ud i rigtig rækkefølge. Der testes også kun med "7", hvilket derved ikke tester om "7" altid bliver brugt.
+\begin{lstlisting}
+[Test]
+public void NumpadClicked__numIs7and7_InputIs77()
+{
+    var NumpadClicked = _uut.NumpadClicked;
+
+    NumpadClicked.Execute("7");
+    NumpadClicked.Execute("7");
+
+    Assert.That(_uut.Input, Is.EqualTo("77"));
+}
+\end{lstlisting}
+
+
+I forbedringen er den en "7" ændret til "6". Dette sikrer at rækkefølgen kan testes, samt at "7" ikke er hardcoded til Execute funktionen.
+\begin{lstlisting}
+[Test]
+public void NumpadClicked__numIs6and7_InputIs67()
+{
+    var NumpadClicked = _uut.NumpadClicked;
+
+    NumpadClicked.Execute("6");
+    NumpadClicked.Execute("7");
+
+    Assert.That(_uut.Input, Is.EqualTo("67"));
+}
+\end{lstlisting}
+
