@@ -2,13 +2,13 @@
 I denne Use Case ser vi hvordan et produkt bliver tilføjet til databasen.
 \begin{usecase}{9}
 
-\title{ Tilføj varer til kasseapparat} 
+\title{Tilføj varer til kasseapparat} 
 
 \field{Mål:}{ At få tilføjet et nyt produkt til kasseapparatet }
 
-\field{Initieret af:}{ Admin }
+\field{Initieret af:}{ \Gls{administrator} }
 
-\field{Aktører:}{ Admin (Primær) }
+\field{Aktører:}{ \Gls{administrator} (Primær) }
 
 \field{Samtidige forekomster:}{1}
 
@@ -20,11 +20,11 @@ I denne Use Case ser vi hvordan et produkt bliver tilføjet til databasen.
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
-	\item Admin vælger link til settings i Web API
-	\item Settings side vises og Admin vælger link til Products 
-	\item Products side vises og Admin indskriver Navn, pris, Produktgruppe og produktet er salgsbart.
-	\item Admin klikker på linket der tiløjer produktet \newline
-	[Extension 9.1: Admin klikker på andet end link til at tilføje produkt ]
+	\item \Gls{administrator} vælger link til settings i Web API
+	\item Settings side vises og \Gls{administrator} vælger link til Products 
+	\item Products side vises og \Gls{administrator} indskriver Navn, pris, Produktgruppe og produktet er salgsbart.
+	\item \Gls{administrator} klikker på linket der tiløjer produktet \newline
+	[Extension 9.1: \Gls{administrator} klikker på andet end link til at tilføje produkt ]
 	\item Produktet vises nu under produkttyper
 	\item Produktet kan nu vises på GUI
 }
@@ -32,7 +32,7 @@ I denne Use Case ser vi hvordan et produkt bliver tilføjet til databasen.
 
 %Extensions: Alternate scenarios of success or failure.
 \scenario{Udvidelser:}{
-	\item Extension 9.1: Admin klikker på andet end link til at tilføje produkt
+	\item Extension 9.1: \Gls{administrator} klikker på andet end link til at tilføje produkt
 		\begin{enumerate}
 		\item[1.] Systemet går ud af produkt side og en anden side vises
 		\end{enumerate}		
