@@ -14,7 +14,7 @@ I fremtiden ville det være en fordel at sørge for at få implementeret et view
 \subsection{Web}
 Web \gls{API} er blevet implementeret hurtigt derfor er er også meget der kan forbedres.
 
-\subsubsection{login system}
+\subsubsection{Login system}
 Der kunne med fordel laves et login system så det kun er administrator der kan til gå siden.
 
 \subsubsection{Layout}
@@ -31,7 +31,10 @@ Her kunne klart implementeres Dankort og mobile pay/swip.
 Samt alt hvad der skal bruges til at understøtte dette bland andet betaling med penge tilbage til kunden.
 
 \subsubsection{Afstemning}
-Det skal være muligt at printe afstemningen ud i stedet for blot at vise denne på \gls{GUI}. 
+Det skal være muligt at printe afstemningen ud i stedet for blot at vise denne på \gls{GUI}.
+
+\subsubsection{Trådet}
+Det kunne ønskes at betalinger kan sæætes i kø, således at salg kan foretages inden det sidste er afsluttet. Derved kan man lave en Order og sætte den til betaling med dankort, mens denne transaktion bliver udført, kan en anden bartender lave et kontant salg. For at dette kan lade sig gøre, skal der indføres flere tråde.
 
 \subsection{Data lag}
 I data laget kunne der med fordel indføres \gls{DTO}'er. Om de skulle leve i data laget eller i \gls{Dao} klasserne i forretnings logikken er op til hvor hård opdelingen af de to skal være.
