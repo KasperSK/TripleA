@@ -6,9 +6,9 @@ I denne Use Case ser vi hvordan et produkt i databasen bliver redigeret.
 
 \field{Mål:}{ At få ændret et produkt i kasseapparat}
 
-\field{Initieret af:}{ Admin }
+\field{Initieret af:}{ \Gls{administrator} }
 
-\field{Aktører:}{ Admin (Primær) }
+\field{Aktører:}{ \Gls{administrator} (Primær) }
 
 \field{Samtidige forekomster:}{1}
 
@@ -20,19 +20,19 @@ I denne Use Case ser vi hvordan et produkt i databasen bliver redigeret.
 
 %Main Success Scenario: A typical, unconditional happy path scenario of success.
 \scenario{Hovedscenarie:}{
-	\item Admin vælger link til settings i Web API
-	\item Settings side vises og Admin vælger link til Products 
-	\item Products side vises og Admin vælger produkt i produktlisten.
-	\item Detaljer om produktet vises og Admin ændrer navn for produkt 
-	\item Admin klikker på linet der opdaterer produktet og produktet vises nu opdateret i produktlisten\newline
-	[Extension 10.1: Admin klikker på andet link end til at opdatere produkt ]
+	\item \Gls{administrator} vælger link til settings i Web API
+	\item Settings side vises og \Gls{administrator} vælger link til Products 
+	\item Products side vises og \Gls{administrator} vælger produkt i produktlisten.
+	\item Detaljer om produktet vises og \Gls{administrator} ændrer navn for produkt 
+	\item \Gls{administrator} klikker på linet der opdaterer produktet og produktet vises nu opdateret i produktlisten\newline
+	[Extension 10.1: \Gls{administrator} klikker på andet link end til at opdatere produkt ]
 	\item Produktet kan nu vises på GUI
 }
 
 
 %Extensions: Alternate scenarios of success or failure.
 \scenario{Udvidelser:}{
-	\item Extension 10.1: Admin klikker på andet link end til at opdatere produkt
+	\item Extension 10.1: \Gls{administrator} klikker på andet link end til at opdatere produkt
 		\begin{enumerate}
 		\item[1.] Systemet går ud af produkt side og en anden side vises
 		\end{enumerate}		
