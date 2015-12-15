@@ -11,7 +11,7 @@ I Figur~\ref{fig:Models_CLASS} ses alle klasserne i modellen, det vigtigste er a
 
 \textbf{Database}\newline
 Database pakken indeholder selve logikken, der tilgår databasen. Kort fortalt er det her, vi implementerer den anden del af det, vi skal bruge i forhold til \gls{EF}, nemlig database konteksten. 
-Den er vist i Figur~\ref{fig:Database_CLASS}, at der i denne pakke ligger instruktioner om, hvordan databasen hænger sammen. De ligger i \texttt{EntityConfiguration} klassen, som der er mange af. Derfor er de vist som en generisk klasse.
+Den er vist i Figur~\ref{fig:Database_CLASS}, at der i denne pakke ligger instruktioner om, hvordan databasen hænger sammen. De ligger i \texttt{EntityConfiguration} klassen\cite{gh:propertiesfluent}\cite{gh:relationshipfluent}, som der er mange af. Derfor er de vist som en generisk klasse.
 Klasserne bliver kaldt, når \texttt{CashRegisterContext} kalder \texttt{OnModelCreating()}. Konfigurationen fortæller om hvordan objekterne skal mappes til entiteterne i databasen f.eks. hvilken property som skal være primær nøgle, hvilke properties er påkrævet eller hvilke relationer objekterne har til hinanden. 
 
 \logicalview{0.85}{CLASS}{Database}{pakken Database}
@@ -20,7 +20,7 @@ Klasserne bliver kaldt, når \texttt{CashRegisterContext} kalder \texttt{OnModel
 Således at det kun er \gls{DAL}, der skal laves om, hvis database skiftes ud. 
 I \gls{DAL} stilles alle de funktioner, der er nødvendige for at indsætte, slette, opdatere og oprette elementer i databasen til rådighed. 
 Funktionerne kommer fra \texttt{Repository} klassen, som tilgås igennem \texttt{UnitOfWork} klassen.
-\texttt{UnitOfWork} eksiterer for at sikre, at vi gemmer alle ændringerne i databasen på en gang.
+\texttt{UnitOfWork} eksiterer for at sikre, at vi gemmer alle ændringerne i databasen på en gang\cite{gh:uowrepo}.
 Til sidst er der klassen \texttt{DALFacade}, som er en facade, der sørger for, at der kun kan eksistere et \texttt{UnitOfWork} ad gangen. 
 
 \logicalview{0.85}{CLASS}{Dal}{Data Access Layer}
