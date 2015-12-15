@@ -6,7 +6,7 @@ Ud fra opgaveformuleringen er der udarbejdet en række \gls{usecase}s, som beskr
 \begin{minipage}{0.45\textwidth}
 \raggedright
 \section{Aktørbeskrivelse}
-I \gls{usecase}ne ses en række aktører, der interagerer med systemet. Disse kan ses på aktørdiagrammet i figur~\ref{fig:actordiagram} og er beskrevet herunder. Flere detaljer om aktørerne og hvordan de interagerer med de ikke fully-dressed \gls{usecase}s kan ses i dokumentationen. 
+I \gls{usecase}ne ses en række aktører, der interagerer med systemet. Disse kan ses på aktørdiagrammet i figur~\ref{fig:actordiagram} og er beskrevet herunder. Flere detaljer om aktørerne - og hvordan de interagerer med de ikke fully-dressed \gls{usecase}s - kan ses i dokumentationen. 
 \newline
 \newline
 \end{minipage}
@@ -20,7 +20,7 @@ I \gls{usecase}ne ses en række aktører, der interagerer med systemet. Disse ka
 \end{minipage} \hfill
 \newline
 \subsubsection*{\Gls{bartender}}
-er en primær aktør til systemet, og står for salg af varer og betjening. 
+er en primær aktør til systemet, som står for salg af varer og betjening. 
 
 \subsubsection*{\Gls{administrator}}
 er en primær aktør til systemet, som står for logistikken (priser, varer osv.). 
@@ -37,7 +37,7 @@ er en sekundær aktør, som er en betalingsløsning via mobiltelefonen som lever
 \newpage
 
 \section{Use case beskrivelse}
-De identificerede \gls{usecase}s er beskrevet i det følgende. Her er der kun fokus på de fully-dressed \gls{usecase}s. Hver \gls{usecase} beskriver et scenarie, hvor aktører interagerer med systemet. I Figur~\ref{fig:fullydressedusecases} kan der ses et \gls{usecase} diagram med hvilke aktører som er involverede.
+De identificerede \gls{usecase}s er beskrevet i det følgende. Her er der kun fokus på de fully-dressed \gls{usecase}s. Hver \gls{usecase} beskriver et scenarie, hvor aktører interagerer med systemet. I figur~\ref{fig:fullydressedusecases} kan der ses et \gls{usecase} diagram med hvilke aktører som er involverede.
 
 \begin{figure}[H]
 	\centering
@@ -53,13 +53,13 @@ Bartenderen skal kunne sælge varer mod kontant betaling. Det sker ved, at barte
 Hvis en kunde ønsker en bon, skal en \gls{bartender} kunne printe den ud. Dette bliver gjort ved at trykke på bon knappen, som udskriver en bon via bonprinteren.
 
 \subsection*{\gls{usecase} 3: Kasseafstemning}
-Når der skal printes en bon, med hvor meget der er solgt for i løbet af en salgsdag, trykker bartenderen på afstem knappen og bonprinteren printer en bon med dato og det samlede salg. 
+Når der skal printes en bon med, hvor meget der er solgt for i løbet af en salgsdag, trykker bartenderen på afstem knappen, og bonprinteren printer en bon med dato og det samlede salg. 
 
 \subsection*{\gls{usecase} 9: Tilføj vare til kasseapparat}
 Det skal være muligt at tilføje flere varer til kasseapparatet. Dette kan \gls{administrator} gøre ved at gå ind under settings i \gls{WebAPI}'en og tilføje et produkt ved at udfylde felterne i \textit{Add Product} og trykke \textit{Submit}.
 
 \subsection*{\gls{usecase} 10: Rediger vare i kasseapparat}
-En vare skal kunne redigeres, hvis der f.eks. skal nye priser på. Dette gør \gls{administrator} ved at vælge den vare som han ønsker at redigere. Dette gøres under \textit{Settings} i \gls{WebAPI}. Her kan de ønskede værdier ændres og gemmes ved at trykke \textit{Submit}.
+En vare skal kunne redigeres, hvis der f.eks. skal nye priser på. Dette gør \gls{administrator} ved at vælge den vare, som han ønsker at redigere. Dette gøres under \textit{Settings} i \gls{WebAPI}. Her kan de ønskede værdier ændres og gemmes ved at trykke \textit{Submit}.
 
 \subsection*{\gls{usecase} 11: Fjern vare fra kasseapparat}
-En vare skal kunne fjernes. Det gør \gls{administrator} ved at vælge den vare som han ønsker slettet under \textit{Settings} i \gls{WebAPI} og trykke på \textit{Delete} ud for varen.
+En vare skal kunne fjernes. Det gør \gls{administrator} ved at vælge den vare, som han ønsker slettet under \textit{Settings} i \gls{WebAPI} og trykke på \textit{Delete} ud for varen.
