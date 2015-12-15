@@ -2,6 +2,6 @@
 \newline
 Pakken er implementeret for at ''logge'' altså udskrive handlinger i programmet til enten en konsol eller en tekstfil.
 Ud fra et interface \texttt{ILogger}, som deklarer metoder til udskrivning af forskellige typer af beskeder, er interfacet implementeret i klassen \texttt{Logger}.
-Klassen \texttt{Logger} indpakker frameworket \textit{log4net}\fxnote{skriv til ordliste}, som gør det muligt at ændre recipienten af beskederne om det skal være konsollen eller en tekstfil. Klassen \texttt{Logger} kan fås vha. \texttt{LogFactory}, ved at kalde \texttt{GetLogger()}. Dette gør \texttt{CashDrawer} f.eks., da der ikke er implementeret en pengeskuffe på nuværende tidspunkt. Klassen udskriver i stedet en besked, når \texttt{Open()} bliver kaldt. Et klassediagram af \texttt{Log} pakken kan ses i Figur~\ref{fig:Log_CLASS}.
+Klassen \texttt{Logger} indpakker frameworket \textit{log4net}, som gør det muligt at ændre recipienten af beskederne om det skal være konsollen eller en tekstfil. Klassen \texttt{Logger} kan fås vha. \texttt{LogFactory}, ved at kalde \texttt{GetLogger()}. Dette gør \texttt{CashDrawer} f.eks., da der ikke er implementeret en pengeskuffe på nuværende tidspunkt. Klassen udskriver i stedet en besked, når \texttt{Open()} bliver kaldt. Et klassediagram af \texttt{Log} pakken kan ses i Figur~\ref{fig:Log_CLASS}.
 
 \logicalview{0.85}{CLASS}{Log}{pakken Log}

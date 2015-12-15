@@ -11,7 +11,7 @@ For at mappe databasen til objekter anvendes property mapping. Property mapping 
 For at gøre det mere overskueligt, vil koblingen af den fysiske data model og klasse modellerne blive delt op i flere diagrammer. Hertil vil der være nogle overordnede forklaringer på hvorfor databasen er blevet designet som den er og hvordan det er løst med modelklasserne. Her kan hele pakken for model klasserne ses på figur \ref{fig:Models_CLASS}.
 
 \subsubsection{Transaction og SalesOrder}
-På figur \ref{fig:Mapping_TS} ses koblingen af tabellen Transaction\fxnote{glossery} og SalesOrder\fxnote{glossery} tabellerne
+På figur \ref{fig:Mapping_TS} ses koblingen af tabellen Transactionog SalesOrder tabellerne
 
 \begin{figure}[H]
     \centering
@@ -20,12 +20,12 @@ På figur \ref{fig:Mapping_TS} ses koblingen af tabellen Transaction\fxnote{glos
     \label{fig:Mapping_TS}
 \end{figure}
 
-Her kan det ses, at attributterne i klasse modellen minder meget om kolonerne i tabellerne med nogle få forskelle. En lille ting man kan lægge mærke til er at PaymentType\fxnote{glossery} og Status\fxnote{glossery} er gemt som integers, da deres egentlige navne er gemt i nogle enums inde i C\# koden. 
+Her kan det ses, at attributterne i klasse modellen minder meget om kolonerne i tabellerne med nogle få forskelle. En lille ting man kan lægge mærke til er at PaymentType og Status er gemt som integers, da deres egentlige navne er gemt i nogle enums inde i C\# koden. 
 \newline\newline
 Hvis man ser på den fysiske data model, kan det ses at Sales order har et one-to-many forhold, da det skal være muligt for kunden at betale med flere betalingsformer under et salg. For at oversætte dette til klasse modelen har SalesOrder en ICollection af Transactions, så man ud fra sales kan tilgå alle de Transaktioner der har været brugt. 
 
 \subsubsection{OrderLine}
-På figur \ref{fig:Mapping_Orderline} ses kobling af OrderLine, Product, Discount og SalesOrder\fxnote{glossery}. 
+På figur \ref{fig:Mapping_Orderline} ses kobling af OrderLine, Product, Discount og SalesOrder. 
 
 \begin{figure}[H]
     \centering
