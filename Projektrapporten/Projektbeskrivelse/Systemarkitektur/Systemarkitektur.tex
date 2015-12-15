@@ -1,8 +1,7 @@
 \newpage
 %!TEX root = ../../main.tex
 \section{Systemarkitektur}
-
-I det følgende afsnit beskrives arkitekturen for systemet. Afsnittet fungerer som en vejledning og afgrænsning for udviklere på dette projekt. Hvis man vil videreudvikle på systemet er her et godt sted at starte med at få en grundlæggende idé om projektets opbygning. Her beskrives systemets moduler i forskellige former for diagrammer. På figur \ref{ArkiDia} kan man se en overordnet opbygning af systemet.
+I det følgende afsnit beskrives arkitekturen for systemet. Afsnittet fungerer som en vejledning og afgrænsning for udviklere på projektet. Afsnittet skal give et grundlæggende overblik over systemets overbygning. På Figur~\ref{fig:ArkiDia} kan man se en overordnet opbygning af systemet.
 	
 \begin{itemize}
 	\item \textbf{\gls{GUI}} er ansvarlig for interaktion mellem \Gls{bartender} og \Gls{system}. \gls{GUI}'en er det eneste som \Gls{bartender}en ser, han ved intet om \gls{system}ets indre funktionalitet.
@@ -16,27 +15,37 @@ I det følgende afsnit beskrives arkitekturen for systemet. Afsnittet fungerer s
 	\centering
 	\includegraphics[width=0.75\textwidth]{Rapport/3tier}
 	\caption{Overordnet system}
-	\label{ArkiDia}
+	\label{fig:ArkiDia}
 \end{figure}
 
 \subsection{N+1 view}
-Arkitekturen er beskrevet med N+1, som er en specialisering af 4+1, der beskrevet i artiklen af \cite{4plus1}. Specialiseringen gør det muligt at tilføje og fjerne de Views, som giver eller ikke giver mening for beskrivelsen af \gls{system}et.
+Arkitekturen er beskrevet med N+1, som er en specialisering af 4+1, der beskrevet i artiklen af \cite{4plus1}. Specialiseringen gør det muligt at tilføje og fjerne de Views, som giver eller ikke giver mening for beskrivelsen af \gls{system}et. I systemarkitekturen er følgende Views indkluderet:
+\begin{itemize}
+	\item Domain View
+	\item Use Case View
+	\item Logical View
+	\item Deployment View
+	\item Data View
+\end{itemize}
+To af de listet Views: Domain View og Use Case View, er allerede beskrevet i Afsnit~\ref{sec:specandanal}. Derfor vil følgende beskrivelser af disse kun være et sammendrag.
+
+\subsubsection{Domain View}
+Domain View bruger de fully dressed \gls{usecase}s til at give et overblik over de ansvarsdomæner, som findes i systemet.
 
 \subsubsection{Use Case View}
-I Use Case Viewet kan der ses hvordan de forskellige \gls{usecase}s beskriver systemet. Der er i dokumentationen indsat overordnede diagrammer, der beskriver handlingsforløbet for hver af de fully dressed \gls{usecase}s.
+Use Case View er med til at skabe en overblik over, hvordan \gls{system}et skal interagere med brugeren.
 
 \subsubsection{Logical View}
-Logical View er en oversigt over, hvordan programmet er bygget op. Logical View viser her, hvordan det er valgt at dele systemet op i lag for at give mere overskuelighed. Her er der tale om:
-\begin{itemize}
-	\item Presentation Layer
-	\item Business Layer
-	\item Data Layer
-	\item Web API
-\end{itemize}
- 
-\textbf{Presentation Layer} indeholder alt omkring \gls{GUI} og hvordan den er bygget op ved hjælp af \gls{MVVM}. Her introduceres de forskellige \gls{Views}: SalesView, NumpadView, TabView, SettingsView. Disse bliver alle modelleret af en tilhørende \gls{ViewModel} således at de forskellige \gls{Views} intet kendskab har til Business Layer. \textbf{Business Layer} indeholder alt omkring oprettelse af ordrer og transaktioner. Dette lag kommunikerer med Presentation Layer og ligeledes med Data Layer. Det er Business Layer der sørger for at hente gemte data i Data Layer og ligeledes give data til Presentation Layer.\newline
-\textbf{Data Layer} står for al persistering af data. Her bliver data gemt i en database og ligeledes hentet derfra. Data kan kun blive tilgået via \gls{DAL}.\newline
-\textbf{WebAPI} sørger for at det er muligt at oprette, redigere og fjerne produkter fra databasen. Her er det også muligt at få vist statistik over igangværende og forhenværende salg i systemet. 
+Logical View er en beskrivelse af, hvordan systemet er bygget op. Systemet består af to applikationer: et kasseapparatet og et web interface til administration. Begge applikationer er til dels lag-delt i 3 lag: et Presentation Layer, et Business Layer og et Data Layer. Dette kan ses i Figur~\ref{fig:ArkiDia}. De to applikationer er yderligere beskrevet i systemarkituren under afsnittet Logical View. 
+\newline\newline
+\textbf{Presentation Layer} er laget, som er tættest på brugeren. Det er her, hvor \gls{GUI} er placeret. \gls{GUI}. \gls{GUI} hjælpe brugeren igennem de funktionalitet, som systemtet har, på den letteste måde.
+%I dette lag bliver der introduceret begreber som \gls{View}, \gls{ViewModel} og \gls{Model} pga. \gls{MVVM}. \gls{MVVM} er et mønster, som adskiller funktionalitet og udseende. Dette gør at dele af brugergrænsefladen er testbar altså \gls{ViewModel}'s.
+\newline\newline
+\textbf{Business Layer} er laget, som indeholder \gls{BLL}. \gls{BLL} er hvor kasseapparatets funktionalitet kan findes. Det er dette lag, som f.eks. sørger for at ordre og transaktioner bliver behandlet.
+\newline\newline
+\textbf{Data Layer} er laget, som indeholder \gls{DAL}. \gls{DAL} sørger for at skrive og læse fra databasen.
+\newline\newline
+\textbf{Web Interface og WebAPI} er en applikation for sig selv. Applikationen sørger for at det er muligt at oprette, redigere og fjerne produkter fra kasseapparatet. Applikationen kan også vise statistik over salg i systemet. 
 
 \subsubsection{Deployment View}
 I Deployment View ses der hvordan systemet kunne udrulles og sættes op. Her er det vigtig at bide mærke i at selve databasen og \gls{WebAPI}'et kunne sættes op på deres egne seperate computere fungerende som server, og GUI'en og business logikken, kunne køre på en anden computer som så kunne kobles op til serveren. I vores system som det er udviklet, ligger databasen på samme computer som resten af systemet. \newline\newline
@@ -70,8 +79,3 @@ Ydermere kan der i Data View ses hvordan dataflows sker fra én handling til den
 \end{figure}
 
 På figur \ref{AktDia} er dataflowet i forhold til Use Case 1 illustreret via et aktivitetsdiagram. Aktiviteterne gentages i nogle tilfælde og kører derfor i en løkke, og det kan også ses hvornår Use Casen og hvordan Use Casen afsluttes. Alt dette står mere detaljeret beskrevet i dokumentationen. 
-
- 
- 
-  
-
