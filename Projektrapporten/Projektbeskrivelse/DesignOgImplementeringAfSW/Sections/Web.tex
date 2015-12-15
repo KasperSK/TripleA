@@ -1,7 +1,7 @@
 For at facilitere nem adgang til databasen med hensyn til 
 opsætning af kasseapparatet er der lavet et \gls{WebAPI}. 
 Det hele er lidt en todelt affære. Den ene del er implementeringen af et \gls{RESTful} \gls{API}. 
-Den anden er implementeringen af en web grænseflade som bruger \gls{RESTful} \gls{API}'en til at lave \textit{Create}, \textit{Read}, \textit{Update} og \textit{Delete} i databasen.
+Den anden er implementeringen af en web grænseflade, som bruger \gls{RESTful} \gls{API}'en til at lave \textit{Create}, \textit{Read}, \textit{Update} og \textit{Delete} i databasen.
 
 \subsubsection{RESTful}
 Et \gls{RESTful} \gls{API} er en \gls{API} som opfylder \gls{REST} mønsteret. Det bruges over \gls{HTTP} med XML eller JSON, som i denne verden bruges til at repræsentere objekter.
@@ -29,6 +29,6 @@ Til at bruge \gls{RESTful} \gls{API}'en er der lavet et web interface i \gls{ASP
 I figur~\ref{fig:MVCWebApi} kan opbygning af web interfacet ses. 
 Der er brugt en kombination af HTML, CSS og JavaScript til at konstruere View-delen. HTML og CSS er passive designelementer ligesom \gls{XAML} i \gls{WPF}. Det som gør web interfacet dynamisk er JavaScript. I JavaScript opsætningen er der brugt \textit{Bootstrap} til opsætning af interfacet. Ved siden af bruges \textit{knockout.js} til at gøre data modellering muligt.
 \newline\newline
-Model-delen indeholder klasser, som svarer til de entiteter, der findes i databasen. Da der bruges \gls{EF} bindes klasserne gennem frameworket ned i databasen. I denne forbindelse er der lavet et \gls{DTO} til de respektive klasser, som skal sørge for at der ikke kommer cirkulære referencer. 
+Model-delen indeholder klasser, som svarer til de entiteter, der findes i databasen. Da der bruges \gls{EF}, bindes klasserne gennem frameworket ned i databasen. I denne forbindelse er der lavet et \gls{DTO} til de respektive klasser, som skal sørge for, at der ikke kommer cirkulære referencer. 
 \newline\newline
-Controller-delen er der, hvor \gls{REST} er implementeret. Det er Controllerne, som sørger for at svare på de forespørgelser, som måtte opstå. Dvs. når der f.eks. kommer et \textit{GET /api/products} sørger \texttt{ProductController} for at hente alle produkterne, føre dem over i en liste af \texttt{ProductDto}'er og udskrive dem i et JSON format til forespørgeren.
+Controller-delen er der, hvor \gls{REST} er implementeret. Det er Controllerne, som sørger for at svare på de forespørgelser, som måtte opstå. Dvs. når der f.eks. kommer et \textit{GET /api/products}, sørger \texttt{ProductController} for at hente alle produkterne, føre dem over i en liste af \texttt{ProductDto}'er og udskrive dem i et JSON format til forespørgeren.

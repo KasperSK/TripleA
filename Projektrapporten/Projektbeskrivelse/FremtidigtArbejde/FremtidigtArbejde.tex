@@ -1,21 +1,21 @@
 %!TEX root = ../../main.tex
 \section{Fremtidigt arbejde}
-Systemet er lavet med plads til udvidelser. Derfor vil der kontinuert kunne laves nye features og der er også plads til forbedringer. I det følgende vil der blive beskrevet hvilke udvidelser og forbedringer der kunne laves til systemet i fremtiden. 
+Systemet er lavet med plads til udvidelser. Derfor vil der kontinuert kunne laves nye features, og der er også plads til forbedringer. I det følgende vil der blive beskrevet, hvilke udvidelser og forbedringer der kunne laves til systemet i fremtiden. 
 
 \subsection{GUI}
-GUI'en kom godt med fra start og fik implementeret mange af de ønskede features der skulle bruges i systemet. Den fik endda et ansigtsløft hvor den blev gjort pæn at se på og ikke kun funktionel.\newline 
+GUI'en kom godt med fra start og fik implementeret mange af de ønskede features, der skulle bruges i systemet. Den fik endda et ansigtsløft, hvor den blev gjort pæn at se på og ikke kun funktionel.\newline 
 \subsubsection{Print af kvitteringer}
-I dens nuværende form har GUI'en ikke en knap der printer kundernes kvitteringer, og dette ville være det primære der skulle arbejdes på i forhold til GUI'en i fremtiden. I forhold til print, har GUI'en en knap til at printe afstemning af kasseapparatet, og der er i koden lavet et udkast til hvad der sker når man trykker på denne knap. Dette er imidlertid udkommenteret, da der i business logikken ikke er implementeret så der kan udprintes afstemning.\newline
+I dens nuværende form har GUI'en ikke en knap, der printer kundernes kvitteringer, og dette ville være det primære der skulle arbejdes på i forhold til GUI'en i fremtiden. I forhold til print, har GUI'en en knap til at printe afstemning af kasseapparatet, og der er i koden lavet et udkast til, hvad der sker, når man trykker på denne knap. Dette er imidlertid udkommenteret, da der i business logikken ikke er implementeret, så der kan udprintes afstemning.\newline
 \subsubsection{TabView og -Model}
-Noget helt andet der kunne forbedres i fremtiden, er det view og den ViewModel der hører til Tabs og produkter. Her er der i nuværende implementering ikke taget højde for hvis der er flere produkter af en type i databasen. I viewet kan der vises 25 produkter, men hvis der er flere går det ud over funktionaliteten. I fremtiden kunne man lave det sådan at hvis der er flere end 25 bliver den sidste knap en pil der bladrer til næste side og viser de følgende produkttype. Således ville man have flere sider under samme produkttype.\newline
+Noget helt andet der kunne forbedres i fremtiden, er det view og den ViewModel, der hører til Tabs og produkter. Her er der i nuværende implementering ikke taget højde, for hvis der er flere produkter af en type i databasen. I viewet kan der vises 25 produkter, men hvis der er flere, går det ud over funktionaliteten. I fremtiden kunne man lave det sådan, at hvis der er flere end 25, bliver den sidste knap en pil, der bladrer til næste side og viser de følgende produkttyper. Således ville man have flere sider under samme produkttype.\newline
 \subsubsection{SettingsView og -Model}
-I fremtiden ville det være en fordel at sørge for at få implementeret et view kaldet SettingView. Dette var tiltænkt at være et view hvor man kunne styre opsætningen af selve programmet. F.eks. hvis nu brugeren af produktet såsom Katrines Kælder skiftede navn, ville man her kunne ændre det, og så ville det have indflydelse på hvad der stod på en kvittering. Hvad mere er, at man i dette view kunne sætte op hvilken Database der skulle forbindes til. 
+I fremtiden ville det være en fordel at sørge for at få implementeret et view, kaldet SettingView. Dette var tiltænkt at være et view hvor man kunne styre opsætningen af selve programmet. F.eks. hvis nu brugeren af produktet - såsom Katrines Kælder - skiftede navn, ville man her kunne ændre det, og så ville det have indflydelse på, hvad der stod på en kvittering. Hvad mere er, at man i dette view kunne sætte op, hvilken Database der skulle forbindes til. 
 
 \subsection{Web}
-Web \gls{API} er blevet implementeret hurtigt og derfor er er også meget der kan forbedres.
+Web \gls{API} er blevet implementeret hurtigt og derfor er der også meget der kan forbedres.
 
 \subsubsection{Login system}
-Der kunne med fordel laves et login system så det kun er administrator der kan til gå siden.
+Der kunne med fordel laves et login system, så det kun er administrator, der kan til gå siden.
 
 \subsubsection{Layout}
 Siden kunne sættes bedre op og det bagvedliggende javascript kunne optimeres.
@@ -24,17 +24,16 @@ Siden kunne sættes bedre op og det bagvedliggende javascript kunne optimeres.
 Der kunne tilføjes grafik til statistikken og mulighederne for at lave udtræk med bestemte parametre.
 
 \subsection{Forretningslogikken}
-I forretningslogikken er også rig mulighed til forbedring
+I forretningslogikken er også rig mulighed til forbedring.
 
 \subsubsection{Betalingsmetoder}
-Her kunne klart implementeres Dankort og MobilePay/Swip,
-Samt alt hvad der skal bruges til at understøtte dette blandt andet betaling med penge tilbage til kunden.
+Her kunne klart implementeres Dankort og MobilePay/Swipp, samt alt hvad der skal bruges til at understøtte dette - blandt andet betaling med penge tilbage til kunden.
 
 \subsubsection{Afstemning}
 Det skal være muligt at printe afstemningen ud i stedet for blot at vise denne på \gls{GUI}.
 
 \subsubsection{Trådet}
-Det kunne ønskes at betalinger kan sæætes i kø, således at salg kan foretages inden det sidste er afsluttet. Derved kan man lave en Order og sætte den til betaling med dankort, mens denne transaktion bliver udført, kan en anden bartender lave et kontant salg. For at dette kan lade sig gøre, skal der indføres flere tråde.
+Det kunne ønskes, at betalinger kan sættes i kø, således at salg kan foretages, inden det sidste er afsluttet. Derved kan man lave en Order og sætte den til betaling med Dankort, og mens denne transaktion bliver udført, kan en anden bartender lave et kontant salg. For at dette kan lade sig gøre, skal der indføres flere tråde.
 
 \subsection{Data lag}
-I data laget kunne der med fordel indføres \gls{DTO}'er. Om de skulle leve i data laget eller i \gls{Dao} klasserne i forretningslogikken er op til hvor hård opdelingen af de to skal være.
+I data laget kunne der med fordel indføres \gls{DTO}'er. Om de skulle leve i data laget eller i \gls{Dao} klasserne i forretningslogikken er op til, hvor hård opdelingen af de to skal være.

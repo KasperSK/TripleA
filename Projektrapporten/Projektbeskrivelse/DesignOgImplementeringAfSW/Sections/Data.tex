@@ -1,4 +1,4 @@
-Database designet er en to delt affære. Delingen er mellem selve strukturen af databasen og koden som tilgår databasen.
+Database designet er en todelt affære. Delingen er mellem selve strukturen af databasen og koden som tilgår databasen.
 Disse beskrives begge i følgende afsnit.
 
 \subsubsection{Database Opbygning}
@@ -18,9 +18,9 @@ Databasen er designet ud fra følgende tankegang:
 \end{itemize}
 I databasen indeholder tabellen \textit{SalesOrder} alle salg, \textit{OrderLines} alle salgsbestillinger og \textit{Transactions} alle transaktioner. Disse tabeller har et relationship. Ud fra tankegangen skal \textit{SalesOrder} have et \textit{One-to-Many} forhold til \textit{OrderLines} og \textit{Transactions}. Der kan læses mere om database designet i DataView i systemarkitekturdokumentet.
 \newline\newline
-\textit{OrderLines} bruges til at definere, hvor meget af et \textit{Product}, som er blevet solgt, og hvor meget produktet er solgt til. Hvis der er givet en \textit{Discount} angives denne også, med hvor meget rabat som er givet på det enkelte produkt. \textit{Discount} kan være tom, hvis der ikke er givet nogen rabat.
+\textit{OrderLines} bruges til at definere, hvor meget af et \textit{Product}, som er blevet solgt, og hvor meget produktet er solgt til. Hvis der er givet en \textit{Discount}, angives denne også med, hvor meget rabat, som er givet på det enkelte produkt. \textit{Discount} kan være tom, hvis der ikke er givet nogen rabat.
 \newline\newline
-figur~\ref{fig:DSD} udstiller også \textit{ProductGroups}, \textit{ProductTypes} og \textit{ProductTabs}. \textit{ProductGroups} bruges til at gruppere produkter i grupper som f.eks. sodavand og drinks. Denne har et \textit{Many-to-Many} forhold til \textit{Product} og \textit{Discount}, fordi et \textit{Product} kan have flere \textit{ProductGroups} og en \textit{Discount} kan tilhører flere \textit{ProductGroups}. \textit{ProductTypes} bruges til at gruppere \textit{ProductGroups} i samme priskategori og derved give dem en ens farve på \gls{brugergraenseflade}n. \textit{ProductTabs} bruges til at definere hvilke tabs, som kan ses på \gls{brugergraenseflade}n. \textit{ProductTabs} kan indeholde mange \textit{ProductTypes}.
+figur~\ref{fig:DSD} udstiller også \textit{ProductGroups}, \textit{ProductTypes} og \textit{ProductTabs}. \textit{ProductGroups} bruges til at gruppere produkter i grupper som f.eks. sodavand og drinks. Denne har et \textit{Many-to-Many} forhold til \textit{Product} og \textit{Discount}, fordi et \textit{Product} kan have flere \textit{ProductGroups}, og en \textit{Discount} kan tilhører flere \textit{ProductGroups}. \textit{ProductTypes} bruges til at gruppere \textit{ProductGroups} i samme priskategori og derved give dem en ens farve på \gls{brugergraenseflade}n. \textit{ProductTabs} bruges til at definere hvilke tabs, som kan ses på \gls{brugergraenseflade}n. \textit{ProductTabs} kan indeholde mange \textit{ProductTypes}.
 
 \subsubsection{Database kode}
 For at kunne tilgå databasen fra systemet blev der brugt \gls{EF}. 
