@@ -1,46 +1,19 @@
 %!TEX root = ../main.tex
 \chapter{Arbejdsfordeling}
 
-\newcommand{\RevisionsTabel}[2]
-{
-\begin{table}[H]
-\centering
-{\rowcolors{2}{white!80!black!30}{white!70!black!60} %farver på hver anden række -starter på 3
-\setlength{\arrayrulewidth}{0.2mm}					 %tykkelse på linier 
-\setlength{\tabcolsep}{10pt}						 %indryk i celle 
-\renewcommand{\arraystretch}{1.5}					 %højden på tabelrum
-\center
-\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{2cm}|>{\raggedright}p{2cm}|>{\raggedright\arraybackslash}p{6cm}|}		 %længden på alle rum
-\hline
-
-\multicolumn{4}{|>{\columncolor{white!20!black!90}}m{14.18cm}|}{\textcolor{white}{\large{\textbf{Sprint #1}}}} \\\hline
-\rowcolor{white!70!black!60}
-\textcolor{black}{\large{\textbf{Ændret af}}}&
-\textcolor{black}{\large{\textbf{Version}}}&	
-\textcolor{black}{\large{\textbf{Dato}}}&
-\textcolor{black}{\large{\textbf{Ændringer}}}\\
-\hline
-#2
-\hline
-\end{tabular}
-}
-\caption{Revision for #1}
-\label{table:#1_Revision}
-\end{table}
-}
-
-
 \newcommand{\SprintTabel}[2]
 {
 \begin{table}[H]
 \centering
 \begin{tabularx}{\textwidth}{|L|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}\hline
 \multicolumn{7}{|C|}{\large{\textbf{Sprint #1}}} \\\hline
-Opgave\textbackslash Løst af & Kristian & David & Peter & Kalle & Kasper & Dumme Lærke \\ \hline
+Opgave\textbackslash Løst af & Kristian & David & Peter & Kalle & Kasper & Lærke \\ \hline
 #2 \hline
 \end{tabularx}
 \end{table}
 }
+
+I dette afsnit kan de ses hvilke opgaver der blev løst af hvem i løbet af sprintetne. Dog er også generelle opgave der er blevet løst som ikke har været en del af sprintene.
 
 \SprintTabel{1 - Krav specification}
 {
@@ -66,11 +39,12 @@ Log Klasse & & & & X &  &  \\\hline
 Order Klasse & X & X & & & & \\\hline
 Receipt Klasse & X & & & & & \\\hline
 Printer Klasse & X & & & & & \\\hline
-Indsamling af priser & & & X & & & \\
+Indsamling af priser & & & X & & & X \\
 }
 
 \SprintTabel{4 - Efterårs Ferien}
 {
+Order Klasse & X & & & & & \\\hline
 Data Acces lag DAL & & & & & X & \\\hline
 Products Klasse & & & & X & &  \\\hline
 Payment Klasse & & & & & & X \\\hline
@@ -79,6 +53,7 @@ Receipt Klasse & X & & & & & \\\hline
 GUI mock up2 & & & X & & &  \\\hline
 N+1 Dokumentations undersøgelse & & & & & & X \\\hline
 MVVM undersøgelse & X & & & & X & \\\hline 
+Dankort undersøgelse & & X & & X & X & \\\hline
 Doxygen setup & & & & X & & \\
 }
 
@@ -92,7 +67,8 @@ Unit Test Product & & & & X & & \\\hline
 Unit Test DAL & X & & & & & \\\hline
 Payment Klasse & & & & & & X \\\hline
 Products Klasse & & & & X & & \\\hline
-TeamCity Set up & & & & X & & \\
+TeamCity Set up & & & & X & & \\\hline
+Database Refactor & & & & X & & \\
 }
 
 \SprintTabel{6 - Web med mere}
@@ -103,11 +79,13 @@ ViewModel - Sales & & & X & & & \\\hline
 Web API & & & & & X & X \\\hline
 Unit Test Product & & & & X & & \\\hline
 Unit Test DAL & X & & & & & \\\hline
+Unit Test Sales & & X & & & & \\\hline
 DataBase Seed & & & & X & & X \\
 }
 
 \SprintTabel{7 - Polering plus de løse ender}
 {
+Polering af GUI & & & X & & & \\\hline
 Unit Test Product & & & & X & & \\\hline
 Unit Test SalesView & & & X & & X & \\\hline
 Unit Test NumpadView & X & & & & & \\\hline
