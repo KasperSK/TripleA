@@ -104,12 +104,14 @@
 % Literaturliste liste
 %--------------------------------------------------------------------
 \usepackage[danish]{varioref}				% Muliggoer bl.a. krydshenvisninger med sidetal (\vref)
-\usepackage{natbib}							% Udvidelse med naturvidenskabelige citationsmodeller
-\bibpunct[,]{[}{]}{;}{a}{,}{,} 				% Definerer de 6 parametre ved Harvard henvisning 
+%\usepackage{natbib}							% Udvidelse med naturvidenskabelige citationsmodeller
+
+%\bibpunct[,]{[}{]}{;}{a}{,}{,} 				% Definerer de 6 parametre ved Harvard henvisning 
 											% (bl.a. parantestype og seperatortegn)
 %\bibliographystyle{../Latex/Litteratur/plainnat}		% Udseende af litteraturlisten.
-\bibliographystyle{IEEEtran}
-
+%\bibliographystyle{IEEEtranSN}
+\usepackage[backend=bibtex,style=ieee,natbib=true]{biblatex}
+\addbibresource{../Latex/Litteratur/litteratur.bib}
 %--------------------------------------------------------------------
 % Ordliste
 %--------------------------------------------------------------------
