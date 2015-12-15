@@ -1,3 +1,118 @@
 %!TEX root = ../main.tex
 \chapter{Arbejdsfordeling}
 
+\newcommand{\RevisionsTabel}[2]
+{
+\begin{table}[H]
+\centering
+{\rowcolors{2}{white!80!black!30}{white!70!black!60} %farver på hver anden række -starter på 3
+\setlength{\arrayrulewidth}{0.2mm}					 %tykkelse på linier 
+\setlength{\tabcolsep}{10pt}						 %indryk i celle 
+\renewcommand{\arraystretch}{1.5}					 %højden på tabelrum
+\center
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{2cm}|>{\raggedright}p{2cm}|>{\raggedright\arraybackslash}p{6cm}|}		 %længden på alle rum
+\hline
+
+\multicolumn{4}{|>{\columncolor{white!20!black!90}}m{14.18cm}|}{\textcolor{white}{\large{\textbf{Sprint #1}}}} \\\hline
+\rowcolor{white!70!black!60}
+\textcolor{black}{\large{\textbf{Ændret af}}}&
+\textcolor{black}{\large{\textbf{Version}}}&	
+\textcolor{black}{\large{\textbf{Dato}}}&
+\textcolor{black}{\large{\textbf{Ændringer}}}\\
+\hline
+#2
+\hline
+\end{tabular}
+}
+\caption{Revision for #1}
+\label{table:#1_Revision}
+\end{table}
+}
+
+
+\newcommand{\SprintTabel}[2]
+{
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|L|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}\hline
+\multicolumn{7}{|C|}{\large{\textbf{Sprint #1}}} \\\hline
+Opgave\textbackslash Løst af & Kristian & David & Peter & Kalle & Kasper & Dumme Lærke \\ \hline
+#2 \hline
+\end{tabularx}
+\end{table}
+}
+
+\SprintTabel{1 - Krav specification}
+{
+Kravspec & X & X & X & X & X & X \\\hline
+Accepttest & X & X & X & X & X & X \\
+}
+
+\SprintTabel{2 - Design af software}
+{
+GUI Mock up & & & X & & & \\\hline
+Database Design & X & & & & X & X \\\hline
+Design af klasser & X & X & X & X & X & X \\
+}
+
+\SprintTabel{3 - Første implementation}
+{
+Database implemtation & & & & & X & \\\hline
+Payment Klasse & & & & & & X \\\hline
+Sales Klasse & & X & & & & \\\hline
+CashDrawer Klasse & & X & & & & \\\hline
+Products Klasse & & & X & & &  \\\hline
+Log Klasse & & & & X &  &  \\\hline
+Order Klasse & X & X & & & & \\\hline
+Receipt Klasse & X & & & & & \\\hline
+Printer Klasse & X & & & & & \\\hline
+Indsamling af priser & & & X & & & \\
+}
+
+\SprintTabel{4 - Efterårs Ferien}
+{
+Data Acces lag DAL & & & & & X & \\\hline
+Products Klasse & & & & X & &  \\\hline
+Payment Klasse & & & & & & X \\\hline
+Sales Klasse & & X & & & & \\\hline
+Receipt Klasse & X & & & & & \\\hline
+GUI mock up2 & & & X & & &  \\\hline
+N+1 Dokumentations undersøgelse & & & & & & X \\\hline
+MVVM undersøgelse & X & & & & X & \\\hline 
+Doxygen setup & & & & X & & \\
+}
+
+\SprintTabel{5 - Dynamisk GUI}
+{
+ViewModel - Settings & X & & & & & \\\hline
+ViewModel - ProductGroup & & & & & X & \\\hline
+ViewModel - Sales & & & X & & & \\\hline
+Unit Test Sales & & X & X & & & \\\hline
+Unit Test Product & & & & X & & \\\hline
+Unit Test DAL & X & & & & & \\\hline
+Payment Klasse & & & & & & X \\\hline
+Products Klasse & & & & X & & \\\hline
+TeamCity Set up & & & & X & & \\
+}
+
+\SprintTabel{6 - Web med mere}
+{
+ViewModel - Numpad & X & & & & & \\\hline
+ViewModel - ProductGroup & & & & & X & \\\hline
+ViewModel - Sales & & & X & & & \\\hline
+Web API & & & & & X & X \\\hline
+Unit Test Product & & & & X & & \\\hline
+Unit Test DAL & X & & & & & \\\hline
+DataBase Seed & & & & X & & X \\
+}
+
+\SprintTabel{7 - Polering plus de løse ender}
+{
+Unit Test Product & & & & X & & \\\hline
+Unit Test SalesView & & & X & & X & \\\hline
+Unit Test NumpadView & X & & & & & \\\hline
+Unit Test TabView & & & & & X & \\\hline
+Unit Test DAL & X & & & & & \\\hline
+Integrations test & X & X & & & & \\\hline
+Web API & & & & & X & X \\
+}
